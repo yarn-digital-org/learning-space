@@ -1,0 +1,491 @@
+<style>
+    #shopify-section-header-new .navbar-nav li {
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .menu-toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+  }
+  .menu-toggle-icon::after {
+    content: "";
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+  }
+  .dropdown-toggle::after {display: none;}
+  
+  @media (max-width: 991px) {
+    <meta name="fo-verify" content="5adbb09f-33bc-44d7-a009-72e43665f959" />
+    #shopify-section-{{ section.id }} .top-left-menu ul li,
+    #shopify-section-{{ section.id }} .top-right-menu ul li {
+      margin-left: 0!important;
+      margin-right: 0;
+      padding: 10px 0;
+      text-align: left;
+    }
+    #shopify-section-{{ section.id }} .navbar-nav {
+      padding-left: calc(var(--bs-gutter-x) * .5) !important;
+      padding-right: calc(var(--bs-gutter-x) * .5);
+    }
+    #shopify-section-header-new .navbar-nav>li {
+      border-bottom: solid 1px white;
+      flex-wrap: wrap;
+    }
+    #shopify-section-{{ section.id }} .navbar-nav .nav-item .dropdown-toggle {
+      padding: 10px 0;
+    }
+    .all-menu-wrap ul h2 {
+      border-top: 1px solid #eee;
+      line-height: 1;
+      padding: 5px 10px 10px;
+    }
+    .all-menu-wrap .child--link,
+    .single-menu-item {margin-bottom: 10px;}
+    .all-menu-wrap .child--link li a,
+    .single-menu-item a {
+      font-size: 12px;
+      line-height: 1;
+    }
+    #shopify-section-{{ section.id }} .list-cart {
+      text-align: right;
+    }
+    /*#shopify-section-header-new .bottom-panel {pointer-events: none;}*/
+    .navbar-toggler {pointer-events: initial;}
+    .price-rate {
+      position: relative;
+      left: 40%;
+      z-index: 99;
+    }
+    .list-cart ul {
+      display: inline-flex;
+      margin: 10px 0 0;
+      position: relative;
+      z-index: 99;
+    }
+    .swym-wishlist {position: relative;}
+    .list-cart li small.swym-wishlist-header-counter {left: -12px;}
+    .all-menu-wrap {
+      flex-direction: column;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .bottom_line, .menu_link {border-color: #fff;}
+    .nav-link.new,
+    .nav-link.sale {
+      border: 0;
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+
+    .overlay-sidebar .list-cart ul,
+    .overlay-sidebar .price-rate {z-index: 1;}
+    .navbar-collapse {width:100%;}
+    .navbar-toggler.closed-btn {padding-right: 0;}
+    .single-menu-item a {
+      padding: 10px 0;
+    }
+    .menu-toggle-icon {
+      position: relative;
+      z-index: 1;
+    }
+  }
+    
+  @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .dropdown-menu {top: 100%;}
+    #shopify-section-header-new .navbar-expand-lg .navbar-nav .nav-link:hover {color: white;}
+    #shopify-section-header-new .navbar-expand-lg .navbar-nav .nav-link {position: relative;}
+    #shopify-section-header-new .navbar-expand-lg .navbar-nav .nav-link:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 100%;
+      height: 150%;
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .all-menu-wrap {
+      /*display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 15px;*/
+      display: block;
+      width: 100%;
+      padding: 20px 15px;
+    }
+    .all-menu-wrap ul h2 {padding-top: 0;}
+    #shopify-section-{{ section.id }} .all-menu-wrap .child--link {
+      float: left;
+      width: calc(20% - 15px * 4/5);
+    }
+    #shopify-section-{{ section.id }} .all-menu-wrap.has-no-sub-menu {
+     display: block;
+     width: 50%;
+     margin: 0 auto;
+    }
+    #shopify-section-{{ section.id }} .all-menu-wrap .single-menu-item {
+      float: left;
+      padding: 10px 15px;
+      width: calc(33.33% - 15px * 4/5);
+    }
+    #shopify-section-{{ section.id }} .all-menu-wrap .single-menu-item + .child--link {float: none;}
+    .single-menu-item a {
+      color: #000;
+      line-height: 1.2;
+    }
+    .single-menu-item a:hover {color: #0086cc;}
+  }
+.marquee-container {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-right: 20px;
+}
+
+.marquee {
+  display: inline-block;
+  padding-left: 20%;
+  font-weight: bold;
+  color:red;
+}
+</style>
+{% capture currencyString %}{{ shop.money_format }}{% endcapture %}
+{% assign tempArray = currencyString | split: '{' %}
+{% assign currencySymbol = tempArray.first %}
+<header class="header-new">
+    {% if section.settings.important_news_enabled %}
+        <div class="container-fluid">
+            <div class="row">
+               <div class="marquee-container">
+                  <div class="marquee">
+                      {{ section.settings.important_news }}
+                  </div>
+               </div>
+              
+            </div>
+        </div>
+  {% endif %}
+    <div class="top-panel">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-sm-3 col-md-3 col-lg-3 top-left-menu top-bar-left">
+                    <ul>
+                        <li>
+                            <a href="{{ shop.url }}">
+                                <span class="fa fa-home  fa-2x" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        {% if shop.customer_accounts_enabled %}
+                        {% if customer %}
+                        <li>
+                            <a href="{{ shop.url }}/account">
+                                <span class="fa fa-user" aria-hidden="true"></span>
+                                My Account
+                            </a>
+                        </li>
+                        {% assign customer_family_fund_active = customer.metafields.custom.FFC %}
+                        {% if customer_family_fund_active %}
+                        <li>
+                            <a href="/pages/family-fund-account"> Family Fund</a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            {{ 'Log Out' | customer_logout_link }}
+                        </li>
+                        {% else %}
+                        <li>
+                            {{ 'Sign In ' | customer_login_link }}
+                        </li>
+                        <li>
+                            {{ 'Sign Up' | customer_register_link }}
+                        </li>
+                        {% endif %}
+                        {% endif %}
+                        {% if section.settings.show_training_link %}
+                        <li>
+                            <a href="{{ section.settings.event_site_link }}" class="event-link"> {{
+                                section.settings.event_site_label }} </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-9 col-md-9 col-lg-9 top-right-menu top-bar-menu-right">
+                    <ul>
+                        {% for link in section.settings.top_bar_menu.links %}
+                        <li><a href="{{ link.url }}">{{ link.title | escape }}</a>
+                        </li>
+                        {% endfor %}
+                        <li>
+                            <div class="price-rate">
+                                {% include 'currency' %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle-panel">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-5">
+                    <div class="row">
+                 <div class="col-12 col-sm-6 col-md-6 col-lg-5 header-logo1">
+                   {%- if template.name == 'index' -%}
+                     <h1 class="site-logo-heading">
+                       <a href="{{ routes.root_url }}" id="header-logo" class="desktop-logo-blue" aria-label="{{ page_title | escape }}">
+                         {%- if section.settings.logo != blank -%}
+                                <img src="{{ section.settings.logo | img_url: 'master' }}" loading="lazy" {% comment %}width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" {% endcomment %} alt="{{ section.settings.logo.alt | default: page_title | default: shop.name | escape }}">
+                         {%- else -%}
+                           <span class="h2">{{ shop.name }}</span>
+                         {%- endif -%}
+                         <!-- Invisible text for SEO + accessibility -->
+                         <span class="visually-hidden">{{ page_title | escape }}</span>
+                       </a>
+                     </h1>
+                   {%- else -%}
+                     <a href="{{ routes.root_url }}" id="header-logo" class="desktop-logo-blue" aria-label="{{ page_title | escape }}">
+                       {%- if section.settings.logo != blank -%}
+                                <img src="{{ section.settings.logo | img_url: 'master' }}" loading="lazy" {% comment %}width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" {% endcomment %} alt="{{ section.settings.logo.alt | default: page_title | default: shop.name | escape }}">
+                       {%- else -%}
+                         <span class="h2">{{ shop.name }}</span>
+                       {%- endif -%}
+                     </a>
+                   {%- endif -%}
+
+                   <a href="{{ routes.root_url }}" id="header-logo-mobile" class="mobile-logo-white" aria-label="{{ page_title | escape }}">
+                     {%- if section.settings.logo != blank -%}
+                                <img src="{{ 'Learning_SPACE_Mobile.png' | asset_url }}" loading="lazy" {% comment %} width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" {% endcomment %} alt="{{ section.settings.logo.alt | default: page_title | default: shop.name | escape }}">
+                     {%- else -%}
+                       <span class="h2">{{ shop.name }}</span>
+                     {%- endif -%}
+                   </a>
+                 </div>                 
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-7 tag-line">
+                            {{ section.settings.slogan_label }}</div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7">
+                    <div class="row cart-search">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-5 call-tag">
+                            <a href="tel:{{ section.settings.topbar_phone }}"> <img src="{{ 'earphone.png' | asset_img_url: '' }}" alt="phone"><span>{{
+                                    section.settings.topbar_phone_label }}<br>
+                                    <b>{{ section.settings.topbar_phone }}</b></span> </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-7 list-cart">
+                            <div class="hide-mobile"> {% render 'search-autocomplete' %} </div>
+                            <ul>
+                                {% if section.settings.show_wishlist %}
+                                <li class="header-swishlist">
+                                    <button class="st-wishlist-details-button st-wishlist-details-button--header-icon" data-type="manually" aria-label="View Wishlist Details"></button>
+                                    {% comment %} {% if routes.root_url == '/' %}
+                                    {% assign customUrl = shop.url %}
+                                    {% else %}
+                                    {% assign customUrl = routes.root_url %}
+                                    {% endif %}
+                                    <a href="#swym-wishlist" class="swym-wishlist">
+                                        <img class="desktop-wishlist" src="{{ 'wishlist.svg' | asset_url }}" alt="wishlist" width="26" height="26">
+                                        <img class="mobile-wishlist" src="{{ 'wishlist-white.svg' | asset_url }}" alt="wishlist" width="26" height="26">
+                                        <span> Favourite <br /><b> My Wishlist</b></span> <small class="swym-wishlist-header-counter">0</small></a> {% endcomment %}
+                                </li>
+                                {% endif %}
+                                {% if section.settings.show_cart %}
+                                <li class="cart_show_hide">
+                                    <a class="cart_toggle" href="javascript:void(0)">
+                                        <img class="desktop-cart" src="{{ 'cart.svg' | asset_url }}" alt="cart" width="26" height="26">
+                                        <img class="mobile-cart" src="{{ 'cart-white.svg' | asset_url }}" alt="cart" width="26" height="26">
+                                        <span> Your Cart<br>
+                                            <b class="ex-vat-price"><span id="mini-cart-total-price" data-currency="{{ currencySymbol }}">
+                                                    <div class="spinner-grow text-primary" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                </span></b>
+                                        </span>
+                                        <small class="cart-item-count">0</small>
+                                    </a>
+                                    <div class="cart-display">
+                                        <div id="show_cart" style="display: none;">
+                                            <div class="title_bar"> <span><b>Your Cart,</b> <span class="cart-item-count"></span> item(s) </span>
+                                                <button class="cart_toggle"> <img src="{{ 'cross.png' | asset_url }}">
+                                                </button>
+                                            </div>
+                                            <div id="cartitems-js">
+                                            </div>
+                                            <div class="sub-total"> <span class=""><b>Subtotal: </b></span>
+                                                <span class="float-end ex-vat-price">
+                                                    <b>
+                                                        <span id="mini-cart-total-price-pop" data-currency="{{ currencySymbol }}">
+                                                            <div class="spinner-grow text-primary" role="status">
+                                                                <span class="visually-hidden">Loading...</span>
+                                                            </div>
+                                                        </span>
+                                                    </b>
+                                                </span>
+                                            </div>
+                                            <div class="d-grid gap-2 d-flex justify-content-center cart-buttons">
+                                                <button class="btn btn-button" style="width: 100%;" type="button" onclick=" window.location.href = '{{ routes.cart_url }}'">View
+                                                    Cart</button>
+                                                <!-- <form action="{{ routes.cart_url }}" method="post">
+													<button class="btn btn-button-secondry"
+														name="checkout">Checkout</button>
+												</form> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="hide-desktop"> {% render 'search-autocomplete' %} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %}
+    {% render 'site-nav', linklist: section.settings.main_linklist, event_site_link:section.settings.event_site_link, event_site_label:section.settings.event_site_label %}
+    {% endcomment %}
+    {% render 'new-site-nav', linklist: section.settings.main_linklist,schoollinklist: section.settings.school_linklist, event_site_link:section.settings.event_site_link, event_site_label:section.settings.event_site_label %}
+</header>
+{% schema %}
+{
+"name": "Header",
+"class": "section-header",
+"settings": [
+{
+"type": "image_picker",
+"id": "logo",
+"label": "Logo"
+},
+{
+"type": "checkbox",
+"id": "important_news_enabled",
+"label": "Show Important News",
+"default": false
+},
+{
+"type": "text",
+"id": "important_news",
+"label": "Important News",
+"default": "Family Fund is unavailable currently as we perform some maintenance please try again later."
+},
+{
+"type": "text",
+"id": "slogan_label",
+"label": "Slogan",
+"default": "Empowering through advice <br> sensory equipment and toys"
+},
+{
+"type": "checkbox",
+"id": "predictive_search_enabled",
+"label": "Show Predictive Search",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_training_link",
+"label": "Show Training Link",
+"default": true
+},
+{
+"type": "text",
+"id": "topbar_phone_label",
+"label": "Contact Label",
+"default": " Call our Educational Product Advisors"
+},
+{
+"type": "text",
+"id": "topbar_phone",
+"label": "Phone No",
+"default": "(+44) 028 9031 9360"
+},
+{
+"type": "checkbox",
+"id": "show_cart",
+"label": "Show Cart",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_wishlist",
+"label": "Show Wishlist",
+"default": true
+},
+{
+"type": "text",
+"id": "event_site_label",
+"label": "Event Site Link Label"
+},
+{
+"type": "text",
+"id": "event_site_link",
+"label": "Event Site Link"
+},
+{
+"type": "link_list",
+"id": "top_bar_menu",
+"label": "Top Bar Menu"
+},
+{
+"type": "link_list",
+"id": "main_linklist",
+"label": "Menu"
+},
+{
+"type": "link_list",
+"id": "school_linklist",
+"label": "School Menu"
+}
+]
+}
+{% endschema %}
+<script class="swym-wishlist-header-counter-custom">
+function renderWishlistCounter(swat) {
+    var counter_elem = document.querySelectorAll(".swym-wishlist-header-counter"); /* Custom header can be added here.*/
+    if (counter_elem) {
+        for (var i = 0; i < counter_elem.length; i++) {
+            if (swat.renderWishlistCount) {
+                swat.renderWishlistCount(counter_elem[i], function(count, element) {
+                    //console.log("debug - renderWishlistCount", count, element); 
+                });
+            }
+        }
+    }
+}
+if (!window.SwymCallbacks) {
+    window.SwymCallbacks = [];
+}
+window.SwymCallbacks.push(renderWishlistCounter);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Only run on product pages
+  if (document.body.classList.contains('template-product')) {
+    const headingBg = document.querySelector('.heading-bg');
+    const header = document.querySelector('.header-new');
+
+    if (headingBg && header) {
+      function adjustPadding() {
+        if (window.innerWidth <= 991) { // mobile only
+          const headerHeight = header.offsetHeight;
+          headingBg.style.paddingTop = headerHeight + 'px';
+        } else {
+          headingBg.style.paddingTop = ''; // reset for desktop
+        }
+      }
+
+      adjustPadding();
+      window.addEventListener('resize', adjustPadding);
+    }
+  }
+});
+</script>

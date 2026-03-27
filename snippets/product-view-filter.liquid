@@ -1,0 +1,14 @@
+<div class="col-12 col-md-4 mb-5">
+    <div class="float-end">
+        {% if filterview == 'box' %}
+            {% assign boxicon = 'box-icon.svg' %}
+            {% assign listicon = 'list-icon.svg' %}
+        {% else %}
+            {% assign boxicon = 'box-icon-filled.svg' %}
+            {% assign listicon = 'list-icon-filled.svg' %}
+
+        {% endif %}
+        <a href="javascript:void(0)" onclick="changeView('view','list')"><img src="{{ listicon | asset_url }}" /></a>
+        <a href="javascript:void(0)" onclick="changeView('view','box')"><img src="{{ boxicon | asset_url }}" /></a>
+    </div>
+</div>

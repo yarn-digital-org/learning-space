@@ -1,0 +1,29 @@
+<!-- page -->
+{% include 'breadcrumbs' , title: 'Collections' %} 
+
+<div class="container">
+	<div class="row">
+    <div class="col-12  col-md-12  product-list-cat">
+        <div class="row product-sec1">
+          {% paginate collections by 8 %}
+                  {% for collection in collections %}
+                  <div class="col-12 col-md-4 pro-list text-center mb-5">
+                    {% if collection.featured_image != null and collection.featured_image != "" %}
+                    <a href="{{ collection.url | within: collection }}">
+                        <img src="{{ collection.featured_image | img_url: 'master' }}" alt="{{ collection.title }}" class="img-fluid img-thumbnail" loading="lazy"></a>
+                    {% else %}
+                    <a href="{{ collection.url }}"> 
+                      {{ 'lifestyle-2' | placeholder_svg_tag: 'img-fluid img-thumbnail' }}
+                      <!-- <img class="img-fluid img-thumbnail" src="{{ 'no-image.png' | asset_url }}" width="300px" height="300px" {% unless lazy_load==false %}loading="lazy" {% endunless %} />  -->
+                    </a>
+                    {% endif %}
+                    <h6 class="mt-4"><a href="{{ collection.url }}">{{ collection.title }}</a></h6>
+                </div>
+              {% endfor %}
+            {% include 'pagination', paginate:paginate %}
+            {% endpaginate %}
+        </div>
+    </div>
+  </div>
+</div>
+

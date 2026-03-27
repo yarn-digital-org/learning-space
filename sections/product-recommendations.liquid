@@ -1,0 +1,127 @@
+<style>
+    @media (max-width: 767px) {
+       .normal-recommendations {
+          display: none !important;
+       }
+      .mobile-recommendations {
+          display: block !important;
+       }
+   }
+   @media (min-width: 767px) {
+       .mobile-recommendations {
+          display: none !important;
+       }
+       .normal-recommendations {
+          display: block !important;
+       }
+   } 
+   </style>
+<div class="container">
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <product-recommendations 
+    class="product-recommendations page-width section-{{ section.id }}-padding isolate" 
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
+      {% if recommendations.performed and recommendations.products_count > 0 %}
+        
+        <div class="row">
+          <div class="col-12">
+            {% if recommendations.intent == 'related' %}
+            <h2 class="product-recommendations__heading mt-5">You may also like</h2>
+          {% elsif recommendations.intent == 'complementary' %}
+            <h2 class="product-recommendations__heading mt-5">Pair it with</h2>
+          {% endif %}
+          </div>
+        </div>
+        <div class="normal-recommendations">
+        <div class="row">
+          {% for recommendation in recommendations.products %}  
+            
+            {% render 'card-product',
+              card_product: recommendation,
+              price: recommendation.price,
+              handle: recommendation.handle,
+              variant_size: recommendation.variants.size,
+              variants: recommendation.variants,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating,
+              metafields: recommendations.m
+            %}
+          {% endfor %}
+            </div>
+            </div>
+        <div class=" mobile-recommendations">
+        <div class="row">
+             {% for recommendation in recommendations.products limit:3 %}  
+               
+               {% render 'card-product',
+                 card_product: recommendation,
+                 price: recommendation.price,
+                 handle: recommendation.handle,
+                 variant_size: recommendation.variants.size,
+                 variants: recommendation.variants,
+                 media_aspect_ratio: section.settings.image_ratio,
+                 show_secondary_image: section.settings.show_secondary_image,
+                 show_vendor: section.settings.show_vendor,
+                 show_rating: section.settings.show_rating,
+                 metafields: recommendations.m
+               %}
+             {% endfor %}
+               </div>
+               </div>
+    {% endif %}
+  </product-recommendations>
+</div>
+</div>
+ {% javascript %}
+       
+  class ProductRecommendations extends HTMLElement {
+    constructor() {
+      super();
+
+      const handleIntersection = (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.unobserve(this);
+
+        fetch(this.dataset.url)
+          .then(response => response.text())
+          .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('product-recommendations');
+
+            if (recommendations && recommendations.innerHTML.trim().length) {
+              this.innerHTML = recommendations.innerHTML;
+            }
+
+            if (html.querySelector('.grid__item')) {
+              this.classList.add('product-recommendations--loaded');
+            }
+          })
+          .catch(e => {
+            console.error(e);
+          });
+      }
+
+      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
+    }
+  }
+
+  customElements.define('product-recommendations', ProductRecommendations);
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Product Recommendations",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_product_recommendations",
+        "label":"Show dynamic recommendations",
+        "info": "Dynamic recommendations change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

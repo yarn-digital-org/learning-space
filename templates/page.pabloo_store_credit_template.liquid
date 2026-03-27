@@ -1,0 +1,6 @@
+
+            <span>
+                {% assign shopName = shop.permanent_domain | split: "." | first %}
+                {% assign iframeURL = 'https://app.pabloo.com/bank-view/pabloo?client_id=' | append: shopName |  append: "&user_id=" | append: customer.id  %} <iframe src="{{iframeURL}}" style="width: 100%; height: 600px;" frameborder="0"> Your browser does not support iframes </iframe>
+            </span>
+        

@@ -1,0 +1,74 @@
+{% include 'breadcrumbs', title: page.title %}
+<div class="container-fluid cart-section">
+	<div class="row mb-5">
+		<div class="col-12 col-md-8 ">
+			<div class="card card-col">
+				<h5>{{ page.title }} <span class="wishlist-item-counts float-end"></span></h5>
+		{% paginate collections.all.products by 100000 %}
+        {% for product in collections.all.products %}
+				<div class="row cart-contant p-3 product-tile-container wishlist-tile-container hide" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
+					<div class="col-6 col-sm-2 col-md-2 col-lg-2"> 
+            <a href="{{ product.url }}"></a>
+              <img class="img-thumbnail" src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title }}"> 
+           </a>
+          </div>
+					<div class="col-6 col-sm-4 col-md-4 col-lg-4">
+						<p>{{ product.title }}</p>
+            {% if product.compare_at_price > product.price %}
+                  <b>{{ product.price | money }}</b>
+            {% else %}  
+                  <b>{{ product.price | money }}</b>
+            {% endif %}
+						<!-- <p>Size: <span>S</span></p>
+						<p>Colour : <span>Beige</span></p>  -->
+          </div>
+					<div class="col-6 col-sm-4 col-md-4 col-lg-4">
+						<div class="input-group add-cart-col mb-3"> <span class="input-group-text"> <img src="{{ 'minus.svg' | asset_url }}"> </span>
+							<input type="text" class="form-control" value="1"> <span class="input-group-text"><img src="{{ 'plus.svg' | asset_url }}"> </span> </div>
+					</div>
+					<div class="col-6 col-sm-2 col-md-2 col-lg-2 text-end wishlist-remove"> <b>{{ product.price | money }}</b>
+						<br> {% render 'wishlist-button', remove:true,product:product %} </div>
+					<hr> 
+        </div>
+        {% endfor %}
+		{% endpaginate %}
+		
+		<div class="d-grid gap-2 mt-4 d-flex justify-content-center btndiv hide">
+			<button class="btn btn-button" type="button">Save & Create New Wishlist</button>
+			<button class="btn btn-update" type="button">Update</button>
+			<button class="btn btn-button-secondry" type="button">Buy full wishlist</button>
+		</div>
+        <div class="wishlist-grid--empty-list flex text-center hide">
+          <div class="empty-list--info">
+            <h6 class="empty-list--text black">Looks like you haven't started a wishlist yet...</h6>
+            <a class="btn btn-secondary" href="{{ shop.url }}/collections/all">Start Shopping</a>
+          </div>
+        </div>
+      <!-- Loader -->
+      <div class="wishlist-loader text-center">
+        <p class="wishlist-loader--text">Loading your customized wishlist...</p>
+      </div>
+			</div>
+		</div>
+		<div class="col-12 col-md-4">
+			<div class="card card-col mb-4">
+				<div class="cart-contant text-center p-3">
+					<h4>Share Your Wishlist</h4>
+					<p>Click an option below to print your wishlist or share it with yourself or a friend. </p>
+					<div class="share-tag p-4">
+						<a href="#"> <img src="{{ 'via-mail.svg' | asset_url }}">
+							<br> Send Via Email </a>
+					</div>
+					<div class="share-tag p-4">
+						<a href="#"> <img src="{{ 'via-description.svg' | asset_url }}">
+							<br> Print With Description </a>
+					</div>
+					<div class="share-tag p-4">
+						<a href="#"> <img src="{{ 'without-description.svg' | asset_url }}">
+							<br> Print Without Description </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

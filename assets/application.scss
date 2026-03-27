@@ -1,0 +1,121 @@
+// Put your styles in this file.
+// Shopify will compile SCSS/SASS on each deploy.
+// Note: "@import" rules aren’t supported.
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Quicksand:wght@600;700&family=Sriracha&display=swap');
+.search-col{
+	position: relative;
+}
+#predictive-search {
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+	top: 30px;
+	z-index: 9;
+}
+.top-panel select {
+	color: #0086CC;
+	font-weight: 400;
+	padding: 3px 30px 3px 5px;
+}
+#predictive-search-results ul{
+padding-left: 0;
+}
+#predictive-search-results ul li {
+	list-style: none;
+	margin-bottom: 15px;
+	display: inline-block;
+	margin-right: 20px;
+	width: 100%;
+	border-bottom: 1px #DEDEDE solid;
+	padding-bottom: 10px;
+}
+#predictive-search-results ul li a{
+color: #2c2c2c;
+}
+#predictive-search-results ul li a img{
+display: inline-block;
+}
+#predictive-search-results ul li a div {
+	display: inline-block;
+	margin-left: 15px;
+	vertical-align: top;
+}
+/*Testimonials Start*/
+.testimonial .carousel-indicators {
+	top: 0;
+	bottom: inherit !important;
+	}
+	.testimonial .carousel-indicators img{
+	
+	
+	
+	}
+	.testimonial .carousel-item{
+	margin-top: 150px;
+	}
+	.testimonial .carousel-indicators li{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right:10px;
+	margin-left:10px;
+	min-height: 124px;
+	}
+	.testimonial .carousel-indicators li img{
+	width: 40px;
+	margin: 0 10px;
+	}
+	.testimonial .carousel-indicators li.active{
+	margin:0 50px;
+	}
+	.testimonial .carousel-indicators li.active img{
+	width: 124px;
+	}
+	.testimonial .carousel-indicators [data-bs-target]{
+	text-indent: inherit;
+	}
+	/* Testimonal end*/
+	/* filter amount */
+	span.amount{
+		color:#ffffff;
+		font-size:16px;
+	}
+	input#amount,input#amount1 {
+		font-size: 13px;
+		outline: none;
+		background: none;
+		word-spacing: 1em;
+		color: #006FAB !important;
+		width: 100%;
+		font-weight: bold;
+	}
+	.clear{
+		cursor: pointer;
+	}
+	.hide{
+		display: none !important;
+	}
+	.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+		z-index: 0;
+	}
+	.pagination {
+		margin: 20px 0 0px;
+	}
+	ul.pagination li a {
+		font-size: 14px;
+		padding: 5px 11px;
+	}
+	.ui-widget {
+		font-size: .5em !important;
+		margin-bottom: 10px;
+	}
+	.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+		border: 3px solid #006FAB !important;
+		background: #fff !important;
+	}
+	.ui-slider-horizontal .ui-slider-range {
+		height: 70% !important;
+	}
+	.ui-slider-horizontal {
+		height: 3px !important;
+	}

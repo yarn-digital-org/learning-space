@@ -1,0 +1,25 @@
+{%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+<input name="source" type="hidden" value="geolocation_selector">
+	<div class="dropdown">
+    <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        {% if localization.country.currency.iso_code == 'GBP' %} <img src="{{ 'pound.png' |  asset_img_url }}" alt="pound"> {% endif %}  {% if  localization.country.currency.iso_code == 'EUR' %} <img src="{{ 'euro.png' | asset_img_url }}"> {% endif %}  {% if localization.country.currency.iso_code == 'USD' %} <img src="{{ 'dollar.png' | asset_img_url }}">  {% endif %}
+        {{ localization.country.currency.iso_code }}
+
+
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        {%- for country in localization.available_countries -%}
+        {% if country.iso_code == 'IE' or country.iso_code == 'GB' %}
+       
+        <li>
+            <a class="dropdown-item" href="#" data-value="{{ country.iso_code }}">
+                {% if country.currency.iso_code == 'GBP' %} <img src="{{ 'pound.png' |  asset_img_url }}" alt="pound"> {% endif %}   {% if  country.currency.iso_code == 'EUR' %} <img src="{{ 'euro.png' | asset_img_url }}"> {% endif %}  {% if country.currency.iso_code == 'USD' %} <img src="{{ 'dollar.png' | asset_img_url }}">{% endif %} 
+                {{ country.currency.iso_code }}
+            </a>
+        </li>
+        {% endif %}
+          {%- endfor -%}
+    </ul>
+    <input type="hidden" name="country_code" id="currency_code" value="{{ localization.country.iso_code }}"/>
+    </div>
+{%- endform -%}

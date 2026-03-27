@@ -1,0 +1,157 @@
+<div class="general-product-card col-6  {% if show and show == 6 %} col-md-2 col-lg-2 {% else if show and show == 4 %} col-md-3 col-lg-3 {% else %} col-md-4 col-lg-3 {% endif %} pro-list mb-5 "> 
+ 
+  <div class="overimageblock">
+    {% if template.name == 'index' %}
+      <button class="st-wishlist-button" type="button" data-type="product-card" data-handle="{{card_product.handle}}"></button>
+    {% endif %}
+    
+  <div class="comparable-product-options" data-product-id="{{card_product.id}}" data-product-handle="{{card_product.handle}}">
+      
+    </div>
+  {% if card_product.metafields.custom.markers %}
+   <img 
+                src=" {{ card_product.metafields.custom.markers | img_url: 'medium' }} " 
+                alt="{{ card_product.featured_media.alt | escape }}" 
+                class="product-img overimage"
+                {% unless lazy_load == false %} loading="lazy"{% endunless %}
+            />
+{% endif %}
+    {%- if card_product.featured_media -%}
+        <a href="{{ card_product.url | default: '#' }}" class="product-card-image-wrap">
+      {% if variants[0].metafields.global.vat_relief_variant  %}
+        <span 
+        {% if variants[0].metafields.global.vat_relief_variant %} data-bs-toggle="tooltip"  class="badge rounded-pill text-bg-primary"  
+          data-bs-placement="top"  
+          data-bs-title="Parents and carers of chronically sick or disabled children are eligible to receive VAT relief, this will be applied at checkout" 
+          {% else %}
+          class="badge rounded-pill"
+          {% endif %}>
+          {% if variants[0].metafields.global.vat_relief_variant  %}
+          Vat Relief
+           {% endif %}
+        </span>
+        {% endif %}
+
+            <!-- Main product image -->
+<img 
+    src="{{ card_product.featured_media | img_url: 'medium'  }}" 
+    alt="{{ card_product.featured_media.alt | escape }}" 
+    class="product-img "
+    {% unless lazy_load == false %} loading="lazy"{% endunless %}
+/>
+{% if card_product.media[1] != null %}
+    <img 
+        src="{{ card_product.media[1] | img_url: 'medium'  }}" 
+        alt="{{ card_product.media[1].alt | escape }}" 
+          height='300'
+          width='315'
+        class="product-socond-img "
+        {% unless lazy_load == false %} loading="lazy"{% endunless %}
+    />
+{% endif %}  
+        </a>
+    {% else %}
+
+        <a href="{{ card_product.url | default: '#' }}">
+            <img src="{{ 'img.jpg' | asset_url }}" class="img-responsive product-img" alt="{{ 'img.jpg' | asset_url }}" {% unless lazy_load == false %}loading="lazy"{% endunless %}>
+        </a>
+    {%- endif -%}  
+
+
+      <div class="test1">
+
+
+        
+    <h6 class="mt-4">
+        <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+            {{ card_product.title | escape }}
+        </a>
+    </h6>
+     {% comment %}
+      ==={{ variants[0].metafields.custom.original_price  }}
+      {% endcomment %}    
+           
+    {% if settings.show_vendor %}
+      <p>{{ card_product.vendor | escape }}</p>
+    {% endif %}
+    {% if settings.show_ratings %}
+      <span class="shopify-product-reviews-badge" data-id="{{ card_product.id }}"></span>
+    {% endif %}
+    {% assign priceEx =  price | divided_by:1.20   %}
+    {% assign priceExClass =  ''  %}
+    
+    {% assign priceLabel =  'incl. VAT'  %}
+    
+    {% assign is_tax_free = false %}
+    {% if card_product.metafields.global.is_tax_free == true %}
+        {% assign priceEx =  price %}
+        {% assign priceExClass =  'style="visibility:hidden"'  %}
+        {% assign priceLabel =  'No. VAT'  %}
+        {% assign is_tax_free = true %}
+    {% endif %} 
+
+
+      
+    <h5 class="mb-2 inc-vat-price" >
+      <span> {% comment %} {{ priceLabel }} : {% endcomment %} </span>
+      {{ price | money | replace: ",", "." }}
+    </h5>
+    {% if card_product.tags contains "gift-card" %} 
+    {% else %}
+    <h6 class="mb-2 mt-1 ex-vat-price " {{ priceExClass }}>
+      <span>excl. VAT  : </span>
+      {{ priceEx | money | replace: ",", "." }}
+    </h6>
+
+    {% endif %}
+
+    </div>
+  
+
+      
+    
+    <div class="button-group">
+            
+            {% assign bespokeCollection = false %}
+            {% for tagcheck in card_product.tags %}
+              
+              {% if tagcheck == 'bespoke' %}
+                  {% assign bespokeCollection = true %}
+              {% endif %}
+            {% endfor %}
+            
+
+            {% if bespokeCollection == false %}
+              {% if card_product.variant_size > 1 %}
+               <a href="{{ card_product.url | within: collection }}" class="btn btn-primary" >
+                 <img src="{{ 'cart-pro.svg' | asset_url }}"> Select Option</a>
+              {% else %}
+                  {% if variants[0].available %} 
+                 
+                      <button type="button" onclick="addtocart('{{ variants[0].id }}',1, '{{ is_tax_free }}', '{{ priceEx }}')" class="btn btn-primary add_to_cart_btn">
+                      <img src="{{ 'cart-pro.svg' | asset_url }}"><span class="add_to_cart_txt">Buy Now</span></button>
+                    {% else %}
+                       <button type="button" class="btn btn-primary add_to_cart_btn" disabled="disabled" >
+                       <img src="{{ 'cart-pro.svg' | asset_url }}"><span class="add_to_cart_txt">Sold Out</span></button>
+                  {% endif %}
+                  
+              {% endif %}
+              {% else %}
+               <a href="{{ card_product.url | within: collection }}" class="btn btn-primary" >
+                 <img src="{{ 'cart-pro.svg' | asset_url }}"> View Product </a>
+            {% endif %}
+           {% unless template.name == 'index' %}
+             <button class="st-wishlist-button" type="button" data-type="product-card" data-handle="{{card_product.handle}}"></button>
+           {% endunless %}
+                    <!-- Swym Wishlist Plus EPI Button -->
+                    {% comment %} <button data-with-epi="true" class="wishlist_button action--wishlist tile-actions--btn flex btn btn-secondary swym-button swym-add-to-wishlist-view-product product_{{card_product.id}}" data-swaction="addToWishlist" data-product-id="{{card_product.id | json}}" data-variant-id="{{card_product.variants[0].id}}" data-product-url="{{ shop.url }}{{ card_product.url }}">
+                      <img src="{{ 'heart.svg' | asset_url }}">
+                      <span class="wishlist_txt">Wishlist</span>
+                    </button> {% endcomment %}
+                    <!-- Swym Wishlist Plus EPI Button-->
+
+<!--             <a href="javasript:void(0)" class="wishlist-btn action--wishlist tile-actions--btn flex btn btn-secondary" data-product-handle="{{ card_product.handle }}">
+            <img src="{{ 'heart.svg' | asset_url }}">{% if remove %} Remove From {% endif %}Wishlist</a> -->
+        </div>
+      </div>
+</div>

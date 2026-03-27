@@ -1,0 +1,46 @@
+ {% comment %}
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+ {% endcomment %}
+     {% comment %}
+  
+      <predictive-search>
+       {% endcomment %}
+        <div class="row search-col">
+          <div class="input-group">
+        <div class="form-outline form-control">
+      <form action="{{ routes.search_url }}" method="get" role="search">
+      <input 
+      id="Search"
+      type="search"
+      name="q"
+      value="{{ search.terms | escape }}"
+      {%- if section.settings.predictive_search_enabled -%}
+        role="combobox"
+        aria-expanded="false"
+        aria-owns="predictive-search-results-list"
+        aria-controls="predictive-search-results-list"
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+        autocorrect="off"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      {%- endif -%}
+       class="form-control" placeholder="Search..." />
+   
+    </div>
+<button type="submit" class="btn btn-primary">
+  <img src="{{ 'search.svg' | asset_url }}" alt="Search">
+</button>
+  </form>
+</div>
+<input name="options[prefix]" type="hidden" value="last">
+            {% comment %}
+    {%- if section.settings.predictive_search_enabled -%}
+      <div id="predictive-search" tabindex="-1"></div>
+    {%- endif -%}
+     {% endcomment %}
+</div>
+{% comment %}
+</predictive-search>
+           {% endcomment %}

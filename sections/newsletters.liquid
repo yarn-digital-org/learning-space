@@ -1,0 +1,152 @@
+{% if section.settings.newsletter_enable %}
+{% unless section.settings.bg_color == '0,0,0,0' or section.settings.bg_color == blank and section.settings.bg_image == blank %}  
+<style>
+  #shopify-section-{{ section.id }} .newsletter-panel {
+    background: {% unless section.settings.bg_color == '0,0,0,0' or section.settings.bg_color == blank %}{{ section.settings.bg_color }}{% endunless %}
+                {% if section.settings.bg_image != blank %}
+                 url('{{ section.settings.bg_image | img_url:'2048x'}}') no-repeat 50% 50%/cover; 
+                {% endif %}
+  }
+</style>
+{% endunless %}  
+{% endif %}  
+{% if section.settings.newsletter_enable %}
+<section class="newsletter-panel" >
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-md-2 text-center">
+                {% if section.settings.newsletter_heading != blank %}
+				<label>{{ section.settings.newsletter_heading | escape }}</label>
+			  {% endif %}
+              {% if section.settings.newsletter_sub_heading != blank %}
+				<p>{{ section.settings.newsletter_sub_heading | escape }}</p>
+			  {% endif %}
+              {% form 'customer', id: 'ContactFooter' %}
+<!--               <input type="hidden" name="contact[tags]" value="newsletter"> -->
+              <div class="input-group">
+                <input
+                   id="Email"
+                    type="email"
+                    name="contact[email]"
+                    class="form-control"
+                    value="{% if customer %}{{ customer.email }} {% else %} {{ form.email }} {% endif %}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="ContactFooter-error"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="ContactFooter-success"
+                    {% endif %}
+                    placeholder="Enter your email"
+                    required   
+                    >
+                    <select name="contact[tags]" class="form-control col-3" required>
+                        <option value="">--</option>
+                    	<option value="newsletter,Parent">Parent</option>
+                    	<option value="newsletter,Early Years Teacher/Setting">Early Years Teacher/Setting</option>
+                    	<option value="newsletter,Primary Teacher/School">Primary Teacher/School</option>
+                    	<option value="newsletter,Secondary Teacher/School">Secondary Teacher/School</option>
+                    	<option value="newsletter,Special Needs Teacher / School">Special Needs Teacher / School</option>
+                    	<option value="newsletter,Health Trust / Professional">Health Trust / Professional</option>
+                    	<option value="newsletter,Charity">Charity</option>
+                    	<option value="newsletter,Company">Company</option>
+                    	<option value="newsletter,Council">Council</option>
+                    	<option value="newsletter,Other">Other</option>
+                    	<option value="newsletter,Education Authority">Education Authority</option>
+                      
+                    </select>
+					<button class="btn" type="submit">Subscribe</button>
+				</div>
+            {% if form.errors %}
+                     <script> 
+                      swal({
+                        imageUrl: 'https://cdn.shopify.com/s/files/1/0649/0688/7411/files/Learning_SPACE.png',
+                        imageWidth: 340,
+                        imageHeight: 109,
+                        title:"",
+                        text:"Please enter your email to subscribe !"
+                      });
+                      </script>
+				  {% endif %}
+          <script>
+            (function($){
+              $(document).ready(function(e){
+                var form_error ='{{ form.errors }}'
+                var url = new URL(location.href);
+                var params = new URLSearchParams(url.search);
+                var show_top_flag = params.get('form_type');
+                if ( show_top_flag != null && form_error == '') {  
+                      swal({
+                        imageUrl: 'https://cdn.shopify.com/s/files/1/0649/0688/7411/files/Learning_SPACE.png',
+                        imageWidth: 340,
+                        imageHeight: 109,
+                        title:"",
+                        text:"Your are already subscribed"
+                       });
+                }
+          });
+          })(jQuery);
+          </script>
+				  {% if form.posted_successfully? %}
+           <script> 
+            swal({
+                        imageUrl: 'https://cdn.shopify.com/s/files/1/0649/0688/7411/files/Learning_SPACE.png',
+                        imageWidth: 340,
+                        imageHeight: 109,
+                        title:"",
+                        text:"Thanks for subscribing"
+                       });
+            </script>
+				{% endif %}
+                {% endform %}
+                
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+ {% schema %}
+ {
+   "name": "Newsletters",
+   "settings": [
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "show/hide Section"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "default": "Sign-up Newsletter",
+      "label": "Newsletter Heading"
+    },
+    {
+        "type": "text",
+        "id": "newsletter_sub_heading",
+        "default": "For our updates of news & exciting offers",
+        "label": "Newsletter Sub Heading"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Background color will not when background image used"
+    }
+   ],
+   "presets": [
+     {
+       "name": "Newsletters"
+     }
+   ]
+ }
+ {% endschema %}

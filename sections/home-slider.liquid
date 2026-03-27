@@ -1,0 +1,116 @@
+<section id="main-caroesel">
+  <div id="home-slider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+    <div class="carousel-indicators">
+      {% assign index = 0 %}
+      {%- for block in section.blocks -%}
+    <button type="button" data-bs-target="#home-slider" data-bs-slide-to="{{ index }}" {% if index == 0 %} class="active" {% endif %}  aria-current="true" aria-label="Slide {{ index }}"></button>
+    {% assign index = index  | plus: 1 %}
+    {% endfor %}
+  </div>
+
+  <div class="carousel-inner">
+    {% assign index = 0 %}
+    {%- for block in section.blocks -%}
+    {%- assign block_image = block.settings.image -%}
+    <div class="carousel-item {% if index == 0 %} active {% endif %}">
+      <img src="{{ block_image | img_url: 'master' }}" class="d-block w-100" alt="{{ block.settings.slide_title | default:'learningspace' }}" style="cursor: pointer;">
+      <div class="carousel-caption d-none d-md-block">
+        {%- unless block.settings.slide_title == blank -%}
+        <h5>{{ block.settings.slide_title | escape }}
+        </h5>
+        {%- endunless -%}
+        {%- unless block.settings.subheading == blank -%}
+        <p>{{ block.settings.subheading | escape }}</p>
+       {%- endunless -%}
+       {%- assign show_link_button = false -%}
+       {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+         {%- assign show_link_button = true -%}
+       {%- endif -%}
+        {%- if show_link_button -%}
+       <a class="btn btn-button" href="{{ block.settings.button_link }}">{{ block.settings.button_label | escape }}</a>
+       {%- endif -%}
+      </div>
+    </div>
+    {% assign index = index  | plus: 1 %}
+    {% endfor %}
+  </div>
+</div>
+</section>
+<!-- include TouchSwipe.Js -->
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js'></script>
+
+<!-- swipe start -->
+<script type="text/javascript">
+  
+
+    jQuery(".carousel").swipe({
+        
+        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+            if (direction == 'left') jQuery(this).carousel('next');
+            if (direction == 'right') jQuery(this).carousel('prev');
+        },
+        allowPageScroll: "vertical",
+        
+    });
+</script>
+<!-- swipe end -->
+{% schema %}
+{
+  "name": "Home Silder",
+  "max_blocks": 6,
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "en": "Image slide"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Heading",
+          "default": "Image slide"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Tell your brand's story through images"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Silder",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

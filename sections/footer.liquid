@@ -1,0 +1,361 @@
+<footer>
+    <div class="top-footer">
+        <div class="container">
+            <div class="row">
+              {% assign  blockCount = 0 %}
+              {% assign  blockWidth = 3 %}
+              {% if section.settings.show_location == true %} 
+                {% assign  blockCount = blockCount | plus:1 %} 
+              {% endif %}
+              {% if section.settings.show_call == true %} 
+                {% assign  blockCount = blockCount | plus:1 %} 
+              {% endif %}
+               {% if section.settings.show_mail == true %} 
+                {% assign  blockCount = blockCount | plus:1 %} 
+              {% endif %}
+              {% if section.settings.show_whatsapp == true %} 
+                {% assign  blockCount = blockCount | plus:1 %} 
+              {% endif %}
+              {% if section.settings.show_vc == true %} 
+                {% assign  blockCount = blockCount | plus:1 %} 
+              {% endif %}
+              {% if blockCount == 3 %} 
+                {% assign  blockWidth = 4 %}
+              {% endif %}
+               {% if blockCount == 2 %} 
+                {% assign  blockWidth = 6 %}
+              {% endif %}
+              {% if blockCount == 1 %} 
+                {% assign  blockWidth = 12 %}
+              {% endif %}
+
+              
+              
+                <div class="col-12 col-md-{{ blockWidth }} text-center  {% if section.settings.show_location == false %} hide {% endif %} ">
+                    <div class="footer-top-block">
+                        <img src="{{ 'location.svg' | asset_url }}" width="94px" alt="location">
+                        <h6>OUR LOCATION</h6>
+                        <p>{{ settings.address_1 | escape }}<br>{{ settings.address_2 | escape }} {{ settings.post_code | escape }}</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-{{ blockWidth }} text-center {% if section.settings.show_call == false %} hide {% endif %}">
+                    <div class="footer-top-block">
+                        <a href="tel:{{ settings.address_phone | escape }}"><img src="{{ 'call.svg' | asset_url }}" width="94px" alt="phone"></a>
+                        <h6>CALL US</h6>
+                        <p><a href="tel:{{ settings.address_phone | escape }}">{{ settings.address_phone | escape }}</a></p>
+                    </div>
+                </div>
+              <div class="col-12 col-md-{{ blockWidth }}  text-center  {% if section.settings.show_whatsapp == false %} hide {% endif %}">
+                    <div class="footer-top-block">
+                    <a target="_blank" href="https://wa.me//{{ section.settings.whatsapp_number | escape }}"> <img src="{{ 'whatsapp.svg' | asset_url }}" width="94px" alt="whatsapp"></a>
+                        <h6>SEND MESSAGE ON WHATSAPP</h6>
+                        <p><a target="_blank" href="https://wa.me/{{ section.settings.whatsapp_number | escape }}">{{ section.settings.whatsapp_number | escape }}</a></p>
+                    </div>
+                </div>
+               <div class="col-12 col-md-{{ blockWidth }}  text-center  {% if section.settings.show_mail == false %} hide {% endif %}">
+                    <div class="footer-top-block">
+                    <a href="mailto:{{ settings.address_email | escape }}"> <img src="{{ 'mail-circle.svg' | asset_url }}" width="94px" alt="email"></a>
+                        <h6>SEND US AN EMAIL</h6>
+                        <p><a href="mailto:{{ settings.address_email | escape }}">{{ settings.address_email | escape }}</a></p>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-{{ blockWidth }}  text-center {% if section.settings.show_vc == false %} hide {% endif %} ">
+                    <div class="footer-top-block">   
+                        <a href="{{ section.settings.virtual_consultation_link }}"><img src="{{ 'user.svg' | asset_url }}" width="94px" alt="VIRTUAL-CONSULTATION"></a>
+                        <h6>VIRTUAL CONSULTATION</h6>
+                        <p><a href="{{ section.settings.virtual_consultation_link }}">Click Here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-footer">
+        <div class="container">
+            <div class="row">
+               
+                <div class="col-md-9">
+                    <div class="row">
+                        {% comment %} <div class="col-md-3">
+                            <h3 class="click-btn-mobile">{{ section.settings.footer_menu_heading }}</h3>
+                            {% if section.settings.footer_menu != blank %}
+                            <ul class="hidden-menu">
+                                {% for link in section.settings.footer_menu.links %}
+                                <li>
+                                    <a href="{{ link.url }}" class="link {% if link.active %} active{% endif %}">
+                                        {{ link.title }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div> {% endcomment %}
+                        <div class="col-md-3">
+                            <h3 class="click-btn-mobile">{{ section.settings.about_menu_heading }}</h3>
+                            {% if section.settings.about_menu != blank %}
+                            <ul class="hidden-menu">
+                                {% for link in section.settings.about_menu.links %}
+                                <li>
+                                    <a href="{{ link.url }}" class="link {% if link.active %} active{% endif %}">
+                                        {{ link.title }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-3">
+                            <h3 class="click-btn-mobile">{{ section.settings.information_menu_heading }}</h3>
+                            {% if section.settings.information_menu != blank %}
+                            <ul class="hidden-menu">
+                                {% for link in section.settings.information_menu.links %}
+                                <li>
+                                    <a href="{{ link.url }}" class="link {% if link.active %} active{% endif %}">
+                                        {{ link.title }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-4">
+                           
+                            <h3 class="social-border">STAY IN THE LOOP</h3>
+
+                            {% if section.settings.newsletter_enable %}
+                                <div class="footer-block__newsletter">
+                                    {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+                                    <input type="hidden" name="contact[tags]" value="newsletter">
+                                    <div class="newsletter-form__field-wrapper">
+                                        <div class="field">
+                                        <input id="NewsletterForm--{{ section.id }}" type="email" name="contact[email]" class="field__input" value="{{ form.email }}" aria-required="true" autocorrect="off"  autocapitalize="off" autocomplete="email"
+                                            {% if form.errors %}  autofocus aria-invalid="true" aria-describedby="ContactFooter-error"
+                                            {% elsif form.posted_successfully? %}  aria-describedby="ContactFooter-success"
+                                            {% endif %}
+                                            placeholder="Your email address" required >
+                                        <label class="field__label hide" for="NewsletterForm--{{ section.id }}">Your email address</label>
+                                        <button  type="submit" class="newsletter-form__button field__button" name="commit"  id="Subscribe" aria-label="Submit" >Subscribe </button>
+                                        </div>
+                                        {%- if form.errors -%}
+                                        <small class="newsletter-form__message form__message" id="ContactFooter-error">  {%- render 'icon-error' -%}EMAIL {{ form.errors.messages.email -}} </small>
+                                        {%- endif -%}
+                                    </div>
+                                    {%- if form.posted_successfully? -%}
+                                        <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="ContactFooter-success" tabindex="-1" autofocus > {% render 'icon-success' -%}  Successfully posted </h3>
+                                    {%- endif -%}
+                                    {%- endform -%}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.show_social %}
+                            <ul id="social">
+                                {% if settings.social_facebook_link != blank %}
+                                <li> <a class="icon fb" target="_blank" href="{{ settings.social_facebook_link }}"> <img src="{{ 'facebook.svg' | asset_url }}" alt="facebook" width="14" height="25"> </a> </li>
+                                {% endif %}
+                                {% if settings.social_twitter_link != blank %}
+                                <li> <a class="icon tw" target="_blank" href="{{ settings.social_twitter_link }}"> <img src="{{ 'twitter.svg' | asset_url }}" alt="twitter" width="25" height="21"> </a> </li>
+                                {% endif %}
+                                {% if settings.social_instagram_link != blank %}
+                                <li> <a class="icon gp" target="_blank" href="{{ settings.social_instagram_link }}"> <img src="{{ 'instagram.svg' | asset_url }}" alt="instagram" width="20" height="20"> </a> </li>
+                                {% endif %}
+                               {% if settings.social_whatsapp_link != blank %}
+                                <li> <a class="icon gp" target="_blank" href="{{ settings.social_whatsapp_link }}"> <img src="{{ 'whatsapp.svg' | asset_url }}" alt="whatsapp" width="16" height="`16`"> </a> </li>
+                                {% endif %}
+                              {% if settings.social_youtube_link != blank %}
+                                <li> <a class="icon gp" target="_blank" href="{{ settings.social_youtube_link }}"> <img src="{{ 'youtube.svg' | asset_url }}" alt="youtube" width="20" height="20"> </a> </li>
+                                {% endif %}
+                              {% if settings.social_pinterest_link != blank %}
+                                <li> <a class="icon gp" target="_blank" href="{{ settings.social_pinterest_link }}"> <img src="{{ 'pinterest.svg' | asset_url }}" alt="pinterest" width="20" height="20"> </a> </li>
+                                {% endif %}
+                            </ul>
+                            {% endif %}
+                          <!-- <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script> 
+                          <div class="elfsight-app-f45eda67-f9bf-4924-9e6b-909597f42de2 mt-3" data-elfsight-app-lazy></div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <a href="{{ routes.root_url }}">
+                      <img src="{{ section.settings.footer_logo  | img_url: 'master' }}"  class="footer_logo" alt="Learning Space footer-logo">
+                    </a>
+                    {% if settings.address_enabled %}
+                      <ul>
+                          <li><a href="#">{{ settings.address_1 | escape }}<br> {{ settings.address_2 | escape }} <br>{{ settings.post_code | escape }}</a></li>
+                          <li><a href="tel:{{ settings.address_phone | escape }}">{{ settings.address_phone | escape }}</a></li>
+                          <li><a href="mailto:{{ settings.address_email | escape }}">{{ settings.address_email | escape }}</a></li>
+                      </ul>
+                    {% endif %}
+                  {% if section.settings.footer_dc_badge %}
+                      <a href="{{ routes.root_url }}">
+                          <img src="{{ section.settings.footer_dc_badge  | img_url: 'master' }}" width="100%" class="footer_logo_dc" alt="disability confident employer_logo"> 
+                        </a>
+                  {% endif %}
+                   </div>
+            </div>
+            <div id="copyright">
+                <div class="">Copyright ©{{ "now" | date: "%Y" }} {{ shop.name }} | All Rights Reserved </div>
+                           <div class=""> Developed By <a href="https://rkmsoftware.com" target="_blank">RKMSOFTWARE</a> </div>
+             
+                <div class="bootom-menu">
+                    {% for link in section.settings.footer_menu.links %}
+                        <span>
+                            <a href="{{ link.url }}" class="link {% if link.active %} active{% endif %}">
+                                {{ link.title }}
+                            </a>
+                        </span>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+  <a href="#" id="scroll" style="display: none;"><span></span></a>
+</footer>
+<script type="text/javascript">
+    var windowWidth = $(window).width(); 
+    if(windowWidth <= 767){ 
+    $(".click-btn-mobile").attr('class', 'click-arrow'); 
+    } 
+    else{ 
+    $(".click-btn-mobile").removeAttr('click-arrow'); 
+    } 
+$(document).ready(function() {
+  $('.click-arrow').click(function(e) {
+    $(this).parent().find('.hidden-menu').slideToggle("slow");
+  });
+});
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('#scroll').fadeIn();
+        } else {
+            $('#scroll').fadeOut();
+        }
+    });
+    $('#scroll').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+});
+
+
+</script>
+{% schema %}
+{
+"name": "Footer",
+"settings": [
+  {
+"type": "checkbox",
+"id": "show_location",
+"default": true,
+"label": "Our Location"
+},
+{
+"type": "checkbox",
+"id": "show_call",
+"default": true,
+"label": "Call Us"
+},
+{
+"type": "checkbox",
+"id": "show_mail",
+"default": true,
+"label": "Mail Us"
+},
+{
+"type": "checkbox",
+"id": "show_vc",
+"default": true,
+"label": "VIRTUAL CONSULTATION"
+},
+{
+"type": "checkbox",
+"id": "show_whatsapp",
+"default": false,
+"label": "WHATS APP"
+},
+{
+"type": "image_picker",
+"id": "footer_logo",
+"label": "Footer Logo"
+},
+{
+"type": "image_picker",
+"id": "footer_dc_badge",
+"label": "DC Badge"
+},
+/*{
+"type": "text",
+"id": "footer_menu_heading",
+"default": "Your Order",
+"label": "Section 1 Heading"
+},*/
+{
+"type": "link_list",
+"id": "footer_menu",
+"default": "footer",
+"label": "Bottom menu"
+},
+{
+"type": "text",
+"id": "about_menu_heading",
+"default": "About Learning Space",
+"label": "Section 2 Heading"
+},
+{
+"type": "link_list",
+"id": "about_menu",
+"label": "Section 2 Menu"
+},
+{
+"type": "text",
+"id": "information_menu_heading",
+"default": "Information",
+"label": "Section 3 Menu Heading"
+},
+{
+"type": "link_list",
+"id": "information_menu",
+"label": "Section 3 Menu"
+},
+{
+"type": "header",
+"content": "Newsletter Section",
+"info": "Show/Hide Newsletter"
+},
+{
+"type": "checkbox",
+"id": "newsletter_enable",
+"default": true,
+"label": "Newsletters"
+},
+{
+"type": "text",
+"id": "newsletter_heading",
+"default": "Subscribe to our emails",
+"label": "Newsletter Heading"
+},
+{
+"type": "text",
+"id": "whatsapp_number",
+"default": "+44 2890 319 360",
+"label": "WHATSAPP NUMBER"
+},
+{
+"type": "text",
+"id": "virtual_consultation_link",
+"default": "#",
+"label": "VIRTUAL CONSULTATION LINK"
+},
+{
+"type": "header",
+"content": "Social Icon",
+"info": "Show/Hide Social Icon"
+},
+{
+"type": "checkbox",
+"id": "show_social",
+"default": true,
+"label": "Social Icons"
+}
+]
+}
+{% endschema %}

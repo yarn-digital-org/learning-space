@@ -1,0 +1,174 @@
+<!-- page -->
+<!-- Capture Header Content -->
+{% capture contentForQuerystring %}{{ content_for_header }}{% endcapture %}
+<!-- Manipulate Header Content for page url -->
+{% liquid assign pageUrl = contentForQuerystring | split: '"pageurl":"' | last | split: '"' | first | split: '.myshopify.com' | last | replace: '\/', '/' | replace: '%20', ' ' | replace: '\u0026', '&' %}
+<!-- Manipulate page url for query strings-->
+{% liquid assign pageQuerystring = pageUrl | split: '?' | last %}
+{% liquid assign parts = pageQuerystring | split: '&' %}
+{% liquid assign queryMinPrice = '' | times: 1 %}
+{% liquid assign queryMaxPrice = '' | times: 1 %}
+{% liquid assign filtervendor = false %}
+{% liquid assign filtercolor = false %}
+{% liquid assign filtersize = false %}
+{% liquid assign filterage = false %}
+{% liquid assign filterview = 'box' %}
+
+{% capture currencyString %}{{ shop.money_format }}{% endcapture %}
+{% assign tempArray = currencyString | split: '{' %}
+{% assign currencySymbol = tempArray.first %}
+{% liquid assign isParts= false %}
+{% liquid assign queryStringSortby= '' %}
+{% for part in parts %}
+{% liquid assign isParts= true %}
+	{% liquid assign keyAndValue = part | split: '=' %}
+	{% if keyAndValue[0] == 'filter.v.price.gte' %} {% liquid assign queryMinPrice = keyAndValue[1] | times: 1 %} {% endif %}
+	{% if keyAndValue[0] == 'filter.v.price.lte' %} {% liquid assign queryMaxPrice = keyAndValue[1] | times: 1 %} {% endif %}
+	{% if keyAndValue[0] == 'sort_by' %} {% liquid assign queryStringSortby = keyAndValue[1] %} {% endif %}
+	{% if keyAndValue[0] == 'view' %} {% liquid assign filterview = keyAndValue[1] %} {% endif %}
+	{% if keyAndValue[0] == 'filter.p.vendor' %}
+	{% if keyAndValue[1] != blank %}
+		{% liquid assign filtervendor = true %}
+	{% endif %}
+	{% endif %}
+	{% if keyAndValue[0] == 'filter.v.option.color' %}
+	{% if keyAndValue[1] != blank %}
+	{% liquid assign filtercolor = true %}
+	{% endif %}
+	{% endif %}
+	{% if keyAndValue[0] == 'filter.v.option.size' %}
+	{% if keyAndValue[1] != blank %}
+	{% liquid assign filtersize = true %}
+	{% endif %}
+	{% endif %}
+
+  {% if keyAndValue[0] == 'filter.v.option.age' %}
+	{% if keyAndValue[1] != blank %}
+	{% liquid assign filterage = true %}
+	{% endif %}
+	{% endif %}
+{% endfor %}
+<!-- Assign Filter min and max price -->
+{% liquid assign filterMinPrice = 0 %}
+{% liquid assign filterMaxPrice = 0 %}
+<!-- Get all products count from collection-->
+{% comment %}{% liquid assign totalProducts = collection.all_products.size %} {% endcomment %}
+{% for colProduct in collection.all_products %}
+	{% liquid assign current_variant = colProduct.selected_or_first_available_variant %}
+	{% liquid assign price = current_variant.price %}
+	{% if filterMinPrice > price or filterMinPrice == 0 %} {% liquid assign filterMinPrice = price %} {% endif %}
+	{% if filterMaxPrice < price or filterMaxPrice==0 %} {% liquid assign filterMaxPrice=price %} {% endif %} 
+{% endfor %} 
+{% include 'breadcrumbs' , title: collection.title %} 
+<div class="container-fluid">
+	<div class="row"> 
+      {% comment %} 
+		{% render 'product-filter',settings:section.settings,filtervendor:filtervendor,filtercolor:filtercolor,filtersize:filtersize,filterMinPrice:filterMinPrice,filterMaxPrice:filterMaxPrice,filterage:filterage %}
+		    {% endcomment %} 
+  <div class="col-12 {% if section.settings.enable_filter %} col-md-9 {% else %} col-md-12 {% endif %}  product-list-cat">
+    {% comment %} 
+			<div class="row">
+				<div class="col-12 col-md-8 mb-5">
+					<div class="dropdown"> 
+						<a class="dropdown-toggle" href="#" role="button" id="sortbydropdown" data-bs-toggle="dropdown" aria-expanded="false">
+					{% if queryStringSortby != blank %}{{ queryStringSortby | escape }} {% else %} {{ collection.sort_options[0].name }} {% endif %}
+	  				</a>
+						<ul class="dropdown-menu" aria-labelledby="sortbydropdown">
+							{% for option in collection.sort_options %}
+								<li class="{% if queryStringSortby == option.value %} active {% endif %}"><a class="dropdown-item" href="javascript:void(0)" onclick="setSortBy('{{ option.value }}')" >{{ option.name }}</a></li>
+							{% endfor %}
+						</ul>
+						<input type="hidden" name="sort_by" id="SortBy" value="{% if queryStringSortby != blank %}{{ queryStringSortby | escape }} {% else %}{{ collection.sort_options[0].name }}{% endif %}">
+					</div>
+				</div>
+              
+			{% render 'product-view-filter',filterview:filterview %}
+    {% endcomment %} 
+			</div>
+			<div class="row product-sec1">
+				{% paginate collection.products by section.settings.product_limit %}
+                {% if collection.products.size > 0 %}
+                {% liquid assign products = collection.products %}
+                {% for product in products %}
+                {% liquid assign price = product.price %}
+                {% liquid assign available = product.available %}
+					{% render 'card-product-list', settings:section.settings, card_product:product,price:price, collections:product.collections %}
+				{% endfor %}
+				 {% comment %} 
+				{% if section.settings.ajax_loadmore %}
+				
+				<div id="more" class="hide" data-next-url="{{ paginate.next.url }}" data-current-page="{{ paginate.current_page }}" data-total-pages="{{ paginate.pages }}"></div>
+				{% else %}
+						{% include 'pagination', paginate:paginate %}
+				{% endif %}
+				
+				
+                  {% endcomment %} 
+                  {% else %}
+					<div class="alert alert-warning"> No results found.</div>
+				{% endif %}
+                  {% endpaginate %}
+			</div>
+		</div>
+
+
+
+	</div>
+</div>
+	<script defer >
+  
+		var filterMinPrice = {{ filterMinPrice | divided_by: 100 | escape }};
+		var filterMaxPrice = {{ filterMaxPrice | divided_by: 100 | escape }};
+		
+		var minFilterPrice = {{ filterMinPrice | divided_by: 100 | escape }};
+		var maxFilterPrice = {{ filterMaxPrice | divided_by: 100 | escape }};
+		
+		var queryMinPrice = {% if queryMinPrice != '' %} {{ queryMinPrice }} {% else %} 0 {% endif %};  
+		var queryMaxnPrice ={% if queryMaxPrice != '' %} {{ queryMaxPrice }} {% else %} 0 {% endif %};
+		
+		 if(queryMinPrice != 0 || queryMaxnPrice != 0){
+		   minFilterPrice = queryMinPrice
+		   maxFilterPrice = queryMaxnPrice
+		 }
+		 var currencyCode= '{{ currencySymbol }}'
+	</script>	
+{% schema %}
+{
+  "name": "Collection List",
+  "settings": [
+    
+	{
+		"type": "number",
+		"id": "product_limit",
+		"default": 12,
+		"label": "Product Limit",
+		"info":"Number of product to be shown on page"
+	},
+	{
+		"type": "checkbox",
+		"id": "enable_filter",
+		"default": true,
+		"label": "Show/Hide Filters"
+	},
+	{
+		"type": "checkbox",
+		"id": "ajax_loadmore",
+		"default": true,
+		"label": "Enable Ajax Load More",
+		"info":"if this feature disabled then default pagination will be display "
+	},
+	{
+		"type": "checkbox",
+		"id": "show_ratings",
+		"default": true,
+		"label": "Show/Hide Ratings "
+	},
+	{
+		"type": "checkbox",
+		"id": "show_vendor",
+		"default": true,
+		"label": "Show/Hide Vendor"
+	}
+  ]
+}
+{% endschema %}

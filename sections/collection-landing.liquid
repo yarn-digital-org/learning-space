@@ -1,0 +1,56 @@
+{% include 'breadcrumbs' , title: collection.title %} 
+<div class="container">
+	<div class="row" style="text-align: center;"> 
+     
+        {% assign mycollection = collection.metafields["collection"]["sub"].value %}
+            {%  for c in mycollection %}
+              <div class="col-6 col-md-4 col-lg-3 mb-4">
+                        <a href="{{ c.url }}">
+                            <img
+                                class="img-fluid"
+                                src="{{ c.image.src | collection_img_url:'original' }}"
+                                alt=" {{ c.title }}" style="margin-bottom: 16px; float: none;"
+                                data-mce-style="margin-bottom: 16px; float: none;"
+                                data-mce-src="{{ c.image.src | collection_img_url:'original' }}" />
+                        </a>
+                        <h6 class="card-text">
+                           <a href="{{ c.url }}">
+                              {{ c.title }}
+                           </a>
+                        </h6>
+                    </div>
+              
+               
+            {%  endfor %}
+    </div>
+</div>  
+{% schema %}
+  {
+  "name": "Collection Landing",
+  "settings": [
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+  .collection-landing-grid{
+    
+  }
+  .collection-landing-grid td{
+    width:25%;
+    padding-bottom:25px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .collection-landing-grid td img{
+    width:100%;
+    height:auto;
+  }
+  .collection-landing-grid td h4{
+    font-size:15px;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

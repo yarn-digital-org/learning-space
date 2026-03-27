@@ -1,0 +1,147 @@
+{% assign custom_classes = 'heading-bg' %}
+{% if template.name == 'collection' %}
+  {% assign custom_classes = 'heading-bg-collection' %}
+{% endif %}
+<div class="{{ custom_classes }}">
+  <div class="container">
+    <h1 class="text-center">{{ title | escape }}</h1>
+
+    {% if template.name == 'collection' %}
+    <!-- Description with mobile read more -->
+    <div class="mobile-desc" style="text-align:center; margin-top: 1.5rem;">
+      <div class="collection-description">
+        <span class="teaser"></span>
+        <span class="full-text" style="display:none;">
+          {{ description }}
+        </span>
+      </div>
+    </div>
+    {% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.mobile-desc').forEach(function (container) {
+    var fullEl = container.querySelector('.full-text');
+    var teaserEl = container.querySelector('.teaser');
+    var truncateLen = parseInt(container.getAttribute('data-truncate-length') || 200, 10);
+
+    if (!fullEl || !teaserEl) return;
+
+    var fullText = (fullEl.innerHTML || '').trim();
+
+    function setCollapsed() {
+      var teaserText = fullText.length > truncateLen
+        ? fullText.slice(0, truncateLen)
+        : fullText;
+
+      teaserEl.innerHTML =
+        teaserText +
+        ' <a href="#" class="read-more">Read More <span>...</span></a>';
+
+      teaserEl.style.display = 'inline';
+      fullEl.style.display = 'none';
+      fullEl.style.maxHeight = null;
+    }
+
+    function setExpanded() {
+      fullEl.innerHTML =
+        fullText +
+        ' <a href="#" class="read-less">Read Less</a>';
+
+      teaserEl.style.display = 'none';
+      fullEl.style.display = 'block';
+      fullEl.style.overflow = 'hidden';
+      fullEl.style.maxHeight = '0px';
+      fullEl.style.transition = 'max-height 0.5s ease';
+      requestAnimationFrame(() => {
+        fullEl.style.maxHeight = fullEl.scrollHeight + 'px';
+      });
+    }
+
+    container.addEventListener('click', function (e) {
+      if (e.target.classList.contains('read-more')) {
+        e.preventDefault();
+        setExpanded();
+      }
+
+      if (e.target.classList.contains('read-less')) {
+        e.preventDefault();
+
+        // animate collapse
+        fullEl.style.maxHeight = '0px';
+
+        setTimeout(() => {
+          setCollapsed();
+        }, 200);
+      }
+    });
+
+    setCollapsed();
+  });
+});
+
+</script>
+
+  </div>
+</div>
+
+<style>
+.mobile-desc {
+  display: inline; 
+  font-size: 14px;
+  line-height: 1.6;
+  position: relative;
+  white-space: normal;
+}
+
+.mobile-desc .teaser {
+  display: inline;
+}
+
+.mobile-desc .full-text {
+  display: none; 
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.mobile-desc .read-more {
+  color: #DF0E5C !important;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  font-size:16px;
+}
+
+
+.mobile-desc .read-more:hover {
+  text-decoration: underline;
+}
+
+.read-more span {
+    font-weight: bold;
+}
+
+
+
+.heading-bg-collection a.read-less {
+  color: #DF0E5C !important;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  font-size:16px;
+}
+.full-text p,.heading-bg-collection a.read-less{
+  display:inline;
+}
+
+/* Desktop view – show full text and hide teaser */
+@media (min-width: 601px) {
+ /* .mobile-desc .teaser { display: none; }
+  .mobile-desc .full-text { display: inline !important; max-height: none !important; }*/
+}
+</style>
+
+
+
+
+

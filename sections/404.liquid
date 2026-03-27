@@ -1,0 +1,46 @@
+<style type="text/css">
+
+/*end reset*/
+.wrap{
+    margin:0 auto; 
+    width: 96%;
+}
+.main{
+    text-align:center;
+    margin:4% 0 0%;
+}
+.size-21 {
+    font-size: 21px !important;
+}
+.button{
+    display: inline-block; text-decoration: none; transition: all 0.16s ease 0s; border-style: solid; cursor: pointer; background-color: rgba(0, 0, 0, 0); color: rgb(255, 76, 142); border-color: rgb(255, 76, 142); border-width: 2px; border-radius: 0px; padding: 13px 28px; line-height: 21px; text-transform: uppercase; font-weight: 600; font-size: 14px; letter-spacing: 3px; data-hover-bgcolor:"#ff4c8e";data-hover-color:"#f8f8f8"; data-hover-bordercolor:"#ff4c8e";
+}
+</style>
+
+{% include 'breadcrumbs' , title: 'Page Not Found' %} 
+
+<div class="container-fluid story-section">
+    <div class="row">
+      
+<div class="wrap">
+<div class="main">
+    <div class="banner-404 text-center">
+        <img src="{{ 'pages-not-found.jpg' | asset_url }}" class="img-responsive" alt="page not found" />
+    </div>
+    <div class="text">
+        {% if routes.root_url == '/' %}
+            {% assign customUrl = shop.url  %}
+        {% else %}
+            {% assign customUrl =  routes.root_url %}
+        {% endif %}
+        <p class="size-21">{{ 'general.404.subtext_html' | t }}</p>
+        <div class="column full"><div style="text-align: center;"><a href="{{ customUrl }}" class="button" onmouseover="this.setAttribute('data-style',this.style.cssText);if(this.getAttribute('data-hover-bordercolor')) this.style.borderColor=this.getAttribute('data-hover-bordercolor');if(this.getAttribute('data-hover-bgcolor')) this.style.backgroundColor=this.getAttribute('data-hover-bgcolor');if(this.getAttribute('data-hover-color')) this.style.color=this.getAttribute('data-hover-color');" onmouseout="this.setAttribute('style',this.getAttribute('data-style'));this.removeAttribute('data-style')">Back Home</a> &nbsp;
+<a href="{{ customUrl }}/pages/contact" class="button" onmouseover="this.setAttribute('data-style',this.style.cssText);if(this.getAttribute('data-hover-bordercolor')) this.style.borderColor=this.getAttribute('data-hover-bordercolor');if(this.getAttribute('data-hover-bgcolor')) this.style.backgroundColor=this.getAttribute('data-hover-bgcolor');if(this.getAttribute('data-hover-color')) this.style.color=this.getAttribute('data-hover-color');" onmouseout="this.setAttribute('style',this.getAttribute('data-style'));this.removeAttribute('data-style')">Report Issue</a></div></div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  window.location.replace('https://learningspaceuk.co.uk/');
+</script>

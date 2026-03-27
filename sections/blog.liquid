@@ -1,0 +1,169 @@
+{% paginate blog.articles by 5 %}
+
+<style>
+  body, h1, h2, h3, p, a, li {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  h1 {
+    padding-top: 40px;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+  }
+
+  .blog-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .blog-post-list {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .blog-sidebar {
+    flex: 1;
+    border-left: 1px solid #e0e0e0;
+    padding-left: 20px;
+    background: transparent;
+    border: 2px solid pink;
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .blog-post {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+  }
+
+  .blog-post img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .blog-post-content {
+    flex: 1;
+  }
+
+  .blog-post h2 {
+    margin: 0;
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+
+  .blog-post h2 a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+
+  .blog-post h2 a:hover {
+    color: pink;
+  }
+
+  .blog-meta {
+    font-size: 0.9em;
+    color: #777;
+    margin: 5px 0 10px;
+  }
+
+  .blog-category {
+    font-size: 0.85em;
+    color: #999;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007acc;
+    text-decoration: underline;
+    font-size: 0.95em;
+  }
+
+  .pagination {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .blog-wrapper {
+      flex-direction: column;
+    }
+    .blog-post {
+      flex-direction: column;
+    }
+    .blog-post img {
+      width: 100%;
+    }
+    .blog-sidebar {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+</style>
+
+<h1>{{ blog.title }}</h1>
+<div class="blog-wrapper">
+  <div class="blog-post-list">
+    {% for article in blog.articles %}
+      <div class="blog-post">
+        {% if article.image %}
+          <img src="{{ article.image | img_url: 'medium' }}" alt="{{ article.title }}">
+        {% endif %}
+        <div class="blog-post-content">
+          <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+          <div class="blog-meta">
+            {{ article.author }} &middot; {{ article.created_at | date: "%B %d, %Y" }}
+          </div>
+          {% if article.excerpt.size > 0 %}
+            {{ article.excerpt }}
+          {% else %}
+            <p>{{ article.content | strip_html | truncatewords: 100 }}</p>
+          {% endif %}
+          {% if article.tags.size > 0 %}
+            <div class="blog-category">
+              {{ article.tags | join: ", " }}
+            </div>
+          {% endif %}
+          <a class="read-more" href="{{ article.url }}">Read more</a>
+        </div>
+      </div>
+    {% endfor %}
+    {% if paginate.pages > 1 %}
+      <div class="pagination">
+        {{ paginate | default_pagination }}
+      </div>
+    {% endif %}
+  </div>
+  <aside class="blog-sidebar">
+    <h3>Categories</h3>
+    <ul>
+      {% for tag in blog.all_tags %}
+        <li><a href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+  </aside>
+</div>
+
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Blog posts"
+}
+{% endschema %}

@@ -1,0 +1,134 @@
+{% comment %}
+  Renders gift card recipient form.
+  Accepts:
+  - product: {Object} product object.
+  - form: {Object} the product form object.
+  - section: {Object} section to which this snippet belongs.
+
+  Usage:
+  {% render 'gift-card-recipient-form', product: product, form: form, section: section %}
+{% endcomment %}
+
+<div class="customer">
+  {%- assign gift_card_recipient_control_flag = 'properties[__shopify_send_gift_card_to_recipient]' -%}
+  <script src="{{ 'recipient-form.js' | asset_url }}" defer="defer"></script>
+  <recipient-form
+    class="recipient-form"
+    data-section-id="{{ section.id }}"
+    data-product-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  >
+    <div class="text-left checkbox-wrapper">
+     <input
+      id="Recipient-checkbox-{{ section.id }}"
+      type="checkbox"
+      class="gift-card-checkbox"
+      name="{{ gift_card_recipient_control_flag }}"
+      disabled
+    >
+    <label class="recipient-checkbox" for="Recipient-checkbox-{{ section.id }}">
+      <span class="mx-2">I want to send this as a gift</span>
+    </label>
+    </div>
+    <div
+      class="product-form__recipient-error-message-wrapper"
+      role="alert"
+      {% unless form.errors %}
+        hidden
+      {% endunless %}
+    >
+      <h2 class="form__message" tabindex="-1" autofocus>
+        <span class="error-message">{{ 'templates.contact.form.error_heading' | t }}</span>
+      </h2>
+
+      <ul>
+        {%- if form.errors -%}
+          {%- for field in form.errors -%}
+            <li>
+              {%- if field == 'form' -%}
+                {{ form.errors.messages[field] }}
+              {%- else -%}
+                <a href="#Recipient-{{ field }}-{{ section.id }}">
+                  {{ form.errors.messages[field] }}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </div>
+    <p
+      id="Recipient-fields-live-region-{{ section.id }}"
+      class="visually-hidden"
+      role="status"
+    ></p>
+           <div class="recipient-fields mb-3">
+           <div class="recipient-fields__field">
+      <hr>
+    <div class="col-md-12 ">
+    <label for="Recipient-email-{{ section.id }}" class="form-label">Recipient email</label>
+    <input id="Recipient-email-{{ section.id }}"
+    type="email"
+    placeholder="Recipient email" class="form-control recipientemailcheck" name="properties[Recipient email]" value="{{ form.email }}" aria-describedby="recipientemailcheck" required>
+    <div id="recipientemailcheck" class="invalid-feedback">
+      Please enter email.
+    </div>
+  </div>
+  <div class="col-md-12">
+    <label for="Recipient-name-{{ section.id }}" class="form-label">Recipient name</label>
+    <input id="Recipient-name-{{ section.id }}"
+    type="text"
+    placeholder="Recipient name" class="form-control recipientnamecheck" name="properties[Recipient name]" value="{{ form.name }}" aria-describedby="recipientnamecheck" required>
+    <div id="recipientnamecheck" class="invalid-feedback">
+      Please enter name.
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <label for="Recipient-message-{{ section.id }}" class="form-label">Message</label>
+    <textarea
+            rows="10"
+            id="Recipient-message-{{ section.id }}"
+            class="form-control"
+            name="properties[Message]"
+            maxlength="125"
+            placeholder="Message"
+            aria-label="recipientmessagecheck max_chars_message_rendered"
+          >{{ form.message }}</textarea>
+    <div id="recipientmessagecheck" class="invalid-feedback">
+      Please enter message.
+    </div>
+    <div id="max_chars_message_rendered" class="invalid-feedback">
+      Max characters length is 128
+    </div>
+  </div>
+
+      <div class="col-md-12">
+        <label for="Recipient-send-on-{{ section.id }}" class="form-label">Send On</label>
+        <input
+        class="form-control"
+        autocomplete="send_on"
+        type="date"
+        id="Recipient-send-on-{{ section.id }}"
+        name="properties[Send on]"
+        placeholder="Send On"
+        pattern="\d{4}-\d{2}-\d{2}"
+        value="{{ form.send_on }}"
+       >
+  </div>
+    <input
+      type="hidden"
+      name="{{ gift_card_recipient_control_flag }}"
+      value="if_present"
+      id="Recipient-control-{{ section.id }}"
+    >
+    <input
+      type="hidden"
+      name="properties[__shopify_offset]"
+      value=""
+      id="Recipient-timezone-offset-{{ section.id }}"
+      disabled
+    >
+           </div>
+               </div>
+  </recipient-form>
+</div>

@@ -1,0 +1,207 @@
+<style>
+  .testimonial .swiper-slide.swiper-slide-item {
+    background: #fff;
+    box-shadow: 0 8px 30px -7px #c9dff0;
+    border-radius: 20px;
+    border: 0;
+    text-align: center!important;
+    padding: 1.25rem;
+    
+}
+
+.testimonial img.shadow-1-strong.mb-4 {
+  border-radius: 50%;
+  margin: 15px auto 0;
+  box-shadow: 0 8px 20px -4px #95abbb;
+  max-width: 100%;
+  height: 120px;
+  width: 120px;
+}
+
+#shopify-section-{{section.id}}{
+  background: aliceblue;
+  padding: 1px 0;
+  width: 100%;
+}
+
+@media (min-width:768px){
+  {% comment %} .swiper-slide.swiper-slide-item.swiper-slide-active{
+  opacity: 1;
+} {% endcomment %}
+.testimonial .swiper-slide.swiper-slide-item {opacity: 0.5;}
+
+.testimonial .swiper-slide.swiper-slide-item.swiper-slide-next{opacity: 1;}
+
+}
+
+.testimonial .swiper_{{section.id }} {
+  padding: 0 0 30px 0;
+}
+
+</style>
+{% comment %} {% if section.blocks.size > 0%}
+<section class="testimonial mt-5 mb-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="carousel slide" data-bs-ride="carousel" id="testimonals">
+					<!-- Carousel Slides / Quotes -->
+					<div class="carousel-inner text-center">
+						<div class="carousel-indicators">
+              {% assign index = 0 %}
+              {%- for block in section.blocks -%}
+              {%- assign block_image = block.settings.image -%}
+							<li type="button" data-bs-target="#testimonals" data-bs-slide-to="{{ index }}" class="{% if index == 0 %} active {% endif %}" aria-current="true" aria-label="Slide {{ index }}">
+                 <img class="shadow-1-strong mb-4" src="{{ block_image  | img_url: 'compact' }}" /> 
+                </li>
+              {% assign index = index | plus: 1  %}
+              {% endfor %}
+						</div>
+						<!-- Quote 1 -->
+            {% assign index = 0 %}
+            {%- for block in section.blocks -%}
+            {%- assign block_image = block.settings.image -%}
+						<div class="carousel-item  {% if index == 0 %} active {% endif %}">
+							<div class="row d-flex justify-content-center">
+								<div class="col-md-7">
+                  {%- unless block.settings.customer_name == blank -%} <h5  class="mb-1">{{ block.settings.customer_name | escape }} </h5>{%- endunless -%}
+                  {%- unless block.settings.subheading == blank -%} <p>{{ block.settings.subheading }}</p> {%- endunless -%}									
+									<div class="testi-cont"> <img class="icon-img-left" src="{{ 'left-testimonial.svg' | asset_url }}"> <p> {{ block.settings.content }} </p> <img class="icon-img-right" src="{{ 'right-testimonial.svg' | asset_url }}"> </div>
+								</div>
+							</div>
+						</div>
+            {% assign index = index | plus: 1  %}
+            {% endfor %}
+					</div>
+					<button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span> </button>
+					<button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span> </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %} {% endcomment %}
+
+
+<section class="testimonial mt-5 mb-5">
+	<div class="container">
+<!-- Slider main container -->
+<div class="swiper swiper_{{section.id }}">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {%- for block in section.blocks -%}
+    <div class="swiper-slide swiper-slide-item">
+      {%- assign block_image = block.settings.image -%}
+      <img class="shadow-1-strong mb-4" src="{{ block_image  | img_url: 'compact' }}" /> 
+      {%- unless block.settings.customer_name == blank -%} 
+      <h5  class="mb-1">{{ block.settings.customer_name | escape }} </h5>
+      {%- endunless -%}
+      {%- if block.settings.subheading != blank -%} 
+        <p>{{ block.settings.subheading }}</p>
+      {%- endif -%}									
+      <div class="testi-cont">
+        {{ block.settings.content }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- If we need navigation buttons -->
+  {% comment %} <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div> {% endcomment %}
+  <!-- If we need scrollbar -->
+  {% comment %} <div class="swiper-scrollbar"></div> {% endcomment %}
+</div>
+</div>
+</section>
+
+<script>
+  const swiper_{{section.id | remove: '-' }} = new Swiper('.swiper_{{section.id }}', {
+    slidesPerView: 1,
+      spaceBetween: 10,
+      autoHeight: false,
+      freeMode: false,
+      centeredSlides: false,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "max_blocks": 12,
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "en": "Customer Image"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Parent"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}       

@@ -1,0 +1,235 @@
+<style>
+    #shopify-section-{{ section.id }} {
+      margin-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      margin-top: {{ section.settings.padding_top_mobile }}px;
+    }
+    @media only screen and (min-width: 992px) {
+    #shopify-section-{{ section.id }} {
+        margin-bottom: {{ section.settings.padding_bottom_desktop }}px;
+        margin-top: {{ section.settings.padding_top_desktop }}px;
+      }
+    }
+    #shopify-section-{{ section.id }} h2 {
+      margin-bottom: 40px;
+    }  
+    
+    #shopify-section-{{ section.id }} .html--wraper .text-container {
+      padding: 35px 25px;
+      /* background: red; */
+      background: {{ section.settings.background_gradient }};
+      display: flex;
+      min-height: 165px;
+      flex-direction: column;
+      justify-content: space-around;
+      border-radius: 4px;
+    }
+    #shopify-section-{{ section.id }} .html--wraper .text-container a {
+      border: 1px solid #000;
+      padding: 10px; width: 82px; border-radius: 4px;
+    }
+    @media only screen and (max-width: 991px) {
+      .html--wraper {
+        margin-bottom: 20px;
+      }
+    }
+
+  </style>
+  <div class="container text-{{ section.settings.align_text }}">
+    <div class="row">
+      <div class="col">
+        <h2>{{ section.settings.title }}</h2>
+        
+      </div>
+    </div>
+    <div class="row">
+
+    {%- assign htmls = collection.metafields.custom.collection_dynamic_html.value -%}
+
+    {% for html in htmls %}
+      <div class="col-{{ section.settings.column_layout_mobile }} col-sm-{{ section.settings.column_layout_tablet }} col-lg-{{ section.settings.column_layout_desktop }} html--wraper">
+        <div class="text-container">
+          {% comment %} 
+            <h3>Best For Calming & Relaxation</h3><p>Ways to calm & relax</p><a href="#">Shop Now</a>
+           {% endcomment %}
+            {{html}}
+        </div>
+      </div>
+    {% endfor %}
+
+      {% for block in section.blocks %}
+      <div class="col-{{ section.settings.column_layout_mobile }} col-sm-{{ section.settings.column_layout_tablet }} col-lg-{{ section.settings.column_layout_desktop }}">
+        <div class="text-container">
+          {% if block.settings.title != blank %}
+            <h3>{{ block.settings.title | escape }}</h3>
+          {% endif %}        
+            <div class="rte">
+              {% if block.settings.text != blank %}
+                {{ block.settings.text }}
+              {% endif %}
+              {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}">{{ block.settings.link_label }}</a>
+              {% endif %}
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+
+
+
+
+    </div>
+  </div>
+  
+  {% schema %}
+    {
+      "name": "Col Dynamic Content",
+      "settings": [
+         {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Text columns with images"
+        },
+        {
+          "type": "select",
+          "id": "column_layout_desktop",
+          "label": "Columns in a row for desktop",
+          "options": [
+            {
+              "value": "6",
+              "label": "2"
+            },
+           
+            {
+              "value": "4",
+              "label": "3"
+            },
+            {
+              "value": "3",
+              "label": "4"
+            },
+             {
+              "value": "20",
+              "label": "5"
+            },
+            {
+              "value": "2",
+              "label": "6"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "column_layout_tablet",
+          "label": "Columns in a row for tablet",
+          "options": [
+            {
+              "value": "6",
+              "label": "2"
+            },
+            {
+              "value": "4",
+              "label": "3"
+            },
+            {
+              "value": "3",
+              "label": "4"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "column_layout_mobile",
+          "label": "Columns in a row for mobile",
+          "options": [
+            {
+              "value": "",
+              "label": "1"
+            },
+            {
+              "value": "6",
+              "label": "2"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "align_text",
+          "label": "Text alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Centered"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Section gaps"
+        },
+        {
+          "type": "range",
+          "id": "padding_top_desktop",
+          "label": "Section top gap in desktop",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "default": 30,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_desktop",
+          "label": "Section bottom gap in desktop",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "default": 30,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_top_mobile",
+          "label": "Section top gap in mobile",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "default": 20,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_mobile",
+          "label": "Section bottom gap in mobile",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "default": 20,
+          "unit": "px"
+        },
+        {
+          "type": "color_background",
+          "id": "background_gradient",
+          "label": "Background gradient",
+          "info": "Background gradient replaces background where possible."
+        }
+      ],
+      "presets": [
+        {
+          "name": "Col Dynamic Content",
+          "category": "Text"
+        }
+      ]
+    }
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}

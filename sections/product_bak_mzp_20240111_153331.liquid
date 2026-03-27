@@ -1,0 +1,660 @@
+{% include 'breadcrumbs', title: product.title %}
+ 
+{% assign current_variant = product.selected_or_first_available_variant %}
+  {% assign product_markers =  product.metafields.custom.markers %}
+
+{% assign product_variants_arr =  product.variants %}
+{% comment %}
+{% if product.variants.size > 1 %}
+  {% assign product_variants_arr =  product.variants %}
+{% endif %}
+{% endcomment %}
+    {%- liquid
+     assign gift_card_recipient_feature_active = false
+      if product.gift_card?
+        assign gift_card_recipient_feature_active = true
+      endif
+  -%}
+<div class="container-fluid product-detail">
+    
+    <div class="row mb-5">
+     
+        <div class="preview col-md-6">
+            {%- if product.media.size > 0 -%}
+              <div class="productflexslider">
+                  <ul class="slides">
+                      {% for media in product.media %}
+                          {% assign dataThumb = media.preview_image.src | img_url: 'large' %}
+                        {% comment %}
+  
+                          {% if media.media_type  == 'external_video' %}
+                              {% assign dataThumb = 'https://cdn.shopify.com/s/files/1/0649/0688/7411/files/video-play-img.png?v=1697173669' %}
+                          {%- endif -%}
+                          {% endcomment %}
+                         {%-  assign overimage = ''  -%}
+                         {%- if media.media_type == 'external_video' -%}
+                            {%-  assign overimage = 'https://cdn.shopify.com/s/files/1/0649/0688/7411/files/play-button.png?v=1701158134'  -%}
+                          {%- endif -%}
+                         
+                          <li data-thumb="{{ dataThumb }}" data-overimage="{{ overimage }}"  class="{% if media.media_type == 'external_video' %}special-thumbnail{% endif %}">
+                              {% case media.media_type %}
+                                  {% when 'external_video' %}
+                                  <div class="product-single__video">
+                                      {{ media | external_video_tag }}
+                                  </div>
+                                  {% when 'video' %}
+                                  <div class="product-single__video">
+                                      {{ media | video_tag: controls: true }}
+                                  </div>
+                                  {% when 'image' %}
+                                  <div class="thumb-image product_grpup_sticker">
+                                      {% if product.metafields.custom.markers %}
+                                          <img src="{{ product.metafields.custom.markers | img_url: 'large' }}" class="product_sticker" id="variant_image_sticker" />
+                                      {% endif %}
+                                      <img src="{{ media.src | img_url: 'large' }}" class="zoom-images" alt="{{ media.alt | escape }}" id="variant_image_{{ media.id }}" />
+                                  </div>
+                              {% endcase %}
+                          </li>
+                       
+                      {% endfor %}
+                  </ul>
+                  <div class="clearfix"></div>
+              </div>
+              {%- else %}
+                  <img src="{{ 'img.jpg' | asset_url }}" class="img-responsive" alt="{{ 'img.jpg' | asset_url }}">
+              {%- endif -%}
+
+        </div>
+        <div class="details col-md-6">
+            {% assign bespokeCollection = false %}
+            {% for collection in product.collections %}
+              {% if collection.handle == 'bespoke' %}
+                  {% assign bespokeCollection = true %}
+              {% endif %}
+            {% endfor %}
+            <h3 class="product-title">
+                 {{ product.title }}
+            </h3>
+           {% if bespokeCollection == true %}
+            <p>This is a bespoke item so please contact us for a quote.</p>
+           {% endif %}
+           {% assign isVatReilefProduct = current_variant.metafields.global.vat_relief_variant %}
+            <span
+                class="badge rounded-pill text-bg-primary {% if isVatReilefProduct %} available mb-2 {% else %} hide {% endif %}"
+                id="vat_relief_variant-{{ section.id }}">Vat Relief</span>
+            {% comment %}
+            <div class="rating mb-4 mt-4">
+                <div class="stars">
+                    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                </div>
+            </div>
+            {% endcomment %}
+
+            {% assign priceEx = current_variant.price | divided_by:1.20 %}
+            {% assign priceExClass = '' %}
+            {% assign priceLabel = 'incl. VAT' %}
+            {% if product.metafields.global.is_tax_free == true %}
+              
+            {% assign priceEx = 0 %}
+            {% assign priceExClass = 'style="visibility:hidden"' %}
+            {% assign priceLabel = 'No. VAT' %}
+            {% endif %}
+            {% assign productID = product.id %}
+
+            {% if bespokeCollection == false  %}
+          {% if  isVatReilefProduct  %}
+            {% assign priceEx = current_variant.price %}
+              <h3 class="price mb-4">
+                      <span class="item_price" id="price-{{ section.id }}">
+                          
+                          <h4>
+                               {{ current_variant.price | times: 1.20 | money | replace: ",", "." }}
+                              <span> {{ priceLabel }}</span>
+                          </h4>
+                          <p>
+                              <h6 {{ priceExClass }}>
+                                   {{ current_variant.price | money | replace: ",", "." }}
+                                  <span>excl. VAT</span>
+                              </h6>
+                          </p>
+                      </span>
+                  </h3>
+          {% else %}
+                  <h3 class="price mb-4">
+                      <span class="item_price" id="price-{{ section.id }}">
+                          
+                          <h4>
+                              {{ current_variant.price | money | replace: ",", "." }}
+                              <span> {{ priceLabel }}</span>
+                          </h4>
+                          <p>
+                              <h6 {{ priceExClass }}>
+                                  {{ priceEx | money | replace: ",", "." }}
+                                  <span>excl. VAT</span>
+                              </h6>
+                          </p>
+                      </span>
+                  </h3>
+            {% endif %}
+            {% endif %}
+            {%- assign product_form_id = 'product-form-' | append: section.id -%}
+            {%- form 'product', product, id: product_form_id, class: 'form product-form', novalidate: 'novalidate', data-type:'add-to-cart-form' -%}
+                <input type="hidden" name="id" id="variant_id" value="{{ product.selected_or_first_available_variant.id }}">
+                <input type="hidden" name="properties[tax_free]" id="is_prod_tax_free" value="{{ product.metafields.global.is_tax_free }}">
+                <input type="hidden" name="properties[ex_price]" id="ex_price" value="{{ priceEx | replace: ",", "."  }}">
+                 <input type="hidden" name="properties[is_vat_relief]" id="is_vat_relief" value="{{ isVatReilefProduct  }}">
+                {% if product.variants.size > 1 %}
+                  {% if  isVatReilefProduct  %}
+                   <div class="container vat-include ">
+                            	<div class="row d-flex align-items-center form-check-border">
+                            		<div class="col-8">
+                            			<h4>This product eligible for VAT relief</h4>
+                            			<p>Please choose the relevant option.</p> </div>
+                            		<div class="col-4">
+                            			<button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#vatReliefModal">Do I Qualify?</button>
+                            		</div>
+                            	</div>
+                    </div>
+                    {% endif %}
+                    <variant-selects class="no-js-hidden single-option-selector" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+                        {%- for option in product.options_with_values -%}
+                              <div class="container vat-include mt-2 mb-3">
+                            	<div class="row d-flex align-items-center" id="Option-{{ section.id }}-{{ forloop.index0 }}">
+                                   {%- for value in option.values -%}
+                            		<div class="col form-check-border mb-3 mx-2">
+                            			<div class="form-check">
+                            				<label class="form-check-label" for="flexRadioDefault-{{ forloop.index0 }}">
+                            					<p>{{ value | escape }}</p>
+                                         </label>
+                            				<input {% if option.selected_value == value%} checked="checked" {% endif %} class="form-check-input" type="radio" name="options-{{ option.name | escape }}" id="flexRadioDefault-{{ forloop.index0 }}" form="{{ product_form_id }}" value="{{ value | escape }}" > 
+                                          </div>
+                            		</div>
+                                    {%- endfor -%}
+                            	</div>
+                            </div>
+                       {%- endfor -%}
+                   <script type="application/json">{{ product.variants | json }}</script>
+                </variant-selects>
+                            <div class="modal fade" id="vatReliefModal" tabindex="-1" aria-labelledby="vatReliefModalArea" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="vatReliefModalArea">Do I qualify for VAT Exemption?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                   If you are disabled or have a long-term illness, you won’t be charged VAT on products designed or adapted for your own personal or domestic use.
+                                    If you are not entitled to VAT Exemption please close this box and select the price that includes VAT. If you are unsure whether you are entitled or not please read our VAT Exemption Terms & Conditions. 
+                                  </div>
+                                  <div class="modal-footer">
+                                    <a href="/pages/vat-relief" class="btn btn-secondary">VAT Exemption Terms & Conditions</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          
+                       
+    
+                   
+                                                 
+                <div class="alert alert-success mt-3 {% if current_variant.metafields.global.vat_relief_variant %} available mb-2 {% else %} hide {% endif %}" style="" id="vat_relief_variant_note-{{ section.id }}">
+                               You have selected a VAT exempt option. Note that you will need to complete a VAT Relief Declaration form prior to checking out.
+                                 </div>
+            {% endif %}
+           
+                <div class="left-item-col mb-5 mt-5" id="quantity-div">
+               {% if current_variant.inventory_management == "shopify" and current_variant.inventory_policy != "continue"%}
+                    <label class="mb-2">Only <span id="quantity-{{ section.id }}">{{ current_variant.inventory_quantity
+                            }}</span> item(s) left in stock!</label>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0"
+                            aria-valuemax="100" style="width:30%"> </div>
+                    </div>
+                 
+            {% endif %}
+                </div>
+           {% if section.settings.show_custom_section %}
+               <div class="left-item-col mb-5 mt-5">
+                                    <label for="personalized" class="form-label">{{ section.settings.custom_section_label }}</label>
+                                    <input type="text" name="personalized" id="{{ section.settings.custom_section_label }}" class="form-control " aria-describedby="customitme">
+                              
+               </div>
+              {% endif %}
+            <div class="addcart-col">
+                <div class="row mb-2 d-flex justify-content-start">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10 col-12">
+                        <div class="row">
+                            
+                            
+                           {% if bespokeCollection == false %}
+
+                                {% if current_variant.available %}
+                                    <div class="col-6 col-md-6 col-lg-4" id="quantity-input">
+                                        <div class="input-group mb-3">
+                                            <div class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
+                                                {{ block.shopify_attributes }}>
+                                                <quantity-input class="quantity input-group qty-col mb-3">
+                                                    <button class="quantity__button no-js-hidden input-group-text" name="minus"
+                                                        type="button">
+                                                        -
+                                                    </button>
+                                                    <input 
+                                                            class="quantity__input form-control" 
+                                                            type="number" 
+                                                            name="quantity"
+                                                            id="Quantity-{{ section.id }}" 
+                                                            min="1" 
+                                                            max={{ current_variant.inventory_quantity}} 
+                                                            value="1" 
+                                                            form="{{ product_form_id }}"
+                                                    />
+                                                    <button class="quantity__button no-js-hidden input-group-text" name="plus"
+                                                        type="button">
+                                                        +
+                                                    </button>
+                                                </quantity-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                             
+                              {%- if gift_card_recipient_feature_active -%}
+                                
+                                {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+                                
+                            {%- endif -%}
+                                <div class="col-3 col-md-3 col-lg-4">
+                                    {%- if product.selected_or_first_available_variant.available -%}
+                                        <button class="add-to-cart btn btn-button text-uppercase" type="submit" name="add"
+                                        id="add-to-cart-button">
+                                        <img src="{{ 'cart-pro.svg' | asset_url }}">
+                                        <span class="product_add_to_cart_txt">Add to Cart</span>
+                                        
+                                        </button>
+                                            
+                                    {%- else -%}
+                                            <button class="add-to-cart btn btn-button text-uppercase" type="button" name="add"
+                                                disabled>
+                                                <img src="{{ 'cart-pro.svg' | asset_url }}">
+                                                <span class="product_add_to_cart_txt">Sold Out</span>
+                                                
+                                            </button>
+                                    {%- endif -%}
+                                </div>
+                            {%  endif %}
+                            <div class="col-3 col-md-3 col-lg-4">
+                                <!-- Swym Wishlist Plus EPI Button-->
+                                  <button 
+                                      data-with-epi="true" 
+                                      class="wishlist_button action--wishlist tile-actions--btn flex btn btn-secondary swym-button swym-add-to-wishlist-view-product product_{{product.id}}" 
+                                      data-swaction="addToWishlist" 
+                                      data-product-id="{{product.id | json}}" 
+                                      data-variant-id="{{product.variants[0].id}}" 
+                                      data-product-url="https://learningspace-dev.myshopify.com{{ product.url }}">
+                                      <img src="{{ 'heart.svg' | asset_url }}">
+                                    <span class="wishlist_txt">Add To Wishlist</span>
+                                  </button>
+                                  <!-- Swym Wishlist Plus EPI Button-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+              <div class="pro-list" id="pro_list">
+                  <product-recommendations class="complementory-products" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=complementary">
+                     {%- if recommendations.performed and recommendations.products_count > 0 -%}
+                         <h4>We also recommend:</h4>
+                         {% assign i = 0 %}
+                        <div class="pro-recom-list">
+                         {%- for product in recommendations.products-%}
+                               
+                              <div class="row p-3 border mb-2">
+                                  <div class="col-4">
+                                      <a href="{{ product.url }}">
+                                        <img class="img-thumbnail" alt="" loading="lazy" width="100" height="100" src={{ product.featured_image | image_url: width: 100 }}>
+                                      </a>
+                                  </div>
+                                  <div class="col-4">
+                                      <p>{{ product.title }}</p>
+                                      <b>{{ product.price | money }}</b>
+                           
+                                        {% assign priceExComplementary = product.price | divided_by:1.20 %}
+                                        {% if product.metafields.global.is_tax_free == true %}
+                                            {% assign priceEx = 0 %}
+                                        {% endif %}
+                                        {% assign def_variant_id = product.variants[0].id %}
+                                       {% assign def_isVatReilefProduct = product.variants[0].metafields.global.vat_relief_variant %}
+                                        <input id="is_comp_prod_tax_free_{{ i }}" type="hidden" name="properties[is_comp_prod_tax_free]" value="{{ product.metafields.global.is_tax_free }}">
+                                        <input id="comp_ex_price_{{ i }}" type="hidden" name="properties[comp_ex_price]" value="{{ priceExComplementary }}">
+                                        <input id="def_variant_id_{{ i }}" type="hidden" name="properties[def_variant_id]" value="{{ def_variant_id }}">
+                                         <input type="hidden" name="properties[is_vat_relief]" id="is_vat_relief_{{ i }}" value="{{ def_isVatReilefProduct  }}">
+                                  </div>
+                                  <div class="col-4 button-group">
+                                     <button class="complementary_add_to_cart_txt add-to-cart btn btn-button text-uppercase" id="complementary_btn_{{ i }}" type="button">
+                                        Add To Cart
+                                     </button>
+                                 </div>
+                              </div>
+                          
+                              {% assign i = i | plus:1 %}
+                          {% endfor %}
+                        </div>
+                    {% endif %}
+                  </product-recommendations>
+              </div>
+              
+              {% if product.description != blank %}
+                <div class="row mb-2">
+                    <div>
+                        <span> <h4>Product Description:</h4></span>
+                        <div class="mt-2 fs-14">
+                          {{ product.description |default: "N/A" }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="row mb-2">
+                    <div class="hideAll">
+                          <span>
+                            <h4>Product Code:</h4>
+                          </span>
+                          <p>
+                            <span class="sku fs-14"></span>
+                          </p>
+                    </div>
+                </div>
+                
+                {% if product.metafields.delivery.duration != blank %}
+                <div class="row mb-2">
+                    <div class="estimate">
+                        <h4>Estimated Delivery:</h4>
+                        <span id="fromDate" class="fs-14">
+                            {% if current_variant.metafields.delivery.duration %}
+                            {{ current_variant.metafields.delivery.duration }}
+                            {% elsif product.metafields.delivery.duration %}
+                            {{ product.metafields.delivery.duration }}
+                            {% else %}
+                            N/A
+                            {% endif %}
+                        </span>
+
+                    </div>
+                </div>
+                {% endif %}
+                {% if product.metafields.global.product_brand != blank %}
+                <div class="row mb-2">
+                    <div class="estimate">
+                        <span><h4>Brand:</h4> <p class="fs-14">{{ product.metafields.global.product_brand }}</p></span>
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if product.metafields.global.age != blank %}
+                <div class="row mb-2">
+                    <div class="estimate">
+                        {% assign ages = product.metafields.global.age.value %}
+                        <span> <h4>Age: </h4>
+                            <ul class="fs-14">
+                                {% for age in ages %}
+                                <li>{{ age }}</li>
+                                {%- endfor -%}
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="row mb-2">
+                    <div>
+                        {% assign ages = product.metafields.global.age.value %}
+                        <span> <h4>Shipping & Return: </h4></span>
+                        <a href="{{ shop.url }}/policies/shipping-policy" target="_blank" class="fs-14">Shipping Policy</a>
+                    </div>
+                </div>
+            </div>
+            {% endform %}
+            <div class="row mb-2">
+              <div class="col-3 col-md-3 col-lg-4">
+                <button type="button" class="btn btn-button text-uppercase" data-bs-toggle="modal" data-bs-target="#askAquestion">
+                  {% if bespokeCollection == false %}
+                    Ask A Question
+                  {% else %}
+                    Enquire Now
+                  {%  endif %}
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" data-bs-backdrop="static" id="askAquestion" tabindex="-1" aria-labelledby="askAquestionLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="askAquestionLabel">
+                          {% if bespokeCollection == false %}
+                            Ask a Question
+                          {%  else %}
+                            Enquire Now
+                          {% endif %}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                       {% form 'contact' %}
+                        <div class="modal-body">
+                       
+                           {% if form.posted_successfully? %}
+                             
+                             <script type="text/javascript">
+                              alert('Thank you for your query, a member of the team will reach out to you shortly');
+                               // Get the current URL
+                                var currentURL = window.location.href;
+                                
+                                // Check if there is a query string in the URL
+                                if (currentURL.indexOf('?') !== -1) {
+                                  // Remove the query string by taking the part of the URL before the '?'
+                                  var newURL = currentURL.split('?')[0];
+                                  
+                                  // Redirect to the new URL without the query string
+                                  window.location.href = newURL;
+                                } else {
+                                  // If there is no query string, simply reload the page
+                                  window.location.reload();
+                                }
+                             </script>
+                           {% endif %}
+                            {{ form.errors | default_errors }}
+                            <div class="mb-3">
+                                <label for="inputName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="inputName" name="contact[name]" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputEmail" class="form-label">Contact Email Address</label>
+                                <input type="email" class="form-control" id="inputEmail" name="contact[email]" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputPhone" class="form-label">Contact Phone Number</label>
+                                <input type="tel" class="form-control" id="inputPhone" name="contact[phone]" pattern="[0-9]{7,11}" placeholder="Enter a valid phone number" required>
+                               <small>Enter a valid phone number (e.g., 0123456789, 1234567890).</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputPhone" class="form-label">Message</label>
+                                <textarea class="form-control" id="inputMessage" name="contact[body]" required></textarea>
+                            </div>
+                      </div>
+                      <div class="modal-footer">
+                        <input type="hidden" name="contact[productTitle]" value="{{ product.title | escape_once}}" />
+                        {% if bespokeCollection == true %}
+                          <input type="hidden" name="contact[isBespoke]" value="Bespoke Product" />
+                        {% endif %}
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                      </div>
+                      {% endform %}
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Product Details",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_custom_section",
+        "label":"Show custom section",
+        "info": "The section will display below the quantity section",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "custom_section_label",
+        "label":"Custom section label",
+        "info": "Custom section label",
+        "default": "Engraving"
+      }
+    ]
+  }
+{% endschema %}
+{% capture 'variant_sku' %}       
+    {% for variant in product.variants %}
+        {{variant.id}}:{{ variant.sku| json }}
+        {% unless forloop.last %},{% endunless %}           
+   {% endfor %}
+{% endcapture %}  
+
+{% capture 'vat_relief_variant' %}       
+    {% for variant in product.variants %}
+      {% assign vat_relief_variantt = false %}
+        {% if variant.metafields.global.vat_relief_variant == true %}
+          {% assign vat_relief_variantt = true %}
+        {% endif %}
+        {{variant.id}}:{{ vat_relief_variantt  }}
+        {% unless forloop.last %},{% endunless %}           
+   {% endfor %}
+{% endcapture %}  
+
+<script type="text/javascript">    
+    document.getElementById('pro_list').display = "none";
+    setTimeout(function() {
+      document.getElementById('pro_list').display = "block";
+      const complementary_buttons = document.querySelectorAll('.complementary_add_to_cart_txt');
+
+      complementary_buttons.forEach(comple_btn => {
+        comple_btn.addEventListener('click', function(event) {
+            let clickedButtonId = event.target.id;
+            let idParts = clickedButtonId.split('_');
+            if (idParts.length >= 3) {
+              let iValue = idParts[2];
+    
+              let is_tax_free = $('#is_comp_prod_tax_free_' + iValue).val();
+              let ex_price = $('#comp_ex_price_' + iValue).val();
+              let id = $('#def_variant_id_' + iValue).val();
+              let vatRelief = $('#is_vat_relief_' + iValue).val();
+        
+              addtocart(id, 1, is_tax_free, ex_price,vatRelief); // function defined in cart.js
+              
+            }
+        });
+      });
+    }, 5000);
+  
+</script>
+<script type="text/javascript">
+window.addEventListener("DOMContentLoaded", (event) => {
+  var el = document.getElementById('variant_id');
+  if (el) {
+      var variant_id = el.value
+      var variants = {{ product_variants_arr | json}}
+      var product_markers = '{{ product_markers | escape}}'
+
+      var active_slide = document.getElementsByClassName('flex-active-slide');  
+      // if(variants){
+      //     var current_variant_object = variants.find((v) => {
+      //       return v.id == variant_id;
+      //     })
+
+      //    if(current_variant_object.featured_image !== null)
+      //    {
+      //       active_slide.src = current_variant_object.featured_image.src
+      //       $('.flex-active-slide').children('.thumb-image').children('img.zoom-images').attr({'width': '425px', 'height': '425px', 'src': current_variant_object.featured_image.src}); 
+      //       el.addEventListener("change", function(e){    
+      //         variant_id = e.target.value;
+            
+      //         var current_variant_object = variants.find((v) => {
+      //           return v.id == variant_id;
+      //         })
+  
+      //         active_slide.src = current_variant_object.featured_image.src
+            
+      //         $('.flex-active-slide').children('.thumb-image').children('img.zoom-images').attr({'width': '425px', 'height': '425px', 'src': current_variant_object.featured_image.src});     
+      //      });
+      //    }
+      // }
+     
+  }
+})
+</script>    
+<script>
+  const currentVariantSku = {{ product.selected_or_first_available_variant.id }};
+  const variantSku = { {{ variant_sku }} };    
+   const variantVatRelief = { {{ vat_relief_variant }} };   
+  
+  const getSku = (id) => {
+  let selector = document.querySelector('.sku');
+  let hide = document.querySelector('.hideAll')
+    if (variantSku[id]) {
+     hide.style.display = 'block'
+     selector.innerHTML = variantSku[id];
+    }
+    else 
+     hide.style.display = 'none'
+  }
+  getSku(currentVariantSku);
+  const getVATProperty = (id) => {
+      let selectorVat = document.querySelector('#is_vat_relief');
+          selectorVat.value = variantVatRelief[id];
+  }
+ getVATProperty(currentVariantSku);
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" type="text/javascript" async></script>
+<script type="text/javascript">
+    $('#add-to-cart-button').click(function (event) {
+        var is_tax_free = $('#is_prod_tax_free').val()
+        var ex_price = $('#ex_price').val()
+        var isVatReilefProduct = $('#is_vat_relief').val()
+        event.preventDefault();
+        let data = $('.form').serializeArray()
+        let id, qty,personalized = '';
+        data.filter((d, index) => {
+            if (d.name == 'id') {
+                id = d.value
+            }
+            if (d.name == 'quantity') {
+                qty = d.value
+            }
+            if (d.name == 'personalized') {
+                personalized = d.value
+            }
+        })
+        addtocart(id, qty, is_tax_free, ex_price, isVatReilefProduct,personalized) // function defined in cart.js
+       
+    });
+
+  function validateForm() {
+    var recipentEmail = $(".recipientemailcheck");
+    if (recipentEmail.val() == "") {
+      alert("Email must be filled out");
+      return false;
+    }
+    var recipentName = $(".recipientnamecheck");
+    if (recipentName.val() == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+    return true;
+  } 
+ 
+</script>
+

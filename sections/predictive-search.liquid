@@ -1,0 +1,83 @@
+{%- if predictive_search.performed -%}
+  <div id="predictive-search-results">
+    {%- if predictive_search.resources.products.size > 0 -%}
+      <h3 id="predictive-search-products" class="predictive-search__heading">
+        Products
+      </h3>
+    {%- endif -%}
+    <ul id="predictive-search-results-list" class="predictive-search__results-list" role="listbox" aria-labelledby="predictive-search-products">
+      {%- for product in predictive_search.resources.products -%}
+        <li class="predictive-search__list-item" role="option">
+         
+          <a href="{{ product.url }}" class="predictive-search__item" tabindex="-1">
+            {%- if product.featured_image != blank -%}
+              <span class="search-product-image">
+                <img class="predictive-search__image"
+                  src="{{ product.featured_image.src | product_img_url: 'grande' }}"
+                  alt="{{ product.featured_image.alt }}"
+                  width="50"
+                  height="{{ 50 | divided_by: product.featured_image.preview_image.aspect_ratio }}"
+                  loading="lazy"
+                />
+              </span>
+            {%- else -%}
+              <span class="search-product-image">
+              {{ 'product-1' | placeholder_svg_tag : 'svg-search-product' }}
+              </span>
+            {%- endif -%}
+            {% if product.metafields.vat.relief and customer %}
+               <span class="badge rounded-pill text-bg-primary">Vat Relief</span>
+             {% endif %}
+            <div class="predictive-search__item-content">
+              
+              {%- if settings.predictive_search_show_vendor -%}
+                <span class="visually-hidden">Vendor</span>
+                <div class="predictive-search__item-vendor">{{ product.vendor }}</div>
+              {%- endif -%}
+              <span class="predictive-search__item-heading">{{ product.title }}</span>
+              {%- if settings.predictive_search_show_price -%}
+                {% comment %}Render price{% endcomment %}
+              {%- endif -%}
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+      <li class="predictive-search__list-item" role="option">
+        <button class="predictive-search__item btn btn-button" onclick=" window.location.href = '/search?q={{ predictive_search.terms }}'" tabindex="-1">
+          Search for “{{ predictive_search.terms }}”
+        </button>
+      </li>
+    </ul>
+  </div>
+{%- endif -%}
+<style>
+  .svg-search-product{
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<script>
+  document.head.insertAdjacentHTML(
+    "beforeend",
+    `
+    
+      #predictive-search-results {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: none; 
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        z-index: 999999999999999999;
+      }
+      .predictive-search__results-list {
+        width: 100%;
+        cursor: pointer;
+        padding: 5px;
+        border-bottom: 1px solid lightgrey;
+        margin-bottom: 0px;
+      }
+    
+  `
+  );
+</script>

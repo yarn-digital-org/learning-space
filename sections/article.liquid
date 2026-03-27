@@ -1,0 +1,119 @@
+{% include 'breadcrumbs' , title: article.title %} 
+
+<div class="container-fluid" style="padding-left: 10%; padding-right: 10%;">
+  <div class="row">
+    <div class="col-12">
+      <h1 style="text-align: center; margin-top: 40px;">{{ article.title }}</h1>
+      <p class="blog-author" style="text-align: center; font-style: italic;">by {{ article.author }}</p>
+      <div class="article__content">
+        {{ article.content }}
+      </div>
+    </div>
+  </div>
+      {%- assign tag = article.tags[0] -%}
+      {%- assign collection = collections[tag] -%}   
+      <div class="col-12 col-md-12 product-list-cat mt-5">
+        <div class="row product-sec1">
+
+        {%- assign product_limit = 100 -%}
+        {% paginate collection.products by product_limit %}
+        {% assign products = collection.products  %}
+        {% for product in products %}
+           {% assign price = product.price %}
+           {% assign available = product.available %}
+           {% render 'card-product',
+              card_product: product,
+              price: product.price,
+              handle: product.handle,
+              variant_size: product.variants.size,
+              variants: product.variants
+           %}
+        {% endfor %}
+        {% endpaginate %}
+                <div class="related-blogs" style="border: 2px solid pink; padding: 30px; margin-top: 60px; border-radius: 10px; text-align: center;">
+  <h2 style="color: #d63384; margin-bottom: 30px;">Loved this article? Read more here.</h2>
+  <div class="blog-post-list" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+    {% for post in blog.articles limit: 3 %}
+      {% if post.handle != article.handle %}
+        <div class="blog-post" style="display: flex; flex-direction: column; width: 300px; background: #fff8fb; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
+          {% if post.image %}
+            <img src="{{ post.image | img_url: 'medium' }}" alt="{{ post.title }}" style="width: 100%; height: auto; object-fit: cover;">
+          {% endif %}
+          <div class="blog-post-content" style="padding: 20px; text-align: left;">
+            <h3 style="font-size: 1.3em; color: #ff1493; margin-top: 0;"><a href="{{ post.url }}" style="text-decoration: none; color: inherit;">{{ post.title }}</a></h3>
+            <div class="blog-meta" style="font-size: 0.9em; color: #777; margin: 5px 0 10px;">by {{ post.author }}</div>
+            <p style="font-size: 0.95em; color: #555;">{{ post.excerpt | truncatewords: 20 }}</p>
+            <a class="read-more" href="{{ post.url }}" style="display: inline-block; margin-top: 10px; color: #ff69b4; text-decoration: underline; font-weight: bold;">Read more</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    <style>
+  @media (max-width: 768px) {
+    .container-fluid {
+      padding-left: 5% !important;
+      padding-right: 5% !important;
+    }
+
+    .blog-post {
+      width: 100% !important;
+    }
+
+    .blog-post-content {
+      text-align: center;
+    }
+
+    .read-more {
+      display: block;
+      margin: 15px auto 0;
+    }
+  }
+</style>
+  </div>
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "article",
+    "tag": "section",
+    "class": "section",
+    "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "Title Name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "blog_show_date",
+          "default": true,
+          "label": "Show Date"
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_author",
+          "default": true,
+          "label": "Show Author"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "name": "Content",
+      "limit": 1
+    }
+    ],
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

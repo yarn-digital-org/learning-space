@@ -1,0 +1,293 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    margin-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    margin-top: {{ section.settings.padding_top_mobile }}px;
+  }
+  @media only screen and (min-width: 992px) {
+    margin-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    margin-top: {{ section.settings.padding_top_desktop }}px;
+  }
+  #shopify-section-{{ section.id }} h2 {
+    margin-bottom: 40px;
+  }
+  #shopify-section-{{ section.id }} .img-container {
+    margin-bottom: 10px;
+  }  
+  #shopify-section-{{ section.id }} .img-container img {
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  } 
+  #shopify-section-{{ section.id }} .col-block h4 {
+    color: #2c2c2c;
+    font-size: 14px;
+    text-shadow: none;
+    position: static;
+  }
+  
+  {% if section.settings.enable_clip %}
+    #shopify-section-{{ section.id }} h2 {
+      margin-bottom: 50px;
+    }
+    #shopify-section-{{ section.id }} .img-container:before {
+      content: ;
+      background-color: {{ section.settings.color_clip }};
+      position: absolute;
+      left: -15px;
+      top: -50px;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      clip-path: polygon(0 0, 78% 0, 100% 39%, 69% 81%, 39% 100%, 0 79%);
+    }
+    #shopify-section-{{ section.id }} .col-block h3 {
+      position: absolute;
+      bottom: auto;
+      right: auto;
+      font-size: 18px;
+      text-shadow: none;
+      color: #fff;
+      left: 0;
+      top: -35px;
+      z-index: 2;
+    }
+    #shopify-section-{{ section.id }} .col- {margin-bottom: 30px;}
+  {% endif %}  
+  
+</style>
+<section class="three-col">  
+  <div class="container text-{{ section.settings.align_text }}">
+    
+    
+    
+    
+    {% comment %}
+    
+    <div class="row">
+      <div class="col">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+    </div>
+
+{% endcomment %}
+
+    
+    <div class="row">
+      {% for block in section.blocks %}
+        {% assign block_image = block.settings.image %}
+          <div class="col-6 col-sm-{{ section.settings.column_layout_tablet }} col-lg-{{ section.settings.column_layout_desktop }}">
+          <div class="col-block">            
+            <div class="img-container">
+               <a href="{{ block.settings.title_link }}">
+                  <img 
+  src="{{ block_image | img_url: '480x480' }}" 
+  srcset="
+    {{ block_image | img_url: '240x240' }} 240w,
+    {{ block_image | img_url: '360x360' }} 360w,
+    {{ block_image | img_url: '480x480' }} 480w,
+    {{ block_image | img_url: '720x720' }} 720w
+  "
+  sizes="(max-width: 576px) 240px,
+         (max-width: 768px) 360px,
+         (max-width: 992px) 480px,
+         720px"
+  width="480"
+  height="480"
+  class="img-fluid" 
+  alt="{{ block_image.alt | escape }}"
+  loading="lazy"
+/>
+               </a>
+            </div>
+            {%- unless block.settings.title == blank -%}
+              <h3>{{ block.settings.title }}</h3>
+            {% endunless %}
+            {%- unless block.settings.slide_title == blank -%}
+              <h4>{{ block.settings.slide_title | escape }}</h4>
+            {% endunless %}
+            {% unless block.settings.title_link == blank %}
+              <a href="{{ block.settings.title_link }}">{{ block.settings.title_link_lbel }}</a>
+            {% endunless %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+  {% schema %}
+{
+  "name": "Featured Categories",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Text columns with images"
+    },
+    {
+      "type": "select",
+      "id": "column_layout_desktop",
+      "label": "Columns in a row for desktop",
+      "options": [
+        {
+          "value": "6",
+          "label": "2"
+        },
+        {
+          "value": "4",
+          "label": "3"
+        },
+        {
+          "value": "3",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "column_layout_tablet",
+      "label": "Columns in a row for tablet",
+      "options": [
+        {
+          "value": "6",
+          "label": "2"
+        },
+        {
+          "value": "4",
+          "label": "3"
+        },
+        {
+          "value": "3",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "Text alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centered"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section gaps"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Section top gap in desktop",
+      "step": 1,
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Section bottom gap in desktop",
+      "step": 1,
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Section top gap in mobile",
+      "step": 1,
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Section bottom gap in mobile",
+      "step": 1,
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_clip",
+      "label": "Show background behind image",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "color_clip",
+      "label": "Color of background behind image",
+      "default": "#df0e5c"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Sub Heading",
+          "default": "Image slide"
+        },
+        {
+          "type": "url",
+          "id": "title_link",
+          "label": "link"
+        },
+        {
+          "type": "text",
+          "id": "title_link_lbel",
+          "label": "Link label",
+          "default": "Learn more"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Categories",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

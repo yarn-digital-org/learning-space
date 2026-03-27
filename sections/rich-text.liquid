@@ -1,0 +1,162 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    margin-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    margin-top: {{ section.settings.padding_top_mobile }}px;
+  }
+  @media only screen and (min-width: 992px) {
+    margin-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    margin-top: {{ section.settings.padding_top_desktop }}px;
+  }
+  #shopify-section-{{ section.id }} h2 {
+    margin-bottom: 20px;
+  }
+  #shopify-section-{{ section.id }} .img-container {
+    margin-bottom: 20px;
+  }  
+  #shopify-section-{{ section.id }} .img-container.rounded-image {
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  #shopify-section-{{ section.id }} .img-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }  
+  #shopify-section-{{ section.id }} .show_hide {
+    color: rgba(0, 134, 204, 1);
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+  #shopify-section-{{ section.id }} .show_hide:hover {text-decoration: none;}
+</style>
+<div class="container{% if section.settings.container_layout == true %}-fluid{% endif %} text-{{ section.settings.align_text }}">
+  <div class="row">
+    <div class="col">
+      <h2>{{ section.settings.title }}</h2>
+      {% if section.settings.text != blank %}
+      <div class="rte">        
+        {% if section.settings.enable_more_less == true %}
+          <div class="less-content">
+            {{ section.settings.text | truncate: 200 | strip }}
+          </div>
+          <div class="more-content">
+            {{ section.settings.text }}
+          </div>
+          <span class="show_hide" data-content="toggle-text">Show More</span>
+        {% else %}  
+        {{ section.settings.text }}
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function () {
+  $(".more-content").hide();
+  $(".show_hide").on("click", function () {
+    var txt = $(".more-content").is(':visible') ? 'Show More' : 'Show Less';
+    $(".show_hide").text(txt);
+    $('.more-content').slideToggle(200);
+    $(".less-content").slideToggle(100);
+  });
+});
+</script>
+
+{% schema %}
+  {
+    "name": "Rich text",
+    "class": "rich-text-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "select",
+        "id": "align_text",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Centered"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "container_layout",
+        "label": "Enable full width container"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_more_less",
+        "label": "Enable more/less content"
+      },
+      {
+        "type": "header",
+        "content": "Section gaps"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Section top gap in desktop",
+        "step": 1,
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Section bottom gap in desktop",
+        "step": 1,
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Section top gap in mobile",
+        "step": 1,
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Section bottom gap in mobile",
+        "step": 1,
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich text",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

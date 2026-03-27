@@ -1,0 +1,508 @@
+{% assign MagicToolboxSirvID = '' %}
+{% assign MagicToolboxSirvSpinPosition = 'first' %}
+{% assign MagicToolboxSirvSpinsPath = 'products/{product-sku}/{product-sku}.spin' %}
+{% assign MagicToolboxSirvSpinsPath_v = 'products/{product-sku}/{product-sku}.spin' %}
+{% assign MagicToolboxSirvCombineVariants = 'No' %}
+{% assign MagicToolboxSirvUseCache = 'No' %}
+{% assign MagicToolboxSirvSpinsPathTransform = '' %}
+{% assign MagicToolboxSirvIconURL = '//magictoolbox.sirv.com/shopify/icons/icon.spin.1.png' %}
+{% assign MagicToolboxThumbnailsLayout = 'left' %}
+{% assign MagicToolboxUseMagicScroll = 'No' %}
+{% assign MagicToolboxMobileThumbnais = 'thumbnails' %}
+{% assign MagicToolboxShowMessage = 'No' %}
+{% assign MagicToolboxMessage = 'Move your mouse over image or click to enlarge' %}
+{% assign MagicToolboxBigImageSize = 'master' %}
+{% assign MagicToolboxThumbnailImageSize = 'original' %}
+{% assign MagicToolboxSelectorImageSize = 'small' %}
+{% assign MagicToolboxUseCustomWidth = 'No' %}
+{% assign MagicToolboxThumbnailImageWidth = '480' %}
+
+{% assign MagicToolboxSelectorImageSize_Text = MagicToolboxSelectorImageSize %}
+
+{% assign MagicToolboxRetinaZoomImage = 'No' %}
+{% assign MagicToolboxRetinaMainImage = 'Yes' %}
+{% assign MagicToolboxRetinaThumbnailImage = 'Yes' %}
+
+{% if MagicToolboxUseCustomWidth == 'Yes' %}
+<style type="text/css">.MagicZoomPlus > figure > img { max-width: {{ MagicToolboxThumbnailImageWidth }}px !important; }</style>
+{% endif %}
+{% if MagicToolboxShowMessage == 'Yes' %}
+<style type="text/css">.MagicToolboxSlide.active-magic-slide { line-height: inherit !important; }</style>
+{% endif %}
+
+{% assign MagicToolboxThumbnailBorderSize = '1' %}
+{% assign MagicToolboxThumbnailBorderColor = 'EFEFEF' %}
+{% assign MagicToolboxThumbnailBorderSizeActive = '1' %}
+{% assign MagicToolboxThumbnailBorderColorActive = '999999' %}
+<style type="text/css">
+a[data-slide-id] img,
+a[data-zoom-id] img,
+a[data-slide-id="spin"] img,
+.active-magic-selector img,
+.mz-thumb img {
+    border:{{ MagicToolboxThumbnailBorderSize }}px solid #{{ MagicToolboxThumbnailBorderColor }} !important;
+}
+
+.mz-thumb:hover:not(.active-magic-selector) img,
+.mz-thumb:hover:not(.mz-thumb-selected) img,
+a[data-slide-id].active-magic-selector img,
+a[data-slide-id].mz-thumb-selected img {
+    border:{{ MagicToolboxThumbnailBorderSizeActive }}px solid #{{ MagicToolboxThumbnailBorderColorActive }} !important;
+}
+</style>
+
+  
+{% if MagicToolboxBigImageSize == 'pico' %}{% assign MagicToolboxBigImageSize = 16 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'icon' %}{% assign MagicToolboxBigImageSize =  32 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'thumb' %}{% assign MagicToolboxBigImageSize =  50 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'small' %}{% assign MagicToolboxBigImageSize =  100 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'compact' %}{% assign MagicToolboxBigImageSize = 160 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'medium' %}{% assign MagicToolboxBigImageSize = 240 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'large' %}{% assign MagicToolboxBigImageSize = 480 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'grande' %}{% assign MagicToolboxBigImageSize = 600 %}{% endif %}
+{% if MagicToolboxBigImageSize == '1024x1024' %}{% assign MagicToolboxBigImageSize = 1024 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'original' %}{% assign MagicToolboxBigImageSize = 1024 %}{% endif %}
+{% if MagicToolboxBigImageSize == '2048x2048' %}{% assign MagicToolboxBigImageSize = 2048 %}{% endif %}
+{% if MagicToolboxBigImageSize == 'master' %}{% assign MagicToolboxBigImageSize = 2048 %}{% endif %}
+
+{% if MagicToolboxThumbnailImageSize == 'pico' %}{% assign MagicToolboxThumbnailImageSize = 16 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'icon' %}{% assign MagicToolboxThumbnailImageSize =  32 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'thumb' %}{% assign MagicToolboxThumbnailImageSize =  50 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'small' %}{% assign MagicToolboxThumbnailImageSize =  100 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'compact' %}{% assign MagicToolboxThumbnailImageSize = 160 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'medium' %}{% assign MagicToolboxThumbnailImageSize = 240 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'large' %}{% assign MagicToolboxThumbnailImageSize = 480 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'grande' %}{% assign MagicToolboxThumbnailImageSize = 600 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == '1024x1024' %}{% assign MagicToolboxThumbnailImageSize = 1024 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'original' %}{% assign MagicToolboxThumbnailImageSize = 1024 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == '2048x2048' %}{% assign MagicToolboxThumbnailImageSize = 2048 %}{% endif %}
+{% if MagicToolboxThumbnailImageSize == 'master' %}{% assign MagicToolboxThumbnailImageSize = 2048 %}{% endif %}
+
+{% if MagicToolboxSelectorImageSize == 'pico' %}{% assign MagicToolboxSelectorImageSize = 16 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'icon' %}{% assign MagicToolboxSelectorImageSize =  32 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'thumb' %}{% assign MagicToolboxSelectorImageSize =  50 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'small' %}{% assign MagicToolboxSelectorImageSize =  100 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'compact' %}{% assign MagicToolboxSelectorImageSize = 160 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'medium' %}{% assign MagicToolboxSelectorImageSize = 240 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'large' %}{% assign MagicToolboxSelectorImageSize = 480 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'grande' %}{% assign MagicToolboxSelectorImageSize = 600 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == '1024x1024' %}{% assign MagicToolboxSelectorImageSize = 1024 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'original' %}{% assign MagicToolboxSelectorImageSize = 1024 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == '2048x2048' %}{% assign MagicToolboxSelectorImageSize = 2048 %}{% endif %}
+{% if MagicToolboxSelectorImageSize == 'master' %}{% assign MagicToolboxSelectorImageSize = 2048 %}{% endif %}
+
+{% assign MagicToolboxThumbnailImageSize2x = MagicToolboxThumbnailImageSize | times: 2 %}
+{% assign MagicToolboxSelectorImageSize2x = MagicToolboxSelectorImageSize | times: 2 %}
+
+{% assign SirvMaxHeight = MagicToolboxThumbnailImageSize %}
+{% assign SelectorvMaxHeight = MagicToolboxSelectorImageSize %}
+
+<div class="MagicToolboxContainer row layout-{{ MagicToolboxThumbnailsLayout }} thumbnail-size-{{ MagicToolboxSelectorImageSize_Text }}{% if product.images.size < 2 %} no-thumbnails{% endif %}">
+
+    {% assign mt_current_variant = product.selected_variant | default: product.selected_or_first_available_variant %}
+    {% assign mt_featured_image = mt_current_variant.featured_media | default: product.featured_media %}
+    {% assign mt_featured_image_ = '' %}
+    {% assign first_image_is_video = false %}
+    {% assign addActiveClass = true %}
+
+    {% assign ScrollOrientation = 'vertical' %}
+    {% if MagicToolboxThumbnailsLayout == 'bottom' %}
+        {% assign ScrollOrientation = 'horizontal' %}
+    {% endif %}
+
+    {% capture MagicToolboxSelectors %}
+    <div class="MagicToolboxSelectorsContainer col-md-3 col-12 mobile-view-{{ MagicToolboxMobileThumbnais }} {% if MagicToolboxUseMagicScroll == 'No' %} no-magic-scroll{% endif %}" {% if product.media.size < 2 %}style="display:none"{% endif %}>
+      {% if MagicToolboxUseMagicScroll == 'Yes' %}
+      <div id="msc-selectors-container" class="MagicScroll" data-mobile-options="items:4" data-options="{% if MagicToolboxThumbnailsLayout == 'left' or MagicToolboxThumbnailsLayout == 'right' %}height:100%;{% endif %}{% if MagicToolboxSirvID != ''%}autostart: false;{% endif %} orientation: {{ ScrollOrientation }};">
+        {% endif %}
+        
+        {% for image in product.media %}
+        
+        {% assign aspect_ratio = image.aspect_ratio | times: 1 %}
+        
+        {% if aspect_ratio < 1 %}
+            {% assign h = SelectorvMaxHeight  %}        
+          {% assign aspect_ratio = 1 | divided_by : aspect_ratio  %}        
+            {% assign w = h | times : aspect_ratio | round %}        
+        {% else %}
+            {% assign w = SelectorvMaxHeight  %}        
+          {% assign aspect_ratio = 1 | divided_by : aspect_ratio  %}        
+            {% assign h = w | times : aspect_ratio | round %}
+        {% endif %}
+        
+        
+          {% if image.media_type == 'video' %}
+            {% if forloop.index0 == 0 %}
+                {% assign first_image_is_video = true %}
+            {% endif %}
+        
+            <a class="js-no-transition" data-processed="1" data-slide-id="video-{{ image.id }}" href="#">
+                  <img  src="{{ image.preview_image | image_url: crop: false, width: MagicToolboxSelectorImageSize, height: MagicToolboxSelectorImageSize }}" alt="{{ image.alt | escape }}" />
+            </a>
+        
+          {% elsif image.media_type == 'external_video' %}
+            {% if forloop.index0 == 0 %}
+                {% assign first_image_is_video = true %}
+            {% endif %}
+        
+            <a class="js-no-transition" data-processed="1" data-slide-id="video-{{ image.id }}" href="#">
+                  <img  src="{{ image.preview_image | image_url: crop: false, width: MagicToolboxSelectorImageSize, height: MagicToolboxSelectorImageSize }}" alt="{{ image.alt | escape }}" />
+            </a>
+
+          {% elsif image.media_type == 'model' %}
+            {% if forloop.index0 == 0 %}
+                {% assign first_image_is_video = true %}
+            {% endif %}
+        
+            <a class="js-no-transition" data-slide-id="model-{{ image.id }}" href="#">
+              <b class="model-icon">
+                <svg width="700pt" height="700pt" version="1.1" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+                 <path d="m516.25 153.71-140-80.836c-16.254-9.3398-36.246-9.3398-52.5 0l-140 80.836c-16.223 9.3945-26.219 26.711-26.25 45.457v161.67c0.03125 18.746 10.027 36.062 26.25 45.457l140 80.836c16.254 9.3398 36.246 9.3398 52.5 0l140-80.836c16.223-9.3945 26.219-26.711 26.25-45.457v-161.67c-0.03125-18.746-10.027-36.062-26.25-45.457zm-145.83 4.8086 74.582 43.055h-0.003906c4.9102 2.957 9.1328 6.9258 12.387 11.641l-107.38 61.918-107.38-61.918c3.2539-4.7148 7.4766-8.6836 12.387-11.641l74.578-43.055c12.641-7.2773 28.195-7.2773 40.836 0zm92.426 65.031c1.6094 4.2852 2.4805 8.8164 2.5664 13.398v86.102c-0.03125 14.582-7.8047 28.055-20.418 35.375l-74.574 43.062c-4.5156 2.4844-9.4688 4.0781-14.586 4.6953v-120.93zm-118.68 61.699v120.93c-5.1172-0.61719-10.07-2.2109-14.586-4.6953l-74.578-43.055c-12.613-7.3203-20.391-20.789-20.418-35.375v-86.102c0.085937-4.5781 0.95312-9.1094 2.5664-13.398zm-171.79 90.535v-0.003906c-2.0156-4.7266-3.1055-9.7969-3.2109-14.934v-161.68c0.027343-14.582 7.8008-28.047 20.414-35.363l140-80.832v-0.003906c4.5195-2.4766 9.4688-4.0703 14.586-4.6875v63.875c-7.168 0.64844-14.121 2.7812-20.418 6.2656l-74.582 43.059c-16.219 9.4023-26.215 26.719-26.25 45.469v86.102c0.14062 7.25 1.793 14.395 4.8633 20.969zm338.04 20.418-140 80.832v0.003906c-12.648 7.2461-28.188 7.2461-40.836 0l-140-80.832v-0.003906c-4.418-2.6797-8.2812-6.1836-11.379-10.32l55.449-31.773c4.1289 5.8203 9.4102 10.73 15.516 14.418l74.582 43.059c16.25 9.3555 36.25 9.3555 52.5 0l74.582-43.059c6.1055-3.6875 11.387-8.5977 15.516-14.418l55.453 31.773h-0.003906c-3.0977 4.1367-6.9609 7.6406-11.379 10.32zm20.418-35.363h-0.003907c-0.10547 5.1367-1.1953 10.207-3.2109 14.934l-55.402-31.734c3.0703-6.5742 4.7227-13.719 4.8633-20.973v-86.102 0.003906c-0.035156-18.75-10.031-36.066-26.25-45.469l-74.582-43.078c-6.2969-3.4805-13.25-5.6133-20.418-6.2617v-63.879c5.1172 0.61719 10.066 2.2109 14.586 4.6875l140 80.832v0.003906c12.613 7.3164 20.387 20.781 20.414 35.363z"/>
+                </svg>
+              </b>
+              <img  src="{{ image.preview_image | image_url: crop: false, width: MagicToolboxSelectorImageSize, height: MagicToolboxSelectorImageSize }}" alt="{{ image.alt | escape }}" />
+            </a>
+
+          {% elsif image.alt contains 'youtube' or image.alt contains 'vimeo' or image.alt contains 'youtu.be' or image.alt contains 'sproutvide' or image.alt contains 'vids.io' %}
+                {% if forloop.index0 == 0 and mt_featured_image == image %}
+                    {% assign first_image_is_video = true %}
+                {% endif %}
+                <a {% if image.alt contains 'sproutvideo'  or image.alt contains 'vids.io'  %}style="display:none"{% endif %} class="js-no-transition" data-slide-id="video-{{ image.id }}" href="{{ image.alt }}"><img  src="{{ image.preview_image | image_url: crop: false, width: MagicToolboxSelectorImageSize, height: MagicToolboxSelectorImageSize }}" alt="{{ image.alt | escape }}" /></a>
+            {% else %}
+                {% assign product_variants = ',' %}            
+
+                {% for v in product.variants %}
+                  {% if image.id == v.featured_media.id %}
+                    {% assign product_variants = product_variants | append: ',' | append: v.id %}
+                  {% endif %}
+                {% endfor %}
+                
+
+                {% assign class = '' %}
+                {% if image.id == mt_current_variant.featured_media.id and addActiveClass %}
+                  {% assign class = 'active-magic-selector' %}
+                {% assign addActiveClass = false %}
+                {% endif %}        
+                {% if mt_current_variant.featured_media == blank and mt_featured_image_ == '' %}
+                  {% assign class = 'active-magic-selector' %}
+                  {% assign addActiveClass = false %}
+                  {% assign mt_featured_image = image %}
+                {% endif %}
+
+                <a data-variants="{{ product_variants }}"                
+                   class="js-no-transition {{ class }}"
+                   data-slide-id="zoom" 
+                   href="{{ image.preview_image | image_url: crop: false, width: MagicToolboxBigImageSize, height: MagicToolboxBigImageSize }}" 
+                   {% if MagicToolboxRetinaZoomImage == 'Yes' %}data-zoom-image-2x="{{ image.preview_image | image_url }}"{% endif %}
+                   data-zoom-id="zoom{{ product.id }}" 
+                   data-image="{{ image.preview_image | image_url: crop: false, width: MagicToolboxThumbnailImageSize, height: MagicToolboxThumbnailImageSize }}" 
+              {% if MagicToolboxRetinaMainImage == 'Yes' %}data-image-2x="{{ image.preview_image | image_url: crop: false, width: MagicToolboxThumbnailImageSize2x, height: MagicToolboxThumbnailImageSize2x }}" {% endif %}
+                   title="{{ image.alt | escape }}">
+                        <img  
+                             src="{{ image.preview_image | image_url: crop: false, width: MagicToolboxSelectorImageSize, height: MagicToolboxSelectorImageSize }}" 
+                             {% if MagicToolboxRetinaThumbnailImage == 'Yes' %} srcset="{{ image.preview_image | image_url: crop: false, width: MagicToolboxSelectorImageSize2x, height: MagicToolboxSelectorImageSize2x }} 2x" {% endif %}
+                             alt="{{ image.alt | escape }}" 
+                        />
+                </a>
+                {% if mt_featured_image_ == '' %}
+                    {% assign mt_featured_image_ = image %}
+                {% endif %}
+            {% endif %}
+        
+          
+        {% endfor %}
+        {% if MagicToolboxUseMagicScroll == 'Yes' %}
+      </div>
+      {% endif %}
+    </div>
+    {% endcapture %}
+  
+    {% if first_image_is_video %}
+        {% assign mt_featured_image = mt_featured_image_ %}       
+    {% endif %}
+  
+    {% if MagicToolboxThumbnailsLayout == 'left' or MagicToolboxThumbnailsLayout == 'right' %}
+        {{ MagicToolboxSelectors }}
+    {% endif %}
+
+    <div class="MagicToolboxSlides col-md-9 col-12">
+        <a title="Previous slide" {% if product.images.size < 2 %}style="display:none"{% endif %} href="#" class="js-no-transition MagicToolboxSlides-arrow magic-prev"></a>
+        <a title="Next slide" {% if product.images.size < 2 %}style="display:none"{% endif %} href="#" class="js-no-transition MagicToolboxSlides-arrow magic-next"></a>
+      
+        {% assign aspect_ratio = mt_featured_image.aspect_ratio | times: 1 %}
+        
+        {% if aspect_ratio < 1 %}
+          {% assign w = SirvMaxHeight  %}
+          {% assign h = w | times: aspect_ratio  | round %}
+        {% else %}
+          {% assign h = SirvMaxHeight%}
+          {% assign w = h | times: aspect_ratio  | round  %}
+        {% endif %}
+        
+        <div data-slide-num="{{ forloop.index0 }}" data-slide-id="zoom" class="MagicToolboxSlide  {% if first_image_is_video != true %}active-magic-slide{% endif %}">
+            <a 
+               href="{{ mt_featured_image.preview_image | image_url: crop: false, width: MagicToolboxBigImageSize, height: MagicToolboxBigImageSize }}"
+               {% if MagicToolboxRetinaZoomImage == 'Yes' %}data-zoom-image-2x="{{ mt_featured_image.preview_image | image_url }}"{% endif %}
+               class="js-no-transition MagicZoomPlus" id="zoom{{ product.id }}" 
+               title="{{ mt_featured_image.alt | escape }}"
+               data-image="{{ mt_featured_image.preview_image | image_url: crop: false, width: MagicToolboxThumbnailImageSize, height: MagicToolboxThumbnailImageSize }}" 
+               {% if MagicToolboxRetinaMainImage == 'Yes' %}data-image-2x="{{ mt_featured_image.preview_image | image_url: crop: false, width: MagicToolboxThumbnailImageSize2x, height: MagicToolboxThumbnailImageSize2x }}" {% endif %}
+               >
+                    <img  
+                        style="max-width:100%; aspect-ratio:auto {{ mt_featured_image.width }} / {{ mt_featured_image.height }}; height:auto;"
+                        width="{{ mt_featured_image.width }}"
+                        height="{{ mt_featured_image.height }}"
+                        itemprop="image" 
+                        src="{{ mt_featured_image.preview_image | image_url: crop: false, width: MagicToolboxThumbnailImageSize, height: MagicToolboxThumbnailImageSize }}" 
+                        {% if MagicToolboxRetinaMainImage == 'Yes' %}srcset="{{ mt_featured_image.preview_image | image_url: crop: false, width: MagicToolboxThumbnailImageSize2x, height: MagicToolboxThumbnailImageSize2x }} 2x" {% endif %}
+                        alt="{{ mt_featured_image.alt | escape }}" />
+            </a>
+            
+            {% if MagicToolboxShowMessage == 'Yes' %}
+            <div class="MagicToolboxMessage">{{ MagicToolboxMessage }}</div>
+            {% endif %}
+        </div>
+        {% for image in product.media %}
+          {% if image.media_type == 'video' %}
+        
+            <div data-processed="1" data-slide-num="{{ forloop.index0 }}" class="MagicToolboxSlide {% if first_image_is_video and forloop.index0 ==   0 %}active-magic-slide{% endif %}" data-slide-id="video-{{ image.id }}">
+                    <div class="magic-video-container" style="padding-bottom:{{ 1 | divided_by: image.aspect_ratio | times: 100 }}%">
+                      {% assign image_size = MagicToolboxThumbnailImageSize | append: 'x' %}
+                      {{ image | video_tag: controls: true, image_size: image_size }}
+                    </div>
+            </div>
+          
+          {% elsif image.media_type == 'model' %}
+        
+            <div data-slide-num="{{ forloop.index0 }}" class="MagicToolboxSlide {% if first_image_is_video and forloop.index0 ==   0 %}active-magic-slide{% endif %}" data-slide-id="model-{{ image.id }}">
+              <div class="magic-video-container" style="padding-bottom:{{ 1 | divided_by: image.preview_image.aspect_ratio | times: 100 }}%">
+                {{ image | model_viewer_tag }}          
+              </div>
+            </div>
+          
+          {% elsif image.media_type == 'external_video' %}
+        
+            <div data-processed="1" data-slide-num="{{ forloop.index0 }}" class="MagicToolboxSlide {% if first_image_is_video and forloop.index0 ==   0 %}active-magic-slide{% endif %}" data-slide-id="video-{{ image.id }}">
+                    <div class="magic-video-container" style="padding-bottom:{{ 1 | divided_by: image.aspect_ratio | times: 100 }}%">
+                {{ image | external_video_tag }}
+                    </div>
+            </div>
+          
+          {% elsif image.alt contains 'youtube' or image.alt contains 'vimeo' or image.alt contains 'youtu.be' or image.alt contains 'sproutvide'  or image.alt contains 'vids.io'  %}
+                <div data-slide-num="{{ forloop.index0 }}" class="MagicToolboxSlide {% if first_image_is_video and forloop.index0 ==  0 %}active-magic-slide{% endif %}" data-slide-id="video-{{ image.id }}" data-video-url="{{ image.alt }}"></div>
+            {% endif %}
+        {% endfor %}
+      
+        {% if MagicToolboxSirvID != '' %}
+            <div class="MagicToolboxSlide" data-slide-id="spin">
+              <div class="Sirv" id="sirv-spin" data-options="autostart:off">
+                    {% assign spinURL = 'https://{account-id}.sirv.com/' | append : MagicToolboxSirvSpinsPath %}
+                    {% assign spinURL = spinURL | replace: '{account-id}', MagicToolboxSirvID %}
+                    {% assign spinURL = spinURL | replace: '{product-id}', product.id %}
+
+                    {%  assign sku = product.variants.first.sku %}
+                    {%  if sku == '' or sku == null %}
+                      {%  assign sku = product.handle %}
+                    {% endif %}
+                    {% assign sku = sku | replace: '/', '-' %}
+
+                    {% assign spinURL = spinURL | replace: '{product-sku}', sku %}
+                    
+                    {% assign product_vendor  = product.vendor  | escape %}
+                    {% assign spinURL = spinURL | replace: '{vendor}', product_vendor %}
+                    {% assign product_name  = product.title  | escape %}
+                    {% assign spinURL = spinURL | replace: '{product-name}', product_name %}
+
+                    {% assign override_id = product.id | append: '-' | append: product.variants.first.id %}
+                    {% if product.metafields.mzp.spinoverrides and product.metafields.mzp.spinoverrides[override_id]  and product.metafields.mzp.spinoverrides[override_id]!='' %}
+                      {% assign spinURL = 'https://{account-id}.sirv.com' | append : product.metafields.mzp.spinoverrides[override_id] %}
+                      {% assign spinURL = spinURL | replace: '{account-id}', MagicToolboxSirvID %}
+                    {% endif %}
+
+                    {% assign override_id = product.id | append: '-'%}
+                    {% if product.metafields.mzp.spinoverrides and product.metafields.mzp.spinoverrides[override_id]  and product.metafields.mzp.spinoverrides[override_id]!='' %}
+                      {% assign spinURL = 'https://{account-id}.sirv.com' | append : product.metafields.mzp.spinoverrides[override_id] %}
+                      {% assign spinURL = spinURL | replace: '{account-id}', MagicToolboxSirvID %}
+                    {% endif %}
+
+                    <div data-id="{{ spinURL }}" data-src="{{ spinURL }}"></div>
+                  
+                    {% assign list_of_urls = '@' | append: spinURL | append: '@' %}
+                  
+                    {% for variant in product.variants %}
+                        {% assign spinURL = 'https://{account-id}.sirv.com/' | append : MagicToolboxSirvSpinsPath_v %}
+                        {% assign spinURL = spinURL | replace: '{account-id}', MagicToolboxSirvID %}
+                        {% assign spinURL = spinURL | replace: '{product-id}', product.id %}
+                        
+                        {% assign variant_sku = variant.sku %}
+                        {% if variant_sku == blank or variant_sku == '' %}
+                          {% assign variant_sku = variant.id %}
+                        {% endif %}
+                        {% assign variant_sku = variant_sku | replace: '/', '-' %}
+
+
+                        {% for i in (1..3) %}
+                            {% assign optionIndexName = 'option' | append: i %}
+                            {% assign optionIndexVar = '{option' | append: i  | append: '}' %}
+                            {% assign spinURL = spinURL | replace: optionIndexVar, variant[optionIndexName] %}
+
+                            {% assign optionIndex = i | minus: 1 %}
+                            {% assign optionIndexVar = '{' | append: product.options[optionIndex] | append: '}' %}                            
+                            {% assign optionIndexName = 'option' | append: i %}                            
+                            {% assign spinURL = spinURL | replace: optionIndexVar, variant[optionIndexName] %}
+                        {% endfor %}
+                  
+                        {% assign spinURL = spinURL | replace: '{product-sku}', variant_sku %}
+                        {% assign product_vendor  = product.vendor  | escape %}
+                        {% assign spinURL = spinURL | replace: '{vendor}', product_vendor %}
+                        {% assign product_name  = product.title  | escape %}
+                        
+                        {% assign spinURL = spinURL | replace: '{product-name}', product_name %}
+                  
+                      
+                      {% assign override_id = product.id | append: '-' | append: variant.id %}
+                      {% if product.metafields.mzp.spinoverrides and product.metafields.mzp.spinoverrides[override_id]  and product.metafields.mzp.spinoverrides[override_id]!='' %}
+                        {% assign spinURL = 'https://{account-id}.sirv.com' | append : product.metafields.mzp.spinoverrides[override_id] %}
+                        {% assign spinURL = spinURL | replace: '{account-id}', MagicToolboxSirvID %}
+                      {% endif %}
+
+                      {% assign test_url = '@' | append: spinURL | append : '@' %}
+                      {% unless list_of_urls contains test_url %}
+                          <div data-id="{{ spinURL }}" data-src="{{ spinURL }}"></div>
+                        {% assign list_of_urls = list_of_urls | append: test_url %}
+                      {% endunless %}
+                    {% endfor %}
+                  
+                </div>
+          </div>
+        {% endif %}
+        
+    </div>
+
+    {% if MagicToolboxThumbnailsLayout == 'bottom' %}
+        {{ MagicToolboxSelectors }}
+    {% endif %}
+
+</div>
+
+{% capture magic_cache %}
+{% render 'magiczoomplus.cache' %}
+{% endcapture %}
+
+{% unless magic_cache contains 'Liquid error' %}
+{{magic_cache}}
+{% endunless %}
+
+{% if MagicToolboxThumbnailsLayout == 'left' or MagicToolboxThumbnailsLayout == 'right'  %}
+<script type="text/javascript">
+function updateScroll() {    
+      $scroll = document.querySelector('.MagicScroll');
+      if ($scroll && typeof $scroll != 'undefined') {
+          $attr = $scroll.getAttribute('data-options');
+          if ($attr !== null) {
+              if (window.matchMedia("(max-width: 767px)").matches) {
+                $scroll.setAttribute('data-options', $attr.replace(/orientation *\: *[a-zA-Z]{1,}/gm, 'orientation:horizontal;').replace(/height *\: *[a-zA-Z]{1,}/gm, 'height:auto;') );
+              } else {
+                $scroll.setAttribute('data-options', $attr.replace(/orientation *\: *[a-zA-Z]{1,}/gm, 'orientation:vertical;').replace(/height *\: *[a-zA-Z]{1,}/gm, 'height:100%;') );
+              }
+          }
+      }
+}
+updateScroll();
+var windowState = window.matchMedia("(max-width: 767px)").matches?'mobile':'horizontal';
+addEventListener("resize", (event) => { 
+  var newState = window.matchMedia("(max-width: 767px)").matches?'mobile':'horizontal';
+  if (newState != windowState) {
+    var $started = document.querySelector('.MagicScroll .mcs-item') != null;
+    windowState = newState;
+    if ($started) MagicScroll.stop();
+    updateScroll();
+    if ($started) MagicScroll.start();
+  }
+});
+</script>
+{% endif %}
+
+<script type="text/javascript">
+var SirvID = '{{ MagicToolboxSirvID }}';
+var SirvSpinsPath = '{{ MagicToolboxSirvSpinsPath }}';
+var SirvSpinsPath_v = '{{ MagicToolboxSirvSpinsPath_v }}';
+var SirvProductID = {{ product.id }}, SirvProductSKU = '{{ product.variants.first.sku }}', SirvProductName = '{{ product.title  | escape }}', SirvProductVendor = '{{ product.vendor  | escape }}';
+var SirvMaxHeight = {{ SirvMaxHeight }};
+var SirvSpinsPathTransform = '{{ MagicToolboxSirvSpinsPathTransform }}';
+var SirvCombineVariants = '{{ MagicToolboxSirvCombineVariants }}';
+var SirvUseCache = '{{ MagicToolboxSirvUseCache }}';
+
+if (SirvCombineVariants == 'No') {
+  SirvSpinsPathTransform = '';
+}
+
+if (SirvProductSKU == '') {
+  SirvProductSKU = '{{ product.handle }}';
+}    
+
+{% if MagicToolboxThumbnailsLayout == 'left' or MagicToolboxThumbnailsLayout == 'right' %}
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    $scroll = document.getElementById('msc-selectors-container');
+    if ($scroll && typeof $scroll != 'undefined') {
+      $attr = $scroll.getAttribute('data-options');
+      if ($attr !== null) {
+        $scroll.setAttribute('data-options',$attr.replace(/orientation *\: *[a-zA-Z]{1,}/gm,'orientation:horizontal;items:auto;'));
+      }
+    }
+    {% if MagicToolboxMobileThumbnais == 'bullets' %}
+      var $c = document.querySelector('.MagicToolboxSelectorsContainer');
+      $c.setAttribute('class', $c.getAttribute('class') + ' no-magic-scroll');
+      if ($scroll) {
+        $scroll.setAttribute('class', '');
+      }      
+    {% endif %}
+  }
+{% endif %}
+
+var SirvSpinOverrides = {{ product.metafields.mzp.spinoverrides | json }};
+if (SirvSpinOverrides == null) {
+  SirvSpinOverrides = {};
+}
+    
+var SirvIconURL = '{{ MagicToolboxSirvIconURL }}';
+var SirvSpinPosition = '{{ MagicToolboxSirvSpinPosition }}';
+var SirvVariants = {}, SirvVariantsSKU = {};
+{% for variant in product.variants %}
+variant = {{ variant | json }};
+SirvVariants[variant.id] = false;
+SirvVariantsSKU[variant.id] = {{ variant | json }};
+{% endfor %}  
+var currentVariantID = {{ mt_current_variant.id | default: 0 }};
+var mt_product = {{ product | json }};
+
+
+var $spinURL =
+    SirvSpinsPath.replace(/{product\-id}/g, SirvProductID)
+    .replace(/{product\-sku}/g, SirvProductSKU)
+    .replace(/{vendor}/g, SirvProductVendor)
+    .replace(/{product\-name}/g, SirvProductName);
+
+if (typeof SirvSpinOverrides != 'undefined' && typeof SirvSpinOverrides[SirvProductID + '-' + currentVariantID] != 'undefined' && SirvSpinOverrides[SirvProductID + '-' + currentVariantID] != '') {
+    $spinURL = SirvSpinOverrides[SirvProductID + '-' + currentVariantID].replace(/^\//gmi, '');
+
+}
+
+if (typeof SirvCache != 'undefined' && typeof SirvCache[$spinURL] != 'undefined' && SirvSpinPosition == 'first') {
+    var $slidesContainer = document.querySelector('.MagicToolboxSlides');
+    if ($slidesContainer) {
+        $slidesContainer.querySelector('.MagicToolboxSlide.active-magic-slide').setAttribute('class', 'MagicToolboxSlide')
+        $slidesContainer.querySelector('.MagicToolboxSlide[data-slide-id="spin"]').setAttribute('class', 'MagicToolboxSlide active-magic-slide')
+        
+
+    }
+}
+
+var $SirvItems = document.querySelectorAll('.Sirv > div[data-id]');
+if ($SirvItems) {
+  $SirvItems.forEach(function($elm){
+    $elm.setAttribute( 'data-id', $elm.getAttribute('data-id').replace(/[^a-zA-Z0-9]/gmi,'') )
+  })
+}
+
+</script><!-- sirv custom CSS --><style type="text/css"></style><!-- sirv custom JS --><script></script>

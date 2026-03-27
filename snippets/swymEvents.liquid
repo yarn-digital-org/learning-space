@@ -1,0 +1,32 @@
+<script defer>
+function swymCallbackFn(swat){
+	 swat.evtLayer.addEventListener('sw:addedtocart', function(e) {
+        getCartItems(function(){
+          getCart()
+        })
+        
+	});
+     swat.evtLayer.addEventListener('sw:addedalltocart', function(e) {
+        getCartItems(function(){
+            getCart()
+        })
+      
+    });
+}
+function getCartItems(callback){
+    var items = [];
+          {% for line_item in cart.items %}
+                var item = {}
+                item.handle = "{{line_item.product.handle}}"
+                item.is_tax_free = "{{ line_item.product.metafields.global.is_tax_free }}"
+                items.push(item);
+           {% endfor %}
+            window.gulshanCart = items;
+  callback()
+}
+
+if(!window.SwymCallbacks){
+	window.SwymCallbacks = [];
+}
+window.SwymCallbacks.push(swymCallbackFn);
+</script>

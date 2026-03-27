@@ -1,0 +1,7 @@
+{% assign custom_classes = 'heading-bg' %}
+<div class="{{ custom_classes }}">
+	<div class="container">
+		<h1 class="text-center">{{ title | escape }}</h1> 
+        <p>{{ description | strip_html  }}</p>
+    </div>
+</div>

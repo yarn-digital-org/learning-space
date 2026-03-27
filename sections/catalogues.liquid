@@ -1,0 +1,47 @@
+{% include 'breadcrumbs', title: page.title %}
+
+         <div class="row d-flex justify-content-center ">
+        {%- for block in section.blocks -%}
+            {%- assign main_image = block.settings.image -%}
+        <div class="text-center col-md-3 d-flex justify-content-center col-12">
+          <div class="feature-col_img">
+            <a href="{{ block.settings.pdf_link }}" target="_blank" rel="noopener noreferrer"> <img src="{{ main_image | img_url: "1068x768" }}" alt="Catalogue-image"/></a>
+          </div>
+        </div>
+      
+    {%- endfor -%}
+    </div>
+
+{% schema %}
+{
+  "name": "Catalogues Section",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Catalogue",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Main Image"
+        },
+        {
+          "type": "url",
+          "id": "pdf_link",
+          "label": "PDF Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Catalogue Section",
+      "category": "Image",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

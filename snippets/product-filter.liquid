@@ -1,0 +1,161 @@
+{% if settings.enable_filter %}
+<div class="col-12 col-md-3 filters-col">
+    
+    <h4 class="mb-5">Filters</h4>
+    <form id="filter_test_form">
+        <div class="accordion accordion-flush" id="accordionFilter">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingCollections">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collections" aria-expanded="false" aria-controls="flush-collections">
+                   Collections
+                  </button>
+                </h2>
+                <div id="flush-collections" class="accordion-collapse collapse" aria-labelledby="flush-headingCollections" data-bs-parent="#accordionFilter">
+                    <div class="accordion-body">
+                        <select class="form-control menu-collections mt-3">
+                            <option value="/all" aria-readonly="true">All Categories</option>
+                            {% for filter_collection in collections %}
+                            {% if filter_collection.handle != "best-seller" and filter_collection.handle != 'featured' and filter_collection.handle != 'new-products' %}
+                            <option {% if collection.handle==filter_collection.handle %} selected {% endif %} value="{{ filter_collection.handle }}">{{ filter_collection.title }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            {% for filter in collection.filters %}
+            {% if filter.label == 'Brand' %}
+            <div class="accordion-item">
+                <h6 class="accordion-header" id="flush-headingBrands">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-Brands" aria-expanded="{% if filtervendor %} true {% else %} false {% endif %}" aria-controls="flush-Brands">
+                    {{ filter.label | escape }}
+                  </button>
+                  {% if filtervendor %}
+                        <small class="float-end clear" onclick="clearfilter('filter.p.vendor')">Clear</small>
+                    {% endif %}
+                </h6>
+                <div id="flush-Brands" class="accordion-collapse collapse {% if filtervendor %} show {% endif %}" aria-labelledby="flush-headingBrands" data-bs-parent="#accordionFilter">
+                    <div class="accordion-body">
+                        {% for product_vendor in filter.values %}
+                        <input class="btn-check filter_vendor " type="checkbox" name="filter.p.vendor" value="{{ product_vendor.value }}" id="filter_vendor_{{ forloop.index }}" {% if product_vendor.active %} checked {% endif %}>
+                        <label class="btn btn-outline-secondary btn-sm mb-2 mt-3  {% if product_vendor.active %}checked{% endif %}" for="filter_vendor_{{ forloop.index }}"> {{ product_vendor.label | escape }} </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+           
+            
+            {% if filter.label == 'Size' %}
+            <div class="accordion-item">
+                <h6 class="accordion-header" id="flush-headingSize">
+                    {{ filter.label | escape }}
+                  {% if filtersize %}
+                        <small class="float-end clear" onclick="clearfilter('filter.v.option.size')">Clear</small>
+                     {% endif %}
+                </h6>
+                <div id="flush-Size" aria-labelledby="flush-headingSize" data-bs-parent="#accordionFilter">
+                    <div class="accordion-body">
+                        
+                        {% for value in filter.values %}
+                        {% if value.count > 0 %}
+                        <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" class="size-filter btn-check" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count==0 and value.active==false %}disabled{% endif %}>
+                        <label class="btn btn-outline-secondary btn-sm mb-2 mt-2 {% if value.active %}checked{% endif %}" for="Filter-{{ filter.label | escape }}-{{ forloop.index }}">{{ value.label | escape  }} ({{ value.count }})</label>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+            {% if filter.label == 'Color' %}
+            <div class="accordion-item">
+                <h6 class="accordion-header" id="flush-headingColor">
+                  <button class="accordion-button collapsed non-collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-Color" aria-expanded="true" aria-controls="flush-Color">
+                    {{ filter.label | escape }}
+                  </button>
+                  {% if filtercolor %}
+                    <small class="float-end clear" onclick="clearfilter('filter.v.option.color')">Clear</small>
+                  {% endif %}
+                </h6>
+                <div id="flush-Color" class="accordion-collapse collapse show" aria-labelledby="flush-headingColor" data-bs-parent="#accordionFilter">
+                    <div class="accordion-body">
+                        <ul>
+                            {% for value in filter.values %}
+                            {% if value.count > 0 %}
+                                <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" class="color-filter btn-check" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count==0 and value.active==false %}disabled{% endif %}>
+                                <label class="btn btn-outline-secondary mb-2  btn-sm bg-{{ value.label | downcase  }}-600   {% if value.active %}checked{% endif %}" for="Filter-{{ filter.label | escape }}-{{ forloop.index }}">{{ value.label | escape }} ({{ value.count }})</label>
+                                {% endif %}
+                                {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+            {% if filter.label == 'Age' and filter.values.size > 0 %}
+            <div class="accordion-item">
+                <h6 class="accordion-header" id="flush-headingAge">
+                  <button class="accordion-button collapsed non-collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-Age" aria-expanded="true" aria-controls="flush-Age">
+                    Age
+                  </button>
+              {% if filterage %}
+                    <small class="float-end clear" onclick="clearfilter('filter.v.option.age')">Clear</small>
+                  {% endif %}
+                </h6>
+                <div id="flush-Color" class="accordion-collapse collapse show" aria-labelledby="flush-headingAge" data-bs-parent="#accordionFilter">
+                    <div class="accordion-body">
+                        <ul>
+                            {% for value in filter.values %}
+                            {% if value.count > 0 %}
+                                <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" class="color-filter btn-check" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count==0 and value.active==false %}disabled{% endif %}>
+                                <label class="btn btn-outline-secondary mb-2  btn-sm bg-{{ value.label | downcase  }}-600   {% if value.active %}checked{% endif %}" for="Filter-{{ filter.label | escape }}-{{ forloop.index }}">{{ value.label | escape }} ({{ value.count }})</label>
+                                {% endif %}
+                                {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% if filterMinPrice > 0 and filterMaxPrice > 0 %}
+            <div class="accordion-item">
+                <h6 class="" id="flush-headingPriceRange">
+                    Prices Range
+                </h6>
+                <div id="flush-PriceRange">
+                    <div class="accordion-body">
+                        <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+                        <div id="slider-range"></div>
+                        <input type="hidden" name="filter.v.price.gte" id="minprice" value="{{ filterMinPrice | divided_by: 100 | escape }}">
+                        <input type="hidden" name="filter.v.price.lte" id="maxprice" value="{{ filterMaxPrice | divided_by: 100 | escape }}">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="accordion-item">
+                <h6 class="" id="flush-headingPriceRange">
+                    Prices Range
+                </h6>
+                <ul class="tag-filters">
+                    {% for tag in collection.all_tags %}
+                      {% if current_tags contains tag %}
+                        <li class="tag-filters__item active">{{ tag | link_to_remove_tag: tag }}</li>
+                      {% else %}
+                        <li class="tag-filters__item">{{ tag | link_to_add_tag: tag }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+            </div> -->
+            {% endif %}
+
+            
+        </div>
+    </form>
+</div>
+{% endif %}
+<style>
+    .non-collapsed::after{
+        content: none !important
+    }
+</style>

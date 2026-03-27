@@ -1,0 +1,530 @@
+{% capture currencyString %}{{ shop.money_format }}{% endcapture %}
+{% assign tempArray = currencyString | split: '{' %}
+{% assign currencySymbol = tempArray.first %}
+{% assign default_address = customer.default_address %}
+
+{% include 'breadcrumbs' , title: 'Cart' %} 
+<div class="container-fluid cart-section">
+    {% if cart.item_count > 0 %}
+        <div class="row mb-5">
+            <div class="col-12 col-md-8 ">
+                <div class="card card-col cart__contents critical-hidden" >
+                   
+                        <h5>
+                            {{ 'sections.cart.my_cart' | t }}
+                            <span class="float-end">{{cart.items.size | escape }} item(s)</span>
+                        </h5>
+                        {% for item in cart.items %}
+                          {% comment %}
+                          {{ item.id | escape }}
+                          {% endcomment %}
+                        {% assign isVatRelief = false %}
+                        {% if item.variant.metafields.global.vat_relief_variant == true %}
+                         {% assign isVatRelief = true %}
+                          
+                        {%endif%}
+                            {% assign minus_qty = item.quantity| minus: 1 %}
+                            {% assign plus_qty = item.quantity| plus: 1 %}
+                            <div class="row cart-contant p-3" id="cart-warning">
+                                <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                                    {% if item.image %}
+                                        <img src="{{ item.image | img_url: '300x' }}"  class="img-thumbnail" alt="{{ item.image.alt | escape }}" loading="lazy" width="150" height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}">
+                                    {% else %}
+                                    {{ 'product-1' | placeholder_svg_tag: "img-thumbnail" }}
+                                        <!-- <img src="{{ 'no-image.png' | asset_url }}" class="img-thumbnail" loading="lazy" width="150" height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}" alt="{{ 'no-image.png' | asset_url }}"> -->
+                                    {% endif %}
+                                </div>
+                                <div class="col-6 col-sm-4 col-md-4 col-lg-4">
+                                    <p>
+                                        <a href="{{ item.url }}">
+                                            {{ item.title }}
+                                        </a>                                        
+                                    </p>
+                                  <p>
+                                    <b>SKU:</b><span> {{ item.sku }}</span>
+                                  </p>
+                                        {% if isVatRelief %}
+                                        <span class="badge rounded-pill text-bg-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Parents and carers of chronically sick or disabled children are eligible to receive VAT relief, this will be applied at checkout">Vat Relief</span>
+                                        {% endif %}
+                                    {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil -%}
+                                        <dl>
+                                            {%- if item.product.has_only_default_variant == false -%}
+                                                {%- for option in item.options_with_values -%}
+                                                  {% if option.name contains 'denominations' or  option.name contains 'VAT' %}
+                                                    {% else %}
+                                                    <div class="product-option">
+                                                        <p><b>{{ option.name }}:</b> <span>{{ option.value }}</span></p>
+                                                    </div>
+                                                     {%- endif -%}
+                                                {%- endfor -%}
+                                            {%- endif -%}
+                                      
+                                            {%- for property in item.properties -%}
+                                              
+                                                {%- assign property_first_char = property.first | slice: 0 -%}
+                                                {%- if property.last != blank and property_first_char != '_' and property.first != 'tax_free' and property.first != 'ex_price' and property.first != 'is_vat_relief' and property.first !='personalized' -%}
+                                                    <div class="product-option">
+                                                        <dt>{{ property.first }}: </dt>
+                                                        <dd>
+                                                            {%- if property.last contains '/uploads/' -%}
+                                                                <a href="{{ property.last }}" class="link" target="_blank">
+                                                                    {{ property.last | split: '/' | last }}
+                                                                </a>
+                                                            {%- else -%}
+                                                            {% if property.last contains "fullname" %}
+                                                            {%- for lastproperty in property.last -%}
+                                                            <dt>{{ lastproperty.first }}:</dt>
+                                                            <dd>{{ lastproperty.last }} </dd>
+                                                            {%- endfor -%}
+                                                            {% else 
+                                                                {{ property.last }}
+                                                              {%- endif -%}
+                                                            {%- endif -%}
+
+                                                            {%- endif -%}
+                                                        </dd>
+                                                    </div>
+                                                {%- endif -%}
+                                            {%- endfor -%}
+                                        </dl>
+                                        <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                                    {%- endif -%}
+                                    {% comment %}
+                                    {%- if item.original_price != item.final_price -%}
+                                    
+                                        <div class="cart-item__discounted-prices">
+                                            <span class="visually-hidden">
+                                                {{ 'products.product.price.regular_price' | t }}
+                                            </span>
+                                            <s class="cart-item__old-price product-option">
+                                                {{- item.original_price | money -}}
+                                            </s>
+                                            <span class="visually-hidden">
+                                                {{ 'products.product.price.sale_price' | t }}
+                                            </span>
+                                            <strong class="cart-item__final-price product-option">
+                                                {{ item.final_price | money }}
+                                            </strong>
+                                        </div>
+                                    {%- else 
+  
+                                       {% assign priceExOriginalPrice =  item.original_price | divided_by:1.20 %}
+                                       {% assign priceExOriginalLineClass =  ''  %}
+                                       {% assign priceOriginalLineLabel =  'incl. VAT'  %}
+                                      {% if item.product.metafields.global.is_tax_free == true %}
+                                          {% assign priceExOriginalPrice =  item.original_price  %}
+                                          {% assign priceExOriginalLineClass =  'style="visibility:hidden"'  %}
+                                          {% assign priceOriginalLineLabel =  'No. VAT'  %}
+                                      {% endif %} 
+                                            
+                                            <b class="ex-vat-price" {{ priceExOriginalLineClass }}>           
+                                          
+                                                {{ priceExOriginalPrice | money }}    
+                                                
+                                                <span> ex. VAT</span> 
+                                            </b>
+                                            <p>
+                                                <b class="inc-vat-price">
+                                                        {{ item.original_price  | money}}
+                                                        <span> {{ priceOriginalLineLabel }}</span>
+                                                </b>
+                                            </p>
+                                            
+                                    {%- endif -%}
+                                    {% endcomment %}
+                                </div>
+                                 
+                                <div class="col-6 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="input-group mb-3"> 
+                                        <div class="product-form__input product-form__quantity">
+                                            <quantity-input class="quantity input-group qty-col mb-3">
+                                                <button 
+                                                    class="quantity__button no-js-hidden input-group-text" 
+                                                    name="minus" 
+                                                    type="button"
+                                                    onClick="updatecart('{{ item.id }}', '{{ minus_qty }}')">
+                                                -
+                                                </button>
+                                            
+                                                <input 
+                                                    class="quantity__input form-control" 
+                                                    type="number" 
+                                                    name="updates[]"  
+                                                    value="{{ item.quantity }}"  
+                                                    min="0" 
+                                                    id="Quantity-{{ item.index | plus: 1 }}"
+                                                >
+                                            
+                                                <button 
+                                                    class="quantity__button no-js-hidden input-group-text" 
+                                                    name="plus" 
+                                                    type="button"
+                                                    onClick="updatecart('{{ item.id }}', '{{ plus_qty }}')">
+                                                +
+                                                </button>
+                                            
+                                            </quantity-input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-2 col-md-2 col-lg-2 cart-rate-remove d-flex align-content-center flex-wrap">
+                                    {%- if item.original_line_price != item.final_line_price -%}
+                                    <dl class="cart-item__discounted-prices">
+                                        <dt class="visually-hidden">
+                                            {{ 'products.product.price.regular_price' | t }}
+                                        </dt>
+                                        <dd>
+                                            <s class="cart-item__old-price price price--end">
+                                                {{ item.original_line_price | money  }}
+                                            </s>
+                                        </dd>
+                                        <dt class="visually-hidden">
+                                            {{ 'products.product.price.sale_price' | t }}
+                                        </dt>
+                                  
+                                      {% if item.properties.ex_price %}
+                                           {% assign priceExFinalLinePrice =  item.properties.ex_price | times: item.quantity  %}
+                                      {% else %}
+                                           {% assign priceExFinalLinePrice =  0  %}
+                                      {% endif %}
+                                       {% assign priceExFinalLineClass =  ''  %}
+                                       {% assign priceFinalLineLabel =  'incl. VAT'  %}
+                                      
+                                      {% if item.product.metafields.global.is_tax_free == true  %}
+                                          {% assign priceExFinalLinePrice =  item.final_line_price  %}
+                                          {% assign priceExFinalLineClass =  'style="visibility:hidden"'  %}
+                                          {% assign priceFinalLineLabel =  'No. VAT'  %}
+                                      {% endif %}  
+                                     {% if item.product.tags contains 'gift-card' %}
+                                          <dd class="ex-vat-price">
+                                            {{  item.original_line_price | money  }}
+                                        </dd>
+                                       {% else %}
+                                        <dd class="price price--end" {{ priceExFinalLineClass }}>
+                                            <b class="ex-vat-pric">
+
+                                                    
+                                                {{ priceExFinalLinePrice  | money  }}
+                                                
+                                                <span> excl. VAT</span></b>
+                                            
+                                        </dd>
+                                        <dd class="price price--end">
+                                            <b class="inc-vat-price">
+                                                    {{ item.final_line_price  | money}}
+                                                <span> {{ priceFinalLineLabel }}</span>
+                                            </b>
+                                            
+                                        </dd>
+                                      {% endif %}
+                                    </dl>
+                                           
+                                    {%- else -%}
+                                    <span class="price price--end">
+                                     
+                                        {% if item.properties.ex_price %}
+                                           {% assign priceExLinePrice =  item.properties.ex_price | times:100 | times: item.quantity %}
+                                      {% else %}
+                                           {% assign priceExLinePrice =  item.original_line_price  | divided_by: 1.20 %}
+                                      {% endif %}
+                                       {% assign priceExLineClass =  ''  %}
+                                       {% assign priceLineLabel =  'incl. VAT'  %}
+                                      {% if item.product.metafields.global.is_tax_free == true  %}
+                                          {% assign priceExLinePrice =  item.original_line_price  %}
+                                          {% assign priceExLineClass =  'style="visibility:hidden"'  %}
+                                          {% assign priceLineLabel =  'No. VAT'  %}
+                                      {% endif %}  
+                                      {% if item.product.tags contains 'gift-card' %}
+                                        <b class="ex-vat-price">
+                                            {{  item.original_line_price | money  }}
+                                        </b>
+                                        {% else %}
+
+                                        {% if  isVatRelief  %}  
+                                          <b class="ex-vat-price" {{ priceExLineClass }}>
+                                              {{ item.original_line_price  | money }}
+                                            <span> excl. VAT</span>
+                                          </b> 
+                                          <p>
+                                            <b class="inc-vat-price">
+                                                   {{ item.original_line_price | times:1.20  | money }}
+                                                <span> {{ priceLineLabel }}</span>
+                                            </b>
+                                          </p>
+                                      
+                                      {% else %}
+                                        <b class="ex-vat-price" {{ priceExLineClass }}>
+
+                                       
+                                            {{ priceExLinePrice | money  }}
+                                            
+                                            
+                                            <span> excl. VAT</span></b> 
+                                        <p>
+                                            <b class="inc-vat-price">
+                                                    {{ item.original_line_price  | money }}
+                                                <span> {{ priceLineLabel }}</span>
+                                            </b>
+                                        </p>
+                                      {% endif %}  
+                                      {% endif %}
+                                    </span>
+                                    {%- endif -%}
+                                    {%- if item.variant.available and item.unit_price_measurement -%}
+                                    <div class="unit-price caption">
+                                        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                        {{ item.variant.unit_price | money }}
+                                        <span aria-hidden="true">/</span>
+                                        <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+                                        {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                                        {{- item.variant.unit_price_measurement.reference_value -}}
+                                        {%- endif -%}
+                                        {{ item.variant.unit_price_measurement.reference_unit }}
+                                    </div>
+                                    {%- endif -%}
+                                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                                        <img src="{{ 'remove.svg' | asset_url }}" /> Remove
+                                    </a>
+                                </div>
+                                <hr>
+                                
+                            </div>
+                        {% endfor %}
+                        <div class="d-grid gap-2 d-md-block mt-5">
+                            <a class="btn btn-button" href="{{ routes.all_products_collection_url }}">Continue Shopping</a>
+                            <a class="btn float-end btn-a" href="/cart/clear" type="button">Clear Cart</a>
+                        </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card card-col mb-4 hide">
+                    <h5>
+                        {{ 'sections.cart.shipping_info' | t }}
+                    </h5>
+                    <div class="cart-contant p-3">
+                        <form class="form-section" onsubmit="return false;">
+                            <div class="mb-3">
+                                <div class="alert alert-danger" id="shipping_calculate_error"></div>
+                                <p id="shipping-rates-feedback"></p>
+                                <label for="" class="form-label">{{ 'sections.cart.country' | t }}</label>
+                                <select id="address_country" class="form-control" name="address[country]" data-default="{% if shop.customer_accounts_enabled %}{% if customer.default_address.country  %}{{ customer.default_address.country }}{% else %}United Kingdom{% endif %}{% else %}United Kingdom{% endif %}">{{ country_option_tags }}</select>
+                            </div>
+                            
+                            
+                            <div class="mb-3">
+                                <p class="field" id="address_province_container">
+                                    <label for="address_province"class="form-label" id="address_province_label">Province</label>
+                                    <select id="address_province" class="form-control province-select" name="address[province]" data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}"></select>
+                                </p>  
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label pro">Postal / Zip Code</label>
+                                <input type="text" class="form-control" id="address_zip" name="address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} />
+                            </div>
+                            <div class="text-center">
+                                <input type="button" id="calc_shipping_btn" class="get-rates btn button" value="{{ settings.shipping_calculator_submit_button_label | default: 'Calculate shipping' }}" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+             
+
+                <div class="card card-col cart-table">
+                    <h5>
+                        {{ 'sections.cart.order_summary' | t }}
+                    </h5>
+                    <div class="cart-contant">
+                        {% assign includeTaxPrice = cart.total_price | divided_by:1.20 %}
+                        {% assign excludeTaxPrice = cart.total_price | money_without_currency  %}
+                        <table width="100%" cellpadding="0" cellspacing="0" id="sub-total-table">
+                            <tr>
+                                <td>{{ 'sections.cart.subtotal' | t }}</td>
+                                <td align="right"> 
+                                   <b class="ex-vat-price">{{ cart.total_price | money  }}</b>
+                                    <b class="inc-vat-price hide">{{ includeTaxPrice | money }}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'sections.cart.shipping' | t }}</td>
+                                <td align="right">
+                                    <span id="estimated-shipping-currency" style="display: none;">
+                                        <b>{{ currencySymbol }}</b>
+                                    </span>  
+                                    <span id="estimated-shipping">
+                                        {% if customer %}
+                                        <div class="spinner-grow spinner-grow-sm" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                          </div>
+                                          {% endif %}
+                                    </span>    
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td class="coupon-code">
+                                    <span class="coupon_code_label">{{ 'sections.cart.add_coupon_code' | t }}</span>
+                                    <img src="{{ 'add-cart-arrow.svg' | asset_url }}"> 
+                                    
+                                </td>
+                                <td align="right"  id="discount_td" class="hide">
+                                    
+                                </td>
+                            </tr> 
+                            <tr>
+                                <td colspan="2" id="discountinfo">
+                                    
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <td class="cart-total">
+                                    {{ 'sections.cart.total' | t }}
+                                </td>
+                                <td align="right" class="cart-total-price">
+                                    {% capture new_var %}{{ window.defaultVatRate }} {% endcapture %}
+                                    <b class="ex-vat-price" id="cart_total_ex" data-rate="{{ excludeTaxPrice }}" data-currency="{{ currencySymbol }}">{{ cart.total_price | money }}</b>
+                                    <b class="inc-vat-price hide" id="cart_total_inc" data-rate="{{ includeTaxPrice | money_without_currency  }}" data-currency="{{ currencySymbol }}">{{ includeTaxPrice | money | replace: ",", "." }}</b>
+                                </td>
+
+                            </tr>
+                            <tr id="discounted_ff" class="hide">
+                                <td  id="discounted_ff_label">
+                                  Applied Family Fund
+                                </td>
+                                <td align="right">
+                                    <b>{{ currencySymbol }} <span id="discounted_ff_amount"></span></b>
+                                </td>
+
+                            </tr>
+                            <tr id="discounted_vat" class="hide">
+                                <td  id="discounted_vat_label">
+                                    Applied VAT Relief
+                                </td>
+                                <td align="right">
+                                    <b>{{ currencySymbol }} <span id="discounted_vat_amount"></span></b>
+                                </td>
+
+                            </tr>
+                            <tr id="discounted_store_credit" class="hide">
+                                <td  id="discounted_store_credit_label">
+                                    Applied Store Credit
+                                </td>
+                                <td align="right">
+                                    <b>{{ currencySymbol }} <span id="discounted_store_credit_amount"></span></b>
+                                </td>
+
+                            </tr>
+                            <tr id="discounted_total" class="hide">
+                                <td class="cart-total">
+                                   Adjusted Total:
+                                </td> 
+                                <td align="right" class="cart-total-price">
+                                    <b>{{ currencySymbol }} <span id="discounted_amount_total"></span></b>
+                                </td>
+
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+                {%- if settings.show_cart_note -%}
+                   <div class="card card-col cart-table mt-3">
+                    <h5>
+                        <label for="Cart-note">If purchasing On Account then please enter your purchase order number here</label>
+                    </h5>
+                    <div class="cart-contant">
+                     <cart-note class="cart__note field">
+                
+                    <textarea
+                      class="text-area field__input form-control"
+                      name="note"
+                      form="cart"
+                      id="Cart-note"
+                      placeholder="{{ 'sections.cart.note' | t }}"
+                    >{{ cart.note }}</textarea>
+                </cart-note>
+                    </div>
+                   </div>
+              {%- endif -%}
+               {% for block in section.blocks %}
+                    {%- case block.type -%}
+                      {%- when '@app' -%}
+                        {% render block %}
+                        {%- endcase -%}
+                  {% endfor %}
+                <form action="{{ routes.cart_url }}"  method="post" id="cart">
+                  
+                <button type="submit" id="checkout" class="btn btn-card btn-success text-center text-uppercase mt-4 get-rates" name="checkout" {% if cart == empty %} disabled{% endif %} form="cart">
+                  {{ 'sections.cart.checkout' | t }}
+                </button>
+                </form>
+              <!-- <div class="family-fund-div"></div> -->
+              
+            </div>
+        </div>
+    {% else %}
+    <div class="col-12 alert alert-info text-center"> Cart Is Empty</div>
+    {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}
+<style scoped>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.discount_input{
+    width: 75% !important;
+}
+</style>
+<script>
+        window.cartdata ={{ cart | json }};
+        window.vatReliefUK= 0;
+        window.vatReliefIR= 0;
+        window.vatRelief= false;
+          {% for line_item in cart.items %}
+                {% if line_item.product.metafields.vat.relief == true or line_item.variant.metafields.global.vat_relief_variant %}
+                   window.vatRelief= true;
+                   var line_price = "{{line_item.line_price | divided_by:100 }}"
+                   var vatUK = 20;
+                   var vatIR = 23;
+                   var vatAmountUK = (line_price/100)*vatUK;
+                   var vatAmountIR = (line_price/100)*vatIR;
+                   
+                   window.vatReliefUK += vatAmountUK.toFixed(2)
+                   window.vatReliefIR += vatAmountIR.toFixed(2)
+               {% endif %}
+          {% endfor %}
+    </script>
+<script>
+    jQuery('#shipping_calculate_error').hide();
+    document.addEventListener('DOMContentLoaded', function() {
+        function isIE() {
+            const ua = window.navigator.userAgent;
+            const msie = ua.indexOf('MSIE ');
+            const trident = ua.indexOf('Trident/');
+            return (msie > 0 || trident > 0);
+        }
+        if (!isIE()) return;
+        const cartSubmitInput = document.createElement('input');
+        cartSubmitInput.setAttribute('name', 'checkout');
+        cartSubmitInput.setAttribute('type', 'hidden');
+        document.querySelector('#cart').appendChild(cartSubmitInput);
+        document.querySelector('#checkout').addEventListener('click', function(event) {
+            document.querySelector('#cart').submit();
+        });
+    });
+</script>

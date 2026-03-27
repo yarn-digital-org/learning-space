@@ -1,0 +1,35 @@
+{% render 'breadcrumbs' , title: page.title %} 
+<div class="container-fluid story-section">
+	<div class="row mb-5">
+		<div class="col-12 col-md-12">
+			{{ page.content }}
+		</div>
+	</div>
+	<div class="row">
+        {% paginate blogs.sensoryrooms.articles by 999 %}
+        {% assign sensoryIndex = 0 %}
+        {% for sensoryrooms in blogs.sensoryrooms.articles %}
+        {% assign calMod = sensoryIndex | modulo: 2 %}
+        {% if calMod == 0 %}
+        <div class="col-12 col-md-6 mb-3 text-center">
+			<div class="sensory-room pink-box"> 
+                <img src="{{ sensoryrooms | img_url: 'master' }}" class="img-fluid">
+				<h3>{{ sensoryrooms.title }}</h3>
+				<p>
+                    {{ sensoryrooms.excerpt }}
+                </p> <a href="{{ sensoryrooms.url }}" class="sensory-tag">Know More</a> </div>
+		</div>
+        {% else %}
+            <div class="col-12 col-md-6 mb-3 text-center">
+                <div class="sensory-room blue-box">
+                    <h3>{{ sensoryrooms.title }}</h3>
+                    <p> {{ sensoryrooms.excerpt }} </p> <a href="{{ sensoryrooms.url }}" class="sensory-tag">Know More</a> 
+                    <img src="{{ sensoryrooms | img_url: 'master' }}" class="img-fluid"> </div>
+            </div>
+        {% endif %}
+        {% assign sensoryIndex = sensoryIndex | plus: 1 %}
+        {% endfor %}
+	
+        {% endpaginate %}
+	</div>
+</div>

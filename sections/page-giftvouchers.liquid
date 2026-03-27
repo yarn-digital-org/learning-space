@@ -1,0 +1,26 @@
+{% include 'breadcrumbs' , title: 'Gift Vouchers' %} 
+
+<div class="container-fluid">
+    <div class="row">
+<div class="col-12 col-md-12 product-list-cat mt-5">
+  <div class="row product-sec1">
+
+{% paginate collections['gift-vouchers'].products %}
+ 
+          {% assign products = collections['gift-vouchers'].products  %}
+            {% for product in products %}
+              {% assign price = product.price %}
+              {% assign available = product.available %}
+              {% render 'card-product',
+                  card_product: product,
+                  price: product.price,
+                  handle: product.handle,
+                  variant_size: product.variants.size,
+                  variants: product.variants
+              %}
+            {% endfor %}
+    {% endpaginate %}
+  </div>
+</div>
+</div>
+</div>

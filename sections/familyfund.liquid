@@ -1,0 +1,66 @@
+{% include 'breadcrumbs', title: page.title %}
+<div class="container-fluid story-section">
+	<div class="row">
+         {%- for block in section.blocks -%}
+            {%- assign main_image = block.settings.image -%}
+		<div class="col-6">
+			<div class="card mb-4 rounded-3 shadow-sm">
+				<div class="card-header py-3">
+					<h4 class="my-0 fw-normal text-center"><a href="{{ block.settings.button_link }}">{{ block.settings.title }}</a></h4> </div>
+				<div class="card-body text-center">
+					<a href="{{ block.settings.button_link }}"> <img src="{{ main_image | img_url: "1068x768" }}" alt="" class="img-fluid" width="100%" /> </a>
+         
+        </div>
+			</div>
+		</div>
+        {%- endfor -%}
+	</div>
+</div>
+{% schema %}
+{
+  "name": "Family Fund Section",
+  "max_blocks": 2,
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "en": "Family Fund"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Main Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Section",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

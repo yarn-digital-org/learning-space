@@ -1,0 +1,352 @@
+<style>
+    @media only screen and (max-width: 991px) {
+        .dropdown-menu.megamenu.sm-menu {
+        display: none!important;
+        text-align: left;
+    }
+    
+    .dropdown-menu.megamenu.sm-menu.show{
+        display: block!important;
+    }
+    }
+    
+    .all-menu-wrap a {
+     font-weight: normal !important;
+    }
+    .all-menu-wrap h2 a {
+     font-weight: bold !important;
+    }
+  .hide{
+    display: none !important;
+  }
+</style>
+<!-- navigation -->
+<div class="bottom-panel">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid my-menu-div">
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span> </span>
+                <span> </span>
+                <span> </span>
+            </button>
+            <div class="logo new-add hide">
+                <a href="{{ routes.root_url }}" id="header-logo" class="desktop-logo-blue">
+                    {%- if section.settings.logo != blank -%}
+                    <img src="{{ section.settings.logo | img_url: 'master' }}" loading="lazy" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
+                    {%- else -%}
+                    <span class="h2">{{ shop.name }}</span>
+                    {%- endif -%}
+                </a>
+                <a href="{{ routes.root_url }}" id="header-logo" class="mobile-logo-white">
+                    {%- if section.settings.logo != blank -%}
+                    <img src="{{ 'Learning_SPACE-white.png' | asset_url }}" loading="lazy" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
+                    {%- else -%}
+                    <span class="h2">{{ shop.name }}</span>
+                    {%- endif -%}
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="mobile-show">
+                    <div class="call-tag">
+                        <a href="tel:{{ section.settings.topbar_phone }}"> <img src="{{ 'earphone.png' | asset_img_url: '300x' }}" loading="lazy" /><span>{{ section.settings.topbar_phone_label }}<br><b>{{ section.settings.topbar_phone }}</b></span> </a>
+                    </div>
+                    <div class="top-panel">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 top-left-menu">
+                                    {% if shop.customer_accounts_enabled %}
+                                    <ul>
+                                        {% if customer %}
+                                        {% assign customer_family_fund_active = customer.metafields.custom.FFC %}
+                                        <li class="bottom_line"> <a href="{{ shop.url }}/account"> <span class="fa fa-user" aria-hidden="true"></span> My Account </a> </li>
+                                        {% if customer_family_fund_active %}
+                                        <li class="bottom_line">
+                                            <a href="/pages/family-fund-account"> Family Fund</a>
+                                        </li>
+                                        {% endif %}
+                                        <li class="bottom_line"> {{ 'Log Out' | customer_logout_link }} </li>
+                                        {% else %}
+                                        <li class="bottom_line"> {{ 'Sign In ' | customer_login_link }} </li>
+                                        <li class="bottom_line"> {{ 'Sign Up' | customer_register_link }} </li>
+                                        {% endif %}
+                                        {% if event_site_label != '' %}
+                                        <li class="bottom_line"> <a href="{{ event_site_link }}"> {{ event_site_label }}</a> </li>
+                                        {% endif %}
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-8 col-lg-8 top-right-menu">
+                                    <ul>
+                                        {% for link in section.settings.top_bar_menu.links %}
+                                        <li class="menu_link"> <a href="{{ link.url }}">{{ link.title | escape }}</a> </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="parent_menu">
+                    {% assign index = 0 %}
+                    {% for link in linklists[linklist].links %}
+                    {%- if link.links.size > 0 -%}
+                    <li class="nav-item dropdown megamenu-li dmenu has-sub-menu" link-size="{{link.links.size}}">
+                        <a href="{{ link.url }}" class="nav-link dropdown-toggle  {{ link.title | handle }}" id="dropdown{{ index }}" data-togglee="dropdownn" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }}</a>
+                        <i class="menu-toggle-icon accordion"></i>
+                        <div class="dropdown-menu megamenu sm-menu" aria-labelledby="dropdown{{ index }}">
+                            {% assign no_sub_menu = false %}
+                            {%- for childlink in link.links -%}
+                            {% if childlink.links != blank %}
+                            {% assign no_sub_menu = true %}
+                            {% endif %}
+                            {%- endfor -%}
+                            <div class="all-menu-wrap{% unless no_sub_menu %} has-no-sub-menu{% endunless %}">
+                                {%- assign count = 0 -%}
+                                {%- for childlink in link.links -%}
+                                {% if childlink.links != blank %}
+                                <ul class="child--link">
+                                    <h2><a href="{{ childlink.url }}" data-menu-id="menu{{subindex}}" class="tab-contt">{{childlink.title | escape }}</a></h2>
+                                    {%- for grandchildlink in childlink.links -%}<li><a href="{{ grandchildlink.url }}" data-menu-id="menu{{subindex}}" class="tab-cont">{{grandchildlink.title | escape }}</a></li>{%- endfor -%}
+                                </ul>
+                                {% else %}
+                                {%- assign count = count | plus: 1 -%}
+                                {% assign rem = count | modulo: 6 %}
+                                <div class="single-menu-item link-count-{{count}}"><a href="{{ childlink.url }}" data-menu-id="menu{{subindex}}" class="tab-contt">{{childlink.title | escape }}</a></div>
+                                {% endif %}
+                                {%- endfor -%}
+                            </div>
+                            {%- if section.blocks.size > 0 -%}
+                            <ul class="extra content">
+                                {% for block in section.blocks %}
+                                <li class="nav-item-extra-content" link-size="{{link.links.size}}">
+                                    {%- assign blockmenu_name = block.settings.title | handle | strip -%}
+                                    {% if link.handle == blockmenu_name %}
+                                    <div class="right-side-image-content" style="background-image:url({{block.settings.image |  img_url: 'original'}})">
+                                        <img src="{{block.settings.image |  img_url: 'original'}}">
+                                        <div class="extra_menu_content">
+                                            <a href="{{  block.settings.link  }}"> {{ block.settings.extra_title }}</a>
+                                            <div class="arrow-container animated fadeInDown">
+                                                <div class="arrow-2">
+                                                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M2.28926 0.393311L7.00121 5.095L11.7132 0.393311L13.1606 1.84077L7.00121 8.00019L0.841797 1.84077L2.28926 0.393311Z" fill="#191919" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {%- endif -%}
+                        </div>
+                    </li>
+                    {%- else -%}
+                    <li class="nav-item dropdown megamenu-li dmenu" link-size="{{link.links.size}}">
+                        <a href="{{ link.url }}" {% if link.url !=blank and link.url !='#' %} {% endif %} class="nav-link {{ link.title | handle }}" id="dropdown{{ index }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }} </a>
+                    </li>
+                    {%- endif -%}
+                    {% assign index = index | plus: 1 %}
+                    {%- endfor -%}
+                </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 hide" id="school_menu">
+                    {% assign index = 0 %}
+                    {% for link in linklists[schoollinklist].links %}
+                    {%- if link.links.size > 0 -%}
+                    <li class="nav-item dropdown megamenu-li dmenu has-sub-menu" link-size="{{link.links.size}}">
+                        <a href="{{ link.url }}" class="nav-link dropdown-toggle  {{ link.title | handle }}" id="dropdown{{ index }}" data-togglee="dropdownn" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }}</a>
+                        <i class="menu-toggle-icon accordion"></i>
+                        <div class="dropdown-menu megamenu sm-menu" aria-labelledby="dropdown{{ index }}">
+                            {% assign no_sub_menu = false %}
+                            {%- for childlink in link.links -%}
+                            {% if childlink.links != blank %}
+                            {% assign no_sub_menu = true %}
+                            {% endif %}
+                            {%- endfor -%}
+                            <div class="all-menu-wrap{% unless no_sub_menu %} has-no-sub-menu{% endunless %}">
+                                {%- assign count = 0 -%}
+                                {%- for childlink in link.links -%}
+                                {% if childlink.links != blank %}
+                                <ul class="child--link">
+                                    <h2><a href="{{ childlink.url }}" data-menu-id="menu{{subindex}}" class="tab-contt">{{childlink.title | escape }}</a></h2>
+                                    {%- for grandchildlink in childlink.links -%}<li><a href="{{ grandchildlink.url }}" data-menu-id="menu{{subindex}}" class="tab-cont">{{grandchildlink.title | escape }}</a></li>{%- endfor -%}
+                                </ul>
+                                {% else %}
+                                {%- assign count = count | plus: 1 -%}
+                                {% assign rem = count | modulo: 6 %}
+                                <div class="single-menu-item link-count-{{count}}"><a href="{{ childlink.url }}" data-menu-id="menu{{subindex}}" class="tab-contt">{{childlink.title | escape }}</a></div>
+                                {% endif %}
+                                {%- endfor -%}
+                            </div>
+                            {%- if section.blocks.size > 0 -%}
+                            <ul class="extra content">
+                                {% for block in section.blocks %}
+                                <li class="nav-item-extra-content" link-size="{{link.links.size}}">
+                                    {%- assign blockmenu_name = block.settings.title | handle | strip -%}
+                                    {% if link.handle == blockmenu_name %}
+                                    <div class="right-side-image-content" style="background-image:url({{block.settings.image |  img_url: 'original'}})">
+                                        <img src="{{block.settings.image |  img_url: 'original'}}">
+                                        <div class="extra_menu_content">
+                                            <a href="{{  block.settings.link  }}"> {{ block.settings.extra_title }}</a>
+                                            <div class="arrow-container animated fadeInDown">
+                                                <div class="arrow-2">
+                                                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M2.28926 0.393311L7.00121 5.095L11.7132 0.393311L13.1606 1.84077L7.00121 8.00019L0.841797 1.84077L2.28926 0.393311Z" fill="#191919" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {%- endif -%}
+                        </div>
+                    </li>
+                    {%- else -%}
+                    <li class="nav-item dropdown megamenu-li dmenu" link-size="{{link.links.size}}">
+                        <a href="{{ link.url }}" {% if link.url !=blank and link.url !='#' %} {% endif %} class="nav-link {{ link.title | handle }}" id="dropdown{{ index }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ link.title | escape }} </a>
+                    </li>
+                    {%- endif -%}
+                    {% assign index = index | plus: 1 %}
+                    {%- endfor -%}
+                </ul>
+            </div>
+            <div class="right-side-icons hide">
+                <ul>
+                    {% if section.settings.show_wishlist %}
+                    <li>
+                        {% if routes.root_url == '/' %}
+                        {% assign customUrl = shop.url %}
+                        {% else %}
+                        {% assign customUrl = routes.root_url %}
+                        {% endif %}
+                        <a href="#swym-wishlist" class="swym-wishlist"> <img class="desktop-wishlist" src="{{ 'wishlist.svg' | asset_url }}"> <img class="mobile-wishlist" src="{{ 'wishlist-white.svg' | asset_url }}">
+                            {% comment %} <span> <b> My Wishlist</b></span> {% endcomment %}
+                            <small class="swym-wishlist-header-counter">0</small></a>
+                    </li>
+                    {% endif %}
+                    {% if section.settings.show_cart %}
+                    <li class="cart_show_hide">
+                        <a class="cart_toggle" href="javascript:void(0)">
+                            <img class="desktop-cart" src="{{ 'cart.svg' | asset_url }}">
+                            <img class="mobile-cart" src="{{ 'cart-white.svg' | asset_url }}">
+                            <span style="display: none;">
+                                <b class="ex-vat-price"><span id="mini-cart-total-price" data-currency="{{ currencySymbol }}">
+                                        <div class="spinner-grow text-primary" role="status"> <span class="visually-hidden">Loading...</span> </div>
+                                    </span> </b>
+                            </span>
+                            <small class="cart-item-count">0</small>
+                        </a>
+                        <div class="cart-display">
+                            <div id="show_cart" style="display: none;">
+                                <div class="title_bar"> <span><b>Your Cart,</b> <span class="cart-item-count"></span> item(s) </span> <button class="cart_toggle"> <img src="{{ 'cross.png' | asset_url }}"> </button></div>
+                                <div id="cartitems-js"> </div>
+                                <div class="sub-total">
+                                    <span class=""><b>Subtotal: </b></span>
+                                    <span class="float-end ex-vat-price">
+                                        <b><span id="mini-cart-total-price-pop" data-currency="{{ currencySymbol }}">
+                                                <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+                                            </span></b>
+                                    </span>
+                                </div>
+                                <div class="d-grid gap-2 d-flex justify-content-center cart-buttons">
+                                    <button class="btn btn-button cart-mini-btn" type="button" onclick=" window.location.href = '{{ routes.cart_url }}'">View Cart</button>
+                                    <!-- <form action="{{ routes.cart_url }}" method="post">
+                                        <button class="btn btn-button-secondry"
+                                            name="checkout">Checkout</button>
+                                    </form> -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<script>
+var acc = document.querySelectorAll(".accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function() {
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+    }
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+var togglerLink = document.querySelector('.navbar-toggler');
+togglerLink.addEventListener('click', function(event) {
+    if (togglerLink.classList.contains('closed-btn')) {
+        togglerLink.classList.remove('closed-btn')
+        document.body.classList.remove('overlay-sidebar')
+    } else {
+        togglerLink.classList.add('closed-btn')
+        document.body.classList.add('overlay-sidebar')
+    }
+});
+</script>
+{% comment %} {% endcomment %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".overlay-sidebar").click(function() {
+        togglerLink.classList.remove('closed-btn')
+        $("#navbarSupportedContent").hide();
+        document.querySelector('.navbar-toggler').classList.remove('closed-btn')
+    });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".megamenu").on("click", function(e) {
+        e.stopPropagation();
+    });
+});
+// function openCity(hometab) {
+//     $(".tabcontent").css('display','none');
+//     $("#"+hometab).css('display','block');
+// }
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) || $(window).width() < 813 || window.screen.width < 813) {
+    $('.bottom-panel .dmenu').click(function() {
+        $('.sm-menu').slideUp(105);
+        $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+    });
+    $('.tab-cont').click(function() {
+        $(".tabcontent").css('display', 'none');
+        $("#" + $(this).data('menu-id')).css('display', 'block');
+    });
+
+    //Do something for mobile
+} else {
+    $('.bottom-panel .dmenu').hover(function() {
+        // $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+        $(this).find('.sm-menu').first().stop(true, true).addClass('open');
+    }, function() {
+        // $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
+        $(this).find('.sm-menu').first().stop(true, true).removeClass('open');
+    });
+    $('.tab-cont').hover(function() {
+        $(".tabcontent").css('display', 'none');
+        $("#" + $(this).data('menu-id')).css('display', 'block');
+    });
+    //Do something for the desktop
+}
+setTimeout(() => {
+    $('.navbar-nav').fadeIn();
+}, 300)
+</script>
+<script>
+let menu_show = localStorage.getItem("menu_show")
+if (menu_show === 'school') {
+    document.getElementById('school_menu').classList.remove('hide')
+    document.getElementById('parent_menu').classList.add('hide')
+} else {
+    document.getElementById('school_menu').classList.add('hide')
+    document.getElementById('parent_menu').classList.remove('hide')
+}
+</script>

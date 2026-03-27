@@ -1,0 +1,134 @@
+
+{% capture currencyString %}{{ shop.money_format }}{% endcapture %}
+{% assign tempArray = currencyString | split: '{' %}
+{% assign currencySymbol = tempArray.first %}
+{% include 'breadcrumbs' , title:search.terms | escape %} 
+<div class="container-fluid">
+    <div class="row">
+    <!-- <div class="col-12 col-md-3 filters-col">
+        <div class="accordion accordion-flush" id="accordionFilter">
+           
+            <div class="accordion-item">
+                <h6 class="accordion-header" id="flush-headingSize">
+                    Search
+                </h6>
+                <div id="flush-Size" aria-labelledby="flush-headingSize" data-bs-parent="#accordionFilter">
+                    <div class="accordion-body">
+                        
+                        <form action="/search" method="get" role="search">
+                            <div class="row">
+                              <div class="col-md-9">
+                                <input type="search" class="form-control" name="q" value="{{ search.terms | escape }}">
+                              </div>
+                              <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary">search</button>
+                              </div>
+                            </div>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div> -->
+        <div class="col-12 col-md-12 product-list-cat">
+            <div class="row product-sec1">
+                {% paginate search.results by section.settings.product_limit %}
+                {% if search.results.size > 0 %}
+                {% liquid assign products = search.results  %}
+                {% for product in products %}
+                {% liquid assign price = product.price %}
+                {% liquid assign available = product.available %}
+                  {% render 'card-product',
+                    card_product: product,
+                    price: product.price,
+                    handle: product.handle,
+                    variant_size: product.variants.size,
+                    variants: product.variants,
+                    settings:section.settings,
+                    show:6
+                  %}
+
+                {% endfor %}
+                {% if section.settings.ajax_loadmore %}
+                <div id="more" class="hide" data-next-url="{{ paginate.next.url }}" data-current-page="{{ paginate.current_page }}" data-total-pages="{{ paginate.pages }}"></div>
+				
+                {% else %}
+                {% include 'pagination', paginate:paginate %}
+                {% endif %}
+                {% else %}
+                <div class="alert alert-warning"> No results found.</div>
+                {% endif %}
+                {% endpaginate %}
+            </div>
+        </div>
+    </div>
+</div>
+    <script defer>
+	    var filterMinPrice = {{ filterMinPrice | divided_by: 100 | escape }};
+	    var filterMaxPrice = {{ filterMaxPrice | divided_by: 100 | escape }};
+
+	    var minFilterPrice = {{ filterMinPrice | divided_by: 100 | escape }};
+	    var maxFilterPrice = {{ filterMaxPrice | divided_by: 100 | escape }};
+
+	    var queryMinPrice = {% if queryMinPrice != '' %} {{ queryMinPrice }} 
+	    {% else %} 0 {% endif %};
+	    var queryMaxnPrice = {% if queryMaxPrice != '' %} {{ queryMaxPrice }} 
+	    {% else %} 0 {% endif %};
+
+	    if (queryMinPrice != 0 || queryMaxnPrice != 0) {
+	        minFilterPrice = queryMinPrice
+	        maxFilterPrice = queryMaxnPrice
+	    }
+	    var currencyCode = '{{ currencySymbol }}'
+    </script>
+<script defer >
+  
+    var filterMinPrice = {{ filterMinPrice | divided_by: 100 | escape }};
+    var filterMaxPrice = {{ filterMaxPrice | divided_by: 100 | escape }};
+    
+    var minFilterPrice = {{ filterMinPrice | divided_by: 100 | escape }};
+    var maxFilterPrice = {{ filterMaxPrice | divided_by: 100 | escape }};
+    
+    var queryMinPrice = {% if queryMinPrice != '' %} {{ queryMinPrice }} {% else %} 0 {% endif %};  
+    var queryMaxnPrice ={% if queryMaxPrice != '' %} {{ queryMaxPrice }} {% else %} 0 {% endif %};
+    
+     if(queryMinPrice != 0 || queryMaxnPrice != 0){
+       minFilterPrice = queryMinPrice
+       maxFilterPrice = queryMaxnPrice
+     }
+     var currencyCode= '{{ currencySymbol }}'
+</script>	
+{% schema %}
+{
+  "name": "Search",
+  "settings": [
+    
+	{
+		"type": "number",
+		"id": "product_limit",
+		"default": 12,
+		"label": "Product Limit",
+		"info":"Number of product to be shown on page"
+	},
+	{
+		"type": "checkbox",
+		"id": "ajax_loadmore",
+		"default": true,
+		"label": "Enable Ajax Load More",
+		"info":"if this feature disabled then default pagination will be display "
+	},
+	{
+		"type": "checkbox",
+		"id": "show_ratings",
+		"default": true,
+		"label": "Show/Hide Ratings "
+	},
+	{
+		"type": "checkbox",
+		"id": "show_vendor",
+		"default": true,
+		"label": "Show/Hide Vendor"
+	}
+  ]
+}
+{% endschema %}

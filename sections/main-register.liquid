@@ -1,0 +1,215 @@
+<!-- /templates/customers/register.liquid -->
+{% if customer  %}
+	<script type="text/javascript">
+	  window.location = "/account";
+	</script>
+{% endif %}
+{% include 'breadcrumbs' , title: 'Join Us' %} 
+<div class="container-fluid login-section " id="login_frm">
+	<div class="row mb-5">
+		<div class="col-12 col-md-4 offset-md-4 p-5">
+			<div class="login-section-box">
+				<nav class="d-flex justify-content-center mb-4">
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Join Us</button>
+						<a class="nav-link " id="nav-profile-tab" type="button" href="{{ routes.account_login_url }}" >Sign in</a>
+					</div>
+				</nav>
+				<div class="tab-content" id="nav-tabContent">
+					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+						{%- form 'create_customer' -%}
+                          <input type="hidden" name="checkout_url" value="/account?redirect_from=signup"> <!-- Redirect to account page after account create -->
+                          
+						  {%- if form.errors -%}
+							<h6 class="form__message" tabindex="-1">
+								{{ 'templates.contact.form.error_heading' | t }}
+							</h6>
+								<ul> 
+								{%- for field in form.errors -%}
+									<li>
+										{%- if field == 'form' -%}
+											{{ form.errors.messages[field] }}
+										{%- else -%}
+											<a href="#RegisterForm-{{ field }}">
+												{{ form.errors.translated_fields[field] | capitalize }}
+												{{ form.errors.messages[field] }}
+											</a>
+										{%- endif -%}
+									</li>
+								{%- endfor -%}
+							</ul>
+						{%- endif -%}
+							<div class="mb-4">
+								<label for="RegisterForm-FirstName" class="form-label">{{ 'customer.register.first_name' | t }}</label>
+									<input 
+								type="text" 
+								class="form-control" 
+								name="customer[first_name]"
+								id="RegisterForm-FirstName" 
+								{% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+								aria-describedby="" 
+								required="required"
+								placeholder="{{ 'customer.register.first_name' | t }}">
+							</div>
+							<div class="mb-4">
+								<label for="RegisterForm-LastName" class="form-label">{{ 'customer.register.last_name' | t }}</label>
+                   		 		<input 
+								type="text" 
+								class="form-control" 
+								name="customer[last_name]"
+								id="RegisterForm-LastName"
+								{% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+								aria-describedby="" 
+								required="required"
+								placeholder="{{ 'customer.register.last_name' | t }}">
+							</div>
+							<div class="mb-4">
+								<label for="RegisterForm-email" class="form-label">Email</label>
+								<input 
+									type="email" 
+									class="form-control" 
+									name="customer[email]"
+									id="RegisterForm-email"
+									{% if form.email %} value="{{ form.email }}"{% endif %}
+									spellcheck="false"
+									autocapitalize="off"
+									autocomplete="email"
+									aria-required="true"
+									{% if form.errors contains 'email' %}
+									aria-invalid="true"
+									aria-describedby="RegisterForm-email-error"
+									{% endif %}
+									required="required"
+									placeholder="{{ 'customer.register.email' | t }}">
+						    </div>
+    						<div class="input-group">
+                              <label for="RegisterForm-password" class="form-label">Password</label>
+                            </div>
+                            <small style="color: #999;">{{ 'Password must have at least one capital letter and be at least 8 characters long' }}</small>
+                            <div class="mb-4 input-group">
+                                 <input 
+                              	   type="password" 
+                              	   class="form-control" 
+                              	   name="customer[password]"
+              					   id="RegisterForm-password"
+                                   pattern="^(?=.*[A-Z]).{8,}$"
+                                   title="Password must have at least one capital letter and be at least 8 characters long"
+              					   aria-required="true"
+              					   {% if form.errors contains 'password' %}
+                						aria-invalid="true"
+                						aria-describedby="RegisterForm-password-error"
+              					   {% endif %}
+                                   required="required"
+              					   placeholder="{{ 'customer.register.password' | t }}">
+                                  <div class="input-group-append">
+                                      <span class="input-group-text" style="height:50px;">
+                                          <i id="password-toggle" class="fa fa-eye"></i>
+                                      </span>
+                                  </div>
+                              
+							  </div>
+                               
+                               
+                               <div class="mb-4 input-group">
+                                  <input 
+                                      type="password" 
+                                      class="form-control" 
+                                      name="customer[confirm_password]"
+                                      id="RegisterForm-confirm-password"
+                                      pattern="^(?=.*[A-Z]).{8,}$"
+                                      title="Confirm Password must have at least one capital letter and be at least 8 characters long"
+                                      aria-required="true"
+                                      {% if form.errors contains 'confirm_password' %}
+                                          aria-invalid="true"
+                                          aria-describedby="RegisterForm-confirm-password-error"
+                                      {% endif %}
+                                      required="required"
+                                      placeholder="Confirm Password"
+                                      onBlur="checkPasswordMatch();"
+                                  >
+                                 <div class="input-group-append">
+                                      <span class="input-group-text" style="height:50px;">
+                                          <i id="confirm-password-toggle" class="fa fa-eye"></i>
+                                      </span>
+                                  </div>
+                              </div>
+                              <small id="password-match-error" style="color: red;"></small>
+                             
+                              <div class="mb-4 ">
+          					     <label for="Customer-Type" class="form-label">Customer Type</label>
+                                  <select name="customer[tags]" id="Customer-Type" class="form-control col-3" required>
+                                  <option value="">--</option>
+                                  <option value="Parent">Parent</option>
+                                  <option value="Early Years Teacher/Setting">Early Years Teacher/Setting</option>
+                                  <option value="Primary Teacher/School">Primary Teacher/School</option>
+                                  <option value="Secondary Teacher/School">Secondary Teacher/School</option>
+                                  <option value="Special Needs Teacher / School">Special Needs Teacher / School</option>
+                                  <option value="Health Trust / Professional">Health Trust / Professional</option>
+                                  <option value="Charity">Charity</option>
+                                  <option value="Company">Company</option>
+                                  <option value="Council">Council</option>
+                                  <option value="Other">Other</option>
+                                  <option value="Education Authority">Education Authority</option>
+                                  <option value="Family Fund">Family Fund</option>
+                                </select>
+                              </div>
+                      
+							<div class="d-grid gap-2 mt-3 d-flex justify-content-center button-group">
+								<button class="btn btn-button" type="submit" id="submit-button" onclick="return checkPasswordMatch();">Join</button>
+							</div>
+							<div class="d-grid gap-2 d-flex justify-content-center">
+								<a class="btn btn-a" href="{{ routes.account_login_url }}"> Already an account holder? Login</a>
+							</div>
+						{%- endform -%}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    function checkPasswordMatch() {
+        var password = document.getElementById("RegisterForm-password").value;
+        var confirmPassword = document.getElementById("RegisterForm-confirm-password").value;
+        var errorDiv = document.getElementById("password-match-error");
+        
+        if (password !== confirmPassword) {
+            errorDiv.innerHTML = "Passwords do not match!";
+            document.getElementById("submit-button").disabled = true; // Disable the submit button
+            return false; // Prevent form submission
+        } else {
+            errorDiv.innerHTML = "";
+            document.getElementById("submit-button").disabled = false; // Enable the submit button
+           return true; // Allow form submission
+        }
+    }
+</script>
+<script>
+    const passwordInput = document.getElementById('RegisterForm-password');
+    const passwordToggle = document.getElementById('password-toggle');
+     const confimpasswordInput = document.getElementById('RegisterForm-confirm-password');
+    const confimpasswordToggle = document.getElementById('confirm-password-toggle');
+
+    passwordToggle.addEventListener('click', function () {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordToggle.classList.remove('fa-eye');
+            passwordToggle.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            passwordToggle.classList.remove('fa-eye-slash');
+            passwordToggle.classList.add('fa-eye');
+        }
+    });
+   confimpasswordToggle.addEventListener('click', function () {
+        if (confimpasswordInput.type === 'password') {
+            confimpasswordInput.type = 'text';
+            confimpasswordToggle.classList.remove('fa-eye');
+            confimpasswordToggle.classList.add('fa-eye-slash');
+        } else {
+            confimpasswordInput.type = 'password';
+            confimpasswordToggle.classList.remove('fa-eye-slash');
+            confimpasswordToggle.classList.add('fa-eye');
+        }
+    });
+</script>

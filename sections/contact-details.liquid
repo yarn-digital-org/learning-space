@@ -1,0 +1,115 @@
+<hr />
+   <div class="row mb-5 justify-content-center">
+    <div class="col-12 col-md-8">
+      <h2>Customer Service Hours</h2>
+      <p>Our opening hours are as follows:</p>
+      <p>{{ section.settings.opening_days }} {{ section.settings.opening_times }}</p>
+      {% if section.settings.show_alternate_opening_days %}
+      <p>{{ section.settings.alternate_opening_days }} {{ section.settings.alternate_opening_times }}.</p>
+      {% endif %}
+    </div>
+   </div>
+   {% if section.settings.show_bottom_section %}
+   <hr />
+   <div class="row mb-5 justify-content-center">
+    <div class="col-12 col-md-6">
+      <h2>{{ section.settings.bottom_section_heading }}</h2>
+      <p>{{ section.settings.bottom_section_description }}</p>
+      {% if section.settings.show_bottom_button %}
+      <a href="{{ section.settings.bottom_button_link }}" class="btn btn-button text-uppercase" type="button">{{ section.settings.bottom_button_label }}</a>
+      {% endif %}
+    </div>
+    <div class="col-12 col-md-2">
+      <img class="img-fluid" src="{{ section.settings.bottom_section_image | img_url: "original" }}" alt="{{ section.settings.bottom_section_heading }}" />
+    </div>
+   </div>
+   {% endif %}
+  {% schema %}
+  {
+    "name": "Contact Details",
+    "settings": [
+      {
+        "type": "text",
+        "id": "opening_days",
+        "label":"Opening Days",
+        "info": "Set opening days",
+        "default": "Monday - Thursday"
+      },
+      {
+        "type": "text",
+        "id": "opening_times",
+        "label":"Opening Timings",
+        "info": "Set opening timings",
+        "default": "9am - 5pm"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_alternate_opening_days",
+        "label":"Show alternate opening days",
+        "info": "Show/Hide Alternate opening days",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "alternate_opening_days",
+        "label":"Alternate Opening Days",
+        "info": "Set alternate opening days",
+        "default": "Friday -"
+      },
+      {
+        "type": "text",
+        "id": "alternate_opening_times",
+        "label":"Alternate Opening Timings",
+        "info": "Set alternate opening timings",
+        "default": "9am - 3pm"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_bottom_section",
+        "label":"Show bottom section",
+        "info": "Show/Hide Alternate opening days",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bottom_section_heading",
+        "label":"Bottom Section Heading",
+        "info": "Bottom Section Heading",
+        "default": "Book your Virtual Consultation"
+      },
+      {
+        "type": "textarea",
+        "id": "bottom_section_description",
+        "label":"Bottom Section Description",
+        "info": "Bottom Section Description",
+        "default": "A small bit of info on virtual consultations possibly, then linking to the virtual Consultation page."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_bottom_button",
+        "label":"Show/Hide bottom button",
+        "info": "Show/Hide Button",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bottom_button_label",
+        "label":"Button Label",
+        "info": "Bottom Section Button Label",
+        "default": "Book Now"
+      },
+      {
+        "type": "text",
+        "id": "bottom_button_link",
+        "label":"Button Link",
+        "info": "Bottom Section Button Link",
+        "default": "https://learningspace.rkmsoftware.net/events/details/virtual-consultation"
+      },
+      {
+          "type": "image_picker",
+          "id": "bottom_section_image",
+          "label": "Bottom Section Image"
+      }
+    ]
+  }
+{% endschema %}

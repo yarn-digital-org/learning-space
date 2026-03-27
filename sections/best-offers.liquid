@@ -1,0 +1,88 @@
+<section class="two-col">
+	<h3 class="text-center">{{ section.settings.offer_heading }}</h3>
+	<div class="container-fluid">
+		<div class="row">
+            {% for block in section.blocks %}
+            {% assign block_image = block.settings.offer_image %}
+			<div class="col-12 {% if section.blocks.size > 1 %} col-md-6 {% else %} col-md-12 {% endif %}">
+				<div class="two-block-box"> <img src="{{ block_image | img_url: "grande" }}" alt="block-image"> <span>
+                    {%- unless block.settings.offer_title == blank -%}
+                <h6>{{ block.settings.offer_title | escape }}
+                </h6>
+                {% endunless %}
+                {%- unless block.settings.offer_desc == blank -%}
+                <p>{{ block.settings.offer_desc | escape }}
+                </p>
+                {% endunless %}
+                {%- unless block.settings.show_more == blank -%}
+                <small><a href="{{ block.settings.link }}">{{ block.settings.show_more }}</a></small>
+                {% endunless %}
+               
+                
+            </span> 
+            </div>
+			</div>
+            {% endfor %}
+		</div>
+	</div>
+</section>
+  {% schema %}
+  {
+    "name": "Best Offers",
+    "max_blocks": 2,
+    "settings": [{
+        "type": "text",
+        "id": "offer_heading",
+        "label": "Heading Tilte"
+    }],
+    "blocks": [
+      {
+        "type": "image",
+        "name":"Image slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "offer_image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "offer_title",
+            "label": "Heading",
+            "default": "Lorem Ipsum"
+          },
+          {
+            "type": "text",
+            "id": "offer_desc",
+            "label": "Description",
+            "default": "Lorem Ipsum"
+          },
+          {
+            "type": "text",
+            "id": "show_more",
+            "label": "Link Text"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link Url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Best Offers",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}

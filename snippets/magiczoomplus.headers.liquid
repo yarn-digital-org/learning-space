@@ -1,0 +1,77 @@
+
+    {% comment %}{% if template contains 'product' %}{% endcomment %}
+    {% assign MagicToolboxUseMagicScroll = 'No' %}
+    {% assign MagicToolboxMagicScrollLicenseKey = '' %}
+    {{ 'magiczoomplus.js' | asset_url | script_tag }}
+    {{ 'magiczoomplus.css' | asset_url | stylesheet_tag }}
+    {% if MagicToolboxUseMagicScroll == 'Yes' %}
+    {{ 'magicscroll.js' | asset_url | script_tag }}
+    {{ 'magicscroll.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {{ 'magiczoomplus.additional.css' | asset_url | stylesheet_tag }}
+    <script type="text/javascript">
+    mzOptions = {
+        'zoomWidth':'auto',
+        'zoomHeight':'auto',
+        'zoomPosition':'right',
+        'zoomDistance':15,
+        'selectorTrigger':'click',
+        'transitionEffect':true,
+        'cssClass':'',
+        'lazyZoom':false,
+        'rightClick':false,
+        'zoomMode':'zoom',
+        'zoomOn':'hover',
+        'upscale':true,
+        'smoothing':true,
+        'variableZoom':false,
+        'zoomCaption':'off',
+        'expand':'window',
+        'expandZoomMode':'zoom',
+        'expandZoomOn':'click',
+        'expandCaption':true,
+        'closeOnClickOutside':true,
+        'hint':'once',
+        'textHoverZoomHint':'Hover to zoom',
+        'textClickZoomHint':'Click to zoom',
+        'textExpandHint':'Click to expand',
+        'textBtnClose':'Close',
+        'textBtnNext':'Next',
+        'textBtnPrev':'Previous'
+    }
+    mzMobileOptions = {
+        'zoomMode':'magnifier',
+        'textHoverZoomHint':'Touch to zoom',
+        'textClickZoomHint':'Double tap to zoom',
+        'textExpandHint':'Tap to expand'
+    }
+    {% if MagicToolboxUseMagicScroll == 'Yes' %}
+    MagicScrollOptions = {
+        'width':'auto',
+        'height':'auto',
+        'orientation':'horizontal',
+        'mode':'scroll',
+        'items':'6',
+        'speed':600,
+        'autoplay':0,
+        'loop':'off',
+        'step':'auto',
+        'arrows':'outside',
+        'pagination':false,
+        'easing':'cubic-bezier(.8, 0, .5, 1)',
+        'scrollOnWheel':'auto',
+        'lazy-load':false
+    }
+    {% endif %}
+    </script>
+    {% assign MagicToolboxSirvID = '' %}
+    {% capture mzp %}{% include 'magiczoomplus' with MagicToolboxSirvID %}{% endcapture %}
+    {% if MagicToolboxSirvID != '' %}
+        <link rel="preconnect" href="https://scripts.sirv.com" crossorigin>
+        <link rel="preconnect" href="https://{{MagicToolboxSirvID}}.sirv.com" crossorigin>
+        <link rel="dns-prefetch" href="https://scripts.sirv.com">
+        <link rel="dns-prefetch" href="//{{MagicToolboxSirvID}}.sirv.com">
+        {{ '//scripts.sirv.com/sirvjs/v3/sirv.js?modules=spin,gallery' | script_tag }}
+    {% endif %}
+    {{ 'magiczoomplus.sirv.js' | asset_url | script_tag }}
+    {% comment %}{% endif %}{% endcomment %}

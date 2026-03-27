@@ -1,0 +1,220 @@
+{% comment %}
+Renders a list of menu items
+Accepts:
+- linklist: {Object} Linklist Liquid object (required)
+- wrapper_class: {String} CSS wrapper class for the navigation (optional)
+Usage:
+{% render 'site-nav', linklist: section.settings.main_linklist,
+event_site_link:section.settings.event_site_link,event_site_label:section.settings.event_site_label %}
+{% endcomment %}
+<!-- navigation -->
+
+
+<div class="bottom-panel">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid my-menu-div">
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span> </span>
+                <span> </span>
+                <span> </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="mobile-show">
+
+                    <div class="call-tag">
+                        <a href="tel:(+44) 028 9031 9360"> <img src="{{ 'earphone.png' | asset_img_url: '300x' }}" loading="lazy" alt="earphone"><span>{{
+                                section.settings.topbar_phone_label }}<br>
+                                <b>{{ section.settings.topbar_phone }}</b></span> </a>
+                    </div>
+
+                    <div class="top-panel">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-sm-3 col-md-3 col-lg-3 top-left-menu">
+                                  
+                                    {% if shop.customer_accounts_enabled %}
+                                    
+                                    <ul>
+                                     
+                                        {% if customer %}
+                                              {% assign customer_family_fund = customer.metafields.custom.FFC %}
+                                            <li class="bottom_line">
+                                                <a href="{{ shop.url }}/account">
+                                                  <span class="fa fa-user" aria-hidden="true"></span> 
+                                                      My Account
+                                                </a>
+                                            </li>
+                                          
+                                           {% if customer_family_fund %}
+                                            <li class="bottom_line">
+                                                <a href="/pages/family-fund-account"> Family Fund</a>
+                                            </li>
+                                            {% endif %}
+                                          
+                                             <li class="bottom_line">
+                                                {{ 'Log Out' | customer_logout_link }}
+                                            </li>
+                                        {% else %}
+                                            <li class="bottom_line">
+                                                {{ 'Sign In ' | customer_login_link }}
+                                            </li>
+                                            <li class="bottom_line">
+                                                {{ 'Sign Up' | customer_register_link }}
+                                            </li>
+                                        {% endif %}
+                                      {% if event_site_label != '' %}
+                                        <li class="bottom_line">
+                                            <a href="{{ event_site_link }}"> {{ event_site_label }}</a>
+                                        </li>
+                                        {% endif %}
+                                     
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-sm-9 col-md-9 col-lg-9 top-right-menu">
+                             
+                                
+                                    <ul>
+                                        {% for link in section.settings.top_bar_menu.links %}
+                                              <li class="menu_link">
+                                                <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                                              </li>
+                                        {% endfor %}
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display:none;">
+                    {% assign index = 0 %}
+
+                    {% for link in linklists[linklist].links %}
+                        <li class="nav-item dropdown megamenu-li dmenu">
+                            {%- if link.links != blank -%}
+                            <a href="{{ link.url }}" {% if link.url !=blank and link.url !='#' %} target="_blank" {% endif
+                                %} class="nav-link dropdown-toggle" id="dropdown{{ index }}" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                {{ link.title | escape }}
+                            </a>
+                            <div class="dropdown-menu megamenu sm-menu" aria-labelledby="dropdown{{ index }}">
+                                <div class="tab">
+    
+                                    {% assign subindex = 0 %}
+                                    {%- for childlink in link.links -%}
+                                    {%- if childlink.links != blank -%}
+                                    <div class="link-cont {% if childlink.links.size > 0 %} child-link-cont {% endif %} ">
+    
+                                        <button {% if childlink.url !=blank and childlink.url !='#' %}
+                                            onclick="window.location.href='{{ childlink.url }}'" {% endif %}
+                                            class="tab-cont {% if childlink.links.size > 0 %} child-tab-cont {% endif %}"
+                                            data-menu-id="menu{{subindex}}">
+                                            {{ childlink.title | escape }}
+                                        </button>
+    
+                                        <div id="menu{{subindex}}" class="tabcontent">
+                                            <div class="sub-menu-cont">
+                                                {%- for grandchildlink in childlink.links -%}
+                                                <a href="{{ grandchildlink.url }}">
+                                                    {{ grandchildlink.title | escape }}
+                                                </a>
+                                                {%- endfor -%}
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    {%- else -%}
+                                    <div class="link-cont ">
+    
+                                        <a href="{{ childlink.url }}" data-menu-id="menu{{subindex}}" class="tab-cont">{{
+                                            childlink.title | escape }}</a>
+                                    </div>
+                                    {%- endif -%}
+                                    {% assign subindex = subindex | plus: 1 %}
+                                    {%- endfor -%}
+                                </div>
+                            </div>
+    
+                            {%- else -%}
+                            <a href="{{ link.url }}" class="nav-stylehead {% if link.current %}active{% endif %}" {% if
+                                link.current %} aria-current="page" {% endif %}>
+                                {{ link.title | escape }}
+                            </a>
+                            {%- endif -%}
+                        </li>
+
+                    {% assign index = index | plus: 1 %}
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    var togglerLink = document.querySelector('.navbar-toggler');
+    togglerLink.addEventListener('click', function (event) {
+        if (togglerLink.classList.contains('closed-btn')) {
+            togglerLink.classList.remove('closed-btn')
+            document.body.classList.remove('overlay-sidebar')
+        } else {
+            togglerLink.classList.add('closed-btn')
+            document.body.classList.add('overlay-sidebar')
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".overlay-sidebar").click(function () {
+            togglerLink.classList.remove('closed-btn')
+            $("#navbarSupportedContent").hide();
+            document.querySelector('.navbar-toggler').classList.remove('closed-btn')
+        });
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".megamenu").on("click", function (e) {
+            e.stopPropagation();
+        });
+    });
+    // function openCity(hometab) {
+    //     $(".tabcontent").css('display','none');
+    //     $("#"+hometab).css('display','block');
+    // }
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) || $(window).width() < 813 ||
+        window.screen.width < 813) {
+        $('.bottom-panel .dmenu').click(function () {
+            $('.sm-menu').slideUp(105);
+            $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+        });
+        $('.tab-cont').click(function () {
+            $(".tabcontent").css('display', 'none');
+            $("#" + $(this).data('menu-id')).css('display', 'block');
+        });
+
+        //Do something for mobile
+    } else {
+        $('.bottom-panel .dmenu').hover(function () {
+            $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+        }, function () {
+            $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
+        });
+        $('.tab-cont').hover(function () {
+            $(".tabcontent").css('display', 'none');
+            $("#" + $(this).data('menu-id')).css('display', 'block');
+        });
+        //Do something for the desktop
+    }
+    setTimeout(()=>{
+      $('.navbar-nav').fadeIn();
+    },300)
+</script>

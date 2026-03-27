@@ -1,0 +1,190 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    margin-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    margin-top: {{ section.settings.padding_top_mobile }}px;
+  }
+  #shopify-section-{{ section.id }} img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .list-text {
+    column-count: 2;
+    list-style-type: none;
+    margin: 0 0 20px;
+    padding: 0;
+  }
+  .list-text li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1;
+    margin: 0 0 15px;
+  }
+  .list-text li:before {
+    content: "";
+    background-color: #df0e5c;
+    border-radius: 50%;
+    position: relative;
+    top: 3px;
+    height: 8px;
+    width: 8px;
+  }
+  
+  @media only screen and (min-width: 992px) {
+  #shopify-section-{{ section.id }} {
+      margin-bottom: {{ section.settings.padding_bottom_desktop }}px;
+      margin-top: {{ section.settings.padding_top_desktop }}px;
+    }
+  }
+</style>
+{% capture image %}
+<div class="col- col-lg-6">
+  {%- assign image_alt = section.settings.image.alt -%}
+  {{ section.settings.image | img_url: 'master' | img_tag: image_alt }}
+</div>
+{% endcapture %}  
+
+<div class="container text-{{ section.settings.align_text }}">
+  <div class="row">
+    {% if section.settings.image_position == 'first' %}
+      {{ image }}
+    {% endif %}
+    <div class="col- col-lg-6">
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        {{ section.settings.text }}
+      {% endif %}
+      <ul class="list-text">
+        {% for block in section.blocks %}
+          <li class="list-text">
+            {{ block.settings.bullet_point }}
+          </li>
+        {% endfor %}
+      </ul>
+      {% if section.settings.link != blank %}
+        <a href="{{ section.settings.link }}" class="btn btn-primary">{{ section.settings.link_label }}</a>
+      {% endif %}
+    </div>
+    {% if section.settings.image_position == 'second' %}
+      {{ image }}
+    {% endif %}
+  </div>
+</div>  
+
+{% schema %}
+  {
+    "name": "Image text",
+    "class": "image-text-section",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+	  {
+        "type": "select",
+        "id": "image_position",
+        "label": "Image position",
+        "options": [
+          {
+            "value": "first",
+            "label": "First"
+          },         
+          {
+            "value": "second",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Text with image"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.</p>"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "link_label",
+        "label": "Link label"
+      },
+      {
+        "type": "header",
+        "content": "Section gaps"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Section top gap in desktop",
+        "step": 1,
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Section bottom gap in desktop",
+        "step": 1,
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Section top gap in mobile",
+        "step": 1,
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Section bottom gap in mobile",
+        "step": 1,
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "list_text",
+        "name": "Bullet point",
+        "settings": [
+		  {
+            "type": "text",
+            "id": "bullet_point",
+            "label": "Bullet point"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image text",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

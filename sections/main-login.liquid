@@ -1,0 +1,109 @@
+<!-- /templates/customers/login.liquid -->
+
+{% if customer %}
+    <script type="text/javascript">
+        window.location = "/account";
+    </script>
+    {% endif %}
+    {% include 'breadcrumbs' , title: 'Login' %} 
+    
+    <div class="container-fluid login-section " id="login_frm"> 
+        <div class="row mb-5">
+            <div class="col-12 col-md-4 offset-md-4 p-5">
+                <div class="login-section-box">
+                    <nav class="d-flex justify-content-center mb-4">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-link" id="nav-join-tab" type="button" href="{{ routes.account_register_url }}" >Join Us</a>
+                            <button class="nav-link active" id="nav-sign-in-tab" data-bs-toggle="tab" data-bs-target="#nav-sign-in" type="button" role="tab" aria-controls="nav-sign-in" aria-selected="false">Sign in</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-sign-in" role="tabpanel" aria-labelledby="nav-sign-in-tab" tabindex="0">
+                            {%- form 'customer_login' -%}
+                            {%- if form.errors -%}
+                                <h6 class="form__message" tabindex="-1">
+                                    <span class="visually-hidden">
+                                        {{ 'accessibility.error' | t }}
+                                    </span>
+                                    {{ 'templates.contact.form.error_heading' | t }}
+                                </h6>
+                                {{ form.errors | default_errors }}
+                                {%- endif -%}
+                                <div class="mb-4">
+                                    <label for="" class="form-label">{{ 'customer.login_page.email' | t }}</label>
+                                    <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" autocorrect="off" autocapitalize="off" {% if form.errors contains 'form' %} aria-invalid="true" {% endif %} placeholder="Enter Your Email" class="form-control" aria-describedby="emailHelp" required="required">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="" class="form-label">{{ 'customer.login_page.password' | t }}</label>
+                                    <input type="password" name="customer[password]" id="CustomerPassword" autocomplete="current-password" {% if form.errors contains 'form' %} aria-invalid="true" {% endif %} class="form-control" placeholder="Password" required="required">
+                                </div>
+                                <div class="mb-4 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">{{ 'customer.login_page.remember_password' | t }}</label>
+                                </div>
+                                <div class="d-grid gap-2 mt-3 d-flex justify-content-center button-group">
+                                    <button class="btn btn-button" type="submit">{{ 'customer.login_page.sign_in' | t }}</button>
+                                </div>
+                                <div class="d-grid gap-2 d-flex justify-content-center">
+                                    <button class="btn btn-a" type="button" id="forgot_pwsd">{{ 'customer.login_page.forgot_password' | t }}</button>
+                                </div>
+                                {%- endform -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid login-section" id="forgot_frm">
+        <div class="row mb-5">
+            <div class="col-12 col-md-4 offset-md-4 p-5">
+                <div class="login-section-box">
+                    <nav class="d-flex justify-content-center mb-4">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          
+                            <button class="nav-link active" id="nav-forgot-tab" data-bs-toggle="tab" data-bs-target="#nav-forgot" type="button" role="tab" aria-controls="nav-forgot" aria-selected="false">Recover Password</button>
+                            <a class="nav-link" type="button" href="{{ routes.account_login_url }}" >Login</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-forgot" role="tabpanel" aria-labelledby="nav-forgot-tab" tabindex="0">
+                            {%- form 'recover_customer_password' -%}
+                                <div class="mb-4">
+                                    <label for="" class="form-label">Email Address</label>
+    
+                                    <input 
+                                        type="email"
+                                        value=""
+                                        name="email"
+                                        id="RecoverEmail"
+                                        class="form-control"
+                                        autocorrect="off"
+                                        autocapitalize="off"
+                                        autocomplete="email"
+                                        {% if form.errors %}
+                                            aria-invalid="true"
+                                            aria-describedby="RecoverEmail-email-error"
+                                            autofocus
+                                        {% endif %}
+                                        placeholder="{{ 'customer.login_page.email' | t }}">
+                                    </div>
+                                {%- if form.errors -%}
+                                    <small id="RecoverEmail-email-error" class="form__message text-danger">
+                                        {{ form.errors.messages['form'] }}
+                                    </small>
+                                {%- endif -%}
+                                <div class="d-grid gap-2 mt-3 d-flex justify-content-center button-group">
+                                    <button class="btn btn-button" type="submit">{{ 'customer.login_page.submit' | t }}</button>
+                                    <button class="btn btn-button" id="cancel_forgot" type="button">{{ 'customer.login_page.cancel' | t }}</button>
+                                </div>
+                                {%- endform -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+    
+    
+    
+    

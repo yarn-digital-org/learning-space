@@ -1,0 +1,116 @@
+{% include 'breadcrumbs', title: page.title %}
+<div class="row">
+   {% assign index = 0 %}
+    {%- for block in section.blocks -%}
+     {%- assign main_image = block.settings.image -%}
+     {%- assign secondary_image = block.settings.secondary_image -%}
+    <div class="col-12 col-md-6 mb-3">
+      <!-- blue-box -->
+      <div class="team-box" style="background-color: {{ block.settings.block_color | default:'#f2008d' }} ;"> <img class="member-img" src="{{ main_image | img_url: "1068x768" }}" onmouseover="this.src='{{ secondary_image | img_url: "1068x768" }}'" onmouseout="this.src='{{ main_image | img_url: "1068x768" }}'">
+        <div class="team-cont">
+          <div class="team-title pb-2 mb-3" style="border-bottom: 2px {{ block.settings.icon_color | default:'#f2008d' }} solid  ; !important">{{ block.settings.special_name }}</div>
+          <div class="team-name-share">
+            <div class="team-name">
+              <h4>{{ block.settings.real_name }}</h4>
+              <p>{{ block.settings.role }}</p>
+            </div>
+            <div class="team-share float-end">
+              <a href="mailto:{{ block.settings.mail_id }}" style="background: {{ block.settings.icon_color | default:'#f2008d' }} ; !important">
+                <img src="https://cdn.shopify.com/s/files/1/0649/0688/7411/files/mail_2.png?v=1656507914"></a>
+            </div>
+          </div>
+          <a class="know-more" href="javascript:void(0)"  onclick="($('.bio_{{ index }}').hasClass('hide'))?$('.bio_{{ index }}').removeClass('hide'):$('.bio_{{ index }}').addClass('hide')">Know More</a>
+         <span class="bio_{{ index }} hide">
+            {{ block.settings.about_member | default:'N/A' }}
+            </span>
+       </div>
+      </div>
+       
+    </div>
+     {% assign index = index  | plus: 1 %}
+    {%- endfor -%}
+    </div>
+
+
+
+
+{% schema %}
+{
+  "name": "Team Section",
+  "max_blocks": 60,
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "en": "Team Member"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Main Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "secondary_image",
+          "label": "Secondary Image"
+        },
+        {
+          "type": "color",
+          "id": "block_color",
+          "label": "Block Background Color",
+          "default":"#f2008d"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Inner Style Color",
+          "default":"#f2008d"
+        },
+        {
+          "type": "text",
+          "id": "special_name",
+          "label": "Special Name"
+        },
+        {
+          "type": "text",
+          "id": "real_name",
+          "label": "Real Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role"
+        },
+        {
+          "type": "text",
+          "id": "mail_id",
+          "label": "Email"
+        },
+        {
+          "type": "richtext",
+          "id": "about_member",
+          "label": "About Team Member"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Section",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

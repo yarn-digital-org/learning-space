@@ -1,0 +1,560 @@
+<!doctype html>
+<html>
+
+<head>{% render 'pagefly-head' %}
+    <title>{{ page_title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{{ page_description | escape }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+    {%- endif -%}
+    {{ content_for_header }} <!-- Header hook for plugins -->
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+    {{ 'jquery-ui1.css' | asset_url | stylesheet_tag }}
+    {{ 'toastr.min.css' | asset_url | stylesheet_tag }}
+    {{ 'colors.css' | asset_url | stylesheet_tag }}
+    {{ 'flexslider.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'responsive.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ 'application.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'sweetalert.css' | asset_url | stylesheet_tag }}
+    {{ 'sweetalert.min.css' | asset_url | stylesheet_tag }}
+
+    {{ 'jquery-2.1.4.min.js' | asset_url | script_tag }}
+    {{ 'sweetalert.js' | asset_url | script_tag }}
+    {{ 'sweetalert.min.js' | asset_url | script_tag }}
+    {{ 'toastr.min.js' | asset_url | script_tag }}
+    <!-- TrustBox script -->
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <!-- End TrustBox script -->
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>      
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+
+ <style> .feature-pro .button-group, .feature-pro .ex-vat-price {display: none!important;}.feature-pro {max-width: 1320px;margin: 0 auto;}.feature-pro {justify-content: center;}.feature-pro .pro-list {padding: 10px;background: #f0f8ff;margin: 5px;border-radius: 10px;width: 45%;}@media (min-width:750px) {.feature-pro .pro-list h6 {display: inline-block;width: 60%;margin: 0px!important;}.feature-pro .pro-list h5 {float: right;display: inline-block;}.feature-pro .pro-list {width: 24%;}}.feature-pro .pro-list a img.product-img, .general-product-card .product-card-image-wrap img {border-radius: 10px;background: white;}.feature-pro .test1 {margin-top: 25px;margin-bottom: 10px }.feature-pro h6 a.full-unstyled-link, .feature-pro .pro-list h5 {font-size: 14px;}.feature-pro h2 {font-size: 22px;margin-bottom: 5px!important;}.feature-pro h4, .feature-pro .text-end a {font-size: 18px;color: #000;margin-bottom: 15px!important;}@media (max-width:749px) {.feature-pro h2 {font-size: 18px;margin-bottom: 5px!important;}.feature-pro h4, .feature-pro .text-end a {font-size: 14px;}}.testimonial .swiper-slide.swiper-slide-item {height: auto;}.testimonial .swiper-wrapper {margin-bottom: 20px;}.three-col .col-block h4 {margin-bottom: 0px;}#header-logo img {width: 220px!important;height: 100%!important;}@media (max-width:749px) {#header-logo img {width: 140px!important;}}.search-col .form-outline.form-control {background: #ffffff;}@media (min-width: 992px) {.top-panel .col-lg-6 {width: 42%;}.list-cart li span {display: none;}.list-cart li {margin-left: 30px;}.top-panel .row {justify-content: space-between;}.top-panel .col-lg-6 {width: 45%;}.middle-panel .col-lg-6 {padding: 0;}.middle-panell .row {justify-content: space-between;}.middle-panel .col-lg-6 {width: 45%;}.top-panel .row {justify-content: space-between;}.top-panel .col-lg-6 {width: 45%;padding: 0;}.middle-panel .col-lg-6 {padding: 0;}.middle-panel .row {justify-content: space-between;align-items: center;}.middle-panel .list-cart ul {margin-bottom: 0px;}.middle-panel .col-lg-6 {width: 45%;}.top-panel, .middle-panel {padding: 10px 3%;}.middle-panel .list-cart {width: 20%;}.search-col {margin-top: 0px;width: 100%;}.middle-panel .list-cart {width: 50%;display: flex;align-items: center;}.middle-panel .list-cart ul {padding-left: 0px;}.hide-desktop {display: none;}.header-logo1 {width: 30%!important;}.tag-line, .call-tag a b {font-size: 22px;}.list-cart ul {display: flex;}.call-tag {width: 50%!important;}#shopify-section-header-new nav {height: auto;}.col-lg-20 {width: 20%;}}#shopify-section-header-new .megamenu-li:nth-child(10) {background: green;}#shopify-section-header-new .navbar-nav .megamenu-li:nth-child(11) {background: red;}.rich-text-section p {font-size: 16px;}@media (max-width:749px) {#main-caroesel img {margin-top: 140px!important;}.middle-panel .list-cart {width: 70%;}.hide-mobile {display: none;}.ui-menu.ui-widget-content.ui-autocomplete {left: 20px!important;}.search-col {width: 200px;}#copyright {display: flex;align-items: center;flex-direction: column;flex-wrap: wrap;row-gap: 20px;}}.image-gallery-section .row {row-gap: 25px;}
+ @media (max-width:749px) {
+ .list-cart li small.swym-wishlist-header-counter {
+    left: 6px;
+    top: -32px;
+  position: relative;
+}
+ }
+ 
+ </style>
+  
+
+	
+</head>
+
+<body>
+  <div id="shopify-section-header-new">
+   {% section 'header' %} 
+  </div>
+   {% comment %} {% section 'header-new' %} {% endcomment %}
+    {% if template contains 'cart' %}
+    <script>
+        window.cartdata = {{ cart | json }};
+    </script>
+    {% endif %}
+    <main role="main">
+        {{ content_for_layout }}
+    </main>
+    {% section 'footer' %}
+    <script>
+        var items = [];
+        {% for line_item in cart.items %}
+        var item = {}
+        item.handle = "{{line_item.product.handle}}"
+        item.is_tax_free = "{{ line_item.product.metafields.global.is_tax_free }}"
+        items.push(item);
+        {% endfor %}
+        window.gulshanCart = items;
+    </script>
+    <script>
+        window.shopUrl = '{{ request.origin }}';
+        window.routes = {
+            cart_add_url: '{{ routes.cart_add_url }}',
+            cart_change_url: '{{ routes.cart_change_url }}',
+            cart_update_url: '{{ routes.cart_update_url }}',
+            predictive_search_url: '{{ routes.predictive_search_url }}'
+        };
+
+        window.variantStrings = {
+            addToCart: `Add to cart`,
+            soldOut: `Sold Out`,
+            unavailable: `Unavailable`,
+        }
+
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" defer="defer"></script>
+
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+
+    {{ 'popper.min.js' | asset_url | script_tag }}
+    {{ 'bootstrap.min.js' | asset_url | script_tag }}
+    {{ 'application.js' | asset_url | script_tag }}
+    {{ 'cart.js' | asset_url | script_tag }}
+    {{ 'Wishlist.js' | asset_url | script_tag }}
+
+    {% if template.name == 'cart' %}
+    <!-- <script src="/services/javascripts/countries.js" defer="defer"></script> -->
+    {{ 'countries.js' | asset_url | script_tag }}
+    {{ 'cart_shipping_calculate.js' | asset_url | script_tag }}
+    {% endif %}
+
+    <script>
+            (function () {
+                WishlistLS.init();
+            }());
+    </script>
+    <script>
+        function setVat(v) {
+            window.localStorage.setItem('vat', v)
+            //showPrice()
+        }
+        function showPrice() {
+            let vat = window.localStorage.getItem('vat')
+            let changeVatRateBtn = document.getElementById('changeVatRateBtn')
+            if (vat && changeVatRateBtn != undefined) {
+                var incVatPrice = document.querySelectorAll(".inc-vat-price");
+                var exvatPrice = document.querySelectorAll(".ex-vat-price");
+
+
+                if (vat == 1) {
+                    changeVatRateBtn.innerText = 'Price inc.VAT'
+
+                    if (incVatPrice.length > 0) {
+                        Array.from(incVatPrice).forEach((v, k) => {
+                            incVatPrice[k].classList.remove('hide')
+                        });
+                    }
+                    if (exvatPrice.length > 0) {
+                        Array.from(exvatPrice).forEach((v, k) => {
+                            exvatPrice[k].classList.add('hide')
+                        });
+                    }
+
+                } else if (vat == 2) {
+                    changeVatRateBtn.innerText = 'Price ex.VAT'
+                    if (incVatPrice.length > 0) {
+                        Array.from(incVatPrice).forEach((v, k) => {
+                            incVatPrice[k].classList.add('hide')
+                        });
+                    }
+                    if (exvatPrice.length > 0) {
+                        Array.from(exvatPrice).forEach((v, k) => {
+                            exvatPrice[k].classList.remove('hide')
+                        });
+                    }
+                }
+
+            }
+        }
+        let vatLocal = window.localStorage.getItem('vat')
+        if (vatLocal == null) {
+            setVat(1)
+        }
+    </script>
+
+    <!-- //cart-js -->
+    <!-- price range (top products) -->
+    {{ 'jquery-ui.js' | asset_url | script_tag }}
+
+    {% if template contains 'collection' %}
+    {{ 'price-range.js' | asset_url | script_tag }}
+    {% endif %}
+    {% if template contains 'search' %}
+    {{ 'price-range.js' | asset_url | script_tag }}
+    {% endif %}
+
+    {% if template.name == 'product' %}
+    <!-- imagezoom -->
+    {{ 'product.js' | asset_url | script_tag }}
+
+    <!-- //imagezoom -->
+    <!-- FlexSlider -->
+    {{ 'jquery.flexslider.js' | asset_url | script_tag }}
+      
+    <script>
+        // Can also be used with $(document).ready()
+       // $(document).ready(function() {
+        
+        $('.productflexslider').flexslider({
+            slideshow: false,
+            animation: "slide",
+            controlNav: "thumbnails",
+            start: function (slider) {
+                console.log(slider)
+            }
+        });
+      //  });
+    </script>
+  
+    {% endif %}
+    {% if template contains 'customers' %}
+    {{ 'customer.js' | asset_url | script_tag }}
+    {% endif %}
+    {% include 'store-credit-launcher' %}
+    {% if customer %}{% include 'shell-logic' %}{% endif %}{{ 'zifyapp-fblogin.css' | asset_url | stylesheet_tag }}
+    {{ 'zifyapp-fblogin.js' | asset_url | script_tag }}
+
+    <script>
+        window.SPFPriceTemplate = {% raw %}'<div class="normal-price">{% if compare_at_price > price %}<span class="spf-product-card__oldprice">{{ compare_at_price | money }}</span><span class="spf-product-card__saleprice">{{ price | money }}</span>{% else %}<span class="spf-product-card__price">{{ price | money }}</span>{% endif %}</div><div class="has-tax-price">{% if compare_at_price > price %}<span class="spf-product-card__oldprice">Old Price : {{ compare_at_price | money }}</span><span class="spf-product-card__price"> incl. VAT : {{ price | money }}</span>{% else %}<span class="spf-product-card__price">incl. VAT : {{ price | money }}</span><span class="mb-2 mt-1 ex-vat-price"> excl. VAT : {{ price | divided_by:1.20 | money}}</span>{% endif %}</div>'{% endraw %}
+        window.SPFQVPriceTemplate = {% raw %}'<div class="normal-price">{% if compare_at_price > price %}<span class="gfqv-product-card__oldprice money">{{ compare_at_price | money }}</span><span class="gfqv-product-card__saleprice money">{{ price | money }}</span>{% else %}<span class="gfqv-product-card__price money">{{ price | money }}</span>{% endif %}</div><div class="has-tax-price">{% if compare_at_price > price %}<span class="gfqv-product-card__oldprice money">{{ compare_at_price | money }}</span><span class="gfqv-product-card__price money">incl. VAT : {{ price | money }}</span><span class="gfqv-product-card__price money" {{  priceExClass }}>excl. VAT : {{ price | divided_by:1.20 | money}}</span>{% else %}<span class="gfqv-product-card__price money">incl. VAT : {{ price | money }}</span><span class="mb-2 mt-1 ex-vat-price money">excl. VAT : {{ price | divided_by:1.20 | money}}</span>{% endif %}</div>'{% endraw %}
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" defer="defer"></script>
+    <script>
+        window.addEventListener('globoFilterRenderCompleted', function () {
+
+            if ((typeof Shopify) === 'undefined') {
+                Shopify = {};
+            }
+            $('button.product__form-btn-addtocart').on('click', function (e) {
+                console.log($(this).parent('form.spf-product__form').serialize(),);
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/cart/add.js',
+                    dataType: 'json',
+                    data: $(this).parent('form.spf-product__form').serialize(),
+                    success: addToCartDone,
+                    error: function (XMLHttpRequest, textStatus) {
+                        Shopify.onError(XMLHttpRequest, textStatus);
+                    }
+                });
+            });
+            function addToCartDone() {
+                /*$.getJSON('/cart.js', function(cart) {
+                 window.location.reload()
+                });*/
+            }
+        });
+        window.dontRoundUpMoney = true
+    </script>
+    {% include 'swymSnippet' %}
+    {% include 'swymEvents' %}
+    {% include 'globo.filter.action' %}
+
+
+
+
+  
+<style>
+.feature-pro .button-group, .feature-pro .ex-vat-price {
+  display: none!important;
+}
+.feature-pro {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+ .feature-pro {
+      justify-content: center;
+}
+.feature-pro .pro-list {
+    padding: 10px;
+    background: #f0f8ff;
+    margin: 5px;
+    border-radius: 10px;
+  width: 45%;
+}
+
+@media (min-width:750px) {
+ .feature-pro .pro-list h6 {
+    display: inline-block;
+    width: 60%;
+    margin: 0px!important;
+  }
+  .feature-pro .pro-list h5 {
+  float: right;
+    display: inline-block;
+}
+.feature-pro  .pro-list {
+  width: 24%;
+}
+}
+
+.feature-pro .pro-list a img.product-img, .general-product-card .product-card-image-wrap img {
+      border-radius: 10px;
+  background: white;
+}
+
+.feature-pro .test1 {
+ margin-top: 25px;
+    margin-bottom: 10px
+}
+ .feature-pro h6 a.full-unstyled-link, .feature-pro .pro-list h5 {
+  font-size: 14px;
+}
+
+.feature-pro h2 {
+    font-size: 22px;
+  margin-bottom: 5px!important;
+}
+
+.feature-pro h4, .feature-pro .text-end a {
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 15px!important;
+}
+
+@media (max-width:749px) {
+.feature-pro h2 {
+    font-size: 18px;
+  margin-bottom: 5px!important;
+}
+
+  .feature-pro .row {
+    justify-content: space-around;
+  }
+
+.feature-pro h4, .feature-pro .text-end a {
+  font-size: 14px;
+}
+}
+
+.testimonial .swiper-slide.swiper-slide-item {
+  height: auto;
+}
+.testimonial  .swiper-wrapper {
+  margin-bottom: 20px;
+}
+
+.three-col .col-block h4 {
+  margin-bottom: 0px;
+}
+
+ #header-logo img {
+     width: 220px!important;
+     height: 100%!important;
+   }
+@media (max-width:749px) {
+#header-logo img {
+     width: 140px!important;
+}
+}
+  
+.search-col .form-outline.form-control {
+    background: #ffffff;
+}
+
+@media (min-width: 992px) {
+ .top-panel  .col-lg-6 {
+   width: 42%;
+ }
+
+.list-cart li span {
+display: none;
+}
+
+.list-cart li {
+    margin-left: 30px;
+}
+
+
+
+
+.top-panel  .row  {
+    justify-content: space-between;
+}
+
+.top-panel .col-lg-6 {
+width: 45%;
+}
+
+.middle-panel  .col-lg-6 { 
+padding: 0;
+}
+
+
+.middle-panell  .row  {
+    justify-content: space-between;
+}
+
+.middle-panel .col-lg-6 {
+width: 45%;
+} 
+
+
+.top-panel  .row  {
+    justify-content: space-between;
+}
+
+.top-panel .col-lg-6 {
+width: 45%;
+  padding: 0;
+}
+
+.middle-panel  .col-lg-6 { 
+padding: 0;
+}
+
+
+.middle-panel  .row  {
+    justify-content: space-between;
+      align-items: center;
+}
+  .middle-panel .list-cart ul {
+    margin-bottom: 0px;
+  }
+
+.middle-panel .col-lg-6 {
+width: 45%;
+} 
+
+  .top-panel, .middle-panel {
+    padding: 10px 3%;
+  }
+
+  .middle-panel .list-cart {
+
+width: 20%;
+    
+}
+
+.search-col {
+    margin-top: 0px;
+      width: 100%;
+}
+.middle-panel .list-cart {
+width: 50%;
+    display: flex;
+    align-items: center;
+}
+  .middle-panel .list-cart ul {
+    padding-left: 0px;
+  }
+  .hide-desktop {
+    display: none;
+  }
+  .header-logo1 {
+    width: 30%!important;
+  }
+  .tag-line, .call-tag a b  {
+    font-size: 22px;
+  }
+  .list-cart ul {
+    display: flex;
+  }
+  .call-tag {
+    width: 50%!important;
+  }
+
+
+  #shopify-section-header-new nav {
+    height: auto;
+  }
+
+  .col-lg-20 {
+    width: 20%;
+  }
+  
+  }
+
+
+  
+  #shopify-section-header-new .megamenu-li:nth-child(10)  {
+    background: green;
+  }
+
+  #shopify-section-header-new .navbar-nav .megamenu-li:nth-child(11)  {
+    background: #ff0099;
+  }
+
+#shopify-section-header-new .navbar-nav .megamenu-li:nth-child(12)  {
+    background: #4d24f3;
+  }
+
+  
+  .rich-text-section p {
+    font-size: 16px;
+  }
+@media (max-width:749px) {
+  #main-caroesel img {
+    margin-top: 140px!important;
+  }
+  .middle-panel .list-cart {
+        width: 70%;
+  }
+  .hide-mobile {
+    display: none;
+  }
+  .ui-menu.ui-widget-content.ui-autocomplete {
+    left: 20px!important;
+  }
+  .search-col {
+    width: 200px;
+  }
+  #copyright {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+ 
+.list-cart li small.swym-wishlist-header-counter {
+    left: 6px;
+    top: -32px;
+  position: relative;
+}
+
+
+.newsletter-panel .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) { 
+width: 30px;
+  flex: 1;
+   font-size: 14px;  
+  
+}
+  
+ .newsletter-panel  .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) { 
+width: 50px;
+   font-size: 14px;  
+   
+}
+
+ 
+}
+
+  .image-gallery-section .row {
+    row-gap: 25px;
+  }
+
+   .bottom-panel .dropdown-menu li a {
+     color: #000;
+   }
+
+ .image-text-section .row {
+   row-gap: 20px;
+ }
+  
+  
+</style>
+
+
+
+
+  
+</body>
+{%- comment -%}ThemeID:133419827443xxxx{%- endcomment -%}
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W6WJMB0DS"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9W6WJMB0DS');
+</script>
+
+</html>

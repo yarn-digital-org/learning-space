@@ -1,0 +1,162 @@
+{% capture currencyString %}{{ shop.money_format }}{% endcapture %}
+{% assign tempArray = currencyString | split: '{' %}
+{% assign currencySymbol = tempArray.first %}
+<header class="header-new">
+<div class="top-panel xx">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-6 top-left-menu top-bar-left">
+				<ul>
+					<li>
+						<a href="{{ shop.url }}">
+							<span class="fa fa-home  fa-2x" aria-hidden="true"></span>
+						</a>
+					</li>
+					{% if shop.customer_accounts_enabled %}
+
+						{% if customer %}
+                         
+							<li>
+								<a href="{{ shop.url }}/account">
+									<span class="fa fa-user" aria-hidden="true"></span> 
+									My Account
+								</a>
+							</li>
+                  {% assign customer_family_fund_active = customer.metafields.custom.FFC %}
+                        {% if customer_family_fund_active %}
+                          <li>
+                              <a href="/pages/family-fund-account"> Family Fund</a>
+                          </li>
+                          <!-- <li>
+                              <a href="/pages/family-fund-new"> Family Fund New </a>
+                          </li> -->
+                          {% endif %}   
+							<li>
+								{{ 'Log Out' | customer_logout_link }}
+							</li>
+						{% else %}
+							<li>
+								{{ 'Sign In ' | customer_login_link }}
+							</li>
+							<li>
+								{{ 'Sign Up' | customer_register_link }}
+							</li>
+					{% endif %}
+
+					{% endif %}
+					{% if section.settings.show_training_link and section.settings.event_site_link != " " and section.settings.event_site_label != " " %}
+					<li>
+						<a href="{{ section.settings.event_site_link }}" class="event-link"> {{
+							section.settings.event_site_label }} </a>
+					</li>
+					{% endif %}
+				</ul>
+
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-6 top-right-menu top-bar-menu-right">
+				<ul>
+					{% for link in section.settings.top_bar_menu.links %}
+					<li><a href="{{ link.url }}">{{ link.title | escape }}</a>
+					</li>
+					{% endfor %}
+					<li>
+						<div class="price-rate">
+							{% include 'currency' %}
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% render 'new-site-nav', linklist: section.settings.main_linklist, event_site_link:section.settings.event_site_link, event_site_label:section.settings.event_site_label %}
+</header>
+<script class="swym-wishlist-header-counter-custom">
+    function renderWishlistCounter(swat) {
+        var counter_elem = document.querySelectorAll(".swym-wishlist-header-counter"); /* Custom header can be added here.*/
+        if (counter_elem) {
+            for (var i = 0; i < counter_elem.length; i++) {
+                if (swat.renderWishlistCount) {
+                    swat.renderWishlistCount(counter_elem[i], function (count, element) {
+                        //console.log("debug - renderWishlistCount", count, element); 
+                    });
+                }
+            }
+        }
+    }
+    if (!window.SwymCallbacks) {
+        window.SwymCallbacks = [];
+    }
+    window.SwymCallbacks.push(renderWishlistCounter);
+</script>
+{% schema %}
+	{
+		"name": "Header",
+		"class": "section-header",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "logo",
+				"label": "Logo"
+			},	
+            {
+				"type": "checkbox",
+				"id": "show_training_link",
+				"label": "Show Training Link",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "show_cart",
+				"label": "Show Cart",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "show_wishlist",
+				"label":"Show Wishlist",
+				"default": true
+			},
+			{
+				"type": "link_list",
+				"id": "top_bar_menu",
+				"label":"Top Bar Menu"
+			},
+			{
+				"type": "link_list",
+				"id": "main_linklist",
+				"label":"Menu"
+			}
+		],
+		"max_blocks": 4,
+		"blocks": [
+			{
+			"name": "Menu extra image",
+			"type": "extra_content",
+			"settings": [
+				{
+				"type": "text",
+				"id": "title",
+				"label": "Menu name"
+				},
+				{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Image"
+				},
+				{
+				"type": "text",
+				"id": "extra_title",
+				"label": "Extra content title"
+				},
+				{
+				"type": "url",
+				"id": "link",
+				"label": "Extra image link"
+				}
+			]
+			}
+		]
+	}
+{% endschema %}

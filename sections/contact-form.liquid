@@ -1,0 +1,24 @@
+{% include 'breadcrumbs' , title: page.title %} 
+<div class="container-fluid story-section">
+   <div class="row mb-5 justify-content-center">
+    <div class="col-12 col-md-8 mx-auto">
+       <h2>Contact Us</h2>
+       {% form 'contact' %}
+       {% if form.posted_successfully? %}
+           <div class="alert alert-success">Your query has been sent successfully, Will get back to you soon</div>
+       {% endif %}
+       {{ form.errors | default_errors }}
+       <label for="ContactFormName">Name</label>
+       <input type="text" id="ContactFormName" class="form-control" name="contact[name]" required>
+       <label for="ContactFormEmail">Email</label>
+       <input type="email" id="ContactFormEmail" class="form-control" name="contact[email]" required>
+       <label for="ContactFormPhone">Phone</label>
+       <input type="tel" id="ContactFormPhone" class="form-control" name="contact[phone]" required>
+       <label for="ContactFormMessage">Message</label>
+       <textarea rows="10" id="ContactFormMessage" class="form-control" name="contact[body]" required></textarea>
+       <input type="submit" class="btn btn-primary mt-3" value="Send">
+       {% endform %}
+    </div>
+   </div>
+   
+</div>

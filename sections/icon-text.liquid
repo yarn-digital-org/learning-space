@@ -1,0 +1,135 @@
+<style>
+    .swiper-slide.swiper-slide-item {
+      background: #fff;
+      box-shadow: 0 8px 30px -7px #c9dff0;
+      border-radius: 20px;
+      border: 0;
+      text-align: center!important;
+      padding: 1.25rem;
+      
+  }
+  
+  img.shadow-1-strong.mb-4 {
+    border-radius: 50%;
+    margin: 15px auto 0;
+    box-shadow: 0 8px 20px -4px #95abbb;
+    max-width: 100%;
+    height: 200px;
+    width: 120px;
+  }
+  
+  #shopify-section-{{section.id}}{
+    background: #fff;
+    padding: 1px 0;
+    width: 100%;
+  }
+
+  .swiper_{{section.id }} {
+    padding: 0 0 30px 0;
+  }
+  .swiper-wrapper .icon-text-h2{
+    font-size: 21px;
+  }
+  </style>  
+  <section class="icon-text mb-1">
+      <div class="container">
+  <!-- Slider main container -->
+  <div class="swiper swiper_{{section.id }}">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {%- for block in section.blocks -%}
+      <div class="swiper-slide swiper-slide-item">
+        {%- unless block.settings.title == blank -%} <h2 class="mb-1 icon-text-h2"><a href="{{ block.settings.link }}">{{ block.settings.title | escape }}</a></h2>{%- endunless -%}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  </section>
+  <script>
+    const swiper_{{section.id | remove: '-'}} = new Swiper('.swiper_{{section.id }}', {
+      slidesPerView: 1,
+        spaceBetween: 10,
+        autoHeight: false,
+        freeMode: false,
+        centeredSlides: false,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+        breakpoints: {
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+    });
+  </script>
+
+  
+  {% schema %}
+  {
+    "name": "text block",
+    "max_blocks": 12,
+    "settings": [
+  
+    ],
+    "blocks": [
+      {
+        "type": "textbolck",
+        "name": "Customer Image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Gift vouchers"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Title link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "text block",
+        "category": "textbolck",
+        "blocks": [
+          {
+            "type": "textbolck"
+          },
+          {
+            "type": "textbolck"
+          },
+          {
+            "type": "textbolck"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}       
