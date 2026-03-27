@@ -354,7 +354,9 @@
     {% comment %}
     {% render 'site-nav', linklist: section.settings.main_linklist, event_site_link:section.settings.event_site_link, event_site_label:section.settings.event_site_label %}
     {% endcomment %}
-    {% render 'new-site-nav', linklist: section.settings.main_linklist,schoollinklist: section.settings.school_linklist, event_site_link:section.settings.event_site_link, event_site_label:section.settings.event_site_label %}
+    {% render 'new-site-nav', linklist: section.settings.main_linklist, schoollinklist: section.settings.school_linklist, orglinklist: section.settings.organisation_linklist, indlinklist: section.settings.individual_linklist, event_site_link:section.settings.event_site_link, event_site_label:section.settings.event_site_label %}
+    {% comment %} Gate switch badge in the top bar {% endcomment %}
+    <div id="gate-switch-nav" class="gate-switch-nav" style="display:none;" onclick="LearningSpaceGate.switchType();"></div>
 </header>
 {% schema %}
 {
@@ -444,6 +446,18 @@
 "type": "link_list",
 "id": "school_linklist",
 "label": "School Menu"
+},
+{
+"type": "link_list",
+"id": "organisation_linklist",
+"label": "Organisation Menu",
+"info": "Used by the gate page — select the 'organisation menu' from your Shopify menus"
+},
+{
+"type": "link_list",
+"id": "individual_linklist",
+"label": "Individual Menu",
+"info": "Used by the gate page — select the 'individual menu' from your Shopify menus"
 }
 ]
 }

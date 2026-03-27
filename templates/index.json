@@ -1,1 +1,1802 @@
-{"sections":{"rich_text_fbGDJG":{"type":"rich-text","disabled":true,"name":"Rich text","settings":{"title":"<h1>Learning Space Homepage<\/h1>","text":"<h1>Learning SPACE<br\/><br\/><\/h1>","align_text":"left","container_layout":false,"enable_more_less":false,"padding_top_desktop":30,"padding_bottom_desktop":30,"padding_top_mobile":20,"padding_bottom_mobile":20}},"home-slider":{"type":"home-slider","blocks":{"image_ajWWFP":{"type":"image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Banners_for_New_Web_2000_x_600_px_20.jpg","slide_title":"","subheading":"","button_label":"Shop Now","button_link":"https:\/\/learningspaceuk.co.uk\/collections\/orchard-toys"}},"image_QCKHVn":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/sensory_packages_and_ready_to_go_rooms.jpg","slide_title":"","subheading":"","button_label":"Shop Now","button_link":"https:\/\/learningspaceuk.co.uk\/collections\/ready-made-sensory-rooms"}},"image_jNakJU":{"type":"image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Banners_for_New_Web_2000_x_600_px_7.jpg","slide_title":"","subheading":"","button_label":"Shop Now","button_link":"https:\/\/learningspaceuk.co.uk\/collections\/sale"}},"2d383e2f-16c9-4aa5-bf9e-a8b216e7e4c7":{"type":"image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Banners_for_New_Web_2000_x_600_px_1.jpg","slide_title":"","subheading":"","button_label":"Shop Now","button_link":"https:\/\/learningspaceuk.co.uk\/collections\/music-musical-instruments-and-toys"}}},"block_order":["image_ajWWFP","image_QCKHVn","image_jNakJU","2d383e2f-16c9-4aa5-bf9e-a8b216e7e4c7"],"custom_css":[".carousel-item img {width: 100%; height: auto; display: block;}",".carousel-inner,.carousel-item {height: auto; \/* let JS set it dynamically *\/}"],"settings":{}},"ss_slideshow_7_PgCGTk":{"type":"ss-slideshow-7","blocks":{"slide_H6kmdw":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/New_Website_Launch.png","heading":"","text":"","button":"Shop Now","button_url":"shopify:\/\/collections\/cosy","first_image_url":"","second_image_url":"","third_image_url":""}},"slide_8tkwL9":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_6.png","heading":"","text":"","button":"Available Now","button_url":"https:\/\/learningspaceuk.co.uk\/products\/myspace-sensory-pop-up-dark-den","first_image_url":"","second_image_url":"","third_image_url":""}},"slide_6qkFJ8":{"type":"slide","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_3.png","image_mobile":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_3.png","heading":"<h1>Hug-A-Lumps<\/h1>","text":"<p>Play Re-Imagined<\/p>","button":"Shop Now","button_url":"shopify:\/\/products\/hug-a-lumps-weighted-soft-toy","first_image":"shopify:\/\/shop_images\/Hug-A-Lumps-Weighted-Soft-Toys-Collect-Them-All-7.jpg","first_image_url":"shopify:\/\/products\/hug-a-lumps-weighted-soft-toy","second_image":"shopify:\/\/shop_images\/Hug-A-Lumps-Weighted-Soft-Toys-Collect-Them-All-14901H-Rocko-The-crocodile-24.jpg","second_image_url":"shopify:\/\/products\/hug-a-lumps-weighted-soft-toy","third_image":"shopify:\/\/shop_images\/Hug-A-Lumps-Weighted-Soft-Toys-Collect-Them-All-14901G-Bailey-The-Duck-14.jpg","third_image_url":"shopify:\/\/products\/hug-a-lumps-weighted-soft-toy"}},"slide_dE7PPH":{"type":"slide","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_2.png","image_mobile":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_2.png","heading":"<h1>Connetix<\/h1>","text":"<p>Where Play and Learning Connect<\/p>","button":"Shop Now","button_url":"shopify:\/\/collections\/connetix-magnetic-tiles","first_image_url":"shopify:\/\/collections\/connetix-magnetic-tiles","second_image_url":"shopify:\/\/collections\/connetix-magnetic-tiles","third_image_url":"shopify:\/\/collections\/connetix-magnetic-tiles"}},"slide_6PF4y3":{"type":"slide","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Untitled_design_4.jpg","image_mobile":"shopify:\/\/shop_images\/Untitled_design_4.jpg","heading":"<h1>LEGO<\/h1>","text":"<p>Brand new LEGO for Christmas and beyond<\/p>","button":"Shop Now","button_url":"shopify:\/\/collections\/lego","first_image_url":"shopify:\/\/products\/lego-disney-simba-the-lion-king-cub-43243","second_image_url":"shopify:\/\/products\/lego-wicked-glinda-elphaba-nessarose-at-shiz-university-75681","third_image_url":"shopify:\/\/products\/lego-dreamzzz-the-never-witch-s-nightmare-creatures-71483"}},"slide_KCCped":{"type":"slide","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_5.png","image_mobile":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_5.png","heading":"<h1>Crazy Forts<\/h1>","text":"<p>Just add a Bedsheet for Endless Fun<\/p>","button":"Shop Now","button_url":"shopify:\/\/collections\/crazy-forts","first_image_url":"shopify:\/\/products\/crazy-forts-original","second_image_url":"shopify:\/\/products\/crazy-forts-fort-lights","third_image_url":"shopify:\/\/products\/crazy-forts-glow-in-the-dark"}},"slide_8zD9Ay":{"type":"slide","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_1.png","image_mobile":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_1.png","heading":"<h1>Tonies<\/h1>","text":"<p>Brand New Tonies<\/p>","button":"Shop Now","button_url":"shopify:\/\/collections\/tonies","first_image_url":"shopify:\/\/products\/marvel-spidey-and-his-amazing-friends-tonie","second_image_url":"shopify:\/\/products\/tonies-enid-blyton-the-wishing-chair","third_image_url":"shopify:\/\/products\/disneys-moana-tonie-songs-story-adventure-for-toniebox"}},"slide_WQzMbp":{"type":"slide","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024_7.jpg","image_mobile":"shopify:\/\/shop_images\/Shopify_Homepage_banners_2024.jpg","heading":"<h1>Strider Bikes<\/h1>","text":"<p>The No Pedal Pre Bike<\/p>","button":"Shop Now","button_url":"shopify:\/\/collections\/strider-balance-bikes","first_image":"shopify:\/\/shop_images\/Strider-12-Classic-Balance-Bike-14.webp","first_image_url":"shopify:\/\/collections\/strider-balance-bikes","second_image":"shopify:\/\/shop_images\/Strider-12-Classic-Balance-Bike-16.webp","second_image_url":"shopify:\/\/collections\/strider-balance-bikes","third_image":"shopify:\/\/shop_images\/Strider-14x-Sport-Balance-Bike-SK-SB1-IN-GN-Green-11.webp","third_image_url":"shopify:\/\/collections\/strider-balance-bikes"}}},"block_order":["slide_H6kmdw","slide_8tkwL9","slide_6qkFJ8","slide_dE7PPH","slide_6PF4y3","slide_KCCped","slide_8zD9Ay","slide_WQzMbp"],"disabled":true,"settings":{"slideshow_height":"fixed_height","slideshow_fixed_height":450,"slideshow_fixed_height_mobile":450,"autoplay":true,"autoplay_delay":2,"overlay":0.4,"content_padding_vertical":64,"content_padding_vertical_mobile":100,"content_padding_horizontal":110,"content_padding_horizontal_mobile":80,"content_horizontal_position_mobile":"center","heading_custom":false,"heading_font":"josefin_sans_n4","heading_size":72,"heading_size_mobile":0,"heading_height":130,"text_custom":false,"text_font":"josefin_sans_n4","text_size":18,"text_size_mobile":32,"text_height":110,"text_mt":38,"text_mt_mobile":100,"button_custom":false,"button_font":"josefin_sans_n4","button_size":30,"button_size_mobile":24,"button_height":100,"button_mt":48,"button_mt_mobile":28,"button_padding_vertical":16,"button_padding_vertical_mobile":12,"button_padding_horizontal":32,"button_padding_horizontal_mobile":32,"button_radius":100,"button_border_thickness":1,"button_style":"outline","image_radius":30,"image_border_thickness":0,"image_ratio":"original","image_ratio_mobile":"original","image_hide_mobile":true,"image_hide_desktop":true,"arrow_size":48,"arrow_size_mobile":58,"arrow_icon_size":8,"arrow_icon_size_mobile":8,"arrow_border_thickness":0,"arrow_radius":100,"arrow_hover_effect":"color","arrow_show_desktop":true,"arrow_show_mobile":true,"dots_size":20,"dots_size_mobile":14,"dots_show_desktop":true,"dots_show_mobile":false,"pagination_custom":false,"pagination_font":"josefin_sans_n4","pagination_size":15,"pagination_size_mobile":16,"pagination_height":130,"pagination_show_desktop":true,"pagination_show_mobile":true,"heading_color":"#ffffff","text_color":"#ffffff","image_border_color":"#000000","button_color":"#ffffff","button_hover_color":"#ffffff","button_bg_color":"#434343","button_bg_hover_color":"#232323","button_border_color":"#ffffff","button_border_hover_color":"#ffffff","arrow_color":"#ffffff","arrow_hover_color":"#000000","arrow_bg_color":"#232323","arrow_bg_hover_color":"#ffffff","arrow_border_color":"#000000","arrow_border_hover_color":"#000000","dots_color":"#ffffff","pagination_color":"#ffffff","overlay_color":"#000000","background_color":"#ffffff","background_gradient":"","border_color":"#000000","margin_top":8,"margin_bottom":8,"margin_horizontal":0,"margin_horizontal_mobile":0,"padding_top":0,"padding_bottom":0,"padding_horizontal":0,"padding_horizontal_mobile":0,"full_width":true,"content_width":220,"border_thickness":0,"section_radius":74,"lazy":true}},"ss_text_block_CdpMYE":{"type":"ss-text-block","blocks":{"button_V7anNr":{"type":"button","settings":{"button_text":"Enquire Here For Updates On Outstanding School Orders","button_link":"shopify:\/\/pages\/school-orders-updates","color":"#ffffff","background_color":"#007cff","border_radius":"50px","font_size":25}}},"block_order":["button_V7anNr"],"disabled":true,"settings":{"padding_header":10,"padding_button":10,"background-color":"#ffffff","padding_top":0,"padding_bottom":8,"section-width":120}},"ss_scrolling_collections_XcdXr3":{"type":"ss-scrolling-collections","blocks":{"collection_NiwgUP":{"type":"collection","settings":{"text":"Collection","url":""}},"collection_R8neFn":{"type":"collection","settings":{"text":"Collection","url":""}},"collection_DGHWTi":{"type":"collection","settings":{"text":"Collection","url":""}},"collection_jeYaWW":{"type":"collection","settings":{"text":"Collection","url":""}},"collection_UcgtzA":{"type":"collection","settings":{"text":"Collection","url":""}},"collection_bdCKep":{"type":"collection","settings":{"text":"Collection","url":""}}},"block_order":["collection_NiwgUP","collection_R8neFn","collection_DGHWTi","collection_jeYaWW","collection_UcgtzA","collection_bdCKep"],"disabled":true,"settings":{"collections":["lego","strider-balance-bikes","amazonas","berg-toys","needoh","bluey","melissa-and-doug","fatboy","fat-brain-toys","gabbys-dollhouse","globber-scooters","harry-potter","hey-duggee","john-deere-toys","john-adams","kit-for-kids","lamaze-toys","learning-resources","learning-space","lumez","lumina"],"heading":"","heading_custom":false,"heading_font":"josefin_sans_n4","heading_size":0,"heading_size_mobile":0,"heading_height":50,"heading_align":"center","heading_align_mobile":"center","scrolling_velocity":100,"scrolling_velocity_mobile":100,"reverse_direction":true,"pause_hover":true,"cards_gap":2,"cards_gap_mobile":2,"cards_mt":0,"cards_mt_mobile":0,"card_width":390,"card_width_mobile":180,"card_radius":80,"card_border_thickness":1,"card_ratio":"original","card_ratio_mobile":"original","card_overlay":0,"card_blur":2,"card_blur_enabled":false,"logo_width":100,"logo_width_mobile":100,"text_custom":false,"text_font":"josefin_sans_n4","text_size":0,"text_size_mobile":0,"text_height":50,"text_color":"#ffffff","card_border_color":"#000000","card_overlay_color":"#000000","heading_color":"#000000","background_color":"#ffffff","background_gradient":"","border_color":"#000000","margin_top":0,"margin_bottom":0,"margin_horizontal":0,"margin_horizontal_mobile":0,"padding_top":12,"padding_bottom":12,"padding_horizontal":5,"padding_horizontal_mobile":1.5,"full_width":true,"content_width":1200,"border_thickness":0,"section_radius":0,"lazy":true}},"09b7d067-928b-403b-8caa-40474eda6b1a":{"type":"icon-text","blocks":{"template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-1":{"type":"textbolck","settings":{"title":"Education Authority Approved Supplier","link":"shopify:\/\/pages\/education-authority"}},"template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-2":{"type":"textbolck","settings":{"title":"Purchase Orders Accepted","link":""}},"template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-3":{"type":"textbolck","settings":{"title":"Scotland Excel           Approved Supplier","link":""}}},"block_order":["template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-1","template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-2","template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-3"],"custom_css":[".swiper-slide.swiper-slide-item a {color: #fff;}",".swiper-slide.swiper-slide-item {background: #ff0099;}",".icon-text {background: #ff0099;}",".swiper-slide.swiper-slide-item {box-shadow: none;}",".swiper {padding: 0px;}"],"settings":{}},"ss_slider_7_pdwj8Q":{"type":"ss-slider-7","blocks":{"card_R4g6iG":{"type":"card","settings":{"tag":"Shop Now","heading":"<h3>Ear Defenders<\/h3>","text":"","image":"shopify:\/\/shop_images\/Pink-Updated-IMG_3795_V2-600x600.jpg","url":"https:\/\/learningspaceuk.co.uk\/collections\/noise-reduction\/products\/child-ear-defenders?variant=43110211715315","card_bg_color":"#ffffff","card_border_color":"#000000","tag_color":"#6e6e73","heading_color":"#1d1d1f","text_color":"#1d1d1f","image_border_color":"#000000"}},"card_rXaG9x":{"type":"card","settings":{"tag":"Shop Now","heading":"<h3>Playhouses<\/h3>","text":"","image":"shopify:\/\/shop_images\/Country-Vista-Playhouse-P280097-2.jpg","url":"https:\/\/learningspaceuk.co.uk\/collections\/play-houses","card_bg_color":"#ffffff","card_border_color":"#000000","tag_color":"#6e6e73","heading_color":"#1d1d1f","text_color":"#1d1d1f","image_border_color":"#000000"}},"card_UYUdCA":{"type":"card","settings":{"tag":"Shop Now","heading":"<h3>Liquid Motion Timers<\/h3>","text":"","image":"shopify:\/\/shop_images\/Pack-of-6-Liquid-Motion-Toy-Timers-Hourglass-PT091.jpg","url":"https:\/\/learningspaceuk.co.uk\/search?q=liquid+motion+toy","card_bg_color":"#ffffff","card_border_color":"#000000","tag_color":"#6e6e73","heading_color":"#1d1d1f","text_color":"#1d1d1f","image_border_color":"#000000"}},"card_zzTWi8":{"type":"card","settings":{"tag":"Shop Now","heading":"<h3>Projectors<\/h3>","text":"","url":"https:\/\/learningspaceuk.co.uk\/collections\/sensory-projectors","card_bg_color":"#ffffff","card_border_color":"#000000","tag_color":"#6e6e73","heading_color":"#1d1d1f","text_color":"#1d1d1f","image_border_color":"#000000"}},"card_ppVzKr":{"type":"card","settings":{"tag":"Shop Now","heading":"<h3>Tonies<\/h3>","text":"","url":"https:\/\/learningspaceuk.co.uk\/collections\/tonies","card_bg_color":"#ffffff","card_border_color":"#000000","tag_color":"#6e6e73","heading_color":"#1d1d1f","text_color":"#1d1d1f","image_border_color":"#000000"}},"card_qxaUCN":{"type":"card","settings":{"tag":"Shop Now","heading":"<p>Strider Bikes<\/p>","text":"<p>Card Text<\/p>","image":"shopify:\/\/shop_images\/Strider-14x-Sport-Balance-Bike-SK-SB1-IN-PK-Pink-13.webp","url":"shopify:\/\/products\/strider-14x-sport-balance-bike","card_bg_color":"#ffffff","card_border_color":"#000000","tag_color":"#6e6e73","heading_color":"#1d1d1f","text_color":"#1d1d1f","image_border_color":"#000000"}},"card_VggVEq":{"type":"card","settings":{"tag":"NEW","heading":"<h3>Toy Story<\/h3>","text":"<p>Card Text<\/p>","image":"shopify:\/\/shop_images\/Pixar-Toy-Story-Large-Scale-Woody-Figure-900-HFY26-2.jpg","url":"shopify:\/\/products\/pixar-toy-story-large-scale-woody-figure","card_bg_color":"#ffffff","card_border_color":"#000000","tag_color":"#6e6e73","heading_color":"#1d1d1f","text_color":"#1d1d1f","image_border_color":"#000000"}}},"block_order":["card_R4g6iG","card_rXaG9x","card_UYUdCA","card_zzTWi8","card_ppVzKr","card_qxaUCN","card_VggVEq"],"disabled":true,"settings":{"slider_view":3.2,"slider_view_mobile":1.3,"slider_gap":22,"slider_gap_mobile":30,"slider_mt":0,"slider_mt_mobile":12,"card_padding_top":14,"card_padding_top_mobile":30,"card_padding_bottom":14,"card_padding_bottom_mobile":30,"card_radius":8,"card_border_thickness":0,"card_shadow":true,"card_height":true,"content_horizontal_align":"start","content_horizontal_align_mobile":"start","content_padding_horizontal":22,"content_padding_horizontal_mobile":30,"tag_custom":true,"tag_font":"josefin_sans_n4","tag_size":19,"tag_size_mobile":12,"tag_height":130,"heading_custom":true,"heading_font":"josefin_sans_n4","heading_size":28,"heading_size_mobile":28,"heading_height":130,"heading_mt":12,"heading_mt_mobile":12,"text_custom":false,"text_font":"josefin_sans_n4","text_size":0,"text_size_mobile":0,"text_height":50,"text_mt":0,"text_mt_mobile":0,"image_mt":0,"image_mt_mobile":0,"image_radius":22,"image_border_thickness":0,"image_padding_horizontal":30,"image_padding_horizontal_mobile":30,"image_ratio":"square","image_ratio_mobile":"square","pagination_padding_vertical":26,"pagination_padding_vertical_mobile":0,"pagination_padding_horizontal":0,"pagination_padding_horizontal_mobile":0,"pagination_radius":10,"pagination_border_thickness":0,"pagination_custom":false,"pagination_font":"josefin_sans_n4","pagination_size":4,"pagination_size_mobile":16,"pagination_height":130,"pagination_show_desktop":true,"pagination_show_mobile":true,"arrow_size":28,"arrow_size_mobile":48,"arrow_icon_size":8,"arrow_icon_size_mobile":8,"arrow_border_thickness":1,"arrow_radius":100,"arrow_hover_effect":"color","arrow_show_desktop":true,"arrow_show_mobile":true,"pagination_bg_color":"#ffffff","pagination_border_color":"#000000","pagination_color":"#969696","arrow_color":"#000000","arrow_hover_color":"#000000","arrow_bg_color":"#f8f8f8","arrow_bg_hover_color":"#fafafa","arrow_border_color":"#eaeaea","arrow_border_hover_color":"#cbcbcb","background_color":"#f5f5f5","background_gradient":"","border_color":"#000000","margin_top":0,"margin_bottom":0,"margin_horizontal":0,"margin_horizontal_mobile":0,"padding_top":36,"padding_bottom":36,"padding_horizontal":5,"padding_horizontal_mobile":1.5,"full_width":false,"content_width":120,"border_thickness":0,"section_radius":0,"lazy":true}},"0fdf126e-1a5a-4ae9-99e5-593011e801e1":{"type":"featured-products","settings":{"heading":"","sub_heading":"Top Picks This Week","view_all":true,"view_all_label":"View all"}},"ss_circle_menu_Xffpkh":{"type":"ss-circle-menu","blocks":{"image_UtP7cJ":{"type":"Image","settings":{"bubble_img":"shopify:\/\/shop_images\/TONIES-PAW-Patrol-Jungle-Pups-Chase-Audio-Tonie-Character-11000808-2.jpg","bubble_text":"Tonies","bubble_link":"shopify:\/\/collections\/tonies"}},"image_EzqmeL":{"type":"Image","settings":{"bubble_img":"shopify:\/\/shop_images\/Mini-Countryman-6V-Electric-Ride-On-Car-Remote-Control-3.jpg","bubble_text":"Ride Ons","bubble_link":"shopify:\/\/collections\/ride-ons"}},"image_Gbp96n":{"type":"Image","settings":{"bubble_img":"shopify:\/\/shop_images\/ED1TAGDAROW022_model_2000.jpg","bubble_text":"Bean Bags","bubble_link":"shopify:\/\/collections\/bean-bags-modular-seating"}},"image_E3wgRh":{"type":"Image","settings":{"bubble_img":"shopify:\/\/shop_images\/BT180-Bubble-Tube-Marketing-Close-Up-1_942b727d-35ac-4311-880e-6a341f9f6d7e.jpg","bubble_text":"105cm Bubble Tube","bubble_link":"https:\/\/learningspaceuk.co.uk\/products\/bubble-tube-105cm-comes-with-fish-and-balls"}},"image_96wjMk":{"type":"Image","settings":{"bubble_img":"shopify:\/\/shop_images\/Sensory-Mood-Low-Discovery-Table-6.jpg","bubble_text":"Discovery Glow Sets","bubble_link":"https:\/\/learningspaceuk.co.uk\/collections\/light-box-and-light-box-accessories?gf_607291=Light+Box+Accessories"}},"image_PUWc7B":{"type":"Image","settings":{"bubble_img":"shopify:\/\/shop_images\/TP-Genius-Round-Trampoline-10ft-12ft-and-14ft-UK-Mainland-Only-5.webp","bubble_text":"Trampolines","bubble_link":"https:\/\/learningspaceuk.co.uk\/collections\/trampolines"}}},"block_order":["image_UtP7cJ","image_EzqmeL","image_Gbp96n","image_E3wgRh","image_96wjMk","image_PUWc7B"],"settings":{"slider_width":100,"slider_gap":12,"slider_gap_mobile":16,"icon_size":200,"icon_size_mobile":98,"icon_space":0,"icon_space_mobile":0,"icon_border_thickness":1,"icon_square":false,"text_custom":false,"text_font":"josefin_sans_n4","text_size":20,"text_size_mobile":10,"text_height":130,"text_mt":8,"icon_border_color":"#000000","icon_border_gradient":"","text_color":"#000000","background_color":"#ffffff","background_gradient":"","border_color":"#000000","border_gradient":"","margin_top":0,"margin_bottom":0,"padding_top":36,"padding_bottom":36,"padding_horizontal":5,"padding_horizontal_mobile":1.5,"full_width":true,"content_width":150,"border_thickness":0,"lazy":true,"hide_mobile":false,"hide_desktop":false}},"6bb9b19b-e128-4509-a9e7-cb2d0cedc69d":{"type":"featured-categories","blocks":{"template--16974131396851__6bb9b19b-e128-4509-a9e7-cb2d0cedc69d-image-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Need_Family_Fund_Support.png","title":"","slide_title":"Need Family Fund Support?","title_link":"shopify:\/\/pages\/family-fund","title_link_lbel":""}},"template--16974131396851__6bb9b19b-e128-4509-a9e7-cb2d0cedc69d-image-2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Schools_Organisations.png","title":"","slide_title":"Schools & Organisations","title_link":"shopify:\/\/pages\/sensory-room-inspiration","title_link_lbel":""}},"c25fb37a-13b4-412c-a15d-ef6f23dfb8c6":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Available_Grants_for_Families.png","title":"","slide_title":"Available Grants for Families","title_link":"shopify:\/\/pages\/grants-for-families","title_link_lbel":""}},"975520e8-c879-499e-ba99-d66d35e5a2ec":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Sensory_Training_With_Andy.png","title":"","slide_title":"Sensory Training with Andy","title_link":"shopify:\/\/pages\/diversespacetraining","title_link_lbel":""}}},"block_order":["template--16974131396851__6bb9b19b-e128-4509-a9e7-cb2d0cedc69d-image-1","template--16974131396851__6bb9b19b-e128-4509-a9e7-cb2d0cedc69d-image-2","c25fb37a-13b4-412c-a15d-ef6f23dfb8c6","975520e8-c879-499e-ba99-d66d35e5a2ec"],"settings":{"title":"","column_layout_desktop":"3","column_layout_tablet":"6","align_text":"left","padding_top_desktop":0,"padding_bottom_desktop":0,"padding_top_mobile":0,"padding_bottom_mobile":0,"enable_clip":true,"color_clip":"#df0e5c"}},"image_text_pUV7Gy":{"type":"image-text","blocks":{"list_text_8fTpxB":{"type":"list_text","settings":{"bullet_point":"Sand & Water Play"}},"list_text_VYEYgX":{"type":"list_text","settings":{"bullet_point":"Dens & Playhouses"}},"list_text_exWKwj":{"type":"list_text","settings":{"bullet_point":"Small World Play"}},"list_text_kttary":{"type":"list_text","settings":{"bullet_point":"Tray Table Play"}},"list_text_znxXE8":{"type":"list_text","settings":{"bullet_point":"Physical Education"}},"list_text_RaEL9W":{"type":"list_text","settings":{"bullet_point":"Outdoor Messy Play"}}},"block_order":["list_text_8fTpxB","list_text_VYEYgX","list_text_exWKwj","list_text_kttary","list_text_znxXE8","list_text_RaEL9W"],"disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Learning_Space_in_collaboration_with-Cosy.png","image_position":"first","title":"Learning SPACE X Cosy Direct","text":"<p>With an amazing range of sustainable, eco friendly and locally made indoor and outdoor products, Cosy Direct were the perfect company for Learning SPACE to collaborate with. From Early Years settings to parents at home, this range has something for everybody.<\/p>","link":"shopify:\/\/collections\/cosy","link_label":"Shop Cosy Now","padding_top_desktop":30,"padding_bottom_desktop":30,"padding_top_mobile":20,"padding_bottom_mobile":20}},"f5a9acdf-4c22-4edf-95f8-eddece6bc696":{"type":"collage-section","blocks":{"fb87fc8a-4cf1-4ca9-8967-57ae53e7afe9":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Star_galaxy_5.jpg","title":"","title_color":"#042033","link_label":"","link":"shopify:\/\/collections\/sensory-under-10"}},"715cbb81-8a0e-49fa-89ad-12332400022b":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/galaxy.jpg","title":"","title_color":"#042033","link_label":"","link":"shopify:\/\/collections\/star-galaxy-themed-sensory-room"}},"4baf02a1-574c-48b9-9986-e855c505da4a":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/rainbow.jpg","title":"","title_color":"#042033","link_label":"","link":"shopify:\/\/collections\/rainbow-theme-sensory-room"}}},"block_order":["fb87fc8a-4cf1-4ca9-8967-57ae53e7afe9","715cbb81-8a0e-49fa-89ad-12332400022b","4baf02a1-574c-48b9-9986-e855c505da4a"],"settings":{"title":"","padding_top_desktop":30,"padding_bottom_desktop":30,"padding_top_mobile":20,"padding_bottom_mobile":20}},"4ea3c481-b5c6-4692-a238-1c9e473475f4":{"type":"image-text","blocks":{"bfc0b335-8f10-49dc-9582-ed9bb97668e9":{"type":"list_text","settings":{"bullet_point":"Vast range of goods"}},"fecf970e-0b82-4ffd-8388-84e021b25668":{"type":"list_text","settings":{"bullet_point":"High quality furniture"}},"2467a50b-1089-4eae-a4ff-2e87bcf653ad":{"type":"list_text","settings":{"bullet_point":"Locally sourced and sustainable where possible"}},"fda6c72c-4c96-4853-bb51-830097e8bdab":{"type":"list_text","settings":{"bullet_point":"Approved by the EA, ETBs, HSC"}},"14695907-1a0f-4e82-a871-6d6cb1fbfed5":{"type":"list_text","settings":{"bullet_point":"Installation and CAD services available"}},"03e084ca-b4b0-4839-a8f1-304302ce2655":{"type":"list_text","settings":{"bullet_point":"Free site visits and surveys"}}},"block_order":["bfc0b335-8f10-49dc-9582-ed9bb97668e9","fecf970e-0b82-4ffd-8388-84e021b25668","2467a50b-1089-4eae-a4ff-2e87bcf653ad","fda6c72c-4c96-4853-bb51-830097e8bdab","14695907-1a0f-4e82-a871-6d6cb1fbfed5","03e084ca-b4b0-4839-a8f1-304302ce2655"],"settings":{"image":"shopify:\/\/shop_images\/Eden-Star-Print-SENShearer-018.jpg","image_position":"first","title":"Your One Stop Shop for all things Education and Sensory","text":"<p>Our passion has been and always will be catering to the needs to children and adults with Additional Needs. <\/p><p>Working with schools, libraries, nurseries, hotels and so many more places to make the world a more accessible place<\/p>","link":"shopify:\/\/pages\/our-story","link_label":"Our Story","padding_top_desktop":30,"padding_bottom_desktop":30,"padding_top_mobile":20,"padding_bottom_mobile":20}},"e991f3dd-ab31-4b18-86a1-b458facb07aa":{"type":"featured-categories","blocks":{"template--17020637610227__e991f3dd-ab31-4b18-86a1-b458facb07aa-image-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/20.png","title":"","slide_title":"","title_link":"shopify:\/\/collections\/new-collection","title_link_lbel":""}},"8683fe4c-15a6-4c81-a42c-150a3893095b":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_Images_12.png","title":"","slide_title":"","title_link":"shopify:\/\/collections\/themed-sensory-rooms","title_link_lbel":""}},"template--17020637610227__e991f3dd-ab31-4b18-86a1-b458facb07aa-image-2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_Images_9.png","title":"","slide_title":"","title_link":"shopify:\/\/collections\/sale","title_link_lbel":""}},"image_FCwqkz":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Shopify_Homepage_Images_ddc45335-e119-43b1-a7e4-f6fac3f20e7d.png","title":"","slide_title":"","title_link":"https:\/\/learningspaceuk.co.uk\/collections\/all-products","title_link_lbel":""}}},"block_order":["template--17020637610227__e991f3dd-ab31-4b18-86a1-b458facb07aa-image-1","8683fe4c-15a6-4c81-a42c-150a3893095b","template--17020637610227__e991f3dd-ab31-4b18-86a1-b458facb07aa-image-2","image_FCwqkz"],"disabled":true,"settings":{"title":"Text columns with images","column_layout_desktop":"3","column_layout_tablet":"6","align_text":"left","padding_top_desktop":30,"padding_bottom_desktop":30,"padding_top_mobile":20,"padding_bottom_mobile":20,"enable_clip":true,"color_clip":"#df0e5c"}},"a26809ac-4955-4b71-9fb1-51aaa6927163":{"type":"image-gallery","blocks":{"template--17020637610227__a26809ac-4955-4b71-9fb1-51aaa6927163-gallery_item-1":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/1_7f6b313a-d4a4-419f-ab86-0caa1106df30.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/gifts-for-0-3-months-old","link_label":""}},"45f64004-aca5-43af-8919-9856075655a7":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/2_559f644f-4148-46ab-88ba-39a615f8f229.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/gifts-for-3-6-months-olds","link_label":""}},"043a5e03-7a64-4d16-8dbe-6eb16c9ef2fc":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/3_d791dc0f-cf94-4ba0-96ce-8f7a650354cb.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/gifts-for-6-12-months-old","link_label":""}},"351f4712-c22b-4bd7-bf92-3b64c32e594a":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/4.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/gifts-for-1-year-old","link_label":""}},"6ec78d80-4020-47e3-9642-8d1dbc1a7801":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/5_0c132e7c-961e-4c56-8a27-cea4a33024c9.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/gifts-for-2-3-years-old","link_label":""}},"72e020d0-94ea-4157-b5ea-cc6db0af8375":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/6_ebc1c36e-4cde-4204-9c2e-f64393ce9434.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/gifts-for-3-5-year-olds","link_label":""}},"3d42941f-e95c-4fcc-a4db-1a3facaebdc4":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/7_590c513a-ddfb-482d-923d-caab9112700a.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/gifts-for-5-7-year-olds","link_label":""}},"c81cea3d-066c-428c-b898-899cc5589a8a":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/8_85a9958d-698e-40aa-8dc8-8403acc767a0.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/gifts-for-8-years-olds","link_label":""}},"f8accd68-4c9f-4df9-93a7-5e752678ebff":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/9_d7a31ee3-5189-4927-842a-99a52fb7fc43.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/teenagers","link_label":""}},"56c20e00-1f9c-48b1-9659-a878802227db":{"type":"gallery_item","settings":{"image":"shopify:\/\/shop_images\/10_494089fa-64b8-403f-8294-bdfd51e664e3.png","round_img":true,"title":"","text":"","link":"shopify:\/\/collections\/teenage-adult-years","link_label":""}}},"block_order":["template--17020637610227__a26809ac-4955-4b71-9fb1-51aaa6927163-gallery_item-1","45f64004-aca5-43af-8919-9856075655a7","043a5e03-7a64-4d16-8dbe-6eb16c9ef2fc","351f4712-c22b-4bd7-bf92-3b64c32e594a","6ec78d80-4020-47e3-9642-8d1dbc1a7801","72e020d0-94ea-4157-b5ea-cc6db0af8375","3d42941f-e95c-4fcc-a4db-1a3facaebdc4","c81cea3d-066c-428c-b898-899cc5589a8a","f8accd68-4c9f-4df9-93a7-5e752678ebff","56c20e00-1f9c-48b1-9659-a878802227db"],"disabled":true,"settings":{"title":"Shop By Age","column_layout_desktop":"20","column_layout_tablet":"6","column_layout_mobile":"6","align_text":"center","padding_top_desktop":0,"padding_bottom_desktop":0,"padding_top_mobile":0,"padding_bottom_mobile":0}},"ss_masonry_grid_YUzmVA":{"type":"ss-masonry-grid","blocks":{"collection_MbUni8":{"type":"collection","settings":{"column_width":1,"row_width":2,"collection":"bounce-spin","bg_type":"video","video":"shopify:\/\/files\/videos\/Carousel sit & spin (1).mp4","video_url":"","controls":true,"button_text":"Carousel","link_on_block":true,"content":false,"title_hover":true,"btn_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"custom_pNUVna":{"type":"custom","disabled":true,"settings":{"column_width":1,"row_width":1,"title":"","text":"","button":"Shop Carousel","button_url":"shopify:\/\/products\/carousel-sit-and-spin","bg_type":"image","image":"shopify:\/\/shop_images\/gonge_carousel_austism_sensory_play2.webp","video_url":"","controls":false,"hide_bg":false,"content_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"product_nTaMBM":{"type":"product","disabled":true,"settings":{"column_width":1,"row_width":1,"product":"exclusive-halloween-fidget-bundle","bg_type":"image","video_url":"","controls":false,"button_text":"Garden Bundle","link_on_block":true,"content":false,"title_hover":false,"price_hover":false,"btn_hover":false,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"product_nphpmF":{"type":"product","settings":{"column_width":1,"row_width":1,"product":"garden-watering-can-green-childrens","bg_type":"image","video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","controls":false,"button_text":"Show More","link_on_block":true,"content":false,"title_hover":false,"price_hover":false,"btn_hover":false,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"custom_tXBqGh":{"type":"custom","settings":{"column_width":1,"row_width":2,"title":"","text":"","button":"","button_url":"https:\/\/learningspaceuk.co.uk\/search?q=peter+rabbit","bg_type":"video","video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","controls":true,"hide_bg":false,"content_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"custom_7NMTbL":{"type":"custom","settings":{"column_width":2,"row_width":1,"title":"","text":"","button":"Shop Peter Rabbit","button_url":"https:\/\/learningspaceuk.co.uk\/search?q=peter+rabbit","bg_type":"image","video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","controls":false,"hide_bg":false,"content_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"custom_c3LtXR":{"type":"custom","settings":{"column_width":1,"row_width":1,"title":"","text":"","button":"Shop Summer","button_url":"shopify:\/\/collections\/summer","bg_type":"image","image":"shopify:\/\/shop_images\/Summer-Skis-2-children-PE2108-4.jpg","video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","controls":false,"hide_bg":false,"content_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"collection_AwBdap":{"type":"collection","settings":{"column_width":1,"row_width":1,"collection":"teen-and-adult-swings","bg_type":"image","image":"shopify:\/\/shop_images\/Wheelchair-Platform-Swing-TFH8WHSW-VAT-Exempt.jpg","video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","controls":false,"button_text":"Shop Now","link_on_block":true,"content":false,"title_hover":true,"btn_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"collection_z6T7wB":{"type":"collection","settings":{"column_width":2,"row_width":2,"collection":"needoh","bg_type":"video","video_url":"https:\/\/www.youtube.com\/watch?v=H7257l9BavE","controls":false,"button_text":"","link_on_block":true,"content":false,"title_hover":false,"btn_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"custom_bkyJdD":{"type":"custom","settings":{"column_width":1,"row_width":1,"title":"","text":"","button":"Shop Needoh","button_url":"shopify:\/\/collections\/needoh","bg_type":"image","video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","controls":false,"hide_bg":false,"content_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}},"product_WX6DqC":{"type":"product","disabled":true,"settings":{"column_width":2,"row_width":2,"product":"air-toobz","bg_type":"image","video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","controls":false,"button_text":"Shop Now","link_on_block":true,"content":false,"title_hover":true,"price_hover":true,"btn_hover":true,"content_horizontal_align":"center","content_horizontal_align_mobile":"center","content_vertical_align":"center","content_vertical_align_mobile":"center"}}},"block_order":["collection_MbUni8","custom_pNUVna","product_nTaMBM","product_nphpmF","custom_tXBqGh","custom_7NMTbL","custom_c3LtXR","collection_AwBdap","collection_z6T7wB","custom_bkyJdD","product_WX6DqC"],"disabled":true,"settings":{"heading":"","heading_custom":false,"heading_font":"josefin_sans_n4","heading_size":40,"heading_size_mobile":30,"heading_height":150,"heading_align":"center","heading_align_mobile":"center","items_gap":20,"items_gap_mobile":20,"items_mt":16,"row_height":300,"row_height_mobile":200,"block_padding_vertical":20,"block_padding_vertical_mobile":20,"block_padding_horizontal":16,"block_padding_horizontal_mobile":16,"block_radius":8,"block_border_thickness":1,"block_overlay":0.2,"content_padding_vertical":20,"content_padding_vertical_mobile":10,"content_padding_horizontal":40,"content_padding_horizontal_mobile":10,"content_radius":8,"content_border_thickness":1,"content_bg_opacity":0.4,"block_align":"center","block_align_mobile":"center","title_custom":false,"title_font":"josefin_sans_n4","title_size":24,"title_size_mobile":20,"title_height":120,"text_custom":false,"text_font":"josefin_sans_n4","text_size":24,"text_size_mobile":20,"text_height":100,"text_mt":16,"price_custom":false,"price_font":"josefin_sans_n4","price_size":24,"price_size_mobile":20,"price_height":100,"price_mt":16,"button_custom":false,"button_font":"josefin_sans_n4","button_size":16,"button_size_mobile":14,"button_height":100,"button_mt":16,"button_padding_vertical":16,"button_padding_horizontal":24,"button_radius":8,"button_border_thickness":0,"block_bg_color":"#ffffff","block_border_color":"#000000","content_bg_color":"#ffffff","content_border_color":"#000000","title_color":"#ffffff","text_color":"#ffffff","price_color":"#ffffff","button_color":"#ffffff","button_hover_color":"#ffffff","button_bg_color":"#000000","button_bg_hover_color":"#000000","button_border_color":"#000000","button_border_hover_color":"#000000","heading_color":"#000000","background_color":"#ffffff","background_gradient":"","border_color":"#000000","margin_top":0,"margin_bottom":0,"padding_top":36,"padding_bottom":36,"padding_horizontal":5,"padding_horizontal_mobile":1.5,"full_width":false,"content_width":160,"border_thickness":0,"lazy":true}},"6c9b1841-9be2-4207-8bda-2942c2402620":{"type":"testimonials","blocks":{"image_XMU8Kx":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024.png","customer_name":"Mick","subheading":"Parent","content":"Brilliant service couldn’t have been any easier. Customer service is a 5 star plus Sinead put everything through for me and even called me back when our line disconnected.\n\nFriendly lovely person you can tell she loves her job. I would definitely buy from this website again."}},"template--16974131396851__6c9b1841-9be2-4207-8bda-2942c2402620-image-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_1.png","customer_name":"Jennifer Fuller","subheading":"Teacher","content":"The training was fantastic. Andy was really amazing; I could listen to him all day-he has such knowledge and great advice. We would love to have him out again when the children are back in school. We have a few children who we think would benefit from meeting Andy"}},"image_7ApgqH":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_3.png","customer_name":"Deanne","subheading":"Parent","content":"Fast, quick, simple, I felt heard by the team and respected during all my phone calls. I had a bit of a moment and ordered items that I didn’t need so panicked rang them and boom just like that all changed within a matter of seconds there was no issues worries nothing it was resolved very quickly the call handlers were amazing and cheerful which is always nice to hear. I highly recommend them. Granted some of the items are at a big price tag however they are great quality I ordered my son the red cone (Gonge top sit and spin) and he loves it. (5 Years old) The delivery was also incredibly fast considering it is Christmas season my items were received within a week of ordering (this may not always be the case however it does give an in sight)"}},"29e4f228-6b94-4051-a3f3-bbc66722bf45":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_2.png","customer_name":"Clare Downey","subheading":"Teacher","content":"Just wanted to say that the staff thought the training was outstanding yesterday!! Thanks to you and Andy who delivered it"}},"image_TegGyj":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_4.png","customer_name":"Raven","subheading":"Parent","content":"Friendly and helpful customer service. Called up because the website was a little tricky on my phone and Tracy was really easy to talk to. Thank you"}},"image_WWGRCc":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_2.png","customer_name":"Clodagh","subheading":"Parent, Teacher and Training Attendee","content":"We had Andy into our charity to teach us his experience and knowledge about ASD ADHD and autism and much more. It was very insightful and a really great learning day. Andy was very friendly and helped answer and questions we had around this topic. It was very engaging and he brought some products that we could trial and use for future young people in our charity."}},"image_Jphw9B":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_5.png","customer_name":"Sophie","subheading":"Parent","content":"I had a slight amount left over from a family fund grant and a lovely customer service representative got in touch and asked if I’d like them to pick out some items. I agreed and they added a range of different toys that my little one will absolutely love. Not a lot of places would go out of their way like this so it’s much appreciated!!"}},"image_MLTK3r":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_6.png","customer_name":"Linda","subheading":"Training Attendee","content":"Had training from Andy re Autism. Really informative and useful and delivered with conviction. Andy was very honest about his own experiences which he was able to share and bring a true perspective on the condition. Such an insight into the struggles faced by those living with ASD. Really excellent!"}},"image_LjGGe3":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_2.png","customer_name":"Charlene","subheading":"Parent","content":"Tracey was amazing helping me today when I called after having a few issues online. She helped me with my order and adjusted a few things to help put my order through. Fantastic customer service and Tracey is a credit to your company. Can't wait to receive my order for my twins and will definitely be returning as a customer again. Such a fantastic range that would benefit my autistic boys. Thank you so much."}},"image_hbLiVJ":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Learning_SPACE_Sets_Images_2024_7.png","customer_name":"Brenda At Clonmore Youth Club","subheading":"Youth Centre","content":"What an experience I had with Clonmore Youth Club when we had Andy in on Tuesday. I can't put into enough words how much knowledge we all gained from this course. Andy explains everything perfect and easily understood with also putting yourself in the views of people with Autism and other sensory issues. I came away with even ideas for my own home which was part of the reason I wanted to be there aswell as for the youth club and future work.\nAndy is a must for any organisation as this is a topic that we all can be helped with in everyday life. Andy you are amazing keep up the AMAZING WORK 👏"}}},"block_order":["image_XMU8Kx","template--16974131396851__6c9b1841-9be2-4207-8bda-2942c2402620-image-1","image_7ApgqH","29e4f228-6b94-4051-a3f3-bbc66722bf45","image_TegGyj","image_WWGRCc","image_Jphw9B","image_MLTK3r","image_LjGGe3","image_hbLiVJ"],"disabled":true,"custom_css":[],"settings":{}},"17212966637f3047e3":{"type":"apps","blocks":{"google_reviews_widgets_plus_review_list_widget_KDJxVb":{"type":"shopify:\/\/apps\/google-reviews-widgets-plus\/blocks\/review_list_widget\/f0459f06-fdf2-4198-b577-b68f9c8c907a","settings":{"heading":"","heading_margins":"0px","heading_hierachy":"h2","widget_type":"carousel","widget_theme":"light","review_limit":0,"minimum_rating":"4","sort_by":"review-date"}}},"block_order":["google_reviews_widgets_plus_review_list_widget_KDJxVb"],"settings":{}},"170170505821818c0e":{"type":"apps","settings":{}},"3924c226-1f85-4415-ab4c-e1a9382c8ddf":{"type":"newsletters","custom_css":["@media (min-width: 750px) {.newsletter-panel {min-height: 330px; } .newsletter-panel {margin-bottom: -140px; }}"],"settings":{"newsletter_enable":true,"newsletter_heading":"Newsletter","newsletter_sub_heading":"Sign up for blogs, advice, new products and so much more...","bg_color":"#042033"}},"b5a78e9a-0201-457c-a5f4-59fa149ac968":{"type":"rich-text","disabled":true,"settings":{"title":"Rich text","text":"<p>Mauris id rhoncus nunc. Ut mattis sagittis magna ut varius. Donec gravida quam vel metus semper, sit amet fringilla sem dapibus. Morbi placerat luctus magna. Aliquam ultricies commodo ullamcorper. Donec et libero a sapien lacinia pharetra. Nullam egestas tortor mi, eget consequat quam scelerisque eu. Praesent semper, purus eget lacinia condimentum, dolor ipsum volutpat felis, eget aliquam lorem velit ut ante. Duis in erat laoreet odio luctus posuere.<\/p>","align_text":"center","container_layout":true,"enable_more_less":true,"padding_top_desktop":30,"padding_bottom_desktop":30,"padding_top_mobile":20,"padding_bottom_mobile":20}}},"order":["rich_text_fbGDJG","home-slider","ss_slideshow_7_PgCGTk","ss_text_block_CdpMYE","ss_scrolling_collections_XcdXr3","09b7d067-928b-403b-8caa-40474eda6b1a","ss_slider_7_pdwj8Q","0fdf126e-1a5a-4ae9-99e5-593011e801e1","ss_circle_menu_Xffpkh","6bb9b19b-e128-4509-a9e7-cb2d0cedc69d","image_text_pUV7Gy","f5a9acdf-4c22-4edf-95f8-eddece6bc696","4ea3c481-b5c6-4692-a238-1c9e473475f4","e991f3dd-ab31-4b18-86a1-b458facb07aa","a26809ac-4955-4b71-9fb1-51aaa6927163","ss_masonry_grid_YUzmVA","6c9b1841-9be2-4207-8bda-2942c2402620","17212966637f3047e3","170170505821818c0e","3924c226-1f85-4415-ab4c-e1a9382c8ddf","b5a78e9a-0201-457c-a5f4-59fa149ac968"]}
+{
+  "sections": {
+    "rich_text_fbGDJG": {
+      "type": "rich-text",
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "title": "<h1>Learning Space Homepage</h1>",
+        "text": "<h1>Learning SPACE<br/><br/></h1>",
+        "align_text": "left",
+        "container_layout": false,
+        "enable_more_less": false,
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 30,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "home-slider": {
+      "type": "home-slider",
+      "blocks": {
+        "image_ajWWFP": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Banners_for_New_Web_2000_x_600_px_20.jpg",
+            "slide_title": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": "https://learningspaceuk.co.uk/collections/orchard-toys"
+          }
+        },
+        "image_QCKHVn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/sensory_packages_and_ready_to_go_rooms.jpg",
+            "slide_title": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": "https://learningspaceuk.co.uk/collections/ready-made-sensory-rooms"
+          }
+        },
+        "image_jNakJU": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Banners_for_New_Web_2000_x_600_px_7.jpg",
+            "slide_title": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": "https://learningspaceuk.co.uk/collections/sale"
+          }
+        },
+        "2d383e2f-16c9-4aa5-bf9e-a8b216e7e4c7": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Banners_for_New_Web_2000_x_600_px_1.jpg",
+            "slide_title": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": "https://learningspaceuk.co.uk/collections/music-musical-instruments-and-toys"
+          }
+        }
+      },
+      "block_order": [
+        "image_ajWWFP",
+        "image_QCKHVn",
+        "image_jNakJU",
+        "2d383e2f-16c9-4aa5-bf9e-a8b216e7e4c7"
+      ],
+      "custom_css": [
+        ".carousel-item img {width: 100%; height: auto; display: block;}",
+        ".carousel-inner,.carousel-item {height: auto; /* let JS set it dynamically */}"
+      ],
+      "settings": {}
+    },
+    "ss_slideshow_7_PgCGTk": {
+      "type": "ss-slideshow-7",
+      "blocks": {
+        "slide_H6kmdw": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/New_Website_Launch.png",
+            "heading": "",
+            "text": "",
+            "button": "Shop Now",
+            "button_url": "shopify://collections/cosy",
+            "first_image_url": "",
+            "second_image_url": "",
+            "third_image_url": ""
+          }
+        },
+        "slide_8tkwL9": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_banners_2024_6.png",
+            "heading": "",
+            "text": "",
+            "button": "Available Now",
+            "button_url": "https://learningspaceuk.co.uk/products/myspace-sensory-pop-up-dark-den",
+            "first_image_url": "",
+            "second_image_url": "",
+            "third_image_url": ""
+          }
+        },
+        "slide_6qkFJ8": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_banners_2024_3.png",
+            "image_mobile": "shopify://shop_images/Shopify_Homepage_banners_2024_3.png",
+            "heading": "<h1>Hug-A-Lumps</h1>",
+            "text": "<p>Play Re-Imagined</p>",
+            "button": "Shop Now",
+            "button_url": "shopify://products/hug-a-lumps-weighted-soft-toy",
+            "first_image": "shopify://shop_images/Hug-A-Lumps-Weighted-Soft-Toys-Collect-Them-All-7.jpg",
+            "first_image_url": "shopify://products/hug-a-lumps-weighted-soft-toy",
+            "second_image": "shopify://shop_images/Hug-A-Lumps-Weighted-Soft-Toys-Collect-Them-All-14901H-Rocko-The-crocodile-24.jpg",
+            "second_image_url": "shopify://products/hug-a-lumps-weighted-soft-toy",
+            "third_image": "shopify://shop_images/Hug-A-Lumps-Weighted-Soft-Toys-Collect-Them-All-14901G-Bailey-The-Duck-14.jpg",
+            "third_image_url": "shopify://products/hug-a-lumps-weighted-soft-toy"
+          }
+        },
+        "slide_dE7PPH": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_banners_2024_2.png",
+            "image_mobile": "shopify://shop_images/Shopify_Homepage_banners_2024_2.png",
+            "heading": "<h1>Connetix</h1>",
+            "text": "<p>Where Play and Learning Connect</p>",
+            "button": "Shop Now",
+            "button_url": "shopify://collections/connetix-magnetic-tiles",
+            "first_image_url": "shopify://collections/connetix-magnetic-tiles",
+            "second_image_url": "shopify://collections/connetix-magnetic-tiles",
+            "third_image_url": "shopify://collections/connetix-magnetic-tiles"
+          }
+        },
+        "slide_6PF4y3": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_4.jpg",
+            "image_mobile": "shopify://shop_images/Untitled_design_4.jpg",
+            "heading": "<h1>LEGO</h1>",
+            "text": "<p>Brand new LEGO for Christmas and beyond</p>",
+            "button": "Shop Now",
+            "button_url": "shopify://collections/lego",
+            "first_image_url": "shopify://products/lego-disney-simba-the-lion-king-cub-43243",
+            "second_image_url": "shopify://products/lego-wicked-glinda-elphaba-nessarose-at-shiz-university-75681",
+            "third_image_url": "shopify://products/lego-dreamzzz-the-never-witch-s-nightmare-creatures-71483"
+          }
+        },
+        "slide_KCCped": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_banners_2024_5.png",
+            "image_mobile": "shopify://shop_images/Shopify_Homepage_banners_2024_5.png",
+            "heading": "<h1>Crazy Forts</h1>",
+            "text": "<p>Just add a Bedsheet for Endless Fun</p>",
+            "button": "Shop Now",
+            "button_url": "shopify://collections/crazy-forts",
+            "first_image_url": "shopify://products/crazy-forts-original",
+            "second_image_url": "shopify://products/crazy-forts-fort-lights",
+            "third_image_url": "shopify://products/crazy-forts-glow-in-the-dark"
+          }
+        },
+        "slide_8zD9Ay": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_banners_2024_1.png",
+            "image_mobile": "shopify://shop_images/Shopify_Homepage_banners_2024_1.png",
+            "heading": "<h1>Tonies</h1>",
+            "text": "<p>Brand New Tonies</p>",
+            "button": "Shop Now",
+            "button_url": "shopify://collections/tonies",
+            "first_image_url": "shopify://products/marvel-spidey-and-his-amazing-friends-tonie",
+            "second_image_url": "shopify://products/tonies-enid-blyton-the-wishing-chair",
+            "third_image_url": "shopify://products/disneys-moana-tonie-songs-story-adventure-for-toniebox"
+          }
+        },
+        "slide_WQzMbp": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_banners_2024_7.jpg",
+            "image_mobile": "shopify://shop_images/Shopify_Homepage_banners_2024.jpg",
+            "heading": "<h1>Strider Bikes</h1>",
+            "text": "<p>The No Pedal Pre Bike</p>",
+            "button": "Shop Now",
+            "button_url": "shopify://collections/strider-balance-bikes",
+            "first_image": "shopify://shop_images/Strider-12-Classic-Balance-Bike-14.webp",
+            "first_image_url": "shopify://collections/strider-balance-bikes",
+            "second_image": "shopify://shop_images/Strider-12-Classic-Balance-Bike-16.webp",
+            "second_image_url": "shopify://collections/strider-balance-bikes",
+            "third_image": "shopify://shop_images/Strider-14x-Sport-Balance-Bike-SK-SB1-IN-GN-Green-11.webp",
+            "third_image_url": "shopify://collections/strider-balance-bikes"
+          }
+        }
+      },
+      "block_order": [
+        "slide_H6kmdw",
+        "slide_8tkwL9",
+        "slide_6qkFJ8",
+        "slide_dE7PPH",
+        "slide_6PF4y3",
+        "slide_KCCped",
+        "slide_8zD9Ay",
+        "slide_WQzMbp"
+      ],
+      "disabled": true,
+      "settings": {
+        "slideshow_height": "fixed_height",
+        "slideshow_fixed_height": 450,
+        "slideshow_fixed_height_mobile": 450,
+        "autoplay": true,
+        "autoplay_delay": 2,
+        "overlay": 0.4,
+        "content_padding_vertical": 64,
+        "content_padding_vertical_mobile": 100,
+        "content_padding_horizontal": 110,
+        "content_padding_horizontal_mobile": 80,
+        "content_horizontal_position_mobile": "center",
+        "heading_custom": false,
+        "heading_font": "josefin_sans_n4",
+        "heading_size": 72,
+        "heading_size_mobile": 0,
+        "heading_height": 130,
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 18,
+        "text_size_mobile": 32,
+        "text_height": 110,
+        "text_mt": 38,
+        "text_mt_mobile": 100,
+        "button_custom": false,
+        "button_font": "josefin_sans_n4",
+        "button_size": 30,
+        "button_size_mobile": 24,
+        "button_height": 100,
+        "button_mt": 48,
+        "button_mt_mobile": 28,
+        "button_padding_vertical": 16,
+        "button_padding_vertical_mobile": 12,
+        "button_padding_horizontal": 32,
+        "button_padding_horizontal_mobile": 32,
+        "button_radius": 100,
+        "button_border_thickness": 1,
+        "button_style": "outline",
+        "image_radius": 30,
+        "image_border_thickness": 0,
+        "image_ratio": "original",
+        "image_ratio_mobile": "original",
+        "image_hide_mobile": true,
+        "image_hide_desktop": true,
+        "arrow_size": 48,
+        "arrow_size_mobile": 58,
+        "arrow_icon_size": 8,
+        "arrow_icon_size_mobile": 8,
+        "arrow_border_thickness": 0,
+        "arrow_radius": 100,
+        "arrow_hover_effect": "color",
+        "arrow_show_desktop": true,
+        "arrow_show_mobile": true,
+        "dots_size": 20,
+        "dots_size_mobile": 14,
+        "dots_show_desktop": true,
+        "dots_show_mobile": false,
+        "pagination_custom": false,
+        "pagination_font": "josefin_sans_n4",
+        "pagination_size": 15,
+        "pagination_size_mobile": 16,
+        "pagination_height": 130,
+        "pagination_show_desktop": true,
+        "pagination_show_mobile": true,
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "image_border_color": "#000000",
+        "button_color": "#ffffff",
+        "button_hover_color": "#ffffff",
+        "button_bg_color": "#434343",
+        "button_bg_hover_color": "#232323",
+        "button_border_color": "#ffffff",
+        "button_border_hover_color": "#ffffff",
+        "arrow_color": "#ffffff",
+        "arrow_hover_color": "#000000",
+        "arrow_bg_color": "#232323",
+        "arrow_bg_hover_color": "#ffffff",
+        "arrow_border_color": "#000000",
+        "arrow_border_hover_color": "#000000",
+        "dots_color": "#ffffff",
+        "pagination_color": "#ffffff",
+        "overlay_color": "#000000",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 8,
+        "margin_bottom": 8,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 220,
+        "border_thickness": 0,
+        "section_radius": 74,
+        "lazy": true
+      }
+    },
+    "ss_text_block_CdpMYE": {
+      "type": "ss-text-block",
+      "blocks": {
+        "button_V7anNr": {
+          "type": "button",
+          "settings": {
+            "button_text": "Enquire Here For Updates On Outstanding School Orders",
+            "button_link": "shopify://pages/school-orders-updates",
+            "color": "#ffffff",
+            "background_color": "#007cff",
+            "border_radius": "50px",
+            "font_size": 25
+          }
+        }
+      },
+      "block_order": [
+        "button_V7anNr"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_header": 10,
+        "padding_button": 10,
+        "background-color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 8,
+        "section-width": 120
+      }
+    },
+    "ss_scrolling_collections_XcdXr3": {
+      "type": "ss-scrolling-collections",
+      "blocks": {
+        "collection_NiwgUP": {
+          "type": "collection",
+          "settings": {
+            "text": "Collection",
+            "url": ""
+          }
+        },
+        "collection_R8neFn": {
+          "type": "collection",
+          "settings": {
+            "text": "Collection",
+            "url": ""
+          }
+        },
+        "collection_DGHWTi": {
+          "type": "collection",
+          "settings": {
+            "text": "Collection",
+            "url": ""
+          }
+        },
+        "collection_jeYaWW": {
+          "type": "collection",
+          "settings": {
+            "text": "Collection",
+            "url": ""
+          }
+        },
+        "collection_UcgtzA": {
+          "type": "collection",
+          "settings": {
+            "text": "Collection",
+            "url": ""
+          }
+        },
+        "collection_bdCKep": {
+          "type": "collection",
+          "settings": {
+            "text": "Collection",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_NiwgUP",
+        "collection_R8neFn",
+        "collection_DGHWTi",
+        "collection_jeYaWW",
+        "collection_UcgtzA",
+        "collection_bdCKep"
+      ],
+      "disabled": true,
+      "settings": {
+        "collections": [
+          "lego",
+          "strider-balance-bikes",
+          "amazonas",
+          "berg-toys",
+          "needoh",
+          "bluey",
+          "melissa-and-doug",
+          "fatboy",
+          "fat-brain-toys",
+          "gabbys-dollhouse",
+          "globber-scooters",
+          "harry-potter",
+          "hey-duggee",
+          "john-deere-toys",
+          "john-adams",
+          "kit-for-kids",
+          "lamaze-toys",
+          "learning-resources",
+          "learning-space",
+          "lumez",
+          "lumina"
+        ],
+        "heading": "",
+        "heading_custom": false,
+        "heading_font": "josefin_sans_n4",
+        "heading_size": 0,
+        "heading_size_mobile": 0,
+        "heading_height": 50,
+        "heading_align": "center",
+        "heading_align_mobile": "center",
+        "scrolling_velocity": 100,
+        "scrolling_velocity_mobile": 100,
+        "reverse_direction": true,
+        "pause_hover": true,
+        "cards_gap": 2,
+        "cards_gap_mobile": 2,
+        "cards_mt": 0,
+        "cards_mt_mobile": 0,
+        "card_width": 390,
+        "card_width_mobile": 180,
+        "card_radius": 80,
+        "card_border_thickness": 1,
+        "card_ratio": "original",
+        "card_ratio_mobile": "original",
+        "card_overlay": 0,
+        "card_blur": 2,
+        "card_blur_enabled": false,
+        "logo_width": 100,
+        "logo_width_mobile": 100,
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 0,
+        "text_size_mobile": 0,
+        "text_height": 50,
+        "text_color": "#ffffff",
+        "card_border_color": "#000000",
+        "card_overlay_color": "#000000",
+        "heading_color": "#000000",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
+    "09b7d067-928b-403b-8caa-40474eda6b1a": {
+      "type": "icon-text",
+      "blocks": {
+        "template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-1": {
+          "type": "textbolck",
+          "settings": {
+            "title": "Education Authority Approved Supplier",
+            "link": "shopify://pages/education-authority"
+          }
+        },
+        "template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-2": {
+          "type": "textbolck",
+          "settings": {
+            "title": "Purchase Orders Accepted",
+            "link": ""
+          }
+        },
+        "template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-3": {
+          "type": "textbolck",
+          "settings": {
+            "title": "Scotland Excel           Approved Supplier",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-1",
+        "template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-2",
+        "template--17020637610227__09b7d067-928b-403b-8caa-40474eda6b1a-textbolck-3"
+      ],
+      "custom_css": [
+        ".swiper-slide.swiper-slide-item a {color: #fff;}",
+        ".swiper-slide.swiper-slide-item {background: #ff0099;}",
+        ".icon-text {background: #ff0099;}",
+        ".swiper-slide.swiper-slide-item {box-shadow: none;}",
+        ".swiper {padding: 0px;}"
+      ],
+      "settings": {}
+    },
+    "ss_slider_7_pdwj8Q": {
+      "type": "ss-slider-7",
+      "blocks": {
+        "card_R4g6iG": {
+          "type": "card",
+          "settings": {
+            "tag": "Shop Now",
+            "heading": "<h3>Ear Defenders</h3>",
+            "text": "",
+            "image": "shopify://shop_images/Pink-Updated-IMG_3795_V2-600x600.jpg",
+            "url": "https://learningspaceuk.co.uk/collections/noise-reduction/products/child-ear-defenders?variant=43110211715315",
+            "card_bg_color": "#ffffff",
+            "card_border_color": "#000000",
+            "tag_color": "#6e6e73",
+            "heading_color": "#1d1d1f",
+            "text_color": "#1d1d1f",
+            "image_border_color": "#000000"
+          }
+        },
+        "card_rXaG9x": {
+          "type": "card",
+          "settings": {
+            "tag": "Shop Now",
+            "heading": "<h3>Playhouses</h3>",
+            "text": "",
+            "image": "shopify://shop_images/Country-Vista-Playhouse-P280097-2.jpg",
+            "url": "https://learningspaceuk.co.uk/collections/play-houses",
+            "card_bg_color": "#ffffff",
+            "card_border_color": "#000000",
+            "tag_color": "#6e6e73",
+            "heading_color": "#1d1d1f",
+            "text_color": "#1d1d1f",
+            "image_border_color": "#000000"
+          }
+        },
+        "card_UYUdCA": {
+          "type": "card",
+          "settings": {
+            "tag": "Shop Now",
+            "heading": "<h3>Liquid Motion Timers</h3>",
+            "text": "",
+            "image": "shopify://shop_images/Pack-of-6-Liquid-Motion-Toy-Timers-Hourglass-PT091.jpg",
+            "url": "https://learningspaceuk.co.uk/search?q=liquid+motion+toy",
+            "card_bg_color": "#ffffff",
+            "card_border_color": "#000000",
+            "tag_color": "#6e6e73",
+            "heading_color": "#1d1d1f",
+            "text_color": "#1d1d1f",
+            "image_border_color": "#000000"
+          }
+        },
+        "card_zzTWi8": {
+          "type": "card",
+          "settings": {
+            "tag": "Shop Now",
+            "heading": "<h3>Projectors</h3>",
+            "text": "",
+            "url": "https://learningspaceuk.co.uk/collections/sensory-projectors",
+            "card_bg_color": "#ffffff",
+            "card_border_color": "#000000",
+            "tag_color": "#6e6e73",
+            "heading_color": "#1d1d1f",
+            "text_color": "#1d1d1f",
+            "image_border_color": "#000000"
+          }
+        },
+        "card_ppVzKr": {
+          "type": "card",
+          "settings": {
+            "tag": "Shop Now",
+            "heading": "<h3>Tonies</h3>",
+            "text": "",
+            "url": "https://learningspaceuk.co.uk/collections/tonies",
+            "card_bg_color": "#ffffff",
+            "card_border_color": "#000000",
+            "tag_color": "#6e6e73",
+            "heading_color": "#1d1d1f",
+            "text_color": "#1d1d1f",
+            "image_border_color": "#000000"
+          }
+        },
+        "card_qxaUCN": {
+          "type": "card",
+          "settings": {
+            "tag": "Shop Now",
+            "heading": "<p>Strider Bikes</p>",
+            "text": "<p>Card Text</p>",
+            "image": "shopify://shop_images/Strider-14x-Sport-Balance-Bike-SK-SB1-IN-PK-Pink-13.webp",
+            "url": "shopify://products/strider-14x-sport-balance-bike",
+            "card_bg_color": "#ffffff",
+            "card_border_color": "#000000",
+            "tag_color": "#6e6e73",
+            "heading_color": "#1d1d1f",
+            "text_color": "#1d1d1f",
+            "image_border_color": "#000000"
+          }
+        },
+        "card_VggVEq": {
+          "type": "card",
+          "settings": {
+            "tag": "NEW",
+            "heading": "<h3>Toy Story</h3>",
+            "text": "<p>Card Text</p>",
+            "image": "shopify://shop_images/Pixar-Toy-Story-Large-Scale-Woody-Figure-900-HFY26-2.jpg",
+            "url": "shopify://products/pixar-toy-story-large-scale-woody-figure",
+            "card_bg_color": "#ffffff",
+            "card_border_color": "#000000",
+            "tag_color": "#6e6e73",
+            "heading_color": "#1d1d1f",
+            "text_color": "#1d1d1f",
+            "image_border_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "card_R4g6iG",
+        "card_rXaG9x",
+        "card_UYUdCA",
+        "card_zzTWi8",
+        "card_ppVzKr",
+        "card_qxaUCN",
+        "card_VggVEq"
+      ],
+      "disabled": true,
+      "settings": {
+        "slider_view": 3.2,
+        "slider_view_mobile": 1.3,
+        "slider_gap": 22,
+        "slider_gap_mobile": 30,
+        "slider_mt": 0,
+        "slider_mt_mobile": 12,
+        "card_padding_top": 14,
+        "card_padding_top_mobile": 30,
+        "card_padding_bottom": 14,
+        "card_padding_bottom_mobile": 30,
+        "card_radius": 8,
+        "card_border_thickness": 0,
+        "card_shadow": true,
+        "card_height": true,
+        "content_horizontal_align": "start",
+        "content_horizontal_align_mobile": "start",
+        "content_padding_horizontal": 22,
+        "content_padding_horizontal_mobile": 30,
+        "tag_custom": true,
+        "tag_font": "josefin_sans_n4",
+        "tag_size": 19,
+        "tag_size_mobile": 12,
+        "tag_height": 130,
+        "heading_custom": true,
+        "heading_font": "josefin_sans_n4",
+        "heading_size": 28,
+        "heading_size_mobile": 28,
+        "heading_height": 130,
+        "heading_mt": 12,
+        "heading_mt_mobile": 12,
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 0,
+        "text_size_mobile": 0,
+        "text_height": 50,
+        "text_mt": 0,
+        "text_mt_mobile": 0,
+        "image_mt": 0,
+        "image_mt_mobile": 0,
+        "image_radius": 22,
+        "image_border_thickness": 0,
+        "image_padding_horizontal": 30,
+        "image_padding_horizontal_mobile": 30,
+        "image_ratio": "square",
+        "image_ratio_mobile": "square",
+        "pagination_padding_vertical": 26,
+        "pagination_padding_vertical_mobile": 0,
+        "pagination_padding_horizontal": 0,
+        "pagination_padding_horizontal_mobile": 0,
+        "pagination_radius": 10,
+        "pagination_border_thickness": 0,
+        "pagination_custom": false,
+        "pagination_font": "josefin_sans_n4",
+        "pagination_size": 4,
+        "pagination_size_mobile": 16,
+        "pagination_height": 130,
+        "pagination_show_desktop": true,
+        "pagination_show_mobile": true,
+        "arrow_size": 28,
+        "arrow_size_mobile": 48,
+        "arrow_icon_size": 8,
+        "arrow_icon_size_mobile": 8,
+        "arrow_border_thickness": 1,
+        "arrow_radius": 100,
+        "arrow_hover_effect": "color",
+        "arrow_show_desktop": true,
+        "arrow_show_mobile": true,
+        "pagination_bg_color": "#ffffff",
+        "pagination_border_color": "#000000",
+        "pagination_color": "#969696",
+        "arrow_color": "#000000",
+        "arrow_hover_color": "#000000",
+        "arrow_bg_color": "#f8f8f8",
+        "arrow_bg_hover_color": "#fafafa",
+        "arrow_border_color": "#eaeaea",
+        "arrow_border_hover_color": "#cbcbcb",
+        "background_color": "#f5f5f5",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": false,
+        "content_width": 120,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
+    "0fdf126e-1a5a-4ae9-99e5-593011e801e1": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "",
+        "sub_heading": "Top Picks This Week",
+        "view_all": true,
+        "view_all_label": "View all"
+      }
+    },
+    "ss_circle_menu_Xffpkh": {
+      "type": "ss-circle-menu",
+      "blocks": {
+        "image_UtP7cJ": {
+          "type": "Image",
+          "settings": {
+            "bubble_img": "shopify://shop_images/TONIES-PAW-Patrol-Jungle-Pups-Chase-Audio-Tonie-Character-11000808-2.jpg",
+            "bubble_text": "Tonies",
+            "bubble_link": "shopify://collections/tonies"
+          }
+        },
+        "image_EzqmeL": {
+          "type": "Image",
+          "settings": {
+            "bubble_img": "shopify://shop_images/Mini-Countryman-6V-Electric-Ride-On-Car-Remote-Control-3.jpg",
+            "bubble_text": "Ride Ons",
+            "bubble_link": "shopify://collections/ride-ons"
+          }
+        },
+        "image_Gbp96n": {
+          "type": "Image",
+          "settings": {
+            "bubble_img": "shopify://shop_images/ED1TAGDAROW022_model_2000.jpg",
+            "bubble_text": "Bean Bags",
+            "bubble_link": "shopify://collections/bean-bags-modular-seating"
+          }
+        },
+        "image_E3wgRh": {
+          "type": "Image",
+          "settings": {
+            "bubble_img": "shopify://shop_images/BT180-Bubble-Tube-Marketing-Close-Up-1_942b727d-35ac-4311-880e-6a341f9f6d7e.jpg",
+            "bubble_text": "105cm Bubble Tube",
+            "bubble_link": "https://learningspaceuk.co.uk/products/bubble-tube-105cm-comes-with-fish-and-balls"
+          }
+        },
+        "image_96wjMk": {
+          "type": "Image",
+          "settings": {
+            "bubble_img": "shopify://shop_images/Sensory-Mood-Low-Discovery-Table-6.jpg",
+            "bubble_text": "Discovery Glow Sets",
+            "bubble_link": "https://learningspaceuk.co.uk/collections/light-box-and-light-box-accessories?gf_607291=Light+Box+Accessories"
+          }
+        },
+        "image_PUWc7B": {
+          "type": "Image",
+          "settings": {
+            "bubble_img": "shopify://shop_images/TP-Genius-Round-Trampoline-10ft-12ft-and-14ft-UK-Mainland-Only-5.webp",
+            "bubble_text": "Trampolines",
+            "bubble_link": "https://learningspaceuk.co.uk/collections/trampolines"
+          }
+        }
+      },
+      "block_order": [
+        "image_UtP7cJ",
+        "image_EzqmeL",
+        "image_Gbp96n",
+        "image_E3wgRh",
+        "image_96wjMk",
+        "image_PUWc7B"
+      ],
+      "settings": {
+        "slider_width": 100,
+        "slider_gap": 12,
+        "slider_gap_mobile": 16,
+        "icon_size": 200,
+        "icon_size_mobile": 98,
+        "icon_space": 0,
+        "icon_space_mobile": 0,
+        "icon_border_thickness": 1,
+        "icon_square": false,
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 20,
+        "text_size_mobile": 10,
+        "text_height": 130,
+        "text_mt": 8,
+        "icon_border_color": "#000000",
+        "icon_border_gradient": "",
+        "text_color": "#000000",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "border_gradient": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 150,
+        "border_thickness": 0,
+        "lazy": true,
+        "hide_mobile": false,
+        "hide_desktop": false
+      }
+    },
+    "6bb9b19b-e128-4509-a9e7-cb2d0cedc69d": {
+      "type": "featured-categories",
+      "blocks": {
+        "template--16974131396851__6bb9b19b-e128-4509-a9e7-cb2d0cedc69d-image-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Need_Family_Fund_Support.png",
+            "title": "",
+            "slide_title": "Need Family Fund Support?",
+            "title_link": "shopify://pages/family-fund",
+            "title_link_lbel": ""
+          }
+        },
+        "template--16974131396851__6bb9b19b-e128-4509-a9e7-cb2d0cedc69d-image-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Schools_Organisations.png",
+            "title": "",
+            "slide_title": "Schools & Organisations",
+            "title_link": "shopify://pages/sensory-room-inspiration",
+            "title_link_lbel": ""
+          }
+        },
+        "c25fb37a-13b4-412c-a15d-ef6f23dfb8c6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Available_Grants_for_Families.png",
+            "title": "",
+            "slide_title": "Available Grants for Families",
+            "title_link": "shopify://pages/grants-for-families",
+            "title_link_lbel": ""
+          }
+        },
+        "975520e8-c879-499e-ba99-d66d35e5a2ec": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Sensory_Training_With_Andy.png",
+            "title": "",
+            "slide_title": "Sensory Training with Andy",
+            "title_link": "shopify://pages/diversespacetraining",
+            "title_link_lbel": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16974131396851__6bb9b19b-e128-4509-a9e7-cb2d0cedc69d-image-1",
+        "template--16974131396851__6bb9b19b-e128-4509-a9e7-cb2d0cedc69d-image-2",
+        "c25fb37a-13b4-412c-a15d-ef6f23dfb8c6",
+        "975520e8-c879-499e-ba99-d66d35e5a2ec"
+      ],
+      "settings": {
+        "title": "",
+        "column_layout_desktop": "3",
+        "column_layout_tablet": "6",
+        "align_text": "left",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "enable_clip": true,
+        "color_clip": "#df0e5c"
+      }
+    },
+    "image_text_pUV7Gy": {
+      "type": "image-text",
+      "blocks": {
+        "list_text_8fTpxB": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Sand & Water Play"
+          }
+        },
+        "list_text_VYEYgX": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Dens & Playhouses"
+          }
+        },
+        "list_text_exWKwj": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Small World Play"
+          }
+        },
+        "list_text_kttary": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Tray Table Play"
+          }
+        },
+        "list_text_znxXE8": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Physical Education"
+          }
+        },
+        "list_text_RaEL9W": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Outdoor Messy Play"
+          }
+        }
+      },
+      "block_order": [
+        "list_text_8fTpxB",
+        "list_text_VYEYgX",
+        "list_text_exWKwj",
+        "list_text_kttary",
+        "list_text_znxXE8",
+        "list_text_RaEL9W"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Learning_Space_in_collaboration_with-Cosy.png",
+        "image_position": "first",
+        "title": "Learning SPACE X Cosy Direct",
+        "text": "<p>With an amazing range of sustainable, eco friendly and locally made indoor and outdoor products, Cosy Direct were the perfect company for Learning SPACE to collaborate with. From Early Years settings to parents at home, this range has something for everybody.</p>",
+        "link": "shopify://collections/cosy",
+        "link_label": "Shop Cosy Now",
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 30,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "f5a9acdf-4c22-4edf-95f8-eddece6bc696": {
+      "type": "collage-section",
+      "blocks": {
+        "fb87fc8a-4cf1-4ca9-8967-57ae53e7afe9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Star_galaxy_5.jpg",
+            "title": "",
+            "title_color": "#042033",
+            "link_label": "",
+            "link": "shopify://collections/sensory-under-10"
+          }
+        },
+        "715cbb81-8a0e-49fa-89ad-12332400022b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/galaxy.jpg",
+            "title": "",
+            "title_color": "#042033",
+            "link_label": "",
+            "link": "shopify://collections/star-galaxy-themed-sensory-room"
+          }
+        },
+        "4baf02a1-574c-48b9-9986-e855c505da4a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rainbow.jpg",
+            "title": "",
+            "title_color": "#042033",
+            "link_label": "",
+            "link": "shopify://collections/rainbow-theme-sensory-room"
+          }
+        }
+      },
+      "block_order": [
+        "fb87fc8a-4cf1-4ca9-8967-57ae53e7afe9",
+        "715cbb81-8a0e-49fa-89ad-12332400022b",
+        "4baf02a1-574c-48b9-9986-e855c505da4a"
+      ],
+      "settings": {
+        "title": "",
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 30,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "4ea3c481-b5c6-4692-a238-1c9e473475f4": {
+      "type": "image-text",
+      "blocks": {
+        "bfc0b335-8f10-49dc-9582-ed9bb97668e9": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Vast range of goods"
+          }
+        },
+        "fecf970e-0b82-4ffd-8388-84e021b25668": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "High quality furniture"
+          }
+        },
+        "2467a50b-1089-4eae-a4ff-2e87bcf653ad": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Locally sourced and sustainable where possible"
+          }
+        },
+        "fda6c72c-4c96-4853-bb51-830097e8bdab": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Approved by the EA, ETBs, HSC"
+          }
+        },
+        "14695907-1a0f-4e82-a871-6d6cb1fbfed5": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Installation and CAD services available"
+          }
+        },
+        "03e084ca-b4b0-4839-a8f1-304302ce2655": {
+          "type": "list_text",
+          "settings": {
+            "bullet_point": "Free site visits and surveys"
+          }
+        }
+      },
+      "block_order": [
+        "bfc0b335-8f10-49dc-9582-ed9bb97668e9",
+        "fecf970e-0b82-4ffd-8388-84e021b25668",
+        "2467a50b-1089-4eae-a4ff-2e87bcf653ad",
+        "fda6c72c-4c96-4853-bb51-830097e8bdab",
+        "14695907-1a0f-4e82-a871-6d6cb1fbfed5",
+        "03e084ca-b4b0-4839-a8f1-304302ce2655"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Eden-Star-Print-SENShearer-018.jpg",
+        "image_position": "first",
+        "title": "Your One Stop Shop for all things Education and Sensory",
+        "text": "<p>Our passion has been and always will be catering to the needs to children and adults with Additional Needs. </p><p>Working with schools, libraries, nurseries, hotels and so many more places to make the world a more accessible place</p>",
+        "link": "shopify://pages/our-story",
+        "link_label": "Our Story",
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 30,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "e991f3dd-ab31-4b18-86a1-b458facb07aa": {
+      "type": "featured-categories",
+      "blocks": {
+        "template--17020637610227__e991f3dd-ab31-4b18-86a1-b458facb07aa-image-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/20.png",
+            "title": "",
+            "slide_title": "",
+            "title_link": "shopify://collections/new-collection",
+            "title_link_lbel": ""
+          }
+        },
+        "8683fe4c-15a6-4c81-a42c-150a3893095b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_Images_12.png",
+            "title": "",
+            "slide_title": "",
+            "title_link": "shopify://collections/themed-sensory-rooms",
+            "title_link_lbel": ""
+          }
+        },
+        "template--17020637610227__e991f3dd-ab31-4b18-86a1-b458facb07aa-image-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_Images_9.png",
+            "title": "",
+            "slide_title": "",
+            "title_link": "shopify://collections/sale",
+            "title_link_lbel": ""
+          }
+        },
+        "image_FCwqkz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Shopify_Homepage_Images_ddc45335-e119-43b1-a7e4-f6fac3f20e7d.png",
+            "title": "",
+            "slide_title": "",
+            "title_link": "https://learningspaceuk.co.uk/collections/all-products",
+            "title_link_lbel": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17020637610227__e991f3dd-ab31-4b18-86a1-b458facb07aa-image-1",
+        "8683fe4c-15a6-4c81-a42c-150a3893095b",
+        "template--17020637610227__e991f3dd-ab31-4b18-86a1-b458facb07aa-image-2",
+        "image_FCwqkz"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Text columns with images",
+        "column_layout_desktop": "3",
+        "column_layout_tablet": "6",
+        "align_text": "left",
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 30,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "enable_clip": true,
+        "color_clip": "#df0e5c"
+      }
+    },
+    "a26809ac-4955-4b71-9fb1-51aaa6927163": {
+      "type": "image-gallery",
+      "blocks": {
+        "template--17020637610227__a26809ac-4955-4b71-9fb1-51aaa6927163-gallery_item-1": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/1_7f6b313a-d4a4-419f-ab86-0caa1106df30.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/gifts-for-0-3-months-old",
+            "link_label": ""
+          }
+        },
+        "45f64004-aca5-43af-8919-9856075655a7": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/2_559f644f-4148-46ab-88ba-39a615f8f229.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/gifts-for-3-6-months-olds",
+            "link_label": ""
+          }
+        },
+        "043a5e03-7a64-4d16-8dbe-6eb16c9ef2fc": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/3_d791dc0f-cf94-4ba0-96ce-8f7a650354cb.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/gifts-for-6-12-months-old",
+            "link_label": ""
+          }
+        },
+        "351f4712-c22b-4bd7-bf92-3b64c32e594a": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/4.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/gifts-for-1-year-old",
+            "link_label": ""
+          }
+        },
+        "6ec78d80-4020-47e3-9642-8d1dbc1a7801": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/5_0c132e7c-961e-4c56-8a27-cea4a33024c9.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/gifts-for-2-3-years-old",
+            "link_label": ""
+          }
+        },
+        "72e020d0-94ea-4157-b5ea-cc6db0af8375": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/6_ebc1c36e-4cde-4204-9c2e-f64393ce9434.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/gifts-for-3-5-year-olds",
+            "link_label": ""
+          }
+        },
+        "3d42941f-e95c-4fcc-a4db-1a3facaebdc4": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/7_590c513a-ddfb-482d-923d-caab9112700a.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/gifts-for-5-7-year-olds",
+            "link_label": ""
+          }
+        },
+        "c81cea3d-066c-428c-b898-899cc5589a8a": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/8_85a9958d-698e-40aa-8dc8-8403acc767a0.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/gifts-for-8-years-olds",
+            "link_label": ""
+          }
+        },
+        "f8accd68-4c9f-4df9-93a7-5e752678ebff": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/9_d7a31ee3-5189-4927-842a-99a52fb7fc43.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/teenagers",
+            "link_label": ""
+          }
+        },
+        "56c20e00-1f9c-48b1-9659-a878802227db": {
+          "type": "gallery_item",
+          "settings": {
+            "image": "shopify://shop_images/10_494089fa-64b8-403f-8294-bdfd51e664e3.png",
+            "round_img": true,
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/teenage-adult-years",
+            "link_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17020637610227__a26809ac-4955-4b71-9fb1-51aaa6927163-gallery_item-1",
+        "45f64004-aca5-43af-8919-9856075655a7",
+        "043a5e03-7a64-4d16-8dbe-6eb16c9ef2fc",
+        "351f4712-c22b-4bd7-bf92-3b64c32e594a",
+        "6ec78d80-4020-47e3-9642-8d1dbc1a7801",
+        "72e020d0-94ea-4157-b5ea-cc6db0af8375",
+        "3d42941f-e95c-4fcc-a4db-1a3facaebdc4",
+        "c81cea3d-066c-428c-b898-899cc5589a8a",
+        "f8accd68-4c9f-4df9-93a7-5e752678ebff",
+        "56c20e00-1f9c-48b1-9659-a878802227db"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Shop By Age",
+        "column_layout_desktop": "20",
+        "column_layout_tablet": "6",
+        "column_layout_mobile": "6",
+        "align_text": "center",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "ss_masonry_grid_YUzmVA": {
+      "type": "ss-masonry-grid",
+      "blocks": {
+        "collection_MbUni8": {
+          "type": "collection",
+          "settings": {
+            "column_width": 1,
+            "row_width": 2,
+            "collection": "bounce-spin",
+            "bg_type": "video",
+            "video": "shopify://files/videos/Carousel sit & spin (1).mp4",
+            "video_url": "",
+            "controls": true,
+            "button_text": "Carousel",
+            "link_on_block": true,
+            "content": false,
+            "title_hover": true,
+            "btn_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "custom_pNUVna": {
+          "type": "custom",
+          "disabled": true,
+          "settings": {
+            "column_width": 1,
+            "row_width": 1,
+            "title": "",
+            "text": "",
+            "button": "Shop Carousel",
+            "button_url": "shopify://products/carousel-sit-and-spin",
+            "bg_type": "image",
+            "image": "shopify://shop_images/gonge_carousel_austism_sensory_play2.webp",
+            "video_url": "",
+            "controls": false,
+            "hide_bg": false,
+            "content_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "product_nTaMBM": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "column_width": 1,
+            "row_width": 1,
+            "product": "exclusive-halloween-fidget-bundle",
+            "bg_type": "image",
+            "video_url": "",
+            "controls": false,
+            "button_text": "Garden Bundle",
+            "link_on_block": true,
+            "content": false,
+            "title_hover": false,
+            "price_hover": false,
+            "btn_hover": false,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "product_nphpmF": {
+          "type": "product",
+          "settings": {
+            "column_width": 1,
+            "row_width": 1,
+            "product": "garden-watering-can-green-childrens",
+            "bg_type": "image",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "controls": false,
+            "button_text": "Show More",
+            "link_on_block": true,
+            "content": false,
+            "title_hover": false,
+            "price_hover": false,
+            "btn_hover": false,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "custom_tXBqGh": {
+          "type": "custom",
+          "settings": {
+            "column_width": 1,
+            "row_width": 2,
+            "title": "",
+            "text": "",
+            "button": "",
+            "button_url": "https://learningspaceuk.co.uk/search?q=peter+rabbit",
+            "bg_type": "video",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "controls": true,
+            "hide_bg": false,
+            "content_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "custom_7NMTbL": {
+          "type": "custom",
+          "settings": {
+            "column_width": 2,
+            "row_width": 1,
+            "title": "",
+            "text": "",
+            "button": "Shop Peter Rabbit",
+            "button_url": "https://learningspaceuk.co.uk/search?q=peter+rabbit",
+            "bg_type": "image",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "controls": false,
+            "hide_bg": false,
+            "content_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "custom_c3LtXR": {
+          "type": "custom",
+          "settings": {
+            "column_width": 1,
+            "row_width": 1,
+            "title": "",
+            "text": "",
+            "button": "Shop Summer",
+            "button_url": "shopify://collections/summer",
+            "bg_type": "image",
+            "image": "shopify://shop_images/Summer-Skis-2-children-PE2108-4.jpg",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "controls": false,
+            "hide_bg": false,
+            "content_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "collection_AwBdap": {
+          "type": "collection",
+          "settings": {
+            "column_width": 1,
+            "row_width": 1,
+            "collection": "teen-and-adult-swings",
+            "bg_type": "image",
+            "image": "shopify://shop_images/Wheelchair-Platform-Swing-TFH8WHSW-VAT-Exempt.jpg",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "controls": false,
+            "button_text": "Shop Now",
+            "link_on_block": true,
+            "content": false,
+            "title_hover": true,
+            "btn_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "collection_z6T7wB": {
+          "type": "collection",
+          "settings": {
+            "column_width": 2,
+            "row_width": 2,
+            "collection": "needoh",
+            "bg_type": "video",
+            "video_url": "https://www.youtube.com/watch?v=H7257l9BavE",
+            "controls": false,
+            "button_text": "",
+            "link_on_block": true,
+            "content": false,
+            "title_hover": false,
+            "btn_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "custom_bkyJdD": {
+          "type": "custom",
+          "settings": {
+            "column_width": 1,
+            "row_width": 1,
+            "title": "",
+            "text": "",
+            "button": "Shop Needoh",
+            "button_url": "shopify://collections/needoh",
+            "bg_type": "image",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "controls": false,
+            "hide_bg": false,
+            "content_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        },
+        "product_WX6DqC": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "column_width": 2,
+            "row_width": 2,
+            "product": "air-toobz",
+            "bg_type": "image",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "controls": false,
+            "button_text": "Shop Now",
+            "link_on_block": true,
+            "content": false,
+            "title_hover": true,
+            "price_hover": true,
+            "btn_hover": true,
+            "content_horizontal_align": "center",
+            "content_horizontal_align_mobile": "center",
+            "content_vertical_align": "center",
+            "content_vertical_align_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "collection_MbUni8",
+        "custom_pNUVna",
+        "product_nTaMBM",
+        "product_nphpmF",
+        "custom_tXBqGh",
+        "custom_7NMTbL",
+        "custom_c3LtXR",
+        "collection_AwBdap",
+        "collection_z6T7wB",
+        "custom_bkyJdD",
+        "product_WX6DqC"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "heading_custom": false,
+        "heading_font": "josefin_sans_n4",
+        "heading_size": 40,
+        "heading_size_mobile": 30,
+        "heading_height": 150,
+        "heading_align": "center",
+        "heading_align_mobile": "center",
+        "items_gap": 20,
+        "items_gap_mobile": 20,
+        "items_mt": 16,
+        "row_height": 300,
+        "row_height_mobile": 200,
+        "block_padding_vertical": 20,
+        "block_padding_vertical_mobile": 20,
+        "block_padding_horizontal": 16,
+        "block_padding_horizontal_mobile": 16,
+        "block_radius": 8,
+        "block_border_thickness": 1,
+        "block_overlay": 0.2,
+        "content_padding_vertical": 20,
+        "content_padding_vertical_mobile": 10,
+        "content_padding_horizontal": 40,
+        "content_padding_horizontal_mobile": 10,
+        "content_radius": 8,
+        "content_border_thickness": 1,
+        "content_bg_opacity": 0.4,
+        "block_align": "center",
+        "block_align_mobile": "center",
+        "title_custom": false,
+        "title_font": "josefin_sans_n4",
+        "title_size": 24,
+        "title_size_mobile": 20,
+        "title_height": 120,
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 24,
+        "text_size_mobile": 20,
+        "text_height": 100,
+        "text_mt": 16,
+        "price_custom": false,
+        "price_font": "josefin_sans_n4",
+        "price_size": 24,
+        "price_size_mobile": 20,
+        "price_height": 100,
+        "price_mt": 16,
+        "button_custom": false,
+        "button_font": "josefin_sans_n4",
+        "button_size": 16,
+        "button_size_mobile": 14,
+        "button_height": 100,
+        "button_mt": 16,
+        "button_padding_vertical": 16,
+        "button_padding_horizontal": 24,
+        "button_radius": 8,
+        "button_border_thickness": 0,
+        "block_bg_color": "#ffffff",
+        "block_border_color": "#000000",
+        "content_bg_color": "#ffffff",
+        "content_border_color": "#000000",
+        "title_color": "#ffffff",
+        "text_color": "#ffffff",
+        "price_color": "#ffffff",
+        "button_color": "#ffffff",
+        "button_hover_color": "#ffffff",
+        "button_bg_color": "#000000",
+        "button_bg_hover_color": "#000000",
+        "button_border_color": "#000000",
+        "button_border_hover_color": "#000000",
+        "heading_color": "#000000",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": false,
+        "content_width": 160,
+        "border_thickness": 0,
+        "lazy": true
+      }
+    },
+    "6c9b1841-9be2-4207-8bda-2942c2402620": {
+      "type": "testimonials",
+      "blocks": {
+        "image_XMU8Kx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024.png",
+            "customer_name": "Mick",
+            "subheading": "Parent",
+            "content": "Brilliant service couldn\u2019t have been any easier. Customer service is a 5 star plus Sinead put everything through for me and even called me back when our line disconnected.\n\nFriendly lovely person you can tell she loves her job. I would definitely buy from this website again."
+          }
+        },
+        "template--16974131396851__6c9b1841-9be2-4207-8bda-2942c2402620-image-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_1.png",
+            "customer_name": "Jennifer Fuller",
+            "subheading": "Teacher",
+            "content": "The training was fantastic. Andy was really amazing; I could listen to him all day-he has such knowledge and great advice. We would love to have him out again when the children are back in school. We have a few children who we think would benefit from meeting Andy"
+          }
+        },
+        "image_7ApgqH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_3.png",
+            "customer_name": "Deanne",
+            "subheading": "Parent",
+            "content": "Fast, quick, simple, I felt heard by the team and respected during all my phone calls. I had a bit of a moment and ordered items that I didn\u2019t need so panicked rang them and boom just like that all changed within a matter of seconds there was no issues worries nothing it was resolved very quickly the call handlers were amazing and cheerful which is always nice to hear. I highly recommend them. Granted some of the items are at a big price tag however they are great quality I ordered my son the red cone (Gonge top sit and spin) and he loves it. (5 Years old) The delivery was also incredibly fast considering it is Christmas season my items were received within a week of ordering (this may not always be the case however it does give an in sight)"
+          }
+        },
+        "29e4f228-6b94-4051-a3f3-bbc66722bf45": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_2.png",
+            "customer_name": "Clare Downey",
+            "subheading": "Teacher",
+            "content": "Just wanted to say that the staff thought the training was outstanding yesterday!! Thanks to you and Andy who delivered it"
+          }
+        },
+        "image_TegGyj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_4.png",
+            "customer_name": "Raven",
+            "subheading": "Parent",
+            "content": "Friendly and helpful customer service. Called up because the website was a little tricky on my phone and Tracy was really easy to talk to. Thank you"
+          }
+        },
+        "image_WWGRCc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_2.png",
+            "customer_name": "Clodagh",
+            "subheading": "Parent, Teacher and Training Attendee",
+            "content": "We had Andy into our charity to teach us his experience and knowledge about ASD ADHD and autism and much more. It was very insightful and a really great learning day. Andy was very friendly and helped answer and questions we had around this topic. It was very engaging and he brought some products that we could trial and use for future young people in our charity."
+          }
+        },
+        "image_Jphw9B": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_5.png",
+            "customer_name": "Sophie",
+            "subheading": "Parent",
+            "content": "I had a slight amount left over from a family fund grant and a lovely customer service representative got in touch and asked if I\u2019d like them to pick out some items. I agreed and they added a range of different toys that my little one will absolutely love. Not a lot of places would go out of their way like this so it\u2019s much appreciated!!"
+          }
+        },
+        "image_MLTK3r": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_6.png",
+            "customer_name": "Linda",
+            "subheading": "Training Attendee",
+            "content": "Had training from Andy re Autism. Really informative and useful and delivered with conviction. Andy was very honest about his own experiences which he was able to share and bring a true perspective on the condition. Such an insight into the struggles faced by those living with ASD. Really excellent!"
+          }
+        },
+        "image_LjGGe3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_2.png",
+            "customer_name": "Charlene",
+            "subheading": "Parent",
+            "content": "Tracey was amazing helping me today when I called after having a few issues online. She helped me with my order and adjusted a few things to help put my order through. Fantastic customer service and Tracey is a credit to your company. Can't wait to receive my order for my twins and will definitely be returning as a customer again. Such a fantastic range that would benefit my autistic boys. Thank you so much."
+          }
+        },
+        "image_hbLiVJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Learning_SPACE_Sets_Images_2024_7.png",
+            "customer_name": "Brenda At Clonmore Youth Club",
+            "subheading": "Youth Centre",
+            "content": "What an experience I had with Clonmore Youth Club when we had Andy in on Tuesday. I can't put into enough words how much knowledge we all gained from this course. Andy explains everything perfect and easily understood with also putting yourself in the views of people with Autism and other sensory issues. I came away with even ideas for my own home which was part of the reason I wanted to be there aswell as for the youth club and future work.\nAndy is a must for any organisation as this is a topic that we all can be helped with in everyday life. Andy you are amazing keep up the AMAZING WORK \ud83d\udc4f"
+          }
+        }
+      },
+      "block_order": [
+        "image_XMU8Kx",
+        "template--16974131396851__6c9b1841-9be2-4207-8bda-2942c2402620-image-1",
+        "image_7ApgqH",
+        "29e4f228-6b94-4051-a3f3-bbc66722bf45",
+        "image_TegGyj",
+        "image_WWGRCc",
+        "image_Jphw9B",
+        "image_MLTK3r",
+        "image_LjGGe3",
+        "image_hbLiVJ"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {}
+    },
+    "17212966637f3047e3": {
+      "type": "apps",
+      "blocks": {
+        "google_reviews_widgets_plus_review_list_widget_KDJxVb": {
+          "type": "shopify://apps/google-reviews-widgets-plus/blocks/review_list_widget/f0459f06-fdf2-4198-b577-b68f9c8c907a",
+          "settings": {
+            "heading": "",
+            "heading_margins": "0px",
+            "heading_hierachy": "h2",
+            "widget_type": "carousel",
+            "widget_theme": "light",
+            "review_limit": 0,
+            "minimum_rating": "4",
+            "sort_by": "review-date"
+          }
+        }
+      },
+      "block_order": [
+        "google_reviews_widgets_plus_review_list_widget_KDJxVb"
+      ],
+      "settings": {}
+    },
+    "170170505821818c0e": {
+      "type": "apps",
+      "settings": {}
+    },
+    "3924c226-1f85-4415-ab4c-e1a9382c8ddf": {
+      "type": "newsletters",
+      "custom_css": [
+        "@media (min-width: 750px) {.newsletter-panel {min-height: 330px; } .newsletter-panel {margin-bottom: -140px; }}"
+      ],
+      "settings": {
+        "newsletter_enable": true,
+        "newsletter_heading": "Newsletter",
+        "newsletter_sub_heading": "Sign up for blogs, advice, new products and so much more...",
+        "bg_color": "#042033"
+      }
+    },
+    "b5a78e9a-0201-457c-a5f4-59fa149ac968": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {
+        "title": "Rich text",
+        "text": "<p>Mauris id rhoncus nunc. Ut mattis sagittis magna ut varius. Donec gravida quam vel metus semper, sit amet fringilla sem dapibus. Morbi placerat luctus magna. Aliquam ultricies commodo ullamcorper. Donec et libero a sapien lacinia pharetra. Nullam egestas tortor mi, eget consequat quam scelerisque eu. Praesent semper, purus eget lacinia condimentum, dolor ipsum volutpat felis, eget aliquam lorem velit ut ante. Duis in erat laoreet odio luctus posuere.</p>",
+        "align_text": "center",
+        "container_layout": true,
+        "enable_more_less": true,
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 30,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "gate-page": {
+      "type": "gate-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "gate-page",
+    "rich_text_fbGDJG",
+    "home-slider",
+    "ss_slideshow_7_PgCGTk",
+    "ss_text_block_CdpMYE",
+    "ss_scrolling_collections_XcdXr3",
+    "09b7d067-928b-403b-8caa-40474eda6b1a",
+    "ss_slider_7_pdwj8Q",
+    "0fdf126e-1a5a-4ae9-99e5-593011e801e1",
+    "ss_circle_menu_Xffpkh",
+    "6bb9b19b-e128-4509-a9e7-cb2d0cedc69d",
+    "image_text_pUV7Gy",
+    "f5a9acdf-4c22-4edf-95f8-eddece6bc696",
+    "4ea3c481-b5c6-4692-a238-1c9e473475f4",
+    "e991f3dd-ab31-4b18-86a1-b458facb07aa",
+    "a26809ac-4955-4b71-9fb1-51aaa6927163",
+    "ss_masonry_grid_YUzmVA",
+    "6c9b1841-9be2-4207-8bda-2942c2402620",
+    "17212966637f3047e3",
+    "170170505821818c0e",
+    "3924c226-1f85-4415-ab4c-e1a9382c8ddf",
+    "b5a78e9a-0201-457c-a5f4-59fa149ac968"
+  ]
+}

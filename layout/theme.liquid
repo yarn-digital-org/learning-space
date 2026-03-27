@@ -31,6 +31,7 @@
     {{ 'style.css' | asset_url | stylesheet_tag }}
     {{ 'responsive.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ 'gate-page.css' | asset_url | stylesheet_tag }}
     {{ 'application.scss.css' | asset_url | stylesheet_tag }}
     {{ 'sweetalert.css' | asset_url | stylesheet_tag }}
     {{ 'sweetalert.min.css' | asset_url | stylesheet_tag }}
@@ -1027,4 +1028,16 @@ gtag('config', 'G-9W6WJMB0DS');
 window.SPFPriceTemplate = '{% if compare_at_price > price %}<span class="spf-product-card__oldprice 1">{{ compare_at_price | money }}</span><span class="spf-product-card__saleprice">{{ price | money }}</span>{% else %}<div class="has-tax-price"><span class="spf-product-card__price 4 money">incl. VAT : {% raw %}{{ price | times: 100 | floor | divided_by: 100 | money }}{% endraw %}</span><span class="mb-2 mt-1 ex-vat-price"> excl. VAT : {% raw %}{{ price | divided_by:1.20  | money }} {% endraw %}</span></div>{% endif %}';
 </script>
   <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.eu/widget?wc=siqd8d85ecc138d5e17a5eb856f933145efacae51e8ec47fd1176ca1722ace5a12b" defer></script>
+
+{% comment %} Customer Gate: set context for non-homepage pages {% endcomment %}
+{% unless template == 'index' %}
+<script>
+  window.__LS_GATE = window.__LS_GATE || {
+    isLoggedIn: {% if customer %}true{% else %}false{% endif %},
+    customerType: {% if customer.metafields.custom.customer_type != blank %}"{{ customer.metafields.custom.customer_type | escape }}"{% else %}null{% endif %},
+    isHomepage: false
+  };
+</script>
+{% endunless %}
+{{ 'customer-gate.js' | asset_url | script_tag }}
 </html>

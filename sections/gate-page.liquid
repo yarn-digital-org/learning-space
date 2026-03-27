@@ -1,0 +1,177 @@
+{% comment %}
+  Gate Page Section
+  Displays a customer-type selector (Organisation vs Individual) on the homepage.
+  First-time visitors see this gate. Returning visitors with a cookie or logged-in
+  customers with a metafield skip it and go straight to the appropriate homepage experience.
+{% endcomment %}
+
+<div id="gate-page-section">
+  <div class="gate-page">
+
+    {% comment %} ===== HERO SECTION — blue branded background ===== {% endcomment %}
+    <div class="gate-page__hero">
+      <div class="gate-page__hero-overlay"></div>
+      <div class="gate-page__hero-content">
+        <a href="{{ routes.root_url }}" class="gate-page__logo">
+          {%- if section.settings.logo != blank -%}
+            <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name | escape }}" loading="eager">
+          {%- else -%}
+            <img src="{{ 'Learning_SPACE-white.png' | asset_url }}" alt="{{ shop.name | escape }}" loading="eager">
+          {%- endif -%}
+        </a>
+        <p class="gate-page__tagline">{{ section.settings.top_bar_text | default: 'Empowering through advice, sensory equipment and toys' }}</p>
+      </div>
+    </div>
+
+    {% comment %} ===== SELECTION AREA — white card on the blue bg ===== {% endcomment %}
+    <div class="gate-page__body">
+      <div class="gate-page__card-wrapper">
+        <span class="gate-page__eyebrow">{{ section.settings.eyebrow | default: 'Welcome to Learning Space' }}</span>
+        <h1 class="gate-page__heading">{{ section.settings.heading | default: 'Who are you shopping for today?' }}</h1>
+        <p class="gate-page__subheading">{{ section.settings.subheading | default: "We'll tailor your experience with the right products, pricing and navigation." }}</p>
+
+        <div class="gate-page__cards">
+          <div class="gate-page__card" id="gate-card-org" onclick="LearningSpaceGate.pick('organisation')">
+            <div class="gate-page__card-icon gate-page__card-icon--org">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14M9 21V12h6v9"/>
+              </svg>
+            </div>
+            <div class="gate-page__card-text">
+              <span class="gate-page__card-title">{{ section.settings.org_title | default: 'Organisation' }}</span>
+              <span class="gate-page__card-desc">{{ section.settings.org_desc | default: 'Business, charity, school or trade buyer' }}</span>
+            </div>
+            <div class="gate-page__card-check" id="gate-check-org"></div>
+          </div>
+
+          <div class="gate-page__card" id="gate-card-ind" onclick="LearningSpaceGate.pick('individual')">
+            <div class="gate-page__card-icon gate-page__card-icon--ind">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="7" r="4"/>
+                <path d="M5.5 21a7.5 7.5 0 0 1 13 0"/>
+              </svg>
+            </div>
+            <div class="gate-page__card-text">
+              <span class="gate-page__card-title">{{ section.settings.ind_title | default: 'Individual' }}</span>
+              <span class="gate-page__card-desc">{{ section.settings.ind_desc | default: 'Personal use or private customer' }}</span>
+            </div>
+            <div class="gate-page__card-check" id="gate-check-ind"></div>
+          </div>
+        </div>
+
+        <button class="gate-page__cta" id="gate-cta-btn" onclick="LearningSpaceGate.proceed()">
+          {{ section.settings.cta_text | default: 'Continue to store' }} &rarr;
+        </button>
+
+        <p class="gate-page__remember">We'll remember your choice for 30 days</p>
+
+        {% unless customer %}
+          <p class="gate-page__sign-in">
+            Returning customer? {{ 'Sign in' | customer_login_link }}
+          </p>
+        {% endunless %}
+      </div>
+
+      {% comment %} Minimal nav links below the card {% endcomment %}
+      <div class="gate-page__footer-links">
+        {% for link in section.settings.gate_menu.links %}
+          <a href="{{ link.url }}">{{ link.title | escape }}</a>
+        {% endfor %}
+        {% if section.settings.gate_menu == blank %}
+          <a href="/pages/about-us">About Us</a>
+          <a href="/pages/contact-us">Contact Us</a>
+          <a href="tel:{{ settings.address_phone }}">{{ settings.address_phone }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% comment %} Expose customer metafield to JS so we can auto-detect type for logged-in users {% endcomment %}
+<script>
+  window.__LS_GATE = {
+    isLoggedIn: {% if customer %}true{% else %}false{% endif %},
+    customerType: {% if customer.metafields.custom.customer_type != blank %}"{{ customer.metafields.custom.customer_type | escape }}"{% else %}null{% endif %},
+    isHomepage: true
+  };
+</script>
+
+{% schema %}
+{
+  "name": "Gate Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "top_bar_text",
+      "label": "Tagline Text",
+      "default": "Empowering through advice, sensory equipment and toys"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Gate Page Logo",
+      "info": "Leave blank to use the white Learning Space logo"
+    },
+    {
+      "type": "link_list",
+      "id": "gate_menu",
+      "label": "Gate Page Footer Links"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Welcome to Learning Space"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Who are you shopping for today?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We'll tailor your experience with the right products, pricing and navigation."
+    },
+    {
+      "type": "text",
+      "id": "org_title",
+      "label": "Organisation Card Title",
+      "default": "Organisation"
+    },
+    {
+      "type": "text",
+      "id": "org_desc",
+      "label": "Organisation Card Description",
+      "default": "Business, charity, school or trade buyer"
+    },
+    {
+      "type": "text",
+      "id": "ind_title",
+      "label": "Individual Card Title",
+      "default": "Individual"
+    },
+    {
+      "type": "text",
+      "id": "ind_desc",
+      "label": "Individual Card Description",
+      "default": "Personal use or private customer"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "Continue to store"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gate Page"
+    }
+  ]
+}
+{% endschema %}
