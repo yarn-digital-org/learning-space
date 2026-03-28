@@ -64,8 +64,8 @@
 .gate-page__body {
   flex: 1;
   background-color: #f4f6f8;
-  background-size: cover;
-  background-position: center;
+  background-size: 100% auto;
+  background-position: center top;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
