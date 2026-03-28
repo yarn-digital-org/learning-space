@@ -28,7 +28,7 @@
     </div>
 
     {% comment %} ===== SELECTION AREA — white card on the blue bg ===== {% endcomment %}
-    <div class="gate-page__body"
+    <div class="gate-page__body gate-page__body--has-image"
       {%- if section.settings.body_bg_image != blank -%}
         style="background-image: url('{{ section.settings.body_bg_image | img_url: 'master' }}'); background-size: cover; background-position: center;"
       {%- else -%}

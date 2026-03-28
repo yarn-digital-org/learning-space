@@ -74,8 +74,8 @@
   position: relative;
 }
 
-/* Subtle overlay so card stays readable over any background image */
-.gate-page__body::before {
+/* Overlay only when no image is set — not needed when image is present */
+.gate-page__body:not(.gate-page__body--has-image)::before {
   content: '';
   position: absolute;
   inset: 0;
