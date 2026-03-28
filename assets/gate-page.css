@@ -132,13 +132,13 @@
 }
 
 /* ==========================================================================
-   SELECTION CARDS — Side by side, horizontal layout
+   SELECTION CARDS — Side by side, icon top, text centred
    ========================================================================== */
 
 .gate-page__cards {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
   width: 100%;
   margin-bottom: 24px;
 }
@@ -147,31 +147,58 @@
   background: #fff;
   border: 2px solid #e4e8ec;
   border-radius: 12px;
-  padding: 18px 20px;
+  padding: 24px 16px 20px;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   transition: all 0.2s ease;
   user-select: none;
-  text-align: left;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Faded overlay on unselected card once one has been chosen */
+.gate-page__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+/* When sibling is active, fade the other card */
+.gate-page__cards:has(.active) .gate-page__card:not(.active)::after {
+  opacity: 1;
 }
 
 .gate-page__card:hover {
-  border-color: #0086cc;
-  background: #f8fbff;
+  border-color: #ccc;
 }
 
-.gate-page__card.active {
+/* Organisation active — blue border matching its icon */
+#gate-card-org.active {
   border-color: #0086cc;
-  background: #eef6fc;
+  border-width: 2px;
   box-shadow: 0 0 0 3px rgba(0, 134, 204, 0.12);
 }
 
+/* Individual active — pink border matching its icon */
+#gate-card-ind.active {
+  border-color: #df0e5c;
+  border-width: 2px;
+  box-shadow: 0 0 0 3px rgba(223, 14, 92, 0.12);
+}
+
 .gate-page__card-icon {
-  width: 54px;
-  height: 54px;
-  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,49 +220,53 @@
 }
 
 .gate-page__card-text {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .gate-page__card-title {
   font-family: "Quicksand", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #2c2c2c;
 }
 
 .gate-page__card-desc {
   font-family: "Heebo", sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
   color: #999;
   line-height: 1.4;
 }
 
-/* Checkbox indicator */
+/* Checkbox indicator — colour matches the card type */
 .gate-page__card-check {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   border: 2px solid #d0d5db;
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.15s;
+  margin-top: 4px;
 }
 
-.gate-page__card.active .gate-page__card-check {
+#gate-card-org.active .gate-page__card-check {
   background: #0086cc;
   border-color: #0086cc;
 }
 
+#gate-card-ind.active .gate-page__card-check {
+  background: #df0e5c;
+  border-color: #df0e5c;
+}
+
 .gate-page__card.active .gate-page__card-check::after {
   content: '';
-  width: 6px;
-  height: 4px;
+  width: 5px;
+  height: 3px;
   border-left: 2px solid #fff;
   border-bottom: 2px solid #fff;
   transform: rotate(-45deg) translateY(-1px);
