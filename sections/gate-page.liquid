@@ -31,6 +31,8 @@
     <div class="gate-page__body"
       {%- if section.settings.body_bg_image != blank -%}
         style="background-image: url('{{ section.settings.body_bg_image | img_url: 'master' }}'); background-size: cover; background-position: center;"
+      {%- else -%}
+        style="background-image: url('//learningspaceuk.co.uk/cdn/shop/files/sensory_packages_and_ready_to_go_rooms.jpg?v=1762983128'); background-size: cover; background-position: center;"
       {%- endif -%}
     >
       <div class="gate-page__card-wrapper">
