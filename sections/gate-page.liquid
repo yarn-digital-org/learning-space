@@ -28,13 +28,13 @@
     </div>
 
     {% comment %} ===== SELECTION AREA — white card on the blue bg ===== {% endcomment %}
-    <div class="gate-page__body gate-page__body--has-image"
+    <div class="gate-page__body">
+      {% comment %} Background image — behaves like the homepage carousel {% endcomment %}
       {%- if section.settings.body_bg_image != blank -%}
-        style="background-image: url('{{ section.settings.body_bg_image | img_url: 'master' }}'); background-size: cover; background-position: center;"
+        <img src="{{ section.settings.body_bg_image | img_url: 'master' }}" alt="" class="gate-page__body-bg" aria-hidden="true">
       {%- else -%}
-        style="background-image: url('//learningspaceuk.co.uk/cdn/shop/files/sensory_packages_and_ready_to_go_rooms.jpg?v=1762983128'); background-size: cover; background-position: center;"
+        <img src="//learningspaceuk.co.uk/cdn/shop/files/sensory_packages_and_ready_to_go_rooms.jpg?v=1762983128" alt="" class="gate-page__body-bg" aria-hidden="true">
       {%- endif -%}
-    >
       <div class="gate-page__card-wrapper">
         <span class="gate-page__eyebrow">{{ section.settings.eyebrow | default: 'Welcome to Learning Space' }}</span>
         <h1 class="gate-page__heading">{{ section.settings.heading | default: 'Who are you shopping for today?' }}</h1>
