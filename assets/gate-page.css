@@ -69,7 +69,7 @@
   align-items: center;
   padding: 0 20px 40px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Background image — same treatment as the homepage carousel */
@@ -80,8 +80,10 @@
   width: 100%;
   max-height: 500px;
   object-fit: cover;
+  object-position: center;
   display: block;
   z-index: 0;
+  overflow: hidden;
 }
 
 .gate-page__body > *:not(.gate-page__body-bg) {
@@ -378,6 +380,24 @@
 
 body.gate-page-visible .header-new,
 body.gate-page-visible footer {
+  display: none !important;
+}
+
+/* Hide third-party app widgets (Zoho chat, referral/loyalty buttons) on gate page */
+body.gate-page-visible #zsiq_float,
+body.gate-page-visible #zsiq_agtpic,
+body.gate-page-visible .zsiq_theme1,
+body.gate-page-visible [id^="sbc-"],
+body.gate-page-visible [class^="sbc-"],
+body.gate-page-visible #smile-ui-container,
+body.gate-page-visible .loyalty-lion,
+body.gate-page-visible [data-refersion],
+body.gate-page-visible iframe[src*="referral"],
+body.gate-page-visible iframe[src*="loyalty"],
+body.gate-page-visible iframe[src*="smile.io"],
+body.gate-page-visible iframe[src*="growave"],
+body.gate-page-visible iframe[src*="salesiq"],
+body.gate-page-visible iframe[src*="zoho"] {
   display: none !important;
 }
 
