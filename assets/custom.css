@@ -1366,3 +1366,9 @@ a.swym-wishlist img,
     width: auto;
   }
 }
+
+/* ---- Push Zoho chat bubble above the app widget in the bottom-right corner ---- */
+#zsiq_float,
+.zsiq_theme1 .zsiq_flt_rel {
+  bottom: 80px !important;
+}
