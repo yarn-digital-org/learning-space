@@ -156,22 +156,23 @@
     }
   }
 
-  // ---- Switch indicator (nav + footer) ----
+  // ---- Header browse toggle + footer switch ----
+
+  function updateBrowseToggle(type) {
+    var orgPill = document.getElementById('browse-pill-org');
+    var indPill = document.getElementById('browse-pill-ind');
+
+    if (orgPill) {
+      orgPill.classList.toggle('active', type === 'organisation');
+    }
+    if (indPill) {
+      indPill.classList.toggle('active', type === 'individual');
+    }
+  }
 
   function updateSwitchUI(type) {
-    // Nav badge
-    var navSwitch = document.getElementById('gate-switch-nav');
-    if (navSwitch) {
-      navSwitch.style.display = 'inline-flex';
-      navSwitch.className = 'gate-switch-nav';
-      if (type === 'organisation') {
-        navSwitch.classList.add('gate-switch-nav--org');
-        navSwitch.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14M9 21V12h6v9"/></svg> Organisation <span style="font-size:9px;opacity:0.6;margin-left:4px;">Switch</span>';
-      } else {
-        navSwitch.classList.add('gate-switch-nav--ind');
-        navSwitch.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a7.5 7.5 0 0 1 13 0"/></svg> Individual <span style="font-size:9px;opacity:0.6;margin-left:4px;">Switch</span>';
-      }
-    }
+    // Header browse toggle
+    updateBrowseToggle(type);
 
     // Footer link
     var footerSwitch = document.getElementById('gate-switch-footer');
@@ -183,10 +184,9 @@
   }
 
   function hideSwitchUI() {
-    var navSwitch = document.getElementById('gate-switch-nav');
-    if (navSwitch) navSwitch.style.display = 'none';
     var footerSwitch = document.getElementById('gate-switch-footer');
     if (footerSwitch) footerSwitch.classList.remove('active');
+    updateBrowseToggle(null);
   }
 
   // ---- Public API (used by gate-page.liquid onclick handlers) ----
@@ -222,12 +222,34 @@
       updateSwitchUI(chosen);
     },
 
+    // Called by the header browse toggle pills — instant switch without gate page
+    setType: function (type) {
+      if (VALID_TYPES.indexOf(type) === -1) return;
+
+      // Save preference
+      setCookie(COOKIE_NAME, type, COOKIE_DAYS);
+
+      // Save to customer metafield if logged in (only touches custom.customer_type)
+      saveCustomerMetafield(type);
+
+      // Swap menu + update toggle highlight
+      activateMenu(type);
+      updateSwitchUI(type);
+
+      // If on homepage with gate showing, dismiss it
+      var gateSection = document.getElementById('gate-page-section');
+      if (gateSection && !gateSection.classList.contains('gate-dismissed')) {
+        hideGatePage();
+      }
+    },
+
     switchType: function () {
       // Clear preference and show gate page (if on homepage) or redirect to homepage
       deleteCookie(COOKIE_NAME);
       chosen = null;
       hideSwitchUI();
       showDefaultMenu();
+      updateBrowseToggle(null);
 
       if (window.__LS_GATE && window.__LS_GATE.isHomepage) {
         showGatePage();

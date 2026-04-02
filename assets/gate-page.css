@@ -353,9 +353,67 @@
 }
 
 /* ==========================================================================
-   SWITCH BADGE (nav) & SWITCH LINK (footer) — after selection
+   HEADER BROWSE TOGGLE — persistent org/individual pill switcher
    ========================================================================== */
 
+.browse-toggle-li {
+  display: inline-flex !important;
+  align-items: center;
+  margin-left: 8px !important;
+  margin-right: 4px !important;
+}
+
+.browse-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  padding: 3px;
+}
+
+.browse-toggle__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  font-family: "Heebo", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.browse-toggle__pill svg {
+  flex-shrink: 0;
+}
+
+.browse-toggle__pill:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Active state — highlighted pill */
+.browse-toggle__pill.active {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0086cc;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.browse-toggle__pill--org.active {
+  color: #0068a0;
+}
+
+.browse-toggle__pill--ind.active {
+  color: #c40a52;
+}
+
+/* Legacy switch elements — kept for footer */
 .gate-switch-link {
   cursor: pointer;
   font-size: 12px;
@@ -368,29 +426,9 @@
   color: #fce4ec;
 }
 
+/* Hide the old nav badge — replaced by browse toggle */
 .gate-switch-nav {
-  display: none;
-  align-items: center;
-  gap: 6px;
-  margin-left: 12px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  font-family: "Heebo", sans-serif;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.gate-switch-nav:hover { opacity: 0.8; }
-.gate-switch-nav--org {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-.gate-switch-nav--ind {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
+  display: none !important;
 }
 
 .gate-switch-footer {
@@ -475,6 +513,16 @@ body.gate-page-visible iframe[src*="zoho"] {
 
   .gate-page__card-title {
     font-size: 14px;
+  }
+}
+
+/* Hide text labels on toggle at smaller screens, keep icons */
+@media (max-width: 991px) {
+  .browse-toggle__pill span {
+    display: none;
+  }
+  .browse-toggle__pill {
+    padding: 5px 8px;
   }
 }
 
