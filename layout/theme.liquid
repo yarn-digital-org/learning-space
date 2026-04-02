@@ -32,6 +32,9 @@
     {{ 'responsive.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
     {{ 'gate-page.css' | asset_url | stylesheet_tag }}
+    {%- if template.suffix == 'option-a' -%}
+      {{ 'option-a.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
     {{ 'application.scss.css' | asset_url | stylesheet_tag }}
     {{ 'sweetalert.css' | asset_url | stylesheet_tag }}
     {{ 'sweetalert.min.css' | asset_url | stylesheet_tag }}
@@ -340,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<body>
+<body class="{% if template.suffix == 'option-a' %}template-page-option-a{% endif %}">
   {% if template contains 'cart' %}
   <style>
 /* PRELOADER CSS */
@@ -426,6 +429,15 @@ $(window).on('load',function(){
         {{ content_for_layout }}
     </main>
     {% section 'footer' %}
+
+    {% comment %} Hidden form for saving customer_type metafield via JS {% endcomment %}
+    {% if customer %}
+    <div style="display:none;">
+      {% form 'customer', customer, id: 'gate-customer-type-form' %}
+        <input type="hidden" name="customer[metafields][custom][customer_type]" id="gate-customer-type-input" value="">
+      {% endform %}
+    </div>
+    {% endif %}
     <script>
     var items = []; 
     {% for line_item in cart.items %}
@@ -1040,4 +1052,7 @@ window.SPFPriceTemplate = '{% if compare_at_price > price %}<span class="spf-pro
 </script>
 {% endunless %}
 {{ 'customer-gate.js' | asset_url | script_tag }}
+{%- if template.suffix == 'option-a' -%}
+  {{ 'option-a.js' | asset_url | script_tag }}
+{%- endif -%}
 </html>

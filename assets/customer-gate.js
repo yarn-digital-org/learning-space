@@ -36,21 +36,21 @@
   // ---- Metafield update for logged-in users ----
 
   function saveCustomerMetafield(type) {
-    // Uses Shopify's customer account AJAX endpoint to update metafield
-    // This requires the metafield namespace/key to be defined in Shopify admin:
-    // namespace: custom, key: customer_type, type: single_line_text_field
+    // Submits the hidden Liquid form to save customer_type metafield.
+    // The form is rendered by Liquid with the correct authenticity token.
     if (!window.__LS_GATE || !window.__LS_GATE.isLoggedIn) return;
 
-    fetch('/account', {
+    var form = document.getElementById('gate-customer-type-form');
+    var input = document.getElementById('gate-customer-type-input');
+    if (!form || !input) return;
+
+    input.value = type;
+
+    // Submit via fetch so we don't navigate away from the page
+    var formData = new FormData(form);
+    fetch(form.action || '/account', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams({
-        'customer[metafields][custom][customer_type]': type,
-        'form_type': 'customer',
-        'utf8': '\u2713'
-      })
+      body: formData
     }).catch(function () {
       // Silently fail — the cookie is the fallback
     });
