@@ -1773,18 +1773,86 @@
     "gate-page": {
       "type": "gate-page",
       "settings": {}
+    },
+    "home-slider-org": {
+      "type": "home-slider",
+      "blocks": {
+        "org_slide_1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/sensory_packages_and_ready_to_go_rooms.jpg",
+            "slide_title": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": "https://learningspaceuk.co.uk/collections/ready-made-sensory-rooms"
+          }
+        }
+      },
+      "block_order": [
+        "org_slide_1"
+      ],
+      "settings": {
+        "customer_type": "organisation"
+      }
+    },
+    "home-slider-ind": {
+      "type": "home-slider",
+      "blocks": {
+        "ind_slide_1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/sensory_packages_and_ready_to_go_rooms.jpg",
+            "slide_title": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": "https://learningspaceuk.co.uk/collections/ready-made-sensory-rooms"
+          }
+        }
+      },
+      "block_order": [
+        "ind_slide_1"
+      ],
+      "settings": {
+        "customer_type": "individual"
+      }
+    },
+    "featured-products-org": {
+      "type": "featured-products-typed",
+      "settings": {
+        "customer_type": "organisation",
+        "collection": "organisation-featured-products",
+        "heading": "",
+        "sub_heading": "Top Picks for Organisations",
+        "view_all": true,
+        "view_all_label": "View all"
+      }
+    },
+    "featured-products-ind": {
+      "type": "featured-products-typed",
+      "settings": {
+        "customer_type": "individual",
+        "collection": "individual-featured-products",
+        "heading": "",
+        "sub_heading": "Top Picks for Individuals",
+        "view_all": true,
+        "view_all_label": "View all"
+      }
     }
   },
   "order": [
     "gate-page",
     "rich_text_fbGDJG",
     "home-slider",
+    "home-slider-org",
+    "home-slider-ind",
     "ss_slideshow_7_PgCGTk",
     "ss_text_block_CdpMYE",
     "ss_scrolling_collections_XcdXr3",
     "09b7d067-928b-403b-8caa-40474eda6b1a",
     "ss_slider_7_pdwj8Q",
     "0fdf126e-1a5a-4ae9-99e5-593011e801e1",
+    "featured-products-org",
+    "featured-products-ind",
     "ss_circle_menu_Xffpkh",
     "6bb9b19b-e128-4509-a9e7-cb2d0cedc69d",
     "image_text_pUV7Gy",
