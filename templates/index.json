@@ -1755,21 +1755,6 @@
         "bg_color": "#042033"
       }
     },
-    "b5a78e9a-0201-457c-a5f4-59fa149ac968": {
-      "type": "rich-text",
-      "disabled": true,
-      "settings": {
-        "title": "Rich text",
-        "text": "<p>Mauris id rhoncus nunc. Ut mattis sagittis magna ut varius. Donec gravida quam vel metus semper, sit amet fringilla sem dapibus. Morbi placerat luctus magna. Aliquam ultricies commodo ullamcorper. Donec et libero a sapien lacinia pharetra. Nullam egestas tortor mi, eget consequat quam scelerisque eu. Praesent semper, purus eget lacinia condimentum, dolor ipsum volutpat felis, eget aliquam lorem velit ut ante. Duis in erat laoreet odio luctus posuere.</p>",
-        "align_text": "center",
-        "container_layout": true,
-        "enable_more_less": true,
-        "padding_top_desktop": 30,
-        "padding_bottom_desktop": 30,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
-    },
     "gate-page": {
       "type": "gate-page",
       "settings": {}
@@ -1864,7 +1849,6 @@
     "6c9b1841-9be2-4207-8bda-2942c2402620",
     "17212966637f3047e3",
     "170170505821818c0e",
-    "3924c226-1f85-4415-ab4c-e1a9382c8ddf",
-    "b5a78e9a-0201-457c-a5f4-59fa149ac968"
+    "3924c226-1f85-4415-ab4c-e1a9382c8ddf"
   ]
 }
