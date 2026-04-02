@@ -5,8 +5,8 @@
 </style>
 
 {% assign typed_collection = collections[section.settings.collection] %}
-{% if typed_collection.products.size > 0 %}
 <section class="feature-pro" data-customer-type="{{ section.settings.customer_type }}">
+{% if typed_collection.products.size > 0 %}
 	<div class="container-fluid">
 		<h2 class="mb-3 mt-2">{{ section.settings.heading }}</h2>
       <div class="row">
@@ -37,8 +37,16 @@
 		{% endpaginate %}
 		</div>
 	</div>
-</section>
+{% else %}
+  <div class="container-fluid">
+    <h2 class="mb-3 mt-2">{{ section.settings.heading }}</h2>
+    {% if section.settings.sub_heading != blank %}
+    <h4>{{ section.settings.sub_heading }}</h4>
+    {% endif %}
+    <p style="color:#999; padding: 20px 0;">Products coming soon.</p>
+  </div>
 {% endif %}
+</section>
 {% schema %}
 {
   "name": "Featured Products (Typed)",

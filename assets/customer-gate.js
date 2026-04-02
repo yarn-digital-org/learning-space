@@ -117,11 +117,16 @@
     for (var i = 0; i < allTyped.length; i++) {
       var el = allTyped[i];
       var sectionType = el.getAttribute('data-customer-type');
-      // Find the parent .shopify-section wrapper to hide/show it cleanly
       var wrapper = el.closest('.shopify-section') || el;
+
       if (sectionType === type) {
+        // Show matching typed section
         wrapper.style.display = '';
+      } else if (sectionType === 'default') {
+        // Hide the default section when a specific type is active
+        wrapper.style.display = 'none';
       } else {
+        // Hide the other type's section
         wrapper.style.display = 'none';
       }
     }
@@ -130,8 +135,17 @@
   function showAllTypedSections() {
     var allTyped = document.querySelectorAll('[data-customer-type]');
     for (var i = 0; i < allTyped.length; i++) {
-      var wrapper = allTyped[i].closest('.shopify-section') || allTyped[i];
-      wrapper.style.display = '';
+      var el = allTyped[i];
+      var sectionType = el.getAttribute('data-customer-type');
+      var wrapper = el.closest('.shopify-section') || el;
+
+      if (sectionType === 'default') {
+        // Show default sections when no type is selected
+        wrapper.style.display = '';
+      } else {
+        // Hide typed sections when resetting
+        wrapper.style.display = 'none';
+      }
     }
   }
 
