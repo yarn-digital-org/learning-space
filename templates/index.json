@@ -1759,48 +1759,6 @@
       "type": "gate-page",
       "settings": {}
     },
-    "home-slider-org": {
-      "type": "home-slider",
-      "blocks": {
-        "org_slide_1": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/sensory_packages_and_ready_to_go_rooms.jpg",
-            "slide_title": "",
-            "subheading": "",
-            "button_label": "Shop Now",
-            "button_link": "https://learningspaceuk.co.uk/collections/ready-made-sensory-rooms"
-          }
-        }
-      },
-      "block_order": [
-        "org_slide_1"
-      ],
-      "settings": {
-        "customer_type": "organisation"
-      }
-    },
-    "home-slider-ind": {
-      "type": "home-slider",
-      "blocks": {
-        "ind_slide_1": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/sensory_packages_and_ready_to_go_rooms.jpg",
-            "slide_title": "",
-            "subheading": "",
-            "button_label": "Shop Now",
-            "button_link": "https://learningspaceuk.co.uk/collections/ready-made-sensory-rooms"
-          }
-        }
-      },
-      "block_order": [
-        "ind_slide_1"
-      ],
-      "settings": {
-        "customer_type": "individual"
-      }
-    },
     "featured-products-org": {
       "type": "featured-products-typed",
       "settings": {
@@ -1828,8 +1786,6 @@
     "gate-page",
     "rich_text_fbGDJG",
     "home-slider",
-    "home-slider-org",
-    "home-slider-ind",
     "ss_slideshow_7_PgCGTk",
     "ss_text_block_CdpMYE",
     "ss_scrolling_collections_XcdXr3",

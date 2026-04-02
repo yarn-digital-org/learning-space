@@ -1,4 +1,4 @@
-<section id="main-caroesel" {% if section.settings.customer_type != blank %}data-customer-type="{{ section.settings.customer_type }}"{% endif %}>
+<section id="main-caroesel">
   <div id="home-slider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
     <div class="carousel-indicators">
       {% assign index = 0 %}
@@ -59,17 +59,7 @@
   "name": "Home Silder",
   "max_blocks": 6,
   "settings": [
-    {
-      "type": "select",
-      "id": "customer_type",
-      "label": "Show for customer type",
-      "options": [
-        { "value": "", "label": "Everyone (no filtering)" },
-        { "value": "organisation", "label": "Organisation only" },
-        { "value": "individual", "label": "Individual only" }
-      ],
-      "default": ""
-    }
+
   ],
   "blocks": [
     {
