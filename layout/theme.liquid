@@ -433,9 +433,11 @@ $(window).on('load',function(){
     {% comment %} Hidden form for saving customer_type metafield via JS {% endcomment %}
     {% if customer %}
     <div style="display:none;">
-      {% form 'customer', customer, id: 'gate-customer-type-form' %}
+      <form method="post" action="/account" id="gate-customer-type-form" accept-charset="UTF-8">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
         <input type="hidden" name="customer[metafields][custom][customer_type]" id="gate-customer-type-input" value="">
-      {% endform %}
+      </form>
     </div>
     {% endif %}
     <script>
