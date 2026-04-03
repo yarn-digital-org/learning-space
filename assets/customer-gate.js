@@ -35,39 +35,12 @@
 
   // ---- Metafield update for logged-in users ----
 
-  function saveCustomerMetafield(type) {
-    // Submits the hidden Liquid form to save customer_type metafield.
-    // The form is rendered by Liquid with the correct authenticity token.
-    if (!window.__LS_GATE || !window.__LS_GATE.isLoggedIn) return;
-
-    var form = document.getElementById('gate-customer-type-form');
-    var input = document.getElementById('gate-customer-type-input');
-    if (!form || !input) return;
-
-    input.value = type;
-
-    // Submit via fetch so we don't navigate away from the page
-    var formData = new FormData(form);
-    fetch(form.action || '/account', {
-      method: 'POST',
-      body: formData
-    }).catch(function () {
-      // Silently fail — the cookie is the fallback
-    });
-  }
+  // Metafield save removed — Shopify storefront doesn't support metafield
+  // writes without a custom app. Cookie handles persistence for now.
 
   // ---- Detect current customer type ----
 
   function getCustomerType() {
-    // Priority: 1) Logged-in customer metafield, 2) Cookie
-    if (window.__LS_GATE && window.__LS_GATE.customerType) {
-      var metaType = window.__LS_GATE.customerType.toLowerCase().trim();
-      if (VALID_TYPES.indexOf(metaType) !== -1) {
-        // Also sync cookie so JS-dependent features work consistently
-        setCookie(COOKIE_NAME, metaType, COOKIE_DAYS);
-        return metaType;
-      }
-    }
     var cookieType = getCookie(COOKIE_NAME);
     if (cookieType && VALID_TYPES.indexOf(cookieType) !== -1) {
       return cookieType;
@@ -258,8 +231,6 @@
       // Save preference
       setCookie(COOKIE_NAME, chosen, COOKIE_DAYS);
 
-      // Save to customer metafield if logged in
-      saveCustomerMetafield(chosen);
 
       // Switch UI
       hideGatePage();
@@ -274,8 +245,6 @@
       // Save preference
       setCookie(COOKIE_NAME, type, COOKIE_DAYS);
 
-      // Save to customer metafield if logged in (only touches custom.customer_type)
-      saveCustomerMetafield(type);
 
       // Swap menu + update toggle highlight
       activateMenu(type);

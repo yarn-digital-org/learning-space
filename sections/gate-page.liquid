@@ -98,13 +98,8 @@
   </div>
 </div>
 
-{% comment %} Expose customer metafield to JS so we can auto-detect type for logged-in users {% endcomment %}
 <script>
-  window.__LS_GATE = {
-    isLoggedIn: {% if customer %}true{% else %}false{% endif %},
-    customerType: {% if customer.metafields.custom.customer_type != blank %}"{{ customer.metafields.custom.customer_type | escape }}"{% else %}null{% endif %},
-    isHomepage: true
-  };
+  window.__LS_GATE = { isHomepage: true };
 </script>
 
 {% schema %}

@@ -429,17 +429,6 @@ $(window).on('load',function(){
         {{ content_for_layout }}
     </main>
     {% section 'footer' %}
-
-    {% comment %} Hidden form for saving customer_type metafield via JS {% endcomment %}
-    {% if customer %}
-    <div style="display:none;">
-      <form method="post" action="/account" id="gate-customer-type-form" accept-charset="UTF-8">
-        <input type="hidden" name="form_type" value="customer">
-        <input type="hidden" name="utf8" value="✓">
-        <input type="hidden" name="customer[metafields][custom][customer_type]" id="gate-customer-type-input" value="">
-      </form>
-    </div>
-    {% endif %}
     <script>
     var items = []; 
     {% for line_item in cart.items %}
@@ -1043,14 +1032,9 @@ window.SPFPriceTemplate = '{% if compare_at_price > price %}<span class="spf-pro
 </script>
   <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.eu/widget?wc=siqd8d85ecc138d5e17a5eb856f933145efacae51e8ec47fd1176ca1722ace5a12b" defer></script>
 
-{% comment %} Customer Gate: set context for non-homepage pages {% endcomment %}
 {% unless template == 'index' %}
 <script>
-  window.__LS_GATE = window.__LS_GATE || {
-    isLoggedIn: {% if customer %}true{% else %}false{% endif %},
-    customerType: {% if customer.metafields.custom.customer_type != blank %}"{{ customer.metafields.custom.customer_type | escape }}"{% else %}null{% endif %},
-    isHomepage: false
-  };
+  window.__LS_GATE = window.__LS_GATE || { isHomepage: false };
 </script>
 {% endunless %}
 {{ 'customer-gate.js' | asset_url | script_tag }}
