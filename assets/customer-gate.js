@@ -35,8 +35,21 @@
 
   // ---- Metafield update for logged-in users ----
 
-  // Metafield save removed — Shopify storefront doesn't support metafield
-  // writes without a custom app. Cookie handles persistence for now.
+  // ---- Cart attribute ----
+  // Saves customer type to the cart so Shopify Flow can pick it up
+  // on order creation and write it to the customer metafield.
+
+  function saveCartAttribute(type) {
+    fetch('/cart/update.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        attributes: { customer_type: type }
+      })
+    }).catch(function () {
+      // Silently fail — cookie is the primary persistence
+    });
+  }
 
   // ---- Detect current customer type ----
 
@@ -228,11 +241,9 @@
     proceed: function () {
       if (!chosen) return;
 
-      // Save preference
       setCookie(COOKIE_NAME, chosen, COOKIE_DAYS);
+      saveCartAttribute(chosen);
 
-
-      // Switch UI
       hideGatePage();
       activateMenu(chosen);
       updateSwitchUI(chosen);
@@ -242,11 +253,9 @@
     setType: function (type) {
       if (VALID_TYPES.indexOf(type) === -1) return;
 
-      // Save preference
       setCookie(COOKIE_NAME, type, COOKIE_DAYS);
+      saveCartAttribute(type);
 
-
-      // Swap menu + update toggle highlight
       activateMenu(type);
       updateSwitchUI(type);
 
